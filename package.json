@@ -1,0 +1,25 @@
+{
+  "name": "ppid-bblm",
+  "version": "1.0.0",
+  "description": "Official Website of PPID BBLM",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaiA133/ppid-bblm.git"
+  },
+  "author": "Raie Aswajjillah & Muhammad Fija Kanzul Ulum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaiA133/ppid-bblm/issues"
+  },
+  "homepage": "https://github.com/RaiA133/ppid-bblm#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}
