@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/RaiA133/ppid-bblm#readme",
   "devDependencies": {
+    "daisyui": "^4.12.10",
     "tailwindcss": "^3.4.13"
   }
 }
