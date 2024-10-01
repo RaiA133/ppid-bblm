@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Official Website of PPID BBLM",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "tests"
   },
@@ -22,5 +23,8 @@
   "devDependencies": {
     "daisyui": "^4.12.10",
     "tailwindcss": "^3.4.13"
+  },
+  "dependencies": {
+    "locomotive-scroll": "^4.1.4"
   }
 }

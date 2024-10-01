@@ -2504,6 +2504,14 @@ html:has(.drawer-toggle:checked) {
   height: fit-content;
 }
 
+.h-\[2000px\] {
+  height: 2000px;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -2660,6 +2668,10 @@ html:has(.drawer-toggle:checked) {
 
 .text-center {
   text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 .align-middle {
