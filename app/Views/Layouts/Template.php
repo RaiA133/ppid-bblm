@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PPID | BBLM</title>
   <link rel="stylesheet" href="<?= base_url() ?>src/output.css">
-  <!-- <link rel="stylesheet" href="<?= base_url() ?>src/locomotive-scroll/base.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
 </head>
 

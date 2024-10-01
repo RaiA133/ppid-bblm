@@ -2,7 +2,7 @@
 <div class="navbar bg-base-100">
   <div class="navbar-start">
     
-    <button class="btn btn-ghost btn-circle">
+    <button class="btn btn-ghost btn-circle z-50">
       <div class="indicator">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@
       </div>
     </button>
 
-    <button class="btn btn-ghost btn-circle">
+    <button class="btn btn-ghost btn-circle z-50">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -37,7 +37,7 @@
     
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost text-xl" href="<?= base_url() ?>">PPID BBSPJILM</a>
+    <a class="btn btn-ghost text-xl z-50" href="<?= base_url() ?>">PPID BBSPJILM</a>
   </div>
   <div class="navbar-end">
 
@@ -62,7 +62,7 @@
       </div>
       <div class="drawer-side z-50">
         <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay" style="background-color: #0000;"></label>
-        <ul class="menu backdrop-blur-md bg-white/30 text-base-content min-h-full w-full md:w-4/12 p-4">
+        <ul class="menu backdrop-blur-md bg-white/30 text-base-content min-h-full w-full sm:w-5/12 md:w-4/12 p-4">
           <!-- Sidebar content here -->
           <label class="btn btn-sm btn-circle btn-ghost absolute pt-[1px] text-2xl font-light"for="my-drawer-4" aria-label="close sidebar">✕</label>
           <div class="mt-32">

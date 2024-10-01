@@ -3,8 +3,8 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col">
-  <div class="text-2xl">Halaman Regulasi</div>
+<div class="flex flex-col" id="header-regulasi">
+  <div class="text-2xl" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-regulasi">Halaman Regulasi</div>
   <div class="divider"></div>
 </div>
 
