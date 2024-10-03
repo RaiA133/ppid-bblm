@@ -4,55 +4,80 @@
 <?php $this->section('content') ?>
 
 <div class="flex flex-col" id="header-home">
-  <div data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-home">
+
+  <!-- Judul Halaman -->
+  <section class="mx-10" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-home">
     <div class="text-2xl">Halaman Home</div>
     <div class="divider"></div>
-  </div>
+  </section>
 
-  <div class="flex flex-col gap-4">
+  <!-- Informasi Utama -->
+  <section class="flex flex-col items-start md:flex-row mx-10" id="fixed-elements">
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-32" data-scroll data-scroll-speed="2">
-      <div class="flex items-center" data-scroll data-scroll-speed="1">
-        <div class="ml-4 my-3">001</div>
-        <a class="relative group  py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Informasi Berkala
-        </a>
+    <div class="flex flex-col gap-4">
+
+      <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="2">
+        <div class="flex items-center" data-scroll data-scroll-speed="1">
+          <div class="ml-0 md:ml-4 my-3">001</div>
+          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+            Informasi Berkala
+          </a>
+        </div>
+        <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="2">
+          informasi berkala tentang kinerja, laporan keuangan, laporan kepegawaian, akses informasi publik, serta dokumen terkait kegiatan dan program instansi dari tahun 2015 hingga Sekarang.
+        </div>
       </div>
-      <div class="mt-4 ml-4 text-justify" data-scroll data-scroll-speed="2">
-        informasi berkala tentang kinerja, laporan keuangan, laporan kepegawaian, akses informasi publik, serta dokumen terkait kegiatan dan program instansi dari tahun 2015 hingga Sekarang.
+
+      <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="3">
+        <div class="flex items-center" data-scroll data-scroll-speed="2">
+          <div class="ml-0 md:ml-4 my-3">002</div>
+          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+            Informasi Setiap Saat
+          </a>
+        </div>
+        <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="1">
+          informasi setiap saat terkait layanan BBSPJILM, jurnal, standar pelayanan, peraturan tarif, perjanjian kerja sama, serta prosedur penanganan keadaan darurat.
+        </div>
       </div>
+
+      <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="3">
+        <div class="flex items-center" data-scroll data-scroll-speed="1">
+          <div class="ml-0 md:ml-4 my-3">003</div>
+          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+            Informai Sertamerta
+          </a>
+        </div>
+        <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur earum deserunt in. Ipsa maiores adipisci provident vel reiciendis! Praesentium perspiciatis nobis, beatae ut neque sunt cupiditate necessitatibus libero illum dolor.
+        </div>
+      </div>
+
     </div>
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-32" data-scroll data-scroll-speed="3">
-      <div class="flex items-center" data-scroll data-scroll-speed="2">
-        <div class="ml-4 my-3">002</div>
-        <a class="relative group  py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Informasi Setiap Saat
-        </a>
-      </div>
-      <div class="mt-4 ml-4 text-justify" data-scroll data-scroll-speed="1">
-        informasi setiap saat terkait layanan BBSPJILM, jurnal, standar pelayanan, peraturan tarif, perjanjian kerja sama, serta prosedur penanganan keadaan darurat.
-      </div>
+    <!-- Logo MIDC Animated -->
+    <div id="customHeight" style="height: 100vh;" class="" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
     </div>
+    <script>
+      function adjustHeight() {
+        var div = document.getElementById('customHeight');
+        if (window.innerWidth <= 768) { // Jika lebar layar md atau lebih besar
+          div.style.height = '350px';
+        } else {
+          div.style.height = '100vh'; // Jika layar lebih kecil dari md
+        }
+      }
+      window.onload = adjustHeight;
+      window.onresize = adjustHeight;
+    </script>
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-32" data-scroll data-scroll-speed="3">
-      <div class="flex items-center" data-scroll data-scroll-speed="1">
-        <div class="ml-4 my-3">003</div>
-        <a class="relative group  py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Informai Sertamerta
-        </a>
-      </div>
-      <div class="mt-4 ml-4 text-justify" data-scroll data-scroll-speed="2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur earum deserunt in. Ipsa maiores adipisci provident vel reiciendis! Praesentium perspiciatis nobis, beatae ut neque sunt cupiditate necessitatibus libero illum dolor.
-      </div>
-    </div>
+  </section>
 
-  </div>
-
-  <div data-scroll class="relative h-screen mt-10">
+  <!-- Video Autoplay -->
+  <section data-scroll class="relative h-screen mt-32 md:mt-0">
     <video autoplay loop muted src="<?= base_url() ?>/vid/video_profile_bblm.mp4" class="absolute top-0 left-0 w-full h-full object-cover"></video>
     <div class="absolute inset-0 flex justify-center items-center text-center bg-stone-900 bg-opacity-50 px-10 xl:px-72">
       <div class="flex">
@@ -62,60 +87,80 @@
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-50 transition-all duration-300 group-hover:w-full"></span>
             Jelajahi
           </button>
-
           </span>
         </div>
-
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="flex flex-col md:flex-row gap-4 justify-end items-end mt-10">
+  <!-- Informasi Lainnya -->
+  <section class="flex flex-col justify-center items-center mt-10 relative">
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-32" data-scroll data-scroll-speed="1">
-      <div class="flex items-center">
-        <div class="ml-4 my-3">004</div>
-        <a class="relative group  py-1.5 px-2.5 text-stone-900 text-3xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Layanan informasi
-        </a>
-      </div>
-      <div class="mt-4 ml-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum numquam necessitatibus ab, minima voluptate quis porro quaerat optio soluta cupiditate, consequatur consectetur! Sunt obcaecati ea aut, quaerat fuga sed.
-      </div>
+    <!-- <div class="grid lg:flex lg:flex-wrap lg:justify-center grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full" data-scroll> -->
+    <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
+            <p class="text-xl sm:text-2xl">Tata Cara Permohonan Informasi</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
+            <p class="text-xl sm:text-2xl">Mekanisme Keberatan</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
+            <p class="text-xl sm:text-2xl">Mekanisme Permohonan Penyelesaian Sengketa</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="1">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
+            <p class="text-xl sm:text-2xl">Maklumat Pelayanan</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="0">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
+            <p class="text-xl sm:text-2xl">Standar Biaya Pelayanan</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="5">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
+            <p class="text-xl sm:text-2xl">Waktu Pelayanan</p>
+          </div>
+        </div>
+      </a>
+
     </div>
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-32" data-scroll data-scroll-speed="3">
-      <div class="flex items-center">
-        <div class="ml-4 my-3">005</div>
-        <a class="relative group  py-1.5 px-2.5 text-stone-900 text-3xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Unit Pelayanan Publik
-        </a>
-      </div>
-      <div class="mt-4 ml-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ullam cum tempora sapiente nam earum odio eos, eaque quod magnam voluptatem amet molestiae eum! Aspernatur optio et sint ab animi.
-      </div>
-    </div>
+  </section>
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-32" data-scroll data-scroll-speed="5">
-      <div class="flex items-center">
-        <div class="ml-4 my-3">006</div>
-        <!-- <div class="text-3xl ml-4"><a href="<?= base_url() ?>">Laporan Layanan Informasi</a></div> -->
-        <a class="relative group  py-1.5 px-2.5 text-stone-900 text-3xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Laporan Layanan Informasi
-        </a>
-      </div>
-      <div class="mt-4 ml-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur earum deserunt in. Ipsa maiores adipisci provident vel reiciendis! Praesentium perspiciatis nobis, beatae ut neque sunt cupiditate necessitatibus libero illum dolor.
-      </div>
-    </div>
-
-  </div>
-
-
-
+  <!-- Judul Informasi lainnya -->
+  <section class="absoulte z-40 w-full bg-primary py-20">
+    <div class="text-6xl md:text-9xl text-center font-bold">STANDAR PELAYANAN</div>
+  </section>
 
 </div>
 
