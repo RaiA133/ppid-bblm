@@ -6,13 +6,13 @@
 <div class="flex flex-col" id="header-home">
 
   <!-- Judul Halaman -->
-  <section data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-home">
+  <section class="mx-10" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-home">
     <div class="text-2xl">Halaman Home</div>
     <div class="divider"></div>
   </section>
 
   <!-- Informasi Utama -->
-  <section class="flex flex-col items-start md:flex-row" id="fixed-elements">
+  <section class="flex flex-col items-start md:flex-row mx-10" id="fixed-elements">
 
     <div class="flex flex-col gap-4">
 
@@ -93,49 +93,74 @@
     </div>
   </section>
 
-  <!-- Informasi lainnya -->
-  <sec class="flex flex-col md:flex-row gap-4 justify-center items-center mt-10">
+  <!-- Informasi Lainnya -->
+  <section class="flex flex-col justify-center items-center mt-10 relative">
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-10" data-scroll data-scroll-speed="1">
-      <div class="flex items-center">
-        <div class="ml-0 md:ml-4 my-3">004</div>
-        <a class="relative group py-1.5 px-2.5 text-stone-900 text-3xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Layanan informasi
-        </a>
-      </div>
-      <div class="ml-0 md:ml-4 mt-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum numquam necessitatibus ab, minima voluptate quis porro quaerat optio soluta cupiditate, consequatur consectetur! Sunt obcaecati ea aut, quaerat fuga sed.
-      </div>
+    <!-- <div class="grid lg:flex lg:flex-wrap lg:justify-center grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full" data-scroll> -->
+    <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
+            <p class="text-xl sm:text-2xl">Tata Cara Permohonan Informasi</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
+            <p class="text-xl sm:text-2xl">Mekanisme Keberatan</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
+            <p class="text-xl sm:text-2xl">Mekanisme Permohonan Penyelesaian Sengketa</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="1">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
+            <p class="text-xl sm:text-2xl">Maklumat Pelayanan</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="0">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
+            <p class="text-xl sm:text-2xl">Standar Biaya Pelayanan</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="5">
+        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+          <div class="p-5">
+            <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
+            <p class="text-xl sm:text-2xl">Waktu Pelayanan</p>
+          </div>
+        </div>
+      </a>
+
     </div>
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-10" data-scroll data-scroll-speed="3">
-      <div class="flex items-center">
-        <div class="ml-0 md:ml-4 my-3">005</div>
-        <a class="relative group py-1.5 px-2.5 text-stone-900 text-3xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Unit Pelayanan Publik
-        </a>
-      </div>
-      <div class="ml-0 md:ml-4 mt-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ullam cum tempora sapiente nam earum odio eos, eaque quod magnam voluptatem amet molestiae eum! Aspernatur optio et sint ab animi.
-      </div>
-    </div>
+  </section>
 
-    <div class="flex flex-col w-full sm:w-8/12 md:w-5/12 my-10" data-scroll data-scroll-speed="5">
-      <div class="flex items-center">
-        <div class="ml-0 md:ml-4 my-3">006</div>
-        <a class="relative group py-1.5 px-2.5 text-stone-900 text-3xl ml-4" href="<?= base_url() ?>">
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-          Laporan Layanan Informasi
-        </a>
-      </div>
-      <div class="ml-0 md:ml-4 mt-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur earum deserunt in. Ipsa maiores adipisci provident vel reiciendis! Praesentium perspiciatis nobis, beatae ut neque sunt cupiditate necessitatibus libero illum dolor.
-      </div>
-    </div>
-
-  </sec>
+  <!-- Judul Informasi lainnya -->
+  <section class="absoulte z-40 w-full bg-primary py-20">
+    <div class="text-6xl md:text-9xl text-center font-bold">STANDAR PELAYANAN</div>
+  </section>
 
 </div>
 
