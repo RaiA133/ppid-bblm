@@ -47,7 +47,7 @@
           <div class="ml-0 md:ml-4 my-3">003</div>
           <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
-            Informai Sertamerta
+            Informasi Sertamerta
           </a>
         </div>
         <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="2">
@@ -58,53 +58,51 @@
     </div>
 
     <!-- Logo MIDC Animated -->
-    <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
-      <div data-scroll-offset>
-        <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
+    <section>
+      <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+        <div data-scroll-offset>
+          <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
+        </div>
       </div>
-    </div>
-    <script>
-      let isAttributesRemoved = false; // Status apakah atribut telah dihapus
-      let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
+      <script>
+        let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+        let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
 
-      function adjustAttributes() {
-        const div = document.getElementById('customHeight');
+        function adjustAttributes() {
+          const div = document.getElementById('customHeight');
 
-        if (window.innerWidth <= 768 && !isAttributesRemoved) {
-          console.log('hapus');
-          div.removeAttribute('data-scroll');
-          div.removeAttribute('data-scroll-sticky');
-          // div.removeAttribute('data-scroll-offset');
-          div.removeAttribute('data-scroll-target');
-          isAttributesRemoved = true;
-          isAttributesAdded = false;
-        } else if (window.innerWidth > 768 && !isAttributesAdded) {
-          console.log('ada');
-          div.setAttribute('data-scroll', '');
-          div.setAttribute('data-scroll-sticky', '');
-          // div.setAttribute('data-scroll-offset', '200%');
-          div.setAttribute('data-scroll-target', '#fixed-elements');
-          isAttributesAdded = true;
-          isAttributesRemoved = false;
+          if (window.innerWidth <= 768 && !isAttributesRemoved) {
+            console.log('hapus');
+            div.removeAttribute('data-scroll');
+            div.removeAttribute('data-scroll-sticky');
+            // div.removeAttribute('data-scroll-offset');
+            div.removeAttribute('data-scroll-target');
+            isAttributesRemoved = true;
+            isAttributesAdded = false;
+          } else if (window.innerWidth > 768 && !isAttributesAdded) {
+            console.log('ada');
+            div.setAttribute('data-scroll', '');
+            div.setAttribute('data-scroll-sticky', '');
+            // div.setAttribute('data-scroll-offset', '200%');
+            div.setAttribute('data-scroll-target', '#fixed-elements');
+            isAttributesAdded = true;
+            isAttributesRemoved = false;
+          }
         }
-      }
 
-      // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
-      window.addEventListener('resize', (event) => {
+        // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+        window.addEventListener('resize', (event) => {
+          adjustAttributes();
+        });
+
+        // Menggunakan onresize untuk menangani perubahan ukuran jendela
+        window.onresize = (event) => {
+          adjustAttributes();
+        };
+
         adjustAttributes();
-      });
-
-      // Menggunakan onresize untuk menangani perubahan ukuran jendela
-      window.onresize = (event) => {
-        adjustAttributes();
-      };
-
-      adjustAttributes();
-    </script>
-
-
-
-
+      </script>
+    </section>
 
   </section>
 
@@ -128,10 +126,9 @@
   <!-- Informasi Lainnya -->
   <section class="flex flex-col justify-center items-center mt-10 relative">
 
-    <!-- <div class="grid lg:flex lg:flex-wrap lg:justify-center grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full" data-scroll> -->
     <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="4">
         <div class="card hover:shadow-2xl hover:pb-10 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
@@ -140,7 +137,7 @@
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
         <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
@@ -149,7 +146,7 @@
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="4">
         <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
@@ -158,7 +155,7 @@
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="1">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
         <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
@@ -167,7 +164,7 @@
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="0.5">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="1.5">
         <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
@@ -176,7 +173,7 @@
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="5">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="6">
         <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
