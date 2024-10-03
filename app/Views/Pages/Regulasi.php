@@ -3,7 +3,7 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col">
+<div class="flex flex-col mx-10">
 
   <!-- Judul Halaman -->
   <section class="flex flex-col" id="header-regulasi">
