@@ -59,7 +59,7 @@
 
     <!-- Logo MIDC Animated -->
     <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
-      <div>
+      <div data-scroll-offset>
         <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
       </div>
     </div>
