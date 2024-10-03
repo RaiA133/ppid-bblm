@@ -41,7 +41,7 @@
   </div>
   <div class="navbar-end">
 
-    <div class="drawer drawer-end flex justify-end">
+    <div class="drawer drawer-end flex justify-end z-50">
       <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
         <!-- Page content here -->

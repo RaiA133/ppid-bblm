@@ -58,21 +58,53 @@
     </div>
 
     <!-- Logo MIDC Animated -->
-    <div id="customHeight" style="height: 100vh;" class="" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
-      <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
+    <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <div data-scroll-offset>
+        <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
+      </div>
     </div>
     <script>
-      function adjustHeight() {
-        var div = document.getElementById('customHeight');
-        if (window.innerWidth <= 768) { // Jika lebar layar md atau lebih besar
-          div.style.height = '350px';
-        } else {
-          div.style.height = '100vh'; // Jika layar lebih kecil dari md
+      let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+      let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
+
+      function adjustAttributes() {
+        const div = document.getElementById('customHeight');
+
+        if (window.innerWidth <= 768 && !isAttributesRemoved) {
+          console.log('hapus');
+          div.removeAttribute('data-scroll');
+          div.removeAttribute('data-scroll-sticky');
+          // div.removeAttribute('data-scroll-offset');
+          div.removeAttribute('data-scroll-target');
+          isAttributesRemoved = true;
+          isAttributesAdded = false;
+        } else if (window.innerWidth > 768 && !isAttributesAdded) {
+          console.log('ada');
+          div.setAttribute('data-scroll', '');
+          div.setAttribute('data-scroll-sticky', '');
+          // div.setAttribute('data-scroll-offset', '200%');
+          div.setAttribute('data-scroll-target', '#fixed-elements');
+          isAttributesAdded = true;
+          isAttributesRemoved = false;
         }
       }
-      window.onload = adjustHeight;
-      window.onresize = adjustHeight;
+
+      // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+      window.addEventListener('resize', (event) => {
+        adjustAttributes();
+      });
+
+      // Menggunakan onresize untuk menangani perubahan ukuran jendela
+      window.onresize = (event) => {
+        adjustAttributes();
+      };
+
+      adjustAttributes();
     </script>
+
+
+
+
 
   </section>
 
@@ -100,7 +132,7 @@
     <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-10 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
             <p class="text-xl sm:text-2xl">Tata Cara Permohonan Informasi</p>
@@ -109,7 +141,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
             <p class="text-xl sm:text-2xl">Mekanisme Keberatan</p>
@@ -127,7 +159,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="1">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
             <p class="text-xl sm:text-2xl">Maklumat Pelayanan</p>
@@ -135,8 +167,8 @@
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="0">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+      <a href="" class="flex justify-center" data-scroll data-scroll-speed="0.5">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
             <p class="text-xl sm:text-2xl">Standar Biaya Pelayanan</p>
@@ -145,7 +177,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="5">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
             <p class="text-xl sm:text-2xl">Waktu Pelayanan</p>
