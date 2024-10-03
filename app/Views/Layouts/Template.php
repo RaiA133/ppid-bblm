@@ -14,7 +14,7 @@
     <div data-scroll-container>
       <?= $this->include("Layouts/Navbar"); ?>
 
-      <div class="my-10 flex justify-center" data-scroll-section>
+      <div class="my-10" data-scroll-section>
         <?= $this->renderSection('content') ?>
       </div>
 

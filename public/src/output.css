@@ -3025,6 +3025,10 @@ html:has(.drawer-toggle:checked) {
   align-items: flex-start;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -3323,6 +3327,22 @@ html:has(.drawer-toggle:checked) {
 
 .hover\:pb-4:hover {
   padding-bottom: 1rem;
+}
+
+.hover\:pb-2:hover {
+  padding-bottom: 0.5rem;
+}
+
+.hover\:pb-3:hover {
+  padding-bottom: 0.75rem;
+}
+
+.hover\:pb-16:hover {
+  padding-bottom: 4rem;
+}
+
+.hover\:pb-20:hover {
+  padding-bottom: 5rem;
 }
 
 .hover\:text-stone-900:hover {

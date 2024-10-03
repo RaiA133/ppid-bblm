@@ -100,7 +100,7 @@
     <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-10 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
             <p class="text-xl sm:text-2xl">Tata Cara Permohonan Informasi</p>
@@ -109,7 +109,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
             <p class="text-xl sm:text-2xl">Mekanisme Keberatan</p>
@@ -127,7 +127,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="1">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
             <p class="text-xl sm:text-2xl">Maklumat Pelayanan</p>
@@ -136,7 +136,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="0">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
             <p class="text-xl sm:text-2xl">Standar Biaya Pelayanan</p>
@@ -145,7 +145,7 @@
       </a>
 
       <a href="" class="flex justify-center" data-scroll data-scroll-speed="5">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
             <p class="text-xl sm:text-2xl">Waktu Pelayanan</p>
