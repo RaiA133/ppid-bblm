@@ -56,7 +56,6 @@
       </div>
 
     </div>
-
     <!-- Logo MIDC Animated -->
     <section>
       <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
