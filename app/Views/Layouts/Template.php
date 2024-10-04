@@ -24,7 +24,7 @@
           <h6 class="footer-title">Services</h6>
           <a class="link link-hover">Informasi Berkala</a>
           <a class="link link-hover">Informasi Setiap Saat</a>
-          <a class="link link-hover">Informai Sertamerta</a>
+          <a class="link link-hover">Informasi Sertamerta</a>
         </nav>
         <nav>
           <h6 class="footer-title">Kontak Kami</h6>
@@ -43,7 +43,7 @@
           <a class="link link-hover" href="http://ppid.kemenperin.go.id/">PPID Kemenperin</a>
         </nav>
       </footer>
-      <footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
+      <footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4" data-scroll-section>
         <aside class="grid-flow-col items-center">
           <img style="width: 70px; margin-right: 10px;" src="<?= base_url() ?>img/icon/Logo-MIDC.svg" alt="Logo MIDC">
           <p>
@@ -82,6 +82,7 @@
         </nav>
 
       </footer>
+
     </div>
   </div>
 

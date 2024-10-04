@@ -63,6 +63,7 @@
       <div class="drawer-side z-50">
         <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay" style="background-color: #0000;"></label>
         <ul class="menu backdrop-blur-md bg-white/30 text-base-content min-h-full w-full sm:w-5/12 md:w-4/12 p-4">
+
           <!-- Sidebar content here -->
           <label class="btn btn-sm btn-circle btn-ghost absolute pt-[1px] text-2xl font-light" for="my-drawer-4" aria-label="close sidebar">✕</label>
           <div class="mt-[80px]">
@@ -77,9 +78,9 @@
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
                 <div tabindex="0" role="button" class="text-2xl">Informasi Publik</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Informasi Berkala</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Informasi Setiap Saat</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Informasi Serta Merta</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-berkala">Informasi Berkala</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-setiap-saat">Informasi Setiap Saat</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-serta-merta">Informasi Serta Merta</a></li>
                 </ul>
               </div>
             </li>
@@ -102,9 +103,9 @@
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
                 <div class="text-2xl">Layanan Informasi</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Informasi Berkala</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Informasi Setiap Saat</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Informasi Serta Merta</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Permohonan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Unit Pelayanan Publik</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Laporan Layanan Informasi</a></li>
                 </ul>
               </div>
             </li>
@@ -112,6 +113,7 @@
             <li class="text-2xl"><a href="<?= base_url() ?>regulasi">Hubungi Kami</a></li>
             
           </div>
+          
         </ul>
       </div>
 

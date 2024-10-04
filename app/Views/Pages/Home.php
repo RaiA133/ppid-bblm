@@ -7,7 +7,7 @@
 
   <!-- Judul Halaman -->
   <section class="mx-10" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-home">
-    <div class="text-2xl">Halaman Home</div>
+    <div class="text-2xl">Home</div>
     <div class="divider"></div>
   </section>
 
@@ -19,7 +19,7 @@
       <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="2">
         <div class="flex items-center" data-scroll data-scroll-speed="1">
           <div class="ml-0 md:ml-4 my-3">001</div>
-          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>informasi-berkala">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
             Informasi Berkala
           </a>
@@ -32,7 +32,7 @@
       <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="3">
         <div class="flex items-center" data-scroll data-scroll-speed="2">
           <div class="ml-0 md:ml-4 my-3">002</div>
-          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>informasi-setiap-saat">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
             Informasi Setiap Saat
           </a>
@@ -45,7 +45,7 @@
       <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="3">
         <div class="flex items-center" data-scroll data-scroll-speed="1">
           <div class="ml-0 md:ml-4 my-3">003</div>
-          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>informasi-serta-merta">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
             Informasi Sertamerta
           </a>
