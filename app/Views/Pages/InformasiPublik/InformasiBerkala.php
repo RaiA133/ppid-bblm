@@ -11,7 +11,7 @@
 <section class="mx-10">
   <div class="flex flex-wrap justify-center gap-6 w-full">
     
-    <div class="mb-3">
+    <div class="card p-10 border rounded-xl mb-3 shadow-lg">
       <div class="text-xl font-bold w-full text-center mb-4 text-underline">Kegiatan dan Kinerja</div>
       <div class="overflow-x-auto">
         <table class="table">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="card p-10 border rounded-xl mb-3 shadow-lg">
       <div class="text-xl font-bold w-full text-center mb-4 text-underline">Laporan Keuangan</div>
       <div class="overflow-x-auto">
         <table class="table">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="card p-10 border rounded-xl mb-3 shadow-lg">
       <div class="text-xl font-bold w-full text-center mb-4 text-underline">Laporan Kepegawaian</div>
       <div class="overflow-x-auto">
         <table class="table">
@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="card p-10 border rounded-xl mb-3 shadow-lg">
       <div class="text-xl font-bold w-full text-center mb-4 text-underline">Akses Informasi Publik</div>
       <div class="overflow-x-auto">
         <table class="table">

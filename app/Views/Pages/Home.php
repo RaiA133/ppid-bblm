@@ -113,10 +113,10 @@
       <div class="flex">
         <div class="text-lg lg:text-2xl text-stone-200">
           Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) berkomitmen untuk memberikan layanan terbaik dalam bidang pengujian, kalibrasi, dan sertifikasi, serta mendukung pengembangan industri yang mandiri, berdaya saing, dan sesuai dengan prinsip industri hijau melalui standardisasi dan optimalisasi teknologi.
-          <button class="relative group  py-1.5 px-2.5 text-stone-50">
+          <a class="relative group  py-1.5 px-2.5 text-stone-50" href="<?= base_url() ?>profil">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-50 transition-all duration-300 group-hover:w-full"></span>
             Jelajahi
-          </button>
+          </a>
           </span>
         </div>
       </div>
