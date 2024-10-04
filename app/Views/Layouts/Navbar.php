@@ -103,9 +103,9 @@
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
                 <div class="text-2xl">Layanan Informasi</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Permohonan Informasi</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Unit Pelayanan Publik</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Laporan Layanan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>permohonan-informasi">Permohonan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>unit-pelayanan-publik">Unit Pelayanan Publik</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>laporan-layanan-informasi">Laporan Layanan Informasi</a></li>
                 </ul>
               </div>
             </li>
