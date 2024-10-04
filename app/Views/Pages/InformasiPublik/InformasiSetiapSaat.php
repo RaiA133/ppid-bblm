@@ -8,7 +8,7 @@
   <div class="divider"></div>
 </section>
 
-<section class="mx-10 flex justify-center">
+<section class="mx-10 flex justify-center" data-scroll data-scroll-speed="5">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 w-full justify-center">
 
     <div class="card h-fit mb-3"> 
