@@ -127,57 +127,69 @@
   <section class="flex flex-col justify-center items-center mt-10 relative">
 
     <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
-
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="4">
-        <div class="card hover:shadow-2xl hover:pb-10 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        
+      <a href="<?= base_url() ?>profil" class="flex justify-center" data-scroll data-scroll-speed="4">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
-            <p class="text-xl sm:text-2xl">Tata Cara Permohonan Informasi</p>
+            <div class="h-32 flex items-end">
+              <p class="text-xl sm:text-2xl">Profil</p>
+            </div>
           </div>
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="3">
-        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+      <a href="<?= base_url() ?>regulasi" class="flex justify-center" data-scroll data-scroll-speed="3">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
-            <p class="text-xl sm:text-2xl">Mekanisme Keberatan</p>
+            <div class="h-32 flex items-end">
+              <p class="text-xl sm:text-2xl">Regulasi</p>
+            </div>
           </div>
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="4">
-        <div class="card hover:shadow-2xl hover:pb-4 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="4">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
-            <p class="text-xl sm:text-2xl">Mekanisme Permohonan Penyelesaian Sengketa</p>
+            <div class="h-32 flex items-end">
+              <p class="text-xl sm:text-2xl">Permohonan Informasi</p>
+            </div>
           </div>
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="2">
-        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="2">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
-            <p class="text-xl sm:text-2xl">Maklumat Pelayanan</p>
+            <div class="h-32 flex items-end">
+              <p class="text-xl sm:text-2xl">Unit Layanan Publik</p>
+            </div>
           </div>
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="1.5">
-        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="1.5">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
-            <p class="text-xl sm:text-2xl">Standar Biaya Pelayanan</p>
+            <div class="h-32 flex items-end">
+              <p class="text-xl sm:text-2xl">Laporan Layanan Informasi</p>
+            </div>
           </div>
         </div>
       </a>
 
-      <a href="" class="flex justify-center" data-scroll data-scroll-speed="6">
-        <div class="card hover:shadow-2xl hover:pb-20 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="6">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
-            <p class="text-xl sm:text-2xl">Waktu Pelayanan</p>
+            <div class="h-32 flex items-end">
+              <p class="text-xl sm:text-2xl">Hubungi Kami</p>
+            </div>
           </div>
         </div>
       </a>
@@ -188,7 +200,7 @@
 
   <!-- Judul Informasi lainnya -->
   <section class="absoulte z-40 w-full bg-primary py-20">
-    <div class="text-6xl md:text-9xl text-center font-bold">STANDAR PELAYANAN</div>
+    <div class="text-6xl md:text-9xl text-center font-bold">PELAYANAN KAMI</div>
   </section>
 
 </div>

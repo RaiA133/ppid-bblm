@@ -3069,6 +3069,10 @@ html:has(.drawer-toggle:checked) {
   height: 100vh;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .max-h-full {
   max-height: 100%;
 }
@@ -3278,6 +3282,11 @@ html:has(.drawer-toggle:checked) {
   border-color: var(--fallback-wa,oklch(var(--wa)/var(--tw-border-opacity)));
 }
 
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
@@ -3414,6 +3423,10 @@ html:has(.drawer-toggle:checked) {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-end {
+  text-align: end;
 }
 
 .text-2xl {
@@ -3600,6 +3613,22 @@ html:has(.drawer-toggle:checked) {
 
 .hover\:pb-4:hover {
   padding-bottom: 1rem;
+}
+
+.hover\:pb-16:hover {
+  padding-bottom: 4rem;
+}
+
+.hover\:pb-5:hover {
+  padding-bottom: 1.25rem;
+}
+
+.hover\:pb-2:hover {
+  padding-bottom: 0.5rem;
+}
+
+.hover\:pb-3:hover {
+  padding-bottom: 0.75rem;
 }
 
 .hover\:text-neutral-content:hover {
