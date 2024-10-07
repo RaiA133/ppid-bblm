@@ -183,7 +183,7 @@
         </div>
       </a>
 
-      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="6">
+      <a href="<?= base_url() ?>hubungi-kami" class="flex justify-center" data-scroll data-scroll-speed="6">
         <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>

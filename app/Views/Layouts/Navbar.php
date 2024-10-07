@@ -124,7 +124,7 @@
               </div>
             </li>
             <div class="ml-4 my-2" style="font-size: 10px">007</div>
-            <li class="text-2xl"><a href="<?= base_url() ?>regulasi">Hubungi Kami</a></li>
+            <li class="text-2xl"><a href="<?= base_url() ?>hubungi-kami">Hubungi Kami</a></li>
 
           </div>
 
