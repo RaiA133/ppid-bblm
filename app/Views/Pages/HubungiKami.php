@@ -33,7 +33,7 @@
               <input type="text" placeholder="Perusahaan" class="input input-bordered w-full mb-3" />
               <input type="text" placeholder="No Telp" class="input input-bordered w-full mb-3" />
             </div>
-            <textarea placeholder="Deskripsi Pesan" class="textarea textarea-bordered w-full p-4 mb-1"></textarea>
+            <textarea placeholder="Deskripsi Pesan" class="textarea textarea-bordered w-full p-4 mb-2"></textarea>
             <div class="flex flex-row gap-4">
               <input type="text" placeholder="Kota" class="input input-bordered w-full mb-3" />
               <button type="submit" class="btn btn-neutral px-10">Kirim</button>
