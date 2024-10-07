@@ -150,7 +150,7 @@
         </div>
       </a>
 
-      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="4">
+      <a href="<?= base_url() ?>permohonan-informasi" class="flex justify-center" data-scroll data-scroll-speed="4">
         <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
@@ -161,7 +161,7 @@
         </div>
       </a>
 
-      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="2">
+      <a href="<?= base_url() ?>unit-pelayanan-publik" class="flex justify-center" data-scroll data-scroll-speed="2">
         <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
@@ -172,7 +172,7 @@
         </div>
       </a>
 
-      <a href="<?= base_url() ?>" class="flex justify-center" data-scroll data-scroll-speed="1.5">
+      <a href="<?= base_url() ?>laporan-layanan-informasi" class="flex justify-center" data-scroll data-scroll-speed="1.5">
         <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>

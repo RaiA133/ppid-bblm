@@ -76,7 +76,15 @@
             <div class="ml-4 my-2" style="font-size: 10px">004</div>
             <li class="">
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
-                <div tabindex="0" role="button" class="text-2xl">Informasi Publik</div>
+                <div tabindex="0" role="button" class="text-2xl">
+                  Informasi Publik
+                  <span class="text-4xl ml-2">↓</span>
+                </div>
+                <!-- Arrow animated like accordion -->
+                <!-- <div class="collapse collapse-arrow">
+                  <input tabindex="0" role="button" type="radio" name="my-accordion-2" class="" />
+                  <div class="collapse-title text-2xl">Informasi Publik</div>
+                </div> -->
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
                   <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-berkala">Informasi Berkala</a></li>
                   <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-setiap-saat">Informasi Setiap Saat</a></li>
@@ -87,7 +95,10 @@
             <div class="ml-4 my-2" style="font-size: 10px">005</div>
             <li class="">
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
-                <div class="text-2xl">Standar Pelayanan</div>
+                <div class="text-2xl">
+                  Standar Pelayanan
+                  <span class="text-4xl ml-2">↓</span>
+                </div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
                   <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Tata Cara Permohonan Informasi</a></li>
                   <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Mekanisme Keberatan</a></li>
@@ -101,19 +112,22 @@
             <div class="ml-4 my-2" style="font-size: 10px">006</div>
             <li class="">
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
-                <div class="text-2xl">Layanan Informasi</div>
+                <div class="text-2xl">
+                  Layanan Informasi
+                  <span class="text-4xl ml-2">↓</span>
+                </div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Permohonan Informasi</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Unit Pelayanan Publik</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Laporan Layanan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>permohonan-informasi">Permohonan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>unit-pelayanan-publik">Unit Pelayanan Publik</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>laporan-layanan-informasi">Laporan Layanan Informasi</a></li>
                 </ul>
               </div>
             </li>
             <div class="ml-4 my-2" style="font-size: 10px">007</div>
             <li class="text-2xl"><a href="<?= base_url() ?>regulasi">Hubungi Kami</a></li>
-            
+
           </div>
-          
+
         </ul>
       </div>
 

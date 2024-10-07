@@ -13,3 +13,8 @@ $routes->get('/regulasi', 'Pages\Regulasi::index');
 $routes->get('/informasi-berkala', 'Pages\InformasiPublik::InformasiBerkala');
 $routes->get('/informasi-setiap-saat', 'Pages\InformasiPublik::InformasiSetiapSaat');
 $routes->get('/informasi-serta-merta', 'Pages\InformasiPublik::InformasiSertaMerta');
+
+// LAYANAN INFORMASI
+$routes->get('/permohonan-informasi', 'Pages\LayananInformasi::PermohonanInformasi');
+$routes->get('/unit-pelayanan-publik', 'Pages\LayananInformasi::UnitPelayananPublik');
+$routes->get('/laporan-layanan-informasi', 'Pages\LayananInformasi::LaporanLayananInformasi');
