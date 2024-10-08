@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 
 class StandarLayanan extends BaseController
 {
-    public function TataCaraPermohonanInformasi(): string
+    public function TataCaraPermohonanInformasi(): string 
     {
         return view('Pages/User/StandarLayanan/TataCaraPermohonanInformasi');
     }
