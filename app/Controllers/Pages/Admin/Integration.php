@@ -4,13 +4,13 @@ namespace App\Controllers\Pages\Admin;
 
 use App\Controllers\BaseController;
 
-class Transactions extends BaseController
+class Integration extends BaseController
 {
     public function index(): string
     {
         $data = [
-            'title' => 'Transactions'
+            'title' => 'Integration'
         ];
-        return view('Pages/Admin/Transactions', $data);
+        return view('Pages/Admin/Integration', $data);
     }
 }

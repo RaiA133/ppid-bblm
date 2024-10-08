@@ -27,12 +27,11 @@
   <div class="w-full">
     <div data-scroll-container>
 
-      <?php if (strpos($currentRoute, 'admin') === 0) : ?>
+      <?php if (strpos($currentRoute, 'admin') === 0) : ?>   <!-- Jika admin tampilkan navbar admin -->
         <?= $this->include("Pages/Admin/Layouts/Navbar"); ?>
       <?php else : ?>
         <?= $this->include("Layouts/Navbar"); ?>
       <?php endif; ?>
-
 
       <div class="my-10" data-scroll-section>
         <?= $this->renderSection('content') ?>

@@ -3,11 +3,6 @@
 <?php $this->section('content') ?>
 
 <!-- Judul Halaman -->
-<section class="mx-4 sm:mx-6 md:mx-10" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-home">
-    <div class="text-xl md:text-2xl">Leads</div>
-    <div class="divider"></div>
-</section>
-
 <section class="container mx-auto mt-5 sm:mt-10 rounded-lg shadow-lg p-5 sm:p-10 lg:p-20">
     <!-- Title and Button -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
