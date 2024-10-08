@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Pages;
+namespace App\Controllers\Pages\User;
 
 use App\Controllers\BaseController;
 
@@ -8,16 +8,16 @@ class InformasiPublik extends BaseController
 {
     public function InformasiBerkala(): string
     {
-        return view('Pages/InformasiPublik/InformasiBerkala');
+        return view('Pages/User/InformasiPublik/InformasiBerkala');
     }
 
     public function InformasiSetiapSaat(): string
     {
-        return view('Pages/InformasiPublik/InformasiSetiapSaat');
+        return view('Pages/User/InformasiPublik/InformasiSetiapSaat');
     }
 
     public function InformasiSertaMerta(): string
     {
-        return view('Pages/InformasiPublik/InformasiSertaMerta');
+        return view('Pages/User/InformasiPublik/InformasiSertaMerta');
     }
 }

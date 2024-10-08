@@ -5,25 +5,25 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Pages\Home::index');
-$routes->get('/profil', 'Pages\Profil::index');
-$routes->get('/regulasi', 'Pages\Regulasi::index');
-$routes->get('/hubungi-kami', 'Pages\HubungiKami::index');
+$routes->get('/', 'Pages\User\Home::index');
+$routes->get('/profil', 'Pages\User\Profil::index');
+$routes->get('/regulasi', 'Pages\User\Regulasi::index');
+$routes->get('/hubungi-kami', 'Pages\User\HubungiKami::index');
 
 // INFORMASI PUBLIK
-$routes->get('/informasi-berkala', 'Pages\InformasiPublik::InformasiBerkala');
-$routes->get('/informasi-setiap-saat', 'Pages\InformasiPublik::InformasiSetiapSaat');
-$routes->get('/informasi-serta-merta', 'Pages\InformasiPublik::InformasiSertaMerta');
+$routes->get('/informasi-berkala', 'Pages\User\InformasiPublik::InformasiBerkala');
+$routes->get('/informasi-setiap-saat', 'Pages\User\InformasiPublik::InformasiSetiapSaat');
+$routes->get('/informasi-serta-merta', 'Pages\User\InformasiPublik::InformasiSertaMerta');
 
 // STANDAR LAYANAN
-$routes->get(from: '/tata-cara-permohonan-informasi', to: 'Pages\StandarLayanan::TataCaraPermohonanInformasi');
-$routes->get(from: '/mekanisme-keberatan', to: 'Pages\StandarLayanan::MekanismeKeberatan');
-$routes->get(from: '/mekanisme-permohonan-penyelesaian-sengketa', to: 'Pages\StandarLayanan::MekanismePermohonanPenyelesaianSengketa');
-$routes->get(from: '/maklumat-pelayanan', to: 'Pages\StandarLayanan::MaklumatPelayanan');
-$routes->get(from: '/standar-biaya-pelayanan', to: 'Pages\StandarLayanan::StandarBiayaPelayanan');
-$routes->get(from: '/waktu-pelayanan', to: 'Pages\StandarLayanan::WaktuPelayanan');
+$routes->get('/tata-cara-permohonan-informasi', 'Pages\User\StandarLayanan::TataCaraPermohonanInformasi');
+$routes->get('/mekanisme-keberatan', 'Pages\User\StandarLayanan::MekanismeKeberatan');
+$routes->get('/mekanisme-permohonan-penyelesaian-sengketa', 'Pages\User\StandarLayanan::MekanismePermohonanPenyelesaianSengketa');
+$routes->get('/maklumat-pelayanan', 'Pages\User\StandarLayanan::MaklumatPelayanan');
+$routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiayaPelayanan');
+$routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
 // LAYANAN INFORMASI
-$routes->get('/permohonan-informasi', 'Pages\LayananInformasi::PermohonanInformasi');
-$routes->get('/unit-pelayanan-publik', 'Pages\LayananInformasi::UnitPelayananPublik');
-$routes->get('/laporan-layanan-informasi', 'Pages\LayananInformasi::LaporanLayananInformasi');
+$routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');
+$routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik');
+$routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::LaporanLayananInformasi');
