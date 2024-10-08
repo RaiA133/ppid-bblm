@@ -12,13 +12,23 @@
 <body data-theme="corporate">
   <div>
     <div data-scroll-container>
-      <?= $this->include("Layouts/Navbar"); ?>
+
+      <?php $currentRoute = service('request')->getPath(); ?>
+
+      <?php if (strpos($currentRoute, 'admin') === 0) : ?>
+        <?= $this->include("Pages/Admin/Layouts/Navbar"); ?>
+      <?php else : ?>
+        <?= $this->include("Layouts/Navbar"); ?>
+      <?php endif; ?>
+
 
       <div class="my-10" data-scroll-section>
         <?= $this->renderSection('content') ?>
       </div>
 
-      <?= $this->include("Layouts/Footer") ?>
+      <?php if (strpos($currentRoute, 'admin') === 1) : ?>
+        <?= $this->include("Layouts/Footer") ?>
+      <?php endif; ?>
 
     </div>
   </div>

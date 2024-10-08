@@ -27,3 +27,6 @@ $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 $routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');
 $routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik');
 $routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::LaporanLayananInformasi');
+
+// DASHBOARD ADMIN PANEL
+$routes->get('/admin', 'Pages\Admin\Dashboard::index');
