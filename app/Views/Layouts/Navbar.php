@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    
+
     <button class="btn btn-ghost btn-circle z-50">
       <div class="indicator">
         <svg
@@ -34,7 +34,7 @@
           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
     </button>
-    
+
   </div>
   <div class="navbar-center">
     <a class="btn btn-ghost text-xl z-50" href="<?= base_url() ?>">PPID BBSPJILM</a>
@@ -63,18 +63,77 @@
       <div class="drawer-side z-50">
         <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay" style="background-color: #0000;"></label>
         <ul class="menu backdrop-blur-md bg-white/30 text-base-content min-h-full w-full sm:w-5/12 md:w-4/12 p-4">
+
           <!-- Sidebar content here -->
-          <label class="btn btn-sm btn-circle btn-ghost absolute pt-[1px] text-2xl font-light"for="my-drawer-4" aria-label="close sidebar">✕</label>
-          <div class="mt-32">
-            <div class="ml-4 my-3">001</div>
-            <li class=" text-4xl"><a href="<?= base_url() ?>">Home</a></li>
-            <div class="ml-4 my-3">002</div>
-            <li class=" text-4xl"><a href="<?= base_url() ?>profil">Profil</a></li>
-            <div class="ml-4 my-3">003</div>
-            <li class=" text-4xl"><a href="<?= base_url() ?>regulasi">Regulasi</a></li>
+          <label class="btn btn-sm btn-circle btn-ghost absolute pt-[1px] text-2xl font-light" for="my-drawer-4" aria-label="close sidebar">✕</label>
+          <div class="mt-[80px]">
+            <div class="ml-4 my-2" style="font-size: 10px;">001</div>
+            <li class="text-2xl"><a href="<?= base_url() ?>">Home</a></li>
+            <div class="ml-4 my-2" style="font-size: 10px">002</div>
+            <li class="text-2xl"><a href="<?= base_url() ?>profil">Profil</a></li>
+            <div class="ml-4 my-2" style="font-size: 10px">003</div>
+            <li class="text-2xl"><a href="<?= base_url() ?>regulasi">Regulasi</a></li>
+            <div class="ml-4 my-2" style="font-size: 10px">004</div>
+            <li class="">
+              <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
+                <div tabindex="0" role="button" class="text-2xl">
+                  Informasi Publik
+                  <span class="text-4xl ml-2">↓</span>
+                </div>
+                <!-- Arrow animated like accordion -->
+                <!-- <div class="collapse collapse-arrow">
+                  <input tabindex="0" role="button" type="radio" name="my-accordion-2" class="" />
+                  <div class="collapse-title text-2xl">Informasi Publik</div>
+                </div> -->
+                <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-berkala">Informasi Berkala</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-setiap-saat">Informasi Setiap Saat</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>informasi-serta-merta">Informasi Serta Merta</a></li>
+                </ul>
+              </div>
+            </li>
+            <div class="ml-4 my-2" style="font-size: 10px">005</div>
+            <li class="">
+              <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
+                <div class="text-2xl">
+                  Standar Pelayanan
+                  <span class="text-4xl ml-2">↓</span>
+                </div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Tata Cara Permohonan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Mekanisme Keberatan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Mekanisme Permohonan Penyelesaian Sengketa</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Maklumat Pelayanan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Standar Biaya Pelayanan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Waktu Pelayanan</a></li>
+                </ul>
+              </div>
+            </li>
+            <div class="ml-4 my-2" style="font-size: 10px">006</div>
+            <li class="">
+              <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
+                <div class="text-2xl">
+                  Layanan Informasi
+                  <span class="text-4xl ml-2">↓</span>
+                </div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>permohonan-informasi">Permohonan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>unit-pelayanan-publik">Unit Pelayanan Publik</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>laporan-layanan-informasi">Laporan Layanan Informasi</a></li>
+                </ul>
+              </div>
+            </li>
+            <div class="ml-4 my-2" style="font-size: 10px">007</div>
+            <li class="text-2xl"><a href="<?= base_url() ?>hubungi-kami">Hubungi Kami</a></li>
+
           </div>
+
         </ul>
       </div>
+
+
+
+
     </div>
 
   </div>

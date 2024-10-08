@@ -7,7 +7,7 @@
 
   <!-- Judul Halaman -->
   <section class="flex flex-col" id="header-regulasi">
-    <div class="text-2xl" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-regulasi">Halaman Regulasi</div>
+    <div class="text-2xl" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-regulasi">Regulasi</div>
     <div class="divider"></div>
   </section>
 
@@ -17,13 +17,13 @@
       <div class="" data-scroll>
         <div class="flex flex-col md:flex-row gap-4">
 
-          <div class="basis-1/2 lg:basis-1/4 border w-full">
+          <div class="basis-1/2 lg:basis-1/4 border rounded-xl w-full">
             <p class="p-10">
               Dalam upaya meningkatkan transparansi dan akuntabilitas, beberapa peraturan telah ditetapkan untuk mendukung Keterbukaan Informasi Publik. Berikut adalah beberapa regulasi penting beserta penjelasan singkatnya:
             </p>
           </div>
 
-          <div class="basis-3/4 border w-full p-10">
+          <div class="basis-3/4 border rounded-xl w-full p-10">
 
             <div class="join join-vertical w-full">
 
@@ -128,6 +128,5 @@
   </section>
 
 </div>
-
 
 <?php $this->endSection(); ?>
