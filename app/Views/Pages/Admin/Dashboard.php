@@ -15,7 +15,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
         <!-- Datepicker Placeholder: Implement with your preferred datepicker in PHP -->
-        <input type="text" class="input input-bordered w-72" placeholder="Select date range" />
+        <input type="date" class="input input-bordered w-72" placeholder="Select date range" />
       </div>
       <div class="text-right">
         <button class="btn btn-ghost btn-sm normal-case">
@@ -38,12 +38,21 @@
             </svg>
           </label>
           <ul tabIndex="0" class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a><svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <li>
+              <a>
+                <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M4 8h16M4 12h7m-7 4h7m-7 4h16" />
-                </svg>Email Digests</a></li>
-            <li><a><svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                </svg>
+                Email Digests
+              </a>
+            </li>
+            <li>
+              <a>
+                <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.75a.75.75 0 01.75.75v13.5a.75.75 0 01-1.5 0V5.5A.75.75 0 0112 4.75z" />
-                </svg>Download</a></li>
+                </svg>Download
+              </a>
+            </li>
           </ul>
         </div>
       </div>
