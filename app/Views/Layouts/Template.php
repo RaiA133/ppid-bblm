@@ -7,6 +7,7 @@
   <title>PPID | BBLM</title>
   <link rel="stylesheet" href="<?= base_url() ?>src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <?php $currentRoute = service('request')->getPath(); ?>
@@ -33,7 +34,7 @@
         <?= $this->include("Layouts/Navbar"); ?>
       <?php endif; ?>
 
-      <div class="my-10" data-scroll-section>
+      <div class="my-0" data-scroll-section>
         <?= $this->renderSection('content') ?>
       </div>
 
