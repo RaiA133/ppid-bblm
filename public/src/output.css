@@ -2995,6 +2995,10 @@ html:has(.drawer-toggle:checked) {
   top: 0px;
 }
 
+.right-0 {
+  right: 0px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -3503,6 +3507,10 @@ html:has(.drawer-toggle:checked) {
   padding: 2rem;
 }
 
+.p-9 {
+  padding: 2.25rem;
+}
+
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -3876,6 +3884,11 @@ html:has(.drawer-toggle:checked) {
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
   }
 }
 
