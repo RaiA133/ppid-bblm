@@ -100,12 +100,12 @@
                   <span class="text-4xl ml-2">↓</span>
                 </div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Tata Cara Permohonan Informasi</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Mekanisme Keberatan</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Mekanisme Permohonan Penyelesaian Sengketa</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Maklumat Pelayanan</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Standar Biaya Pelayanan</a></li>
-                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="">Waktu Pelayanan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>tata-cara-permohonan-informasi">Tata Cara Permohonan Informasi</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>mekanisme-keberatan">Mekanisme Keberatan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>mekanisme-permohonan-penyelesaian-sengketa">Mekanisme Permohonan Penyelesaian Sengketa</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>maklumat-pelayanan">Maklumat Pelayanan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>standar-biaya-pelayanan">Standar Biaya Pelayanan</a></li>
+                  <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-stone-900 transition-all"><a href="<?= base_url() ?>waktu-pelayanan">Waktu Pelayanan</a></li>
                 </ul>
               </div>
             </li>
@@ -125,9 +125,8 @@
             </li>
             <div class="ml-4 my-2" style="font-size: 10px">007</div>
             <li class="text-2xl"><a href="<?= base_url() ?>hubungi-kami">Hubungi Kami</a></li>
-
           </div>
-
+          
         </ul>
       </div>
 
