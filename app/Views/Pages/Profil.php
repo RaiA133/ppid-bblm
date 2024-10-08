@@ -3,30 +3,36 @@
 
 <?php $this->section('content') ?>
 
-<section class="relative h-screen w-full bg-black flex items-center justify-center">
+<!-- Hero -->
+<section class="relative h-screen w-full bg-neutral flex items-center justify-center">
   <!-- Background Image -->
   <img src="<?= base_url() ?>img/profile/profile.png" alt="Profile Background" class="absolute w-auto h-full object-cover z-0">
 
-  <!-- Left bottom content (Name and Position) -->
-  <div class="absolute bottom-0 left-0 z-10 text-white p-8">
-    <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6">Dr. Gunawan, S.Si., M.Eng.</h1>
-    <h2 class="text-4xl md:text-8xl lg:text-7xl font-bold mb-2">KEPALA BALAI BESAR</h2>
-    <h2 class="text-4xl md:text-8xl lg:text-7xl font-bold mb-2">LOGAM DAN MESIN</h2>
-  </div>
+  <!-- Content Wrapper for Flexbox -->
+  <div class="relative z-10 w-full flex flex-col md:flex-row justify-between p-8 md:p-9 h-full bg-gradient-to-t from-black from-10% via-transparent via-30%  to-transparent to-90%">
 
-  <!-- Right bottom content (Educational Background and Awards) -->
-  <div class="absolute bottom-0 right-0 z-10 text-white p-9 text-left">
-    <h3 class="text-sm mb-4 font-bold">Latar Belakang Pendidikan:</h3>
-    <ul class="list-disc list-inside mb-4 space-y-2">
-      <li class="text-xs">S3 – Materials Science & Engineering Nagoya Institute of Technology – 2006</li>
-      <li class="text-xs">S2 – Mechanical Engineering University of Indonesia – 2002</li>
-      <li class="text-xs">S1 – Teknik Mesin Universitas Indonesia – 1998</li>
-    </ul>
-    <h3 class="text-sm font-bold">Penghargaan: Satyalancana Karya Satya XX Tahun</h3>
+    <!-- Left Content (Name and Position) -->
+    <div class="text-white my-auto mb-8 md:mb-0">
+      <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6">Dr. Gunawan, S.Si., M.Eng.</h1>
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">KEPALA BALAI BESAR</h2>
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">LOGAM DAN MESIN</h2>
+    </div>
+
+    <!-- Right Content (Educational Background and Awards) -->
+    <div class="text-white text-left self-end h-fit">
+      <h3 class="text-sm mb-4 font-bold">Latar Belakang Pendidikan:</h3>
+      <ul class="list-disc list-inside mb-4 space-y-2">
+        <li class="text-xs">S3 – Materials Science & Engineering Nagoya Institute of Technology – 2006</li>
+        <li class="text-xs">S2 – Mechanical Engineering University of Indonesia – 2002</li>
+        <li class="text-xs">S1 – Teknik Mesin Universitas Indonesia – 1998</li>
+      </ul>
+      <h3 class="text-sm font-bold">Penghargaan: Satyalancana Karya Satya XX Tahun</h3>
+    </div>
   </div>
 </section>
 
-<section class="p-7 m-7 card bg-base-100" data-scroll data-scroll-speed="1" data-scroll data-scroll-speed="2">
+<!-- Sambutan -->
+<section class="p-7 m-7 card bg-base-100" data-scroll data-scroll-speed="2">
   <div class="card-body text-black mt-5 rounded p-5" data-scroll data-scroll-speed="1">
     <h2 class="text-2xl text-black font-bold mb-4">Sambutan Kepala BBSPJILM</h2>
     <p class="mt-4">"Puji dan syukur kita panjatkan kepada Tuhan yang Maha Kuasa karena hanya atas Rahmat dan hidayahNya sehingga Profil balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) ini dapat diterbitkan. Profil ini berisi tentang tugas pokok dan fungsi BBSPJILM sebagai salah satu Lembaga pemerintah yang memberikan layanan di bidang Pengujian, Kalibrasi, Sertifikasi, Pemesinan, Pengelasan, Penerapan Industri 4.0, Pelatihan Teknis. Bapak/Ibu dapat memanfaatkan berbagai layanan yang ada di BBSPJILM dalam mendukung pengembangan industri yang terstandar dengan baik. Kami di BBSPJILM terus berkomitmen untuk memberikan pelayanan terbaik, serta siap untuk membuka diri dan bekerjasama dengan berbagai pihak industri, perguruan tinggi, BUMN, kementerian, dan Lembaga atau pihak-pihak lain yang terkait. Besar harapan kami, profil BBSPJILM ini dapat menjadi manfaat bagi kita semua."</p>
@@ -35,7 +41,8 @@
   </div>
 </section>
 
-<section class="p-7 m-7 card bg-base-100" data-scroll data-scroll-speed="1" data-scroll data-scroll-speed="2">
+<!-- Sejarah -->
+<section class="p-7 m-7 card bg-base-100" data-scroll data-scroll-speed="2">
   <div class="flex flex-col lg:flex-row text-black" data-scroll data-scroll-speed="1">
     <div class="card-body lg:w-80">
       <h2 class="text-2xl font-bold mb-4">SEJARAH BBSPJILM</h2>
@@ -52,14 +59,15 @@
       </ul>
     </div>
     <figure class="lg:w-1/2 flex justify-center lg:justify-end p-5">
-      <img class=" w-full h-5/6"
+      <img class=" w-full max-h-5/6"
         src="<?= base_url() ?>img/profile/sejarah.png"
         alt="Sejarah BBLM" />
     </figure>
   </div>
 </section>
 
-<section class="p-7 m-7 bg-base-100 rounded-lg" data-scroll data-scroll-speed="1" data-scroll data-scroll-speed="2">
+<!-- Visi & Misi -->
+<section class="p-7 m-7 bg-base-100 rounded-lg" data-scroll data-scroll-speed="2">
   <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8" data-scroll data-scroll-speed="1">
 
     <div class="text-black p-6">
@@ -87,7 +95,8 @@
   </div>
 </section>
 
-<section class="p-7 m-7 bg-base-100 rounded-lg" data-scroll data-scroll-speed="1" data-scroll data-scroll-speed="2">
+<!-- Tugas Pokok -->
+<section class="p-7 m-7 bg-base-100 rounded-lg" data-scroll data-scroll-speed="2">
   <div class="text-black p-6" data-scroll data-scroll-speed="1">
     <h2 class="text-2xl font-bold mb-4">TUGAS POKOK BBSPJILM</h2>
     <h3 class="font-semibold mb-4">

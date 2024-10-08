@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Pages\Home::index');
 $routes->get('/profil', 'Pages\Profil::index');
 $routes->get('/regulasi', 'Pages\Regulasi::index');
+$routes->get('/hubungi-kami', 'Pages\HubungiKami::index');
 
 // INFORMASI PUBLIK
 $routes->get('/informasi-berkala', 'Pages\InformasiPublik::InformasiBerkala');
@@ -21,3 +22,8 @@ $routes->get(from: '/mekanisme-permohonan-penyelesaian-sengketa', to: 'Pages\Sta
 $routes->get(from: '/maklumat-pelayanan', to: 'Pages\StandarLayanan::MaklumatPelayanan');
 $routes->get(from: '/standar-biaya-pelayanan', to: 'Pages\StandarLayanan::StandarBiayaPelayanan');
 $routes->get(from: '/waktu-pelayanan', to: 'Pages\StandarLayanan::WaktuPelayanan');
+
+// LAYANAN INFORMASI
+$routes->get('/permohonan-informasi', 'Pages\LayananInformasi::PermohonanInformasi');
+$routes->get('/unit-pelayanan-publik', 'Pages\LayananInformasi::UnitPelayananPublik');
+$routes->get('/laporan-layanan-informasi', 'Pages\LayananInformasi::LaporanLayananInformasi');
