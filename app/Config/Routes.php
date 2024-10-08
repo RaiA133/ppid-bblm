@@ -30,4 +30,5 @@ $routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::Laporan
 
 // DASHBOARD ADMIN PANEL
 $routes->get('/admin', 'Pages\Admin\Dashboard::index');
-$routes->get('/admin-login', 'Pages\Admin\Auth::login');
+$routes->get('/admin/dashboard', 'Pages\Admin\Dashboard::index');
+$routes->get('/admin/login', 'Pages\Admin\Auth::login');

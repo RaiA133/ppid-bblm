@@ -16,11 +16,12 @@
 
       <div class="flex flex-col justify-center items-center w-full h-screen">
 
-        <div class="card mx-auto w-full max-w-5xl shadow-xl">
-          <div class="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl">
-            <div class="">
+        <div class="card mx-auto w-full max-w-5xl">
+          <div class="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl shadow-xl">
+            <div class="flex items-center border">
               <!-- Ganti ini dengan konten yang diinginkan seperti gambar atau teks intro -->
-              <img src="https://via.placeholder.com/500x400" alt="Landing Intro" class="w-full h-full object-cover rounded-l-xl">
+              <!-- <img src="https://via.placeholder.com/500x400" alt="Landing Intro" class="w-full h-full object-cover rounded-l-xl"> -->
+              <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
             </div>
             <div class="py-24 px-10">
               <h2 class="text-2xl font-semibold mb-2 text-center">Login</h2>
