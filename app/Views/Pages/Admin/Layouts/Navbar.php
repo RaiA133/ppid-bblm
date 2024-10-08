@@ -1,4 +1,4 @@
-<div class="navbar sticky top-0 bg-base-100  z-10 shadow-md">
+<div class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
 
   <div class="flex-1">
 
