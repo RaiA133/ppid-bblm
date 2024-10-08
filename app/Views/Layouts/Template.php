@@ -9,11 +9,23 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
 </head>
 
-<body data-theme="corporate">
-  <div>
-    <div data-scroll-container>
+<?php $currentRoute = service('request')->getPath(); ?>
 
-      <?php $currentRoute = service('request')->getPath(); ?>
+<body data-theme="corporate" class="flex">
+
+  <?php if (strpos($currentRoute, 'admin') === 0) : ?>
+    <div class="z-50">
+      <div class="drawer lg:drawer-open relative">
+        <input id="admin-sidebar" type="checkbox" class="drawer-toggle" />
+
+        <?= $this->include('Pages/Admin/Layouts/Sidebar') ?>
+
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <div class="w-full">
+    <div data-scroll-container>
 
       <?php if (strpos($currentRoute, 'admin') === 0) : ?>
         <?= $this->include("Pages/Admin/Layouts/Navbar"); ?>
@@ -26,8 +38,10 @@
         <?= $this->renderSection('content') ?>
       </div>
 
-      <?php if (strpos($currentRoute, 'admin') === 1) : ?>
-        <?= $this->include("Layouts/Footer") ?>
+      <?php if (strpos($currentRoute, 'admin') === 0) : ?>
+          <span></span>
+        <?php else : ?>
+          <?= $this->include("Layouts/Footer") ?>
       <?php endif; ?>
 
     </div>
