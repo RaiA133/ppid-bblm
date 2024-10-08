@@ -7,22 +7,27 @@
   <!-- Background Image -->
   <img src="<?= base_url() ?>img/profile/profile.png" alt="Profile Background" class="absolute w-auto h-full object-cover z-0">
 
-  <!-- Left bottom content (Name and Position) -->
-  <div class="absolute bottom-0 left-0 z-10 text-white p-8">
-    <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6">Dr. Gunawan, S.Si., M.Eng.</h1>
-    <h2 class="text-4xl md:text-8xl lg:text-7xl font-bold mb-2">KEPALA BALAI BESAR</h2>
-    <h2 class="text-4xl md:text-8xl lg:text-7xl font-bold mb-2">LOGAM DAN MESIN</h2>
-  </div>
+  <!-- Content Wrapper for Flexbox -->
+  <div class="relative z-10 w-full flex flex-col md:flex-row justify-between p-8 md:p-9 h-full bg-gradient-to-t from-black from-10% via-transparent via-30%  to-transparent to-90%">
 
-  <!-- Right bottom content (Educational Background and Awards) -->
-  <div class="absolute bottom-0 right-0 z-10 text-white p-9 text-left">
-    <h3 class="text-sm mb-4 font-bold">Latar Belakang Pendidikan:</h3>
-    <ul class="list-disc list-inside mb-4 space-y-2">
-      <li class="text-xs">S3 – Materials Science & Engineering Nagoya Institute of Technology – 2006</li>
-      <li class="text-xs">S2 – Mechanical Engineering University of Indonesia – 2002</li>
-      <li class="text-xs">S1 – Teknik Mesin Universitas Indonesia – 1998</li>
-    </ul>
-    <h3 class="text-sm font-bold">Penghargaan: Satyalancana Karya Satya XX Tahun</h3>
+    <!-- Left Content (Name and Position) -->
+    <div class="text-white my-auto mb-8 md:mb-0">
+      <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6">Dr. Gunawan, S.Si., M.Eng.</h1>
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">KEPALA BALAI BESAR</h2>
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">LOGAM DAN MESIN</h2>
+    </div>
+
+    <!-- Right Content (Educational Background and Awards) -->
+    <div class="text-white text-left self-end h-fit">
+      <h3 class="text-sm mb-4 font-bold">Latar Belakang Pendidikan:</h3>
+      <ul class="list-disc list-inside mb-4 space-y-2">
+        <li class="text-xs">S3 – Materials Science & Engineering Nagoya Institute of Technology – 2006</li>
+        <li class="text-xs">S2 – Mechanical Engineering University of Indonesia – 2002</li>
+        <li class="text-xs">S1 – Teknik Mesin Universitas Indonesia – 1998</li>
+      </ul>
+      <h3 class="text-sm font-bold">Penghargaan: Satyalancana Karya Satya XX Tahun</h3>
+    </div>
+
   </div>
 </section>
 
