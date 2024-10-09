@@ -3506,6 +3506,14 @@ html:has(.drawer-toggle:checked) {
   height: 100vh;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-72 {
+  height: 18rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -4317,8 +4325,16 @@ html:has(.drawer-toggle:checked) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:justify-end {
+    justify-content: flex-end;
   }
 
   .md\:place-self-center {
