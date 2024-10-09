@@ -7,13 +7,13 @@
 
   <section class="mx-10">
     <div class="grid grid-cols-1 sm:grid-cols-2">
-      <div class="my-auto">
+      <div class="my-auto mb-4 md:mb-0">
         <!-- Datepicker Placeholder: Implement with your preferred datepicker in PHP -->
         <input type="date" class="input input-bordered input-sm w-30" placeholder="Select date range" />
         <span> - </span>
         <input type="date" class="input input-bordered input-sm w-30" placeholder="Select date range" />
       </div>
-      <div class="text-right gap-4 flex items-center justify-end">
+      <div class="text-right gap-4 flex items-center justify-center md:justify-end">
         <button class="btn btn-ghost btn-sm normal-case">
           Refresh Data
         </button>
@@ -47,7 +47,7 @@
   <div class="divider mb-3"></div>
 
   <!-- Stats -->
-  <section class="flex flex-wrap gap-4 mx-4 justify-center mb-4">
+  <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4 justify-center mb-4">
     <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-title">Total Page Views</div>
@@ -122,13 +122,14 @@
 
   <!-- Chart -->
   <section class="mx-4 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center mb-4">
+
     <div class="w-full rounded-md shadow-md p-5 bg-white">
       <div class="text-md font-bold">Montly Active Users (in K)</div>
       <div class="divider"></div>
-      <div><canvas id="active-user"></canvas></div>
+      <div class="h-72"><canvas id="active-user"></canvas></div>
       <script>
         const activeUser = document.getElementById('active-user');
-     
+
         new Chart(activeUser, {
           type: 'line',
           data: {
@@ -141,6 +142,10 @@
               tension: 0.1
             }]
           },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+          },
         });
       </script>
 
@@ -148,7 +153,7 @@
     <div class="w-full rounded-md shadow-md p-5 bg-white">
       <div class="text-md font-bold">Revenue</div>
       <div class="divider"></div>
-      <div><canvas id="dashboard-revenue"></canvas></div>
+      <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
       <script>
         const dashboardRevenue = document.getElementById('dashboard-revenue');
 
@@ -163,6 +168,7 @@
             }]
           },
           options: {
+            maintainAspectRatio: false,
             scales: {
               y: {
                 beginAtZero: true
@@ -216,7 +222,7 @@
     <div class="w-full rounded-md shadow-md p-5 bg-white">
       <div class="text-md font-bold">Orders by Category</div>
       <div class="divider"></div>
-      <div><canvas id="user-category"></canvas></div>
+      <div class="h-72"><canvas id="user-category"></canvas></div>
       <script>
         const userCategory = document.getElementById('user-category');
 
@@ -239,9 +245,13 @@
               hoverOffset: 4
             }]
           },
+          options: {
+            maintainAspectRatio: false,
+          },
         });
       </script>
     </div>
+
   </section>
 
 </div>
