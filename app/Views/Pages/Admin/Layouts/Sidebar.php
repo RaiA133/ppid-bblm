@@ -8,7 +8,17 @@
     <li><a href="<?= base_url() ?>admin/transactions">Transactions</a></li>
     <li><a href="<?= base_url() ?>admin/analytics">Analytics</a></li>
     <li><a href="<?= base_url() ?>admin/integration">Integration</a></li>
-    <li><a href="<?= base_url() ?>admin/profile">Profile</a></li>
+    <li>
+      <details open>
+        <summary>User</summary>
+        <ul>
+          <li><a href="<?= base_url() ?>admin/login">Login</a></li>
+          <li><a href="<?= base_url() ?>admin/profile">Profile</a></li>
+          <li><a href="<?= base_url() ?>admin/forgot-password">Forgot Password</a></li>
+          <li><a href="<?= base_url() ?>admin/blank-page">Blank Page</a></li>
+          <li><a href="<?= base_url() ?>admin/404">404</a></li>
+        </ul>
+      </details>
+    </li>
   </ul>
-
 </div>
