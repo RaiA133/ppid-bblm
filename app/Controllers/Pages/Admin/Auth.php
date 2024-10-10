@@ -13,4 +13,11 @@ class Auth extends BaseController
         ];
         return view('Pages/Admin/Auth/Login', $data);
     }
+    public function forgotPassword(): string
+    {
+        $data = [
+            'title' => 'Forgot Password'
+        ];
+        return view('Pages/Admin/Auth/ForgotPassword', $data);
+    }
 }

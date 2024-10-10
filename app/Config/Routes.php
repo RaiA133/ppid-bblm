@@ -32,3 +32,6 @@ $routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::Laporan
 $routes->get('/admin', 'Pages\Admin\Dashboard::index');
 $routes->get('/admin/dashboard', 'Pages\Admin\Dashboard::index');
 $routes->get('/admin/login', 'Pages\Admin\Auth::login');
+$routes->get('/admin/forgot-password', 'Pages\Admin\Auth::forgotPassword');
+$routes->get('/admin/blank-page', 'Pages\Admin\Error::blankPage');
+$routes->get('/admin/404', 'Pages\Admin\Error::notFound404');

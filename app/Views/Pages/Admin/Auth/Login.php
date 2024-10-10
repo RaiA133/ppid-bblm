@@ -12,7 +12,7 @@
 <body data-theme="corporate" class="flex">
 
   <div class="w-full">
-    <div data-scroll-container>
+    <div data-scroll-container class="bg-stone-100">
 
       <div class="flex flex-col justify-center items-center w-full h-screen">
 
@@ -52,7 +52,7 @@
 
                 <div class="text-center mt-4">
                   Don't have an account yet?
-                  <a href="/register" class="inline-block hover:text-primary hover:underline transition duration-200">Register</a>
+                  <a href="<?= base_url() ?>hubungi-kami" class="inline-block hover:text-primary hover:underline transition duration-200">Contact Us</a>
                 </div>
               </form>
             </div>
