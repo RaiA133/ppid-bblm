@@ -37,3 +37,4 @@ $routes->get('/admin/transactions', 'Pages\Admin\Transactions::index');
 $routes->get('/admin/login', 'Pages\Admin\Auth::login');
 $routes->get('/admin/analytics', 'Pages\Admin\Analytics::index');
 $routes->get('/admin/integration', 'Pages\Admin\Integration::index');
+$routes->get('/admin/profile', 'Pages\Admin\Profile::index');

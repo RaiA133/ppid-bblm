@@ -66,6 +66,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     const scroll = new LocomotiveScroll({
       el: document.querySelector('[data-scroll-container]'),

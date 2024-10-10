@@ -8,5 +8,7 @@
     <li><a href="<?= base_url() ?>admin/transactions">Transactions</a></li>
     <li><a href="<?= base_url() ?>admin/analytics">Analytics</a></li>
     <li><a href="<?= base_url() ?>admin/integration">Integration</a></li>
+    <li><a href="<?= base_url() ?>admin/profile">Profile</a></li>
   </ul>
+
 </div>

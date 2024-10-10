@@ -28,7 +28,7 @@
   <div class="w-full">
     <div data-scroll-container>
 
-      <?php if (strpos($currentRoute, 'admin') === 0) : ?>   <!-- Jika admin tampilkan navbar admin -->
+      <?php if (strpos($currentRoute, 'admin') === 0) : ?> <!-- Jika admin tampilkan navbar admin -->
         <?= $this->include("Pages/Admin/Layouts/Navbar"); ?>
       <?php else : ?>
         <?= $this->include("Layouts/Navbar"); ?>
@@ -39,9 +39,9 @@
       </div>
 
       <?php if (strpos($currentRoute, 'admin') === 0) : ?>
-          <span></span>
-        <?php else : ?>
-          <?= $this->include("Layouts/Footer") ?>
+        <span></span>
+      <?php else : ?>
+        <?= $this->include("Layouts/Footer") ?>
       <?php endif; ?>
 
     </div>
