@@ -1,7 +1,7 @@
 <?php $this->extend('Layouts/Template'); ?>
 
 <?php $this->section('content') ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
 
     <section class="mx-10">
@@ -275,8 +275,6 @@
         </script>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         // Initialize Flatpickr datepicker with range option
         flatpickr("#datepicker", {

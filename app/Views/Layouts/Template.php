@@ -7,7 +7,9 @@
   <title>PPID | BBLM</title>
   <link rel="stylesheet" href="<?= base_url() ?>src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <?php $currentRoute = service('request')->getPath(); ?>
