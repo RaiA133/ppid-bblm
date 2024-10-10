@@ -5,7 +5,7 @@
 
 <div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
 
-    <section class="container mx-auto mt-10 p-20">
+    <section class="container mx-auto mt-5 sm:mt-10 p-5 sm:p-10 lg:p-20">
 
         <!-- Title and Search/Filter Buttons -->
         <div class="flex flex-col sm:flex-row justify-between items-center mb-5">
