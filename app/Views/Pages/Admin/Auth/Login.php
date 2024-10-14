@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="text-right text-primary">
-                  <a href="/forgot-password" class="text-sm inline-block hover:text-primary hover:underline transition duration-200">Forgot Password?</a>
+                  <a href="<?= base_url() ?>admin/forgot-password" class="text-sm inline-block hover:text-primary hover:underline transition duration-200">Forgot Password?</a>
                 </div>
 
                 <!-- Error Message Placeholder -->
