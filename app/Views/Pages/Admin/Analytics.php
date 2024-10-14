@@ -2,7 +2,7 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
 
     <section class="mx-10">
         <!-- Date Picker -->
@@ -14,7 +14,7 @@
 
     <section class="mx-4 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center mb-4">
         <!-- StackBarChart -->
-        <div class="bg-white rounded-lg p-4 shadow-md">
+        <div class="bg-base-100 rounded-lg p-4 shadow-md">
             <h2 class="text-lg font-semibold mb-4">Sales</h2>
             <div class="h-72 lg:h-96">
                 <canvas id="stackBarChart"></canvas>
@@ -22,7 +22,7 @@
         </div>
 
         <!-- BarChart -->
-        <div class="bg-white rounded-lg p-4 shadow-md">
+        <div class="bg-base-100 rounded-lg p-4 shadow-md">
             <h2 class="text-lg font-semibold mb-4">No of Orders</h2>
             <div class="h-72 lg:h-96">
                 <canvas id="barChart"></canvas>
@@ -112,7 +112,7 @@
         </script>
 
         <!-- DoughnutChart -->
-        <div class="bg-white rounded-lg p-4 shadow-md">
+        <div class="bg-base-100 rounded-lg p-4 shadow-md">
             <h2 class="text-lg font-semibold mb-4">Orders by Category</h2>
             <div class="h-72 lg:h-96">
                 <canvas id="DoughnutChart"></canvas>
@@ -120,7 +120,7 @@
         </div>
 
         <!-- PieChart -->
-        <div class="bg-white rounded-lg p-4 shadow-md">
+        <div class="bg-base-100 rounded-lg p-4 shadow-md">
             <h2 class="text-lg font-semibold mb-4">Orders by Country</h2>
             <div class="h-72 lg:h-96">
                 <canvas id="PieChart"></canvas>
@@ -187,7 +187,7 @@
         </script>
 
         <!-- ScatterChart -->
-        <div class="bg-white rounded-lg p-4 shadow-md">
+        <div class="bg-base-100 rounded-lg p-4 shadow-md">
             <h2 class="text-lg font-semibold mb-4">Orders by Month (in k)</h2>
             <div class="h-72 lg:h-96">
                 <canvas id="scatterChart"></canvas>
@@ -195,7 +195,7 @@
         </div>
 
         <!-- LineChart -->
-        <div class="bg-white rounded-lg p-4 shadow-md">
+        <div class="bg-base-100 rounded-lg p-4 shadow-md">
             <h2 class="text-lg font-semibold mb-4">Monthly Active Users (in k)</h2>
             <div class="h-72 lg:h-96">
                 <canvas id="lineChart"></canvas>

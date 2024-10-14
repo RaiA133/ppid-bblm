@@ -2,7 +2,7 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
 
     <section class="container mx-auto mt-5 sm:mt-10 p-5 sm:p-10 lg:p-20">
         <!-- Title and Button -->
@@ -13,7 +13,7 @@
 
         <!-- Leads Table -->
         <div class="mt-5 overflow-x-auto w-full shadow-xl rounded-xl">
-            <table class="table-auto w-full bg-white shadow-md rounded-lg">
+            <table class="table-auto w-full bg-base-100 shadow-md rounded-lg">
                 <thead>
                     <tr class="bg-gray-200 text-gray-700">
                         <th class="p-2 sm:p-4 text-left">Name</th>

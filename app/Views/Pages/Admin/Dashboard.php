@@ -3,7 +3,7 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
 
   <section class="mx-10">
     <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -123,7 +123,7 @@
   <!-- Chart -->
   <section class="mx-4 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center mb-4">
 
-    <div class="w-full rounded-md shadow-md p-5 bg-white">
+    <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">Montly Active Users (in K)</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="active-user"></canvas></div>
@@ -150,7 +150,7 @@
       </script>
 
     </div>
-    <div class="w-full rounded-md shadow-md p-5 bg-white">
+    <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">Revenue</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
@@ -179,7 +179,7 @@
       </script>
 
     </div>
-    <div class="w-full rounded-md shadow-md p-5 bg-white">
+    <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">User Signup Source</div>
       <div class="divider"></div>
       <div class="overflow-x-auto">
@@ -219,7 +219,7 @@
         </table>
       </div>
     </div>
-    <div class="w-full rounded-md shadow-md p-5 bg-white">
+    <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">Orders by Category</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="user-category"></canvas></div>

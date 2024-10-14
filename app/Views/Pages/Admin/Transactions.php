@@ -3,7 +3,7 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
 
     <section class="container mx-auto mt-5 sm:mt-10 p-5 sm:p-10 lg:p-20">
 
@@ -12,7 +12,7 @@
             <h1 class="text-lg sm:text-2xl font-semibold">Recent Transactions</h1>
             <div class="flex items-center">
                 <!-- Search Bar -->
-                <input type="text" id="searchText" placeholder="Search by email..." class="input input-bordered w-full sm:w-64 max-w-xs mr-4">
+                <input type="text" id="searchText" placeholder="Search by email..." class="input input-bordered input-sm w-full sm:w-64 max-w-xs mr-4">
 
                 <!-- Filter Dropdown -->
                 <div class="dropdown dropdown-bottom dropdown-end">
@@ -37,7 +37,7 @@
 
         <!-- Table -->
         <div class="overflow-x-auto shadow-xl rounded-xl">
-            <table class="table-auto w-full bg-white shadow-md rounded-lg">
+            <table class="table-auto w-full bg-base-100 shadow-md rounded-lg">
                 <thead>
                     <tr class="bg-gray-200 text-gray-700">
                         <th class="p-4 text-left">Name</th>

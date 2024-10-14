@@ -9,16 +9,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
 </head>
 
-<body data-theme="corporate" class="flex">
+<body data-theme="dark" class="flex">
 
   <div class="w-full">
-    <div data-scroll-container class="bg-stone-100">
+    <div data-scroll-container class="bg-base-200">
 
       <div class="flex flex-col justify-center items-center w-full h-screen">
 
         <div class="card mx-auto w-full max-w-5xl">
           <div class="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl shadow-xl">
-            <div class="flex items-center border">
+            <div class="flex items-center">
               <!-- Ganti ini dengan konten yang diinginkan seperti gambar atau teks intro -->
               <!-- <img src="https://via.placeholder.com/500x400" alt="Landing Intro" class="w-full h-full object-cover rounded-l-xl"> -->
               <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>

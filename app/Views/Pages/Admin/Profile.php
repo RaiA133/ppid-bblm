@@ -2,10 +2,10 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-stone-100 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
 
     <section class="container mx-auto mt-8 px-4 sm:px-6 lg:px-8">
-        <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="bg-base-100 shadow-md rounded-lg p-6">
             <h2 class="text-2xl font-semibold mb-4">Profile</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
