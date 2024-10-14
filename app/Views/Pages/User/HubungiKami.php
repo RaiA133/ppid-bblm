@@ -26,12 +26,12 @@
 
           <form action="">
             <div class="flex flex-row gap-4">
-              <input type="text" placeholder="Name*" class="input input-bordered w-full mb-3" required />
+              <input type="text" placeholder="Nama*" class="input input-bordered w-full mb-3" required />
               <input type="email" placeholder="Email*" class="input input-bordered w-full mb-3" required />
             </div>
             <div class="flex flex-row gap-4">
               <input type="text" placeholder="Perusahaan" class="input input-bordered w-full mb-3" />
-              <input type="text" placeholder="No Telp" class="input input-bordered w-full mb-3" />
+              <input type="number" placeholder="No Telp" class="input input-bordered w-full mb-3" />
             </div>
             <textarea placeholder="Deskripsi Pesan" class="textarea textarea-bordered w-full p-4 mb-2"></textarea>
             <div class="flex flex-row gap-4">
