@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
 </head>
 
-<body data-theme="corporate" class="flex">
+<body data-theme="<?= getenv('ui_theme') ?>" class="flex">
 
   <?php
   $linkSent = false;

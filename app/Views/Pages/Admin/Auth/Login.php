@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
 </head>
 
-<body data-theme="dark" class="flex">
+<body data-theme="<?= getenv('ui_theme') ?>" class="flex">
 
   <div class="w-full">
     <div data-scroll-container class="bg-base-200">
