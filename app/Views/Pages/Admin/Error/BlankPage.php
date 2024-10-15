@@ -3,7 +3,7 @@
 
 <?php $this->section('content') ?>
 
-<section class="flex justify-center items-center bg-stone-100 py-10 h-screen" id="header-home" data-scroll>
+<section class="flex justify-center items-center bg-base-200 py-10 h-screen" id="header-home" data-scroll>
 
   <div class="max-w-md">
 

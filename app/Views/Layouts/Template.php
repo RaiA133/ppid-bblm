@@ -14,7 +14,7 @@
 
 <?php $currentRoute = service('request')->getPath(); ?>
 
-<body data-theme="corporate" class="flex">
+<body data-theme="dark" class="flex">
 
   <?php if (strpos($currentRoute, 'admin') === 0) : ?>
     <div class="z-50">
