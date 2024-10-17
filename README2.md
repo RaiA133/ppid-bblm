@@ -10,3 +10,6 @@
 database
 - untuk membuat nama table menggunkan snake case
 - pembuatan id harus id_(nama table)
+
+
+PHP Version > 8.x.x
