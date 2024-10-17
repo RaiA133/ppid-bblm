@@ -42,5 +42,5 @@ $routes->get('/admin/forgot-password', 'Pages\Admin\Auth::forgotPassword');
 $routes->get('/admin/blank-page', 'Pages\Admin\Error::blankPage');
 $routes->get('/admin/404', 'Pages\Admin\Error::notFound404');
 
-$routes->get('/admin/regulasi', 'Pages\User\Regulasi::index');
+$routes->get('/admin/regulasi', 'Pages\User\Regulasi::adminIndex');
 

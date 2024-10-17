@@ -44,7 +44,19 @@ class RegulasiModel extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-  public function getRegulasi() {
-    return $this->findAll();
+
+
+  // get data regulasi with paginate
+  public function getRegulasi($dataCountOnePage = 5)
+  {
+    return $this->paginate($dataCountOnePage, 'regulasi');
+  }
+
+  // search data regulasi
+  public function search($keyword)
+  {
+    $builder = $this->table('regulasi');
+    $builder->like('judul', $keyword);
+    return $builder;
   }
 }
