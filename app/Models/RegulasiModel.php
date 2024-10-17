@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
 
 class RegulasiModel extends Model
@@ -46,17 +47,38 @@ class RegulasiModel extends Model
 
 
 
-  // get data regulasi with paginate
+  // get data regulasi with paginate | admin
   public function getRegulasi($dataCountOnePage = 5)
   {
-    return $this->paginate($dataCountOnePage, 'regulasi');
+    $query = $this->table('regulasi');
+    $query->where('deleted_at', null);
+    $result = $query->paginate($dataCountOnePage, 'regulasi');
+    return $result;
   }
 
-  // search data regulasi
+  // search data regulasi | admin
   public function search($keyword)
   {
-    $builder = $this->table('regulasi');
-    $builder->like('judul', $keyword);
-    return $builder;
+    $query = $this->table('regulasi');
+    $query->like('judul', $keyword);
+    return $query;
+  }
+
+  // create data regulasi | admin
+  public function create($data = [])
+  {
+    $this->save([
+      'judul' => $data['judul'],
+      'link_drive' => $data['link_drive'],
+      'created_at' => Time::now(),
+    ]);
+  }
+
+  // delete data regulasi by ID | admin
+  public function remove($id_regulasi)
+  {
+    $query = $this->table('regulasi');
+    $result = $query->delete($id_regulasi); // auto soft delete from model
+    return $result;
   }
 }
