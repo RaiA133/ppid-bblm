@@ -11,5 +11,7 @@ database
 - untuk membuat nama table menggunkan snake case
 - pembuatan id harus id_(nama table)
 
-
 PHP Version > 8.x.x
+
+Change Tabesize in VsCode / textEditor to 2 space indent
+VsCode = setting > search 'tabsize' > change to 2

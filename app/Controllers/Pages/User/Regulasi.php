@@ -7,18 +7,25 @@ use App\Models\RegulasiModel;
 
 class Regulasi extends BaseController
 {
-    protected $regulasiModel;
-    public function __construct()
-    {
-        $this->regulasiModel = new RegulasiModel();
-    }
-    public function index()
-    {
-        $results = $this->regulasiModel->getRegulasi();
-        $data = [
-            'judul' => 'Halaman Regulasi',
-            'results' => $results,
-        ];
-        return view('Pages/User/Regulasi', $data);
-    }
+  protected $regulasiModel;
+  public function __construct()
+  {
+    $this->regulasiModel = new RegulasiModel();
+  }
+
+  // User Page
+  public function index()
+  {
+    $results = $this->regulasiModel->getRegulasi();
+    $data = [
+      'judul' => 'Halaman Regulasi',
+      'results' => $results,
+    ];
+    return view('Pages/User/Regulasi', $data);
+  }
+  // END User Page
+
+  // Admin Page
+
+  // END Admin Page
 }

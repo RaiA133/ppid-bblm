@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class Home extends BaseController
 {
-    public function index(): string
-    {
-        return view('Pages/User/Home');
-    }
+  public function index(): string
+  {
+    return view('Pages/User/Home');
+  }
 }
