@@ -25,6 +25,7 @@ $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
 $routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\MaklumatPelayanan::index');
 $routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\MaklumatPelayanan::indexCreate');
+$routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\MaklumatPelayanan::indexUpdate/$1');
 $routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\MaklumatPelayanan::indexDelete/$1');
 
 // LAYANAN INFORMASI
