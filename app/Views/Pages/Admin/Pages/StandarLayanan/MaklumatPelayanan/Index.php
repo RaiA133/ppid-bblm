@@ -37,7 +37,7 @@
       <h1 class="text-lg sm:text-2xl font-semibold ml-1 sm:ml-4">Maklumat Pelayanan</h1>
 
       <div class="my-2 flex justify-center w-full sm:w-fit">
-        <?= $pager->links('regulasi', 'daisyui_pagination'); ?>
+        <?= $pager->links('maklumatpelayanan', 'daisyui_pagination'); ?>
       </div>
 
       <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">
@@ -48,8 +48,8 @@
           </form>
         </div>
 
-        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataRegulasi.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/Regulasi/Create') ?> <!-- Load Modal Add Data -->
+        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataMaklumatPelayanan.showModal()">Add Data</button>
+        <?= $this->include('Pages/Admin/Pages/StandarLayanan/MaklumatPelayanan/Create') ?> <!-- Load Modal Add Data -->
       </div>
 
     </div>
@@ -79,8 +79,8 @@
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
-                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_regulasi'] ?>.showModal()">View</button>
-                <dialog id="modalLihatDokumen<?= $result['id_regulasi'] ?>" class="modal">
+                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_maklumatpelayanan'] ?>.showModal()">View</button>
+                <dialog id="modalLihatDokumen<?= $result['id_maklumatpelayanan'] ?>" class="modal">
                   <div class="modal-box w-11/12 max-w-5xl">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -98,18 +98,18 @@
 
               <td class="p-2 sm:p-4">
 
-                <!-- Modal untuk EDIT Data Regulasi -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 xl:mb-0" onclick="editDataRegulasi<?= $result['id_regulasi'] ?>.showModal()">Edit</a>
+                <!-- Modal untuk EDIT Data Maklumat Pelayanan -->
+                <a class="btn btn-xs btn-neutral w-14 mb-1 xl:mb-0" onclick="editDataMaklumatPelayanan<?= $result['id_maklumatpelayanan'] ?>.showModal()">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataRegulasi' . $result['id_regulasi'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataMaklumatPelayanan' . $result['id_maklumatpelayanan'])): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataRegulasi<?= $result['id_regulasi'] ?>").showModal();
+                      document.getElementById("editDataMaklumatPelayanan<?= $result['id_maklumatpelayanan'] ?>").showModal();
                     });
                   </script>
                 <?php endif; ?>
 
-                <dialog id="editDataRegulasi<?= $result['id_regulasi'] ?>" class="modal">
+                <dialog id="editDataMaklumatPelayanan<?= $result['id_maklumatpelayanan'] ?>" class="modal">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -118,7 +118,7 @@
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>/api/admin/regulasi/edit/<?= $result['id_regulasi'] ?>" method="post">
+                      <form action="<?= base_url() ?>/api/admin/maklumat-pelayanan/edit/<?= $result['id_maklumatpelayanan'] ?>" method="post">
                         <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= ($validation?->hasError('judul_edit')) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
                         <?php if ($validation?->hasError('judul_edit')) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('judul_edit') ?></span></div>
@@ -138,7 +138,7 @@
                 <!-- END Modal untuk Edit Data Regulasi -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/regulasi/delete/<?= $result['id_regulasi'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/maklumat-pelayanan/delete/<?= $result['id_maklumatpelayanan'] ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>

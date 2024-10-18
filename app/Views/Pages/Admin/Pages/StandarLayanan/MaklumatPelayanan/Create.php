@@ -1,12 +1,12 @@
-<?php if(session()->getFlashdata('openModalAddDataRegulasi')): ?>
-<script>
+<?php if (session()->getFlashdata('openModalAddDataMaklumatPelayanan')): ?>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('addDataRegulasi').showModal();
+      document.getElementById('addDataMaklumatPelayanan').showModal();
     });
-</script>
+  </script>
 <?php endif; ?>
 
-<dialog id="addDataRegulasi" class="modal">
+<dialog id="addDataMaklumatPelayanan" class="modal">
   <div class="modal-box">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -15,7 +15,7 @@
     <div class="divider"></div>
     <div class="py-4">
 
-      <form action="<?= base_url() ?>/api/admin/regulasi/create" method="post">
+      <form action="<?= base_url() ?>/api/admin/maklumat-pelayanan/create" method="post">
         <input name="judul_create" type="text" placeholder="Judul" class="input input-bordered w-full <?= ($validation?->hasError('judul_create')) ? 'input-error' : 'mb-3' ?>" value="<?= old('judul_create') ?>" />
         <?php if ($validation?->hasError('judul_create')) : ?>
           <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('judul_create') ?></span></div>

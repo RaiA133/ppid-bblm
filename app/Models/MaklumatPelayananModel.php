@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
 
 class MaklumatPelayananModel extends Model
@@ -11,9 +10,9 @@ class MaklumatPelayananModel extends Model
   protected $primaryKey       = 'id_maklumatpelayanan';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
-  protected $useSoftDeletes   = true;
+  protected $useSoftDeletes   = false;
   protected $protectFields    = true;
-  protected $allowedFields    = ['judul', 'link_drive'];
+  protected $allowedFields    = ['link_drive'];
 
   protected bool $allowEmptyInserts = false;
   protected bool $updateOnlyChanged = true;
@@ -46,21 +45,20 @@ class MaklumatPelayananModel extends Model
   protected $afterDelete    = [];
 
 
-
-  // get data regulasi with paginate | admin
-  public function getRegulasi($dataCountOnePage = 5)
+  // get data maklumat pelayanan with paginate | admin
+  public function getMaklumatPelayanan($dataCountOnePage = 5)
   {
     $query = $this->table('maklumatpelayanan');
     $query->where('deleted_at', null);
-    $query->orderBy('id_regulasi', 'DESC');
-    $result = $query->paginate($dataCountOnePage, 'regulasi');
+    $query->orderBy('id_maklumatpelayanan', 'DESC');
+    $result = $query->paginate($dataCountOnePage, 'maklumatpelayanan');
     return $result;
   }
 
-  // search data regulasi | admin
+  // search data maklumat pelayanan | admin
   public function search($keyword)
   {
-    $query = $this->table('regulasi');
+    $query = $this->table('maklumatpelayanan');
     $query->like('judul', $keyword);
     return $query;
   }
@@ -69,25 +67,23 @@ class MaklumatPelayananModel extends Model
   public function create($data = [])
   {
     $this->save([
-      'judul' => $data['judul_create'],
       'link_drive' => $data['link_drive_create'],
     ]);
   }
 
-  // delete data regulasi by ID | admin
-  public function remove($id_regulasi)
+  // delete data maklumat pelayanan by ID | admin
+  public function remove($id_maklumatpelayanan)
   {
-    $query = $this->table('regulasi');
-    $result = $query->delete($id_regulasi); // auto soft delete from model
+    $query = $this->table('maklumatpelayanan');
+    $result = $query->delete($id_maklumatpelayanan); // auto soft delete from model
     return $result;
   }
 
-  // update data regulasi | admin
-  public function edit($id_regulasi, $dataToEdit = [])
+  // update data maklumat pelayanan | admin
+  public function edit($id_maklumatpelayanan, $dataToEdit = [])
   {
     $this->save([
-      'id_regulasi' => $id_regulasi,
-      'judul' =>  $dataToEdit['judul_edit'],
+      'id_maklumatpelayanan' => $id_maklumatpelayanan,
       'link_drive' => $dataToEdit['link_drive_edit'],
     ]);
     return true;
