@@ -11,7 +11,7 @@ class RegulasiModel extends Model
   protected $primaryKey       = 'id_regulasi';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
-  protected $useSoftDeletes   = true;
+  protected $useSoftDeletes   = true; // jika true, tidak perlu get where deleted_at = null
   protected $protectFields    = true;
   protected $allowedFields    = ['judul', 'link_drive'];
 
