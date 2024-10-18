@@ -34,7 +34,7 @@
   <section class="container py-5 px-2 sm:px-5 md:px-7 mx-auto">
     <!-- Title and Button -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-      <h1 class="text-lg sm:text-2xl font-semibold ml-1 sm:ml-4">Regulasi</h1>
+      <h1 class="text-lg sm:text-2xl font-semibold ml-1 sm:ml-4">Maklumat Pelayanan</h1>
 
       <div class="my-2 flex justify-center w-full sm:w-fit">
         <?= $pager->links('regulasi', 'daisyui_pagination'); ?>

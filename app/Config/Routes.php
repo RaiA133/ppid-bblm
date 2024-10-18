@@ -23,6 +23,10 @@ $routes->get('/maklumat-pelayanan', 'Pages\User\StandarLayanan::MaklumatPelayana
 $routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiayaPelayanan');
 $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
+$routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\MaklumatPelayanan::index');
+$routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\MaklumatPelayanan::indexCreate');
+$routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\MaklumatPelayanan::indexDelete/$1');
+
 // LAYANAN INFORMASI
 $routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');
 $routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik');

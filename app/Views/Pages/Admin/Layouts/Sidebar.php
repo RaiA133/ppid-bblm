@@ -25,5 +25,18 @@
 
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
 
+    <li>
+      <details open>
+        <summary>Standar Layanan</summary>
+        <ul>
+          <li><a href="<?= base_url() ?>admin/tata-cara-permohonan-informasi">Tata Cara Permohonan Informasi</a></li>
+          <li><a href="<?= base_url() ?>admin/mekanisme-keberatan">Mekanisme Keberatan</a></li>
+          <li><a href="<?= base_url() ?>admin/mekanisme-permohonan-penyelesaian-sengketa">Mekanisme Permohonan Penyelesaian Sengketa</a></li>
+          <li><a href="<?= base_url() ?>admin/maklumat-pelayanan">Maklumat Pelayanan</a></li>
+          <li><a href="<?= base_url() ?>admin/standar-biaya-layanan">Standar Biaya Pelayanan</a></li>
+          <li><a href="<?= base_url() ?>admin/waktu-pelayanan">Waktu Pelayanan</a></li>
+        </ul>
+      </details>
+    </li>
   </ul>
 </div>
