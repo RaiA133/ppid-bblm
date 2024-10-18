@@ -20,5 +20,10 @@
         </ul>
       </details>
     </li>
+
+    <div class="divider"></div>
+
+    <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
+
   </ul>
 </div>

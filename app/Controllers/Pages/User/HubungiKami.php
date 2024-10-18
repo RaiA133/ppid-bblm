@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class HubungiKami extends BaseController
 {
-    public function index(): string
-    {
-        return view('Pages/User/HubungiKami');
-    }
+  public function index(): string
+  {
+    return view('Pages/User/HubungiKami');
+  }
 }

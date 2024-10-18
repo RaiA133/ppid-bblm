@@ -3,11 +3,23 @@
 namespace App\Controllers\Pages\User;
 
 use App\Controllers\BaseController;
+use App\Models\RegulasiModel;
 
 class Regulasi extends BaseController
 {
-    public function index(): string
-    {
-        return view('Pages/User/Regulasi');
-    }
+  protected $regulasiModel;
+  public function __construct()
+  {
+    $this->regulasiModel = new RegulasiModel();
+  }
+
+  public function index()
+  {
+    $results = $this->regulasiModel->findAll();
+    $data = [
+      'title' => 'Halaman Regulasi',
+      'results' => $results,
+    ];
+    return view('Pages/User/Regulasi', $data);
+  }
 }
