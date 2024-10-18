@@ -69,8 +69,8 @@ class RegulasiModel extends Model
   public function create($data = [])
   {
     $this->save([
-      'judul' => $data['judul'],
-      'link_drive' => $data['link_drive'],
+      'judul' => $data['judul_create'],
+      'link_drive' => $data['link_drive_create'],
     ]);
   }
 
@@ -80,5 +80,16 @@ class RegulasiModel extends Model
     $query = $this->table('regulasi');
     $result = $query->delete($id_regulasi); // auto soft delete from model
     return $result;
+  }
+
+  // update data regulasi | admin
+  public function edit($id_regulasi, $dataToEdit = [])
+  {
+    $this->save([
+      'id_regulasi' => $id_regulasi,
+      'judul' =>  $dataToEdit['judul_edit'],
+      'link_drive' => $dataToEdit['link_drive_edit'],
+    ]);
+    return true;
   }
 }

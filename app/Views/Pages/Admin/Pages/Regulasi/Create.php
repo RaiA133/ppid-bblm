@@ -16,14 +16,14 @@
     <div class="py-4">
 
       <form action="<?= base_url() ?>/api/admin/regulasi/create" method="post">
-        <input name="judul" type="text" placeholder="Judul" class="input input-bordered w-full <?= ($validation?->hasError('judul')) ? 'input-error' : 'mb-3' ?>" />
-        <?php if ($validation?->hasError('judul')) : ?>
-          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('judul') ?></span></div>
+        <input name="judul_create" type="text" placeholder="Judul" class="input input-bordered w-full <?= ($validation?->hasError('judul_create')) ? 'input-error' : 'mb-3' ?>" value="<?= old('judul_create') ?>" />
+        <?php if ($validation?->hasError('judul_create')) : ?>
+          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('judul_create') ?></span></div>
         <?php endif ?>
 
-        <input name="link_drive" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= ($validation?->hasError('link_drive')) ? 'input-error' : 'mb-3' ?>" />
-        <?php if ($validation?->hasError('link_drive')) : ?>
-          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('link_drive') ?></span></div>
+        <input name="link_drive_create" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= ($validation?->hasError('link_drive_create')) ? 'input-error' : 'mb-3' ?>" value="<?= old('link_drive_create') ?>" />
+        <?php if ($validation?->hasError('link_drive_create')) : ?>
+          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('link_drive_create') ?></span></div>
         <?php endif ?>
 
         <button type="submit" class="btn btn-neutral">Add</button>
