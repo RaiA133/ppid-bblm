@@ -22,7 +22,7 @@ class RegulasiModel extends Model
   protected array $castHandlers = [];
 
   // Dates
-  protected $useTimestamps = false;
+  protected $useTimestamps = true;
   protected $dateFormat    = 'datetime';
   protected $createdField  = 'created_at';
   protected $updatedField  = 'updated_at';
@@ -52,6 +52,7 @@ class RegulasiModel extends Model
   {
     $query = $this->table('regulasi');
     $query->where('deleted_at', null);
+    $query->orderBy('id_regulasi', 'DESC');
     $result = $query->paginate($dataCountOnePage, 'regulasi');
     return $result;
   }
@@ -70,7 +71,6 @@ class RegulasiModel extends Model
     $this->save([
       'judul' => $data['judul'],
       'link_drive' => $data['link_drive'],
-      'created_at' => Time::now(),
     ]);
   }
 

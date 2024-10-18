@@ -5,11 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PPID | BBLM</title>
+
   <link rel="stylesheet" href="<?= base_url() ?>src/output.css">
+
+  <!-- Locomotive Scroll -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <!-- chartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </head>
 
 <?php $currentRoute = service('request')->getPath(); ?>
@@ -28,7 +36,7 @@
   <?php endif; ?>
 
   <div class="w-full">
-    <div data-scroll-container>
+    <div data-scroll-container class="<?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
 
       <?php if (strpos($currentRoute, 'admin') === 0) : ?> <!-- Jika admin tampilkan navbar admin -->
         <?= $this->include("Pages/Admin/Layouts/Navbar"); ?>

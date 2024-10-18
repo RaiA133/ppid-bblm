@@ -31,22 +31,25 @@
 
 <div class="flex flex-col bg-base-200" id="header-home" data-scroll>
 
-  <section class="container p-5 sm:p-10 lg:p-20">
+  <section class="container py-5 px-2 sm:px-5 md:px-7 mx-auto">
     <!-- Title and Button -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-      <h1 class="text-lg sm:text-2xl font-semibold ml-4">Regulasi</h1>
+      <h1 class="text-lg sm:text-2xl font-semibold ml-1 sm:ml-4">Regulasi</h1>
 
-      <div class="flex gap-2">
+      <div class="my-2 flex justify-center w-full sm:w-fit">
+        <?= $pager->links('regulasi', 'daisyui_pagination'); ?>
+      </div>
+
+      <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
-          <form action="" method="GET">
+          <form action="" method="GET" class="w-full">
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
-            <div class="indicator">
-              <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
-            </div>
+            <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
         </div>
-        <button class="mt-4 sm:mt-0 btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2" onclick="addDataRegulasi.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/Regulasi/Create') ?>
+
+        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataRegulasi.showModal()">Add Data</button>
+        <?= $this->include('Pages/Admin/Pages/Regulasi/Create') ?> <!-- Load Modal Add Data -->
       </div>
 
     </div>
@@ -89,11 +92,39 @@
                   </div>
                 </dialog>
               </td>
-              <td class="p-2 sm:p-4"><?= $result['created_at'] ?></td>
+              <td class="p-2 sm:p-4 min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
               <td class="p-2 sm:p-4"><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
-              <td class="p-2 sm:p-4">
-                <a class="btn btn-xs btn-neutral">Edit</a>
 
+              <td class="p-2 sm:p-4">
+                <a class="btn btn-xs btn-neutral w-14 mb-1 xl:mb-0" onclick="editDataRegulasi<?= $result['id_regulasi'] ?>.showModal()">Edit</a>
+                <dialog id="editDataRegulasi<?= $result['id_regulasi'] ?>" class="modal">
+                  <div class="modal-box">
+                    <form method="dialog">
+                      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <h3 class="text-lg font-bold">Edit <?= $title ?></h3>
+                    <div class="divider"></div>
+                    <div class="py-4">
+
+                      <form action="<?= base_url() ?>/api/admin/regulasi/edit" method="post">
+                        <input name="judul" type="text" placeholder="Judul" class="input input-bordered w-full <?= ($validation?->hasError('judul')) ? 'input-error' : 'mb-3' ?>" value="<?= old('judul') ?>" />
+                        <?php if ($validation?->hasError('judul')) : ?>
+                          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('judul') ?></span></div>
+                        <?php endif ?>
+
+                        <input name="link_drive" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= ($validation?->hasError('link_drive')) ? 'input-error' : 'mb-3' ?>" value="<?= old('link_drive') ?>" />
+                        <?php if ($validation?->hasError('link_drive')) : ?>
+                          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('link_drive') ?></span></div>
+                        <?php endif ?>
+
+                        <button type="submit" class="btn btn-neutral">Edit</button>
+                      </form>
+
+                    </div>
+                  </div>
+                </dialog>
+
+                <!-- HTTP METHOD SPOOFING for Delete-->
                 <form action="<?= base_url() ?>api/admin/regulasi/delete/<?= $result['id_regulasi'] ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
@@ -106,10 +137,6 @@
 
         </tbody>
       </table>
-    </div>
-
-    <div class="flex justify-center">
-      <?= $pager->links('regulasi', 'daisyui_pagination'); ?>
     </div>
 
   </section>

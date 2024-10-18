@@ -26,6 +26,7 @@ class Regulasi extends BaseController
     $results =  $regulasi->getRegulasi($dataCountOnePage);
     $data = [
       'title' => 'Data Regulasi',
+      'validation' => session('validation'),
       'pager' => $this->regulasiModel->pager,
       'currentPage' => $currentPage,
       'dataCountOnePage' => $dataCountOnePage,
@@ -36,6 +37,23 @@ class Regulasi extends BaseController
 
     public function indexCreate()
     {
+      if (!$this->validate([ // FORM VALIDATION
+        'judul' => [
+          'rules' => 'required',
+          'errors' => ['required' => '{field} harus diisi']
+        ],
+        'link_drive' => [
+            'rules' => 'required|regex_match[/^(https?:\/\/)?(www\.)?drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+$/]',
+            'errors' => [
+                'required' => 'Link Google Drive harus diisi',
+                'regex_match' => 'Link harus dalam format Google Drive yang valid.<br>Contoh : https://drive.google.com/file/d/1KefQXXB9d0uI3frBsdshvkcIUT6r1LE6D'
+            ]
+        ]
+      ])) {
+        $validation = \Config\Services::validation();
+        return redirect()->back()->withInput()->with('validation', $validation)->with('openModalAddDataRegulasi', true); // kirim validation dan auto open modal Add Data
+      }
+
       $data = $this->request->getVar();
       $this->regulasiModel->create($data);
       
