@@ -51,7 +51,6 @@ class RegulasiModel extends Model
   public function getRegulasi($dataCountOnePage = 5)
   {
     $query = $this->table('regulasi');
-    $query->where('deleted_at', null);
     $query->orderBy('id_regulasi', 'DESC');
     $result = $query->paginate($dataCountOnePage, 'regulasi');
     return $result;

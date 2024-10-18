@@ -4212,6 +4212,14 @@ html:has(.drawer-toggle:checked) {
   width: 88px;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .min-w-24 {
   min-width: 6rem;
 }
@@ -5176,6 +5184,10 @@ html:has(.drawer-toggle:checked) {
   .sm\:w-fit {
     width: -moz-fit-content;
     width: fit-content;
+  }
+
+  .sm\:w-2\/3 {
+    width: 66.666667%;
   }
 
   .sm\:grid-cols-2 {
