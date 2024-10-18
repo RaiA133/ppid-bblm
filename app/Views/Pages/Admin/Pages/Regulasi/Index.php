@@ -79,7 +79,7 @@
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
-                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_regulasi'] ?>.showModal()">View</button>
+                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_regulasi'] ?>.showModal(); loadPDF(<?= $result['id_regulasi'] ?>)">View</button>
                 <dialog id="modalLihatDokumen<?= $result['id_regulasi'] ?>" class="modal">
                   <div class="modal-box w-11/12 max-w-5xl">
                     <form method="dialog">
@@ -88,10 +88,19 @@
                     <h3 class="text-lg font-bold"><?= $result['judul'] ?></h3>
                     <div class="py-4">
                       <a class="" target="_blank" href="<?= $result['link_drive'] ?>"><?= $result['link_drive'] ?></a>
-                      <!-- <iframe src="<?= $result['link_drive'] ?>/preview" width="100%" height="600px"></iframe> -->
+                      <iframe src="" width="100%" height="600px" title="<?= $result['judul'] ?>" id="iframe<?= $result['id_regulasi'] ?>"></iframe>
                     </div>
                   </div>
                 </dialog>
+                
+                <script> 
+                  // Load Link For Iframe Only when View Button Clicked, to reduce alot of console error
+                  function loadPDF(id_regulasi) { 
+                    const iframe = document.getElementById('iframe' + id_regulasi);
+                    iframe.src = '<?= $result['link_drive'] ?>/preview';
+                  }
+                </script>
+
               </td>
               <td class="p-2 sm:p-4 min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
               <td class="p-2 sm:p-4"><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
