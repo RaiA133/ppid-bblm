@@ -6,19 +6,16 @@ use CodeIgniter\Model;
 
 class MaklumatPelayananModel extends Model
 {
-  protected $table            = 'maklumatpelayanan';
-  protected $primaryKey       = 'id_maklumatpelayanan';
+  protected $table            = 'maklumat_pelayanan';
+  protected $primaryKey       = 'id_maklumat_pelayanan';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
-  protected $useSoftDeletes   = false;
+  protected $useSoftDeletes   = true;
   protected $protectFields    = true;
-  protected $allowedFields    = ['link_drive'];
+  protected $allowedFields    = ['link_gambar', 'content'];
 
   protected bool $allowEmptyInserts = false;
   protected bool $updateOnlyChanged = true;
-
-  protected array $casts = [];
-  protected array $castHandlers = [];
 
   // Dates
   protected $useTimestamps = true;
@@ -44,48 +41,44 @@ class MaklumatPelayananModel extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-
-  // get data maklumat pelayanan with paginate | admin
-  public function getMaklumatPelayanan($dataCountOnePage = 5)
+  // Get data maklumat pelayanan with paginate | admin
+  public function getMaklumat_Pelayanan($dataCountOnePage = 5)
   {
-    $query = $this->table('maklumatpelayanan');
-    $query->where('deleted_at', null);
-    $query->orderBy('id_maklumatpelayanan', 'DESC');
-    $result = $query->paginate($dataCountOnePage, 'maklumatpelayanan');
-    return $result;
+    return $this->where('deleted_at', null)
+      ->orderBy('id_maklumat_pelayanan', 'DESC')
+      ->paginate($dataCountOnePage, 'maklumat_pelayanan');
   }
 
-  // search data maklumat pelayanan | admin
+  // Search data maklumat pelayanan | admin
   public function search($keyword)
   {
-    $query = $this->table('maklumatpelayanan');
-    $query->like('judul', $keyword);
-    return $query;
+    return $this->like('content', $keyword)
+      ->orLike('link_gambar', $keyword);
   }
 
-  // create data regulasi | admin
+  // Create data maklumat pelayanan | admin
   public function create($data = [])
   {
-    $this->save([
-      'link_drive' => $data['link_drive_create'],
+    return $this->save([
+      'link_gambar' => $data['link_gambar'],
+      'content'     => $data['content'],
     ]);
   }
 
-  // delete data maklumat pelayanan by ID | admin
-  public function remove($id_maklumatpelayanan)
+  // Delete data maklumat pelayanan by ID | admin
+  public function remove($id_maklumat_pelayanan)
   {
-    $query = $this->table('maklumatpelayanan');
-    $result = $query->delete($id_maklumatpelayanan); // auto soft delete from model
-    return $result;
+    return $this->delete($id_maklumat_pelayanan); // Auto soft delete using model
   }
 
-  // update data maklumat pelayanan | admin
-  public function edit($id_maklumatpelayanan, $dataToEdit = [])
+  // Update data maklumat pelayanan | admin
+  public function edit($id_maklumat_pelayanan, $dataToEdit = [])
   {
-    $this->save([
-      'id_maklumatpelayanan' => $id_maklumatpelayanan,
-      'link_drive' => $dataToEdit['link_drive_edit'],
+    // Mengupdate data dengan ID tertentu
+    return $this->save([
+      'id_maklumat_pelayanan' => $id_maklumat_pelayanan,
+      'link_gambar'           => $dataToEdit['link_gambar'] ?? null,
+      'content'               => $dataToEdit['content'] ?? null,
     ]);
-    return true;
   }
 }

@@ -94,8 +94,7 @@
                 </dialog>
                 
                 <script> 
-                  // Load Link For Iframe Only when View Button Clicked, to reduce alot of console error
-                  function loadPDF(id_regulasi) { 
+                  function loadPDF(id_regulasi) {  // Load Link For Iframe Only when View Button Clicked, to reduce alot of console error
                     const iframe = document.getElementById('iframe' + id_regulasi);
                     iframe.src = '<?= $result['link_drive'] ?>/preview';
                   }
