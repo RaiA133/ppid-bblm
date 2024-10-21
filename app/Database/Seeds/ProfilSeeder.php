@@ -22,14 +22,13 @@ class ProfilSeeder extends Seeder
           'Satyalancana Karya Satya XX Tahun'
         ]),
         'link_gambar'     => 'profile.png',
-        'content'         => json_encode([
-          '<div class="card-body text-black mt-5 rounded p-5">
+        'content'         => '<div class="card-body text-black mt-5 rounded p-5">
             <h2 class="text-2xl text-black font-bold mb-4">Sambutan Kepala BBSPJILM</h2>
             <p class="mt-4">"Puji dan syukur kita panjatkan kepada Tuhan yang Maha Kuasa karena hanya atas Rahmat dan hidayahNya sehingga Profil balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) ini dapat diterbitkan. Profil ini berisi tentang tugas pokok dan fungsi BBSPJILM sebagai salah satu Lembaga pemerintah yang memberikan layanan di bidang Pengujian, Kalibrasi, Sertifikasi, Pemesinan, Pengelasan, Penerapan Industri 4.0, Pelatihan Teknis. Bapak/Ibu dapat memanfaatkan berbagai layanan yang ada di BBSPJILM dalam mendukung pengembangan industri yang terstandar dengan baik. Kami di BBSPJILM terus berkomitmen untuk memberikan pelayanan terbaik, serta siap untuk membuka diri dan bekerjasama dengan berbagai pihak industri, perguruan tinggi, BUMN, kementerian, dan Lembaga atau pihak-pihak lain yang terkait. Besar harapan kami, profil BBSPJILM ini dapat menjadi manfaat bagi kita semua."</p>
             <br>
             <p>All praise and gratitude to Allah, The Greatest One because it is only for His grace and guidance that the Profile of Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) can be published. This profile contains the main tasks and functions of BBSPJILM as a government agency that provides services in the fields of Testing, Calibration, Certification, Machining, Welding, Application of Industry 4.0, Technical Training. We really hope that you can utilize the various services available at BBSPJILM in supporting the development of a well-standardized industry. We at BBSPJILM continue to be committed to providing the best service and are ready to open up and cooperate with various institutions including industries, universities, government-owned corporations, ministries, and other related parties. We really hope that this BBSPJILM profile can be of benefit to all of us."</p>
-          </div>',
-          '<div class="flex flex-col lg:flex-row text-black">
+          </div>
+          <div class="flex flex-col lg:flex-row text-black">
             <div class="card-body lg:w-80">
               <h2 class="text-2xl font-bold mb-4">SEJARAH BBSPJILM</h2>
               <ul class="list-disc list-inside pl-5 space-y-4">
@@ -49,8 +48,8 @@ class ProfilSeeder extends Seeder
                 src="' . base_url('img/profile/sejarah.png') . '"
                 alt="Sejarah BBLM" />
             </figure>
-          </div>',
-          '<div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8">
+          </div>
+          <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8">
             <div class="text-black p-6">
               <h2 class="text-2xl font-bold mb-4">VISI BBSPJILM</h2>
               <p class="leading-relaxed">
@@ -73,8 +72,8 @@ class ProfilSeeder extends Seeder
                 <li>Pelayanan pembangunan industri yang berdaya saing.</li>
               </ol>
             </div>
-          </div>',
-          '<div class="text-black p-6">
+          </div>
+          <div class="text-black p-6">
             <h2 class="text-2xl font-bold mb-4">TUGAS POKOK BBSPJILM</h2>
             <h3 class="font-semibold mb-4">
               Permen Perindustrian RI No. 01 tahun 2022 Organisasi dan Tata Kerja UPT di Lingkungan BSKJI
@@ -82,8 +81,7 @@ class ProfilSeeder extends Seeder
             <p class="leading-relaxed">
               “Mempunyai tugas melaksanakan standardisasi industri, optimalisasi pemanfaatan teknologi industri dan industri 4.0, industri hijau dan pelayanan jasa industri logam dan mesin.”
             </p>
-          </div>'
-        ]),
+          </div>',
         'created_at'      => Time::now(),
         'updated_at'      => Time::now(),
       ],

@@ -52,10 +52,8 @@
 <!-- CONTENT -->
 <section class="p-7 m-7 card bg-base-100" data-scroll data-scroll-speed="2">
   <div data-scroll data-scroll-speed="1">
-    <?php if (!empty($content)) : ?>
-      <?php foreach (json_decode($results['content']) as $list_content) : ?>
-        <?= $list_content ?>
-      <?php endforeach ?>
+    <?php if (!empty($results['content'])) : ?>
+      <?= $results['content'] ?>
     <?php else : ?>
       <li class="text-xs">-</li>
     <?php endif; ?>

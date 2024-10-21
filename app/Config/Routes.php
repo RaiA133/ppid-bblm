@@ -48,3 +48,4 @@ $routes->post('/api/admin/regulasi/edit/(:num)', 'Pages\Admin\Regulasi::indexUpd
 $routes->delete('/api/admin/regulasi/delete/(:num)', 'Pages\Admin\Regulasi::indexDelete/$1');
 
 $routes->get('/admin/profil', 'Pages\Admin\Profil::index');
+$routes->post('/api/admin/profil/edit/(:num)', 'Pages\Admin\Profil::indexUpdate/$1');
