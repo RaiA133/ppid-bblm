@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+  <!-- CKEditor 4 -->
+   <script src="<?= base_url() ?>ckeditor/ckeditor.js"></script>
+
 </head>
 
 <?php $currentRoute = service('request')->getPath(); ?>
@@ -65,7 +68,6 @@
       smooth: true
     });
   </script>
-
 
 </body>
 

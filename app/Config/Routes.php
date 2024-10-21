@@ -46,3 +46,5 @@ $routes->get('/admin/regulasi', 'Pages\Admin\Regulasi::index');
 $routes->post('/api/admin/regulasi/create', 'Pages\Admin\Regulasi::indexCreate');
 $routes->post('/api/admin/regulasi/edit/(:num)', 'Pages\Admin\Regulasi::indexUpdate/$1');
 $routes->delete('/api/admin/regulasi/delete/(:num)', 'Pages\Admin\Regulasi::indexDelete/$1');
+
+$routes->get('/admin/profil', 'Pages\Admin\Profil::index');
