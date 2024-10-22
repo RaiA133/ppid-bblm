@@ -79,7 +79,7 @@ class Regulasi extends BaseController
             ]
         ]
       ])) {
-        $validation = \Config\Services::validation();
+        $validation = $this->validator;
         return redirect()->back()->withInput()->with('validation', $validation)->with('openModalEditDataRegulasi' . $id_regulasi, true); // kirim validation dan auto open modal Add Data
       }
       

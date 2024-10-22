@@ -13,20 +13,19 @@ class Profil extends BaseController
     $this->profileModel = new ProfilModel();
   }
 
-  public function index(): string
+  public function index($validation = null)
   {
     $results = $this->profileModel->findAll();
     $data = [
       'title' => 'Halaman Profile',
       'results' => $results[0] ?? null,
-      'validation' => session('validation'),
     ];
     return view('Pages/Admin/Pages/Profil/Index', $data);
   }
 
   public function indexUpdate($id_profil)
   {
-    if (!$this->validate([ // FORM VALIDATION
+    $validationRule = [
       'nama_edit' => [
         'rules' => 'required',
         'errors' => ['required' => 'Nama harus diisi']
@@ -35,46 +34,54 @@ class Profil extends BaseController
         'rules' => 'required',
         'errors' => ['required' => 'Judul harus diisi']
       ],
-      'latar_belakang_pendidikan_edit' => [
-        'rules' => 'required',
-        'errors' => ['required' => 'Latar Belakang Pendidikan harus diisi']
-      ],
-      'penghargaan_edit' => [
-        'rules' => 'required',
-        'errors' => ['required' => 'Penghargaan harus diisi']
-      ],
       'link_gambar_edit' => [
-        'rules' => 'max_size[cover,5120]|is_image[cover]|mime_in[cover,image/jpg,image/jpeg,image/png]',
-        'errors' => [
-          'max_size' => 'Ukuran gambar terlalu besar',
-          'is_image' => 'File bukan gambar',
-          'mime_in' => 'File bukan gambar'
+        'label' => 'Link Gambar',
+        'rules' => [
+          'max_size[link_gambar_edit,5120]',
+          'is_image[link_gambar_edit]',
+          'mime_in[link_gambar_edit,image/jpg,image/jpeg,image/png]',
         ],
       ],
       'content_edit' => [
         'rules' => 'required',
         'errors' => ['required' => 'Content harus diisi']
       ],
-
-    ])) {
-      $validation = \Config\Services::validation();
-      return redirect()->back()->withInput()->with('validation', $validation); // kirim validation dan auto open modal Add Data
+    ];
+    if (! $this->validate($validationRule)) {
+      return redirect()->back()->withInput();
     }
 
     $fileGambar = $this->request->getFile('link_gambar_edit');
+    $namaGambarLama = $this->request->getVar('link_gambar_edit_old');
 
     // CEK JIKA GAMBAR MASIH GAMBAR OLD
     if ($fileGambar->getError() == 4) {
-      $namaGambar = $this->request->getVar('link_gambar_edit_old'); // jika user tidak upload, pakai yg lama
+      $namaGambar = $namaGambarLama; // jika user tidak upload, pakai yg lama
     } else {
       $namaGambar = $fileGambar->getRandomName();
-      $fileGambar->move(base_url() . 'img/profil', $namaGambar); // pindahkan file baru
-      unlink(base_url() . 'img/profil' . $this->request->getVar('link_gambar_edit_old')); // hapus file lama
+      $fileGambar->move('img/profile/', $namaGambar); // pindahkan file baru
+      $fileLamaPath = 'img/profile/' . $namaGambarLama;
+      // unlink('img/profile/' . $namaGambarLama); // hapus file lama
+      if (file_exists($fileLamaPath)) {
+        if (!unlink($fileLamaPath)) {
+          session()->setFlashdata('Message', [
+            'title' => 'Gagal menghapus file lama: ' . $namaGambarLama,
+            'type' => 'error'
+          ]);
+        }
+      } else {
+        session()->setFlashdata('Message', [
+          'title' => 'File lama tidak ditemukan: ' . $namaGambarLama,
+          'type' => 'warning'
+        ]);
+      }
     };
 
     $dataToEdit = $this->request->getVar();
     $dataToEdit['link_gambar_edit'] = $namaGambar;
-    dd($dataToEdit); 
+    $dataToEdit['latar_belakang_pendidikan_edit'] = json_encode($dataToEdit['latar_belakang_pendidikan_edit']);
+    $dataToEdit['penghargaan_edit'] = json_encode($dataToEdit['penghargaan_edit']);
+    unset($dataToEdit['link_gambar_edit_old']);
     $result = $this->profileModel->edit($id_profil, $dataToEdit);
 
     if ($result) $message = 'Data updated !';
@@ -83,6 +90,6 @@ class Profil extends BaseController
       'title' => $message,
     ]);
 
-    return redirect()->to(base_url() . 'admin/regulasi');
+    return redirect()->to(base_url() . 'admin/profil');
   }
 }

@@ -3,6 +3,7 @@
 <?php $this->section('content') ?>
 
 <?php $flashDataCreated = session()->getFlashdata('Message') ?>
+<?php $errors = validation_errors() ?> 
 
 <!-- Flash Data / Notif -->
 <?php if ($flashDataCreated) : ?>
