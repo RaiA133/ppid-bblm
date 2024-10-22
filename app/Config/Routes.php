@@ -24,6 +24,7 @@ $routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiay
 $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
 $routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\MaklumatPelayanan::index');
+$routes->post('maklumatpelayanan/uploadImage', 'Pages\Admin\MaklumatPelayanan::uploadImage');
 $routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\MaklumatPelayanan::indexCreate');
 $routes->post('/api/admin/maklumat-pelayanan/update/(:num)', 'Pages\Admin\MaklumatPelayanan::indexUpdate/$1');
 $routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\MaklumatPelayanan::indexDelete/$1');
@@ -51,3 +52,6 @@ $routes->get('/admin/regulasi', 'Pages\Admin\Regulasi::index');
 $routes->post('/api/admin/regulasi/create', 'Pages\Admin\Regulasi::indexCreate');
 $routes->post('/api/admin/regulasi/edit/(:num)', 'Pages\Admin\Regulasi::indexUpdate/$1');
 $routes->delete('/api/admin/regulasi/delete/(:num)', 'Pages\Admin\Regulasi::indexDelete/$1');
+
+$routes->get('/admin/profil', 'Pages\Admin\Profil::index');
+$routes->post('/api/admin/profil/edit/(:num)', 'Pages\Admin\Profil::indexUpdate/$1');

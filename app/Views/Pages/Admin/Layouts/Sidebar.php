@@ -24,6 +24,7 @@
     <div class="divider"></div>
 
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
+    <li><a href="<?= base_url() ?>admin/profil">Profil</a></li>
 
     <li>
       <details open>

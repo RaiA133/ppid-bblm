@@ -6,6 +6,12 @@ use App\Controllers\BaseController;
 
 class StandarLayanan extends BaseController
 {
+  protected $maklumatpelayananModel;
+  public function __construct()
+  {
+    // $this->maklumatpelayananModel = new MaklumatPelayananModel();
+  }
+
   public function TataCaraPermohonanInformasi(): string
   {
     return view('Pages/User/StandarLayanan/TataCaraPermohonanInformasi');
@@ -23,7 +29,12 @@ class StandarLayanan extends BaseController
 
   public function MaklumatPelayanan(): string
   {
-    return view('Pages/User/StandarLayanan/MaklumatPelayanan');
+    $results = $this->maklumatpelayananModel->findAll();
+    $data = [
+      'title' => 'Maklumat Pelayanan',
+      'results' => $results,
+    ];
+    return view('Pages/User/StandarLayanan/MaklumatPelayanan', $data);
   }
 
   public function StandarBiayaPelayanan(): string

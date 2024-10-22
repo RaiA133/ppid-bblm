@@ -49,13 +49,6 @@ class MaklumatPelayananModel extends Model
       ->paginate($dataCountOnePage, 'maklumat_pelayanan');
   }
 
-  // Search data maklumat pelayanan | admin
-  public function search($keyword)
-  {
-    return $this->like('content', $keyword)
-      ->orLike('link_gambar', $keyword);
-  }
-
   // Create data maklumat pelayanan | admin
   public function create($data = [])
   {

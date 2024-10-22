@@ -87,7 +87,7 @@ class Regulasi extends BaseController
       $result = $this->regulasiModel->edit($id_regulasi, $dataToEdit);
 
       if ($result) $message = 'Data updated !';
-      else $message = 'Updateing Data Failed !';
+      else $message = 'Updating Data Failed !';
       session()->setFlashdata('Message', [
         'title' => $message,
       ]);

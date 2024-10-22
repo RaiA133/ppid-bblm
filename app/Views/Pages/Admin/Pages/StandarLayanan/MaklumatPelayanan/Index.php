@@ -5,7 +5,7 @@
 <?php $flashDataCreated = session()->getFlashdata('Message'); ?>
 
 <!-- Flash Data / Notif -->
-<?php if (!empty($flashDataCreated)) : ?>
+<?php if ($flashDataCreated) : ?>
   <div class="absolute top-3 w-fit left-4 transition-opacity duration-[5000ms] opacity-100" id="alertBox">
     <div role="alert" class="alert shadow-lg bg-base-100 pr-6">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
@@ -15,123 +15,96 @@
     </div>
   </div>
   <script>
-    setTimeout(function() {
+    setTimeout(function() { // akan hilang dalam 5 detik
       document.getElementById('alertBox').classList.add('opacity-0');
     }, 5000);
   </script>
 <?php endif; ?>
 
-<div class="flex flex-col bg-base-200" id="header-home" data-scroll>
+<!-- Preview Data -->
+<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg">
+  <div class="collapse collapse-arrow join-item bg-base-100">
+    <input type="radio" name="my-accordion-4" />
+    <div class="collapse-title text-xl font-medium text-center">Preview</div>
 
-  <section class="container py-5 px-2 sm:px-5 md:px-7 mx-auto">
-    <!-- Title and Button -->
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-      <h1 class="text-lg sm:text-2xl font-semibold ml-1 sm:ml-4">Maklumat Pelayanan</h1>
+    <div class="flex flex-col items-center">
+      <section class="flex justify-center w-full" data-scroll>
+        <div class="h-full w-fit shadow-xl rounded-xl">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Maklumat Pelayanan</h2>
+          <figure class="lg:w-auto p-0 md:p-10">
+            <img class="w-full max-w-3xl h-auto mx-auto"
+              src="<?= esc(base_url('img/standarLayanan/MaklumatPelayanan.png')) ?>"
+              alt="Maklumat Pelayanan" />
+          </figure>
+        </div>
+      </section>
+    </div>
 
-      <div class="my-2 flex justify-center w-full sm:w-fit">
-        <?= $pager->links('maklumat_pelayanan', 'daisyui_pagination'); ?>
+    <!-- CONTENT -->
+    <section dir="ltr" class="p-7 m-7 card bg-base-100">
+      <div>
+        <?= !empty($results['content']) ? $results['content'] : '<li class="text-xs">-</li>'; ?>
+      </div>
+    </section>
+
+    <!-- Edit Data Maklumat Pelayanan -->
+    <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5 my-4">
+      <!-- Title & Edit Button -->
+      <div class="flex justify-between items-center w-full">
+        <div class="text-xl font-bold">Edit Data Maklumat Pelayanan</div>
       </div>
 
-      <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">
-        <div class="join">
-          <form action="" method="GET" class="w-full">
-            <input name="keyword" value="<?= esc($keyword) ?>" class="input input-bordered input-sm" placeholder="Search" />
-            <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
-          </form>
+      <!-- Form -->
+      <form action="" method="post" enctype="multipart/form-data">
+
+        <!-- Image Input -->
+        <!-- <div class="flex flex-col mb-4">
+          <input id="img-input-admin-profil" name="link_gambar" type="file" class="file-input file-input-bordered w-full" onchange="previewImgAdminProfil()" />
+          <div class="relative border bg-neutral w-full">
+            <img id="img-preview-admin-profil" class="w-full h-auto" src="<?= base_url($results['link_gambar'] ?? 'img/icon/default-image.jpg') ?>" alt="">
+          </div>
+        </div> -->
+
+        <!-- JavaScript for Image Preview -->
+        <script>
+          function previewImgAdminProfil() {
+            const cover = document.querySelector('#img-input-admin-profil');
+            const imgPreview = document.querySelector('#img-preview-admin-profil');
+            const fileCover = new FileReader();
+            fileCover.readAsDataURL(cover.files[0]);
+            fileCover.onload = function(e) {
+              imgPreview.src = e.target.result;
+            };
+          }
+        </script>
+
+        <!-- Content -->
+        <div class="flex gap-3 justify-center mb-3">
+          <textarea class="textarea textarea-bordered w-full" placeholder="MaklumatPelayanan" name="content_edit" id="content">
+            <?= esc($results['content'] ?? '-') ?>
+          </textarea>
+          <?php if ($validation?->hasError('content_edit')) : ?>
+            <div class="label"><span class="label-text-alt text-error"><?= esc($validation->getError('content_edit')) ?></span></div>
+          <?php endif; ?>
         </div>
 
-        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataMaklumatPelayanan.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/StandarLayanan/MaklumatPelayanan/Create') ?> <!-- Load Modal Add Data -->
-      </div>
-    </div>
+        <!-- CKEditor Script -->
+        <script>
+          CKEDITOR.replace('content', {
+            extraPlugins: 'uploadimage',
+            uploadUrl: '<?= base_url('maklumatpelayanan/uploadImage') ?>',
+            filebrowserUploadUrl: '<?= base_url('maklumatpelayanan/uploadImage') ?>',
+            filebrowserUploadMethod: "form",
+            width: '100%',
+            height: 600,
+          });
+        </script>
 
-    <!-- Leads Table -->
-    <div class="mt-5 overflow-x-auto w-full shadow-xl rounded-xl mb-5">
-      <table class="table bg-base-100 text-sm">
-        <thead>
-          <tr class="bg-base-300 text-base-900">
-            <th class="text-center">No</th>
-            <th class="p-2 sm:p-4 text-left">Gambar</th>
-            <th class="p-2 sm:p-4 text-left">Created At</th>
-            <th class="p-2 sm:p-4 text-left">Updated At</th>
-            <th class="p-2 sm:p-4 text-left">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1 + ($dataCountOnePage * ($currentPage - 1)); ?>
-          <?php foreach ($results as $result) : ?>
-            <tr class="border-b">
-              <td class="text-center"><?= $no++ ?></td>
-              <td class="p-2 sm:p-4">
-                <img src="<?= esc(base_url($result['link_gambar'])) ?>" alt="Maklumat Pelayanan Image" width="100">
-              </td>
-              <td class="p-2 sm:p-4"><?= $result['created_at'] ?? 'none' ?></td>
-              <td class="p-2 sm:p-4"><?= $result['updated_at'] ?? 'none' ?></td>
-
-              <td class="p-2 sm:p-4">
-                <?php if (isset($result['id_maklumat_pelayanan'])): ?>
-                  <a class="btn btn-xs btn-neutral" onclick="editDataMaklumatPelayanan<?= $result['id_maklumat_pelayanan'] ?>.showModal()">Edit</a>
-
-                  <?php if (session()->getFlashdata('openModalEditDataMaklumatPelayanan' . $result['id_maklumat_pelayanan'])): ?>
-                    <script>
-                      document.addEventListener("DOMContentLoaded", function() {
-                        document.getElementById("editDataMaklumatPelayanan<?= $result['id_maklumat_pelayanan'] ?>").showModal();
-                      });
-                    </script>
-                  <?php endif; ?>
-
-                  <!-- Edit Modal -->
-                  <dialog id="editDataMaklumatPelayanan<?= $result['id_maklumat_pelayanan'] ?>" class="modal">
-                    <div class="modal-box">
-                      <h3 class="text-lg font-bold">Edit Maklumat Pelayanan</h3>
-                      <div class="divider"></div>
-                      <div class="py-4">
-                        <form action="<?= base_url('api/admin/maklumat-pelayanan/update/' . $result['id_maklumat_pelayanan']) ?>" method="POST" enctype="multipart/form-data">
-                          <?= csrf_field() ?>
-
-                          <!-- <div class="mb-4">
-                            <label for="judul_edit" class="label">Id:</label>
-                            <input type="text" name="judul_edit" class="input input-bordered w-full" value="<?= esc($result['id_maklumat_pelayanan']) ?>" required>
-                          </div> -->
-
-                          <div class="mb-4">
-                            <label for="link_gambar_edit" class="label font-normal text-xs">Link Gambar:</label>
-                            <input type="file" name="link_gambar_edit" class="file-input file-input-bordered w-full">
-                            <!-- <img src="<?= esc(base_url($result['link_gambar'])) ?>" alt="Gambar Sebelumnya" width="100" class="mt-2"> -->
-                          </div>
-
-                          <div class="mb-4">
-                            <label for="content_edit" class="label">Konten:</label>
-                            <textarea name="content_edit" class="textarea textarea-bordered w-full" required><?= esc($result['content']) ?></textarea>
-                          </div>
-
-                          <div class="flex justify-start">
-                            <button type="submit" class="btn btn-neutral">Update</button>
-                            <button type="button" onclick="this.closest('dialog').close()" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </dialog>
-
-
-                  <!-- HTTP METHOD SPOOFING for Delete-->
-                  <form action="<?= base_url() ?>api/admin/maklumat-pelayanan/delete/<?= $result['id_maklumat_pelayanan'] ?>" method="POST" class="inline">
-                    <?= csrf_field() ?>
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure?')">Delete</button>
-                  </form>
-                  <!-- END HTTP METHOD SPOOFING for Delete-->
-                <?php else: ?>
-                  <span class="text-gray-500">ID not available</span>
-                <?php endif; ?>
-              </td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
-    </div>
-  </section>
-</div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </section>
+  </div>
+</section>
 
 <?php $this->endSection(); ?>

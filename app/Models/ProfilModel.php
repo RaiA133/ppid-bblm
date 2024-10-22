@@ -50,4 +50,19 @@ class ProfilModel extends Model
     $query->orderBy('id_profil', 'DESC');
     return $query->findAll();
   }
+
+  // update data profil | admin
+  public function edit($id_regulasi, $dataToEdit = [])
+  {
+    $this->save([
+      'id_regulasi' => $id_regulasi,
+      'nama' =>  $dataToEdit['nama_edit'],
+      'judul' =>  $dataToEdit['judul_edit'],
+      'latar_belakang_pendidikan' =>  $dataToEdit['latar_belakang_pendidikan_edit'],
+      'penghargaan' =>  $dataToEdit['penghargaan_edit'],
+      'link_gambar' =>  $dataToEdit['link_gambar_edit'],
+      'content' =>  $dataToEdit['content_edit'],
+    ]);
+    return true;
+  }
 }

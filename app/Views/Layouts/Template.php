@@ -10,13 +10,17 @@
 
   <!-- Locomotive Scroll -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
-  
+
   <!-- chartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+
   <!-- flatpickr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- CKEditor 4 -->
+  <script src="<?= base_url() ?>ckeditor/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.16.2/standard-all/ckeditor.js"></script>
 
 </head>
 
@@ -65,7 +69,6 @@
       smooth: true
     });
   </script>
-
 
 </body>
 
