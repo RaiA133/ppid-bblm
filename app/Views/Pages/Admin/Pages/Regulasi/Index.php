@@ -3,7 +3,7 @@
 <?php $this->section('content') ?>
 
 <?php $flashDataCreated = session()->getFlashdata('Message') ?>
-<?php $errors = validation_errors() ?> 
+<?php $errors = validation_errors() ?>
 
 <!-- Flash Data / Notif -->
 <?php if ($flashDataCreated) : ?>
@@ -80,7 +80,7 @@
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
-                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_regulasi'] ?>.showModal(); loadPDF(<?= $result['id_regulasi'] ?>)">View</button>
+                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_regulasi'] ?>.showModal(); loadPDF(<?= $result['id_regulasi'] ?>, '<?= $result['link_drive'] ?>')">View</button>
                 <dialog id="modalLihatDokumen<?= $result['id_regulasi'] ?>" class="modal">
                   <div class="modal-box w-11/12 max-w-5xl">
                     <form method="dialog">
@@ -93,11 +93,11 @@
                     </div>
                   </div>
                 </dialog>
-                
-                <script> 
-                  function loadPDF(id_regulasi) {  // Load Link For Iframe Only when View Button Clicked, to reduce alot of console error
+
+                <script>
+                  function loadPDF(id_regulasi, link_drive) { // Tambahkan link_drive sebagai parameter
                     const iframe = document.getElementById('iframe' + id_regulasi);
-                    iframe.src = '<?= $result['link_drive'] ?>/preview';
+                    iframe.src = link_drive + '/preview'; // Gunakan link_drive dari argumen
                   }
                 </script>
 
@@ -110,7 +110,7 @@
                 <!-- Modal untuk EDIT Data Regulasi -->
                 <a class="btn btn-xs btn-neutral w-14 mb-1 xl:mb-0" onclick="editDataRegulasi<?= $result['id_regulasi'] ?>.showModal()">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataRegulasi'. $result['id_regulasi'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataRegulasi' . $result['id_regulasi'])): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
                       document.getElementById("editDataRegulasi<?= $result['id_regulasi'] ?>").showModal();
@@ -128,14 +128,14 @@
                     <div class="py-4">
 
                       <form action="<?= base_url() ?>/api/admin/regulasi/edit/<?= $result['id_regulasi'] ?>" method="post">
-                        <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= ($validation?->hasError('judul_edit')) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
-                        <?php if ($validation?->hasError('judul_edit')) : ?>
-                          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('judul_edit') ?></span></div>
+                        <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
+                        <?php if (isset($errors['judul_edit'])) : ?>
+                          <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>
                         <?php endif ?>
 
-                        <input name="link_drive_edit" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= ($validation?->hasError('link_drive_edit')) ? 'input-error' : 'mb-3' ?>" value="<?= $result['link_drive'] ?>" />
-                        <?php if ($validation?->hasError('link_drive_edit')) : ?>
-                          <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('link_drive_edit') ?></span></div>
+                        <input name="link_drive_edit" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= (isset($errors['link_drive_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['link_drive'] ?>" />
+                        <?php if (isset($errors['link_drive_edit'])) : ?>
+                          <div class="label"><span class="label-text-alt text-error"><?= $errors['link_drive_edit'] ?></span></div>
                         <?php endif ?>
 
                         <button type="submit" class="btn btn-neutral">Edit</button>
