@@ -108,7 +108,7 @@
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full">
       <div class="text-xl font-bold">Edit Data Profil</div>
-      <button type="submit" class="btn w-32 btn-neutral">Edit</button>
+      <button type="submit" class="btn w-20 sm:w-32 btn-neutral">Edit</button>
     </div>
 
     <div class="divider"></div>
