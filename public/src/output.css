@@ -4338,6 +4338,10 @@ html:has(.drawer-toggle:checked) {
   margin-top: 16rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -4441,6 +4445,10 @@ html:has(.drawer-toggle:checked) {
 
 .h-96 {
   height: 24rem;
+}
+
+.h-16 {
+  height: 4rem;
 }
 
 .min-h-full {
@@ -4550,6 +4558,10 @@ html:has(.drawer-toggle:checked) {
 
 .w-96 {
   width: 24rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .min-w-24 {
@@ -5171,6 +5183,21 @@ html:has(.drawer-toggle:checked) {
   line-height: 1;
 }
 
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -5205,6 +5232,22 @@ html:has(.drawer-toggle:checked) {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+.leading-3 {
+  line-height: .75rem;
+}
+
+.leading-none {
+  line-height: 1;
 }
 
 .text-base-content {
@@ -5630,6 +5673,10 @@ html:has(.drawer-toggle:checked) {
     padding: 1.25rem;
   }
 
+  .sm\:p-1 {
+    padding: 0.25rem;
+  }
+
   .sm\:px-5 {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -5638,6 +5685,11 @@ html:has(.drawer-toggle:checked) {
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .sm\:text-2xl {
