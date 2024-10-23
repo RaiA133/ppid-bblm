@@ -21,8 +21,8 @@
   <div class="relative">
 
     <!-- Left and right buttons -->
-    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-md font-bold shadow-md rounded-full p-2 sm:p-5 px-3 sm:px-6">←</button>
-    <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-md font-bold shadow-md rounded-full p-2 sm:p-5 px-3 sm:px-6">→</button>
+    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal"><</button>
+    <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal">></button>
 
     <!-- Carousel container -->
     <div id="carousel" class="flex gap-6 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory cursor-grab">
@@ -83,7 +83,6 @@
 
       <?php endforeach; ?>
 
-
     </div>
 
     <!-- Dots indicator -->
@@ -92,6 +91,13 @@
   </div>
 
   <script src="<?= base_url() ?>src/carousel/script.js"></script>
+
+  <div data-scroll data-scroll-speed="1" class="mt-32 w-full flex justify-center">
+    <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+      Kembali ke Home
+    </a>
+  </div>
 
 </section>
 
