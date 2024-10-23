@@ -26,7 +26,6 @@ class Regulasi extends BaseController
     $results =  $regulasi->getRegulasi($dataCountOnePage); // use model untuk todo query
     $data = [
       'title' => 'Data Regulasi',
-      'validation' => session('validation'),
       'pager' => $this->regulasiModel->pager,
       'currentPage' => $currentPage,
       'dataCountOnePage' => $dataCountOnePage,

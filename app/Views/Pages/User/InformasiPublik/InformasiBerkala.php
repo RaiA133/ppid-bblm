@@ -27,7 +27,7 @@
             <tr class="hover">
               <th>1</th>
               <td>Cy Ganderton</td>
-              <td>Quality Control Specialist lorem lorem</td>
+              <td>Quality Control Specialist lorem lorem lorem</td>
               <!-- <td>Blue</td> -->
             </tr>
           </tbody>

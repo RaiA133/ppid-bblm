@@ -55,3 +55,12 @@ $routes->delete('/api/admin/regulasi/delete/(:num)', 'Pages\Admin\Regulasi::inde
 
 $routes->get('/admin/profil', 'Pages\Admin\Profil::index');
 $routes->post('/api/admin/profil/edit/(:num)', 'Pages\Admin\Profil::indexUpdate/$1');
+
+$routes->get('/admin/informasi-berkala', 'Pages\Admin\InformasiPublik\InformasiBerkala::index');
+$routes->post('/api/admin/informasi-berkala/create', 'Pages\Admin\InformasiPublik\InformasiBerkala::indexCreate');
+$routes->post('/api/admin/informasi-berkala/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiBerkala::indexUpdate/$1');
+$routes->delete('/api/admin/informasi-berkala/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiBerkala::indexDelete/$1');
+$routes->get('/admin/informasi-berkala/manage-judul', 'Pages\Admin\InformasiPublik\InformasiBerkala::infomasiBerkalaJudul');
+$routes->post('/api/admin/informasi-berkala/manage-judul/create', 'Pages\Admin\InformasiPublik\InformasiBerkala::infomasiBerkalaJudulCreate');
+$routes->post('/api/admin/informasi-berkala/manage-judul/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiBerkala::infomasiBerkalaJudulUpdate/$1');
+$routes->delete('/api/admin/informasi-berkala/manage-judul/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiBerkala::infomasiBerkalaJudulDelete/$1');
