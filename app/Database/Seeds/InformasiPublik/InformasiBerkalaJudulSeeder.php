@@ -11,6 +11,11 @@ class InformasiBerkalaJudulSeeder extends Seeder
   {
     $data = [
       [
+        'judul'       => 'Akses Informasi Publik',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
         'judul'       => 'Kegiatan dan Kinerja',
         'created_at'  => Time::now(),
         'updated_at'  => Time::now(),
@@ -22,11 +27,6 @@ class InformasiBerkalaJudulSeeder extends Seeder
       ],
       [
         'judul'       => 'Laporan Kepegawaian',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'judul'       => 'Akses Informasi Publik',
         'created_at'  => Time::now(),
         'updated_at'  => Time::now(),
       ],
