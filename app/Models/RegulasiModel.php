@@ -11,7 +11,7 @@ class RegulasiModel extends Model
   protected $primaryKey       = 'id_regulasi';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
-  protected $useSoftDeletes   = true;
+  protected $useSoftDeletes   = true; // jika true, tidak perlu get where deleted_at = null
   protected $protectFields    = true;
   protected $allowedFields    = ['judul', 'link_drive'];
 
@@ -51,7 +51,6 @@ class RegulasiModel extends Model
   public function getRegulasi($dataCountOnePage = 5)
   {
     $query = $this->table('regulasi');
-    $query->where('deleted_at', null);
     $query->orderBy('id_regulasi', 'DESC');
     $result = $query->paginate($dataCountOnePage, 'regulasi');
     return $result;
