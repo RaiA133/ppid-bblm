@@ -19,15 +19,15 @@ $routes->get('/informasi-serta-merta', 'Pages\User\InformasiPublik::InformasiSer
 $routes->get('/tata-cara-permohonan-informasi', 'Pages\User\StandarLayanan::TataCaraPermohonanInformasi');
 $routes->get('/mekanisme-keberatan', 'Pages\User\StandarLayanan::MekanismeKeberatan');
 $routes->get('/mekanisme-permohonan-penyelesaian-sengketa', 'Pages\User\StandarLayanan::MekanismePermohonanPenyelesaianSengketa');
-$routes->get('/maklumat-pelayanan', 'Pages\User\StandarLayanan::MaklumatPelayanan');
+$routes->get('/maklumat-pelayanan', 'Pages\User\MaklumatPelayanan::MaklumatPelayanan');
 $routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiayaPelayanan');
 $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
-$routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\MaklumatPelayanan::index');
-$routes->post('maklumatpelayanan/uploadImage', 'Pages\Admin\MaklumatPelayanan::uploadImage');
-$routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\MaklumatPelayanan::indexCreate');
-$routes->post('/api/admin/maklumat-pelayanan/update/(:num)', 'Pages\Admin\MaklumatPelayanan::indexUpdate/$1');
-$routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\MaklumatPelayanan::indexDelete/$1');
+$routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::index');
+$routes->post('maklumatpelayanan/uploadImage', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
+$routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexCreate');
+$routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1');
+$routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexDelete/$1');
 
 // LAYANAN INFORMASI
 $routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');

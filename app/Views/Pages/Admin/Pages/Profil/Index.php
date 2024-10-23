@@ -3,11 +3,12 @@
 
 <?php $this->section('content') ?>
 
-<?php $flashDataCreated = session()->getFlashdata('Message') ?>
+<?php $flashDataCreated = session()->getFlashdata('Message'); ?>
+<?php $errors = validation_errors(); ?>
 
 <!-- Flash Data / Notif -->
 <?php if ($flashDataCreated) : ?>
-  <div class="absolute top-3 w-fit left-4 transition-opacity duration-[5000ms] opacity-100" id="alertBox">
+  <div class="z-10 absolute top-3 w-fit left-4 transition-opacity duration-[5000ms] opacity-100" id="alertBox">
     <div role="alert" class="alert shadow-lg bg-base-100 pr-6">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +56,6 @@
             <?php
             $latarBelakangPendidikan = json_decode($results['latar_belakang_pendidikan'] ?? '[]');
             $penghargaan = json_decode($results['penghargaan'] ?? '[]');
-            $content = json_decode($results['content'] ?? '[]');
             ?>
 
             <!-- Right Content (Educational Background and Awards) -->
@@ -85,15 +85,15 @@
         </section>
 
         <!-- CONTENT -->
-        <section dir="ltr" class="p-7 m-7 card bg-base-100">
-          <div>
-            <?php if (!empty($results['content'])) : ?>
-              <?= $results['content'] ?>
-            <?php else : ?>
-              <li class="text-xs">-</li>
-            <?php endif; ?>
-          </div>
+        <section dir="ltr">
+          <?php if (!empty($results['content'])) : ?>
+            <?= $results['content'] ?>
+          <?php else : ?>
+            <li class="text-xs">-</li>
+          <?php endif; ?>
         </section>
+
+
       </div>
 
     </div>
@@ -103,7 +103,7 @@
 <!-- Edit Data Profil-->
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
-  <form action="<?= base_url() ?>api/admin/profil/edit/<?= $results['id_profil'] ?>" enctype="multipart/form-data">
+  <form action="<?= base_url() ?>api/admin/profil/edit/<?= $results['id_profil'] ?>" method="POST" enctype="multipart/form-data">
 
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full">
@@ -116,19 +116,29 @@
     <!-- Form -->
     <div class="flex flex-col xl:flex-row gap-4">
 
-      <input type="hidden" name="latar_belakang_pendidikan_edit" value="">
-      <input type="hidden" name="penghargaan_edit" value="">
       <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
 
       <div class="w-full">
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
-          <label class="input input-bordered flex items-center gap-2 w-full mb-3"> <span class="font-bold">Nama</span>
-            <input name="nama_edit" type="text" class="grow w-full" placeholder="Nama" value="<?= $results['nama'] ?>" />
-          </label>
 
-          <label class="input input-bordered flex items-center gap-2 w-full mb-3"> <span class="font-bold">Judul</span>
-            <input name="judul_edit" type="text" class="grow w-full" placeholder="Judul" value="<?= $results['judul'] ?>" />
-          </label>
+          <div class="w-full">
+            <label class="input input-bordered flex items-center gap-2 w-full <?= (isset($errors['nama_edit'])) ? 'input-error' : 'mb-3' ?>"> <span class=" font-bold">Nama</span>
+              <input name="nama_edit" type="text" class="grow w-full" placeholder="Nama" value="<?= old('nama_edit', htmlspecialchars($results['nama'])) ?>" />
+            </label>
+            <?php if (isset($errors['nama_edit'])) : ?>
+              <div class="label"><span class="label-text-alt text-error"><?= $errors['nama_edit'] ?></span></div>
+            <?php endif ?>
+          </div>
+
+          <div class="w-full">
+            <label class="input input-bordered flex items-center gap-2 w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>"> <span class=" font-bold">Judul</span>
+              <input name="judul_edit" type="text" class="grow w-full" placeholder="Judul" value="<?= old('judul_edit', htmlspecialchars($results['judul'])) ?>" />
+            </label>
+            <?php if (isset($errors['judul_edit'])) : ?>
+              <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>
+            <?php endif ?>
+          </div>
+
         </div>
         <div class="flex flex-col sm:flex-row  gap-3 justify-center mb-3">
 
@@ -142,7 +152,7 @@
 
               const newInput = document.createElement("input");
               newInput.type = "text";
-              newInput.name = "inputsLatarBelakang[]";
+              newInput.name = "latar_belakang_pendidikan_edit[]";
               newInput.placeholder = "Type here";
               newInput.classList.add("input", "input-bordered", "w-full", "mb-3");
 
@@ -167,7 +177,7 @@
 
               const newInput = document.createElement("input");
               newInput.type = "text";
-              newInput.name = "inputsPenghargaan[]";
+              newInput.name = "penghargaan_edit[]";
               newInput.placeholder = "Type here";
               newInput.classList.add("input", "input-bordered", "w-full", "mb-3");
 
@@ -196,7 +206,7 @@
             <div id="formContainerLatarBelakang">
               <?php if (isset($results['latar_belakang_pendidikan'])): ?>
                 <?php foreach (json_decode($results['latar_belakang_pendidikan']) as $inputValue): ?>
-                  <input type="text" name="inputsLatarBelakang[]" value="<?= htmlspecialchars($inputValue); ?>" class="input input-bordered w-full mb-3" />
+                  <input type="text" name="latar_belakang_pendidikan_edit[]" value="<?= htmlspecialchars($inputValue); ?>" class="input input-bordered w-full mb-3 <?= (isset($errors['latar_belakang_pendidikan_edit'])) ? 'input-error' : '' ?>" />
                 <?php endforeach; ?>
               <?php endif; ?>
             </div>
@@ -216,7 +226,7 @@
               <?php if (isset($results['penghargaan'])): ?>
                 <?php foreach (json_decode($results['penghargaan']) as $inputValue): ?>
                   <div class="join gap-3 w-full">
-                    <input type="text" name="inputsPenghargaan[]" value="<?= htmlspecialchars($inputValue); ?>" class="input input-bordered w-full mb-3" />
+                    <input type="text" name="penghargaan_edit[]" value="<?= htmlspecialchars($inputValue); ?>" class="input input-bordered w-full mb-3" />
                   </div>
                 <?php endforeach; ?>
               <?php endif; ?>
@@ -228,7 +238,10 @@
       </div>
 
       <div class="w-full sm:w-4/12">
-        <input id="img-input-admin-profil" name="link_gambar" type="file" class="file-input file-input-bordered w-full mb-4" onchange="previewImgAdminProfil()" />
+        <input id="img-input-admin-profil" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminProfil()" />
+        <?php if (isset($errors['link_gambar_edit'])) : ?>
+          <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
+        <?php endif ?>
         <div class="relative border bg-neutral w-full">
           <img id="img-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
           <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t from-black to-transparent"></div>
@@ -252,7 +265,10 @@
     <div class="divider"></div>
 
     <!-- Content -->
-    <div class="flex gap-3 justify-center mb-3">
+    <div class="flex gap-3 justify-center mb-3 flex-col">
+      <?php if (isset($errors['content_edit'])) : ?>
+        <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
+      <?php endif ?>
       <textarea class="textarea textarea-bordered w-full" placeholder="Bio" name="content_edit" id="content">
       <?php if (!empty($results['content'])) : ?>
         <?= $results['content'] ?>
@@ -260,9 +276,6 @@
         <li class="text-xs">-</li>
       <?php endif; ?>
       </textarea>
-      <?php if ($validation?->hasError('content_edit')) : ?>
-        <div class="label"><span class="label-text-alt text-error"><?= $validation?->getError('content_edit') ?></span></div>
-      <?php endif ?>
 
       <script>
         CKEDITOR.config.width = '100%'
@@ -274,7 +287,5 @@
   </form>
 
 </section>
-
-
 
 <?php $this->endSection(); ?>

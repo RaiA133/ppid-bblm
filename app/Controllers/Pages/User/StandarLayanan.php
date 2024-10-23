@@ -27,16 +27,6 @@ class StandarLayanan extends BaseController
     return view('Pages/User/StandarLayanan/MekanismePermohonanPenyelesaianSengketa');
   }
 
-  public function MaklumatPelayanan(): string
-  {
-    $results = $this->maklumatpelayananModel->findAll();
-    $data = [
-      'title' => 'Maklumat Pelayanan',
-      'results' => $results,
-    ];
-    return view('Pages/User/StandarLayanan/MaklumatPelayanan', $data);
-  }
-
   public function StandarBiayaPelayanan(): string
   {
     return view('Pages/User/StandarLayanan/StandarBiayaPelayanan');

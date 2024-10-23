@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Migrations;
+namespace App\Database\Migrations\StandarLayanan;
 
 use CodeIgniter\Database\Migration;
 
