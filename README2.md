@@ -15,3 +15,12 @@ PHP Version > 8.x.x
 
 Change Tabesize in VsCode / textEditor to 2 space indent
 VsCode = setting > search 'tabsize' > change to 2
+
+
+
+
+List Seeder Command (run all) : 
+```php spark db:seed RegulasiSeeder```
+```php spark db:seed ProfilSeeder```
+```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaSeeder"```
+```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaJudulSeeder"```
