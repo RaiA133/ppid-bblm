@@ -61,6 +61,7 @@ class InformasiSetiapSaatModel extends Model
     $query->where('informasi_setiap_saat.deleted_at', null);
     $query->like('jenis_informasi', $keyword);
     $query->orLike('informasi', $keyword);
+    $query->orLike('judul', $keyword);
     return $query;
   }
 

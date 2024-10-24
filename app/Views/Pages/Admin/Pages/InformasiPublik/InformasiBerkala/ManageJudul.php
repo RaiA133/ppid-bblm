@@ -37,7 +37,7 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
 
       <div class="my-2 flex justify-center w-full sm:w-fit">
-        <?= $pager->links('informasi_berkala', 'daisyui_pagination'); ?>
+        <?= $pager->links('informasi_berkala_judul', 'daisyui_pagination'); ?>
       </div>
 
       <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">

@@ -45,11 +45,11 @@ class InformasiBerkalaJudulModel extends Model
   protected $afterDelete    = [];
 
   // get data informasi_berkala_judul with paginate | admin
-  public function getInformasiBerkalaJudul()
+  public function getInformasiBerkalaJudul($dataCountOnePage = 5)
   {
     $query = $this->table('informasi_berkala_judul');
     $query->orderBy('id_informasi_berkala_judul', 'DESC');
-    $result = $query->findAll();
+    $result = $query->paginate($dataCountOnePage, 'informasi_berkala_judul');
     return $result;
   }
 
