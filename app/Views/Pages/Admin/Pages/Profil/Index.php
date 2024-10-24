@@ -103,7 +103,7 @@
 <!-- Edit Data Profil-->
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
-  <form action="<?= base_url() ?>api/admin/profil/edit/<?= $results['id_profil'] ?>" method="POST" enctype="multipart/form-data">
+  <form id="myForm" action="<?= base_url() ?>api/admin/profil/edit/<?= $results['id_profil'] ?>" method="POST" enctype="multipart/form-data">
 
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full">
@@ -117,6 +117,7 @@
     <div class="flex flex-col xl:flex-row gap-4">
 
       <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
+      <input type="hidden" id="link_gambar_content_edit" name="link_gambar_content_edit" value="<?= $results['link_gambar_content'] ?>">
 
       <div class="w-full">
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
@@ -269,7 +270,7 @@
       <?php if (isset($errors['content_edit'])) : ?>
         <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
       <?php endif ?>
-      <textarea class="textarea textarea-bordered w-full" placeholder="Bio" name="content_edit" id="content">
+      <textarea onchange="asd()" class="textarea textarea-bordered w-full" placeholder="Bio" name="content_edit" id="content">
       <?php if (!empty($results['content'])) : ?>
         <?= $results['content'] ?>
       <?php else : ?>
@@ -278,9 +279,36 @@
       </textarea>
 
       <script>
+        // Replace the textarea with CKEditor
         CKEDITOR.config.width = '100%'
         CKEDITOR.config.height = '900'
-        CKEDITOR.replace('content');
+        CKEDITOR.replace('content', {
+          extraPlugins: 'uploadimage',
+          uploadUrl: '<?= base_url('/api/admin/profil/upload-image') ?>',
+          filebrowserUploadUrl: '<?= base_url('/api/admin/profil/upload-image') ?>',
+          filebrowserUploadMethod: "form",
+        });
+
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+          let editorContent = CKEDITOR.instances['content'].getData();
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = editorContent;
+
+          let images = tempDiv.querySelectorAll('img');
+          let imageSrcArray = [];
+
+          images.forEach(function(image) {
+            let fullPath = image.src;
+            let fileName = fullPath.split('/').pop();
+            imageSrcArray.push(fileName);
+          });
+
+          let imageSrcJson = JSON.stringify(imageSrcArray);
+
+          document.getElementById('link_gambar_content_edit').value = imageSrcJson;
+          CKEDITOR.instances['content'].updateElement();
+        });
+      </script>
       </script>
     </div>
 

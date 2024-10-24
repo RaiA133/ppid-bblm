@@ -27,3 +27,4 @@ List Seeder Command (run all) :
 ```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaJudulSeeder"```
 ```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatSeeder"```
 ```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatJudulSeeder"```
+```php spark db:seed "App\Database\Seeds\StandarLayanan\MaklumatPelayananSeeder"```

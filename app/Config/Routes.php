@@ -24,7 +24,7 @@ $routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiay
 $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
 $routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::index');
-$routes->post('maklumatpelayanan/uploadImage', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
+$routes->post('/api/admin/maklumat-pelayanan/upload-image', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
 $routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexCreate');
 $routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1');
 $routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexDelete/$1');
@@ -55,6 +55,7 @@ $routes->delete('/api/admin/regulasi/delete/(:num)', 'Pages\Admin\Regulasi::inde
 
 $routes->get('/admin/profil', 'Pages\Admin\Profil::index');
 $routes->post('/api/admin/profil/edit/(:num)', 'Pages\Admin\Profil::indexUpdate/$1');
+$routes->post('/api/admin/profil/upload-image', 'Pages\Admin\Profil::uploadImage');
 
 $routes->get('/admin/informasi-berkala', 'Pages\Admin\InformasiPublik\InformasiBerkala::index');
 $routes->post('/api/admin/informasi-berkala/create', 'Pages\Admin\InformasiPublik\InformasiBerkala::indexCreate');
