@@ -4454,10 +4454,6 @@ html:has(.drawer-toggle:checked) {
   max-width: 42rem;
 }
 
-.max-w-32 {
-  max-width: 8rem;
-}
-
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -4489,6 +4485,10 @@ html:has(.drawer-toggle:checked) {
 
 .max-w-xs {
   max-width: 20rem;
+}
+
+.max-w-32 {
+  max-width: 8rem;
 }
 
 .flex-1 {
@@ -5338,14 +5338,14 @@ html:has(.drawer-toggle:checked) {
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
 }
 
-.hover\:bg-gray-950:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(3 7 18 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-neutral:hover {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+}
+
+.hover\:bg-gray-950:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 7 18 / var(--tw-bg-opacity));
 }
 
 .hover\:pb-3:hover {
