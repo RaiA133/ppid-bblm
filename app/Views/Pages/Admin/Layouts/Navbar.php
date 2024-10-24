@@ -24,27 +24,22 @@
   </div>
 
   <div class="flex-none ">
-
-    <div class="dropdown dropdown-end ml-4">
-      <label tabIndex={0} class="btn btn-ghost btn-circle avatar">
+    <span><?= user()->username  ?></span>
+    <div class="dropdown dropdown-end ml-4 mr-2">
+      <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="profile" />
+          <img src="<?= base_url('img/icon/') . user()->user_image ?>" alt="profile" />
         </div>
       </label>
-      <ul tabIndex={0} class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
         <li class="justify-between">
-          <a href="">Profile Settings
-            <span class="badge">New</span>
-          </a>
-        </li>
-        <li class=''>
           <a href="">
-            Bill History
+            Profile Settings
           </a>
         </li>
-        <div class="divider mt-0 mb-0"></div>
-        <li><a>Logout</a></li>
+        <li><a href="<?= base_url('logout') ?>">Logout</a></li>
       </ul>
     </div>
+
   </div>
 </div>

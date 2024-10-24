@@ -13,7 +13,6 @@
 
   <?php
   $linkSent = false;
-  $errorMessage = false;
   $loading = false;
   $userObj['emailId'] = ''
 
@@ -27,7 +26,9 @@
             <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
           </div>
           <div class="py-24 px-10">
-            <h2 class="text-2xl font-semibold mb-2 text-center">Forgot Password</h2>
+            <h2 class="text-2xl mb-2 text-center"><?= lang('Auth.forgotPassword') ?></h2>
+
+            <?= view('Myth\Auth\Views\_message_block') ?>
 
             <?php if ($linkSent): ?>
               <div class="text-center mt-8">
@@ -36,30 +37,31 @@
                 </svg>
               </div>
               <p class="my-4 text-xl font-bold text-center">Link Sent</p>
-              <p class="mt-4 mb-8 font-semibold text-center">Check your email to reset password</p>
+              <p class="mt-4 mb-8 text-center">Check your email to reset password</p>
               <div class="text-center mt-4">
-                <a href="/login">
+                <a href="<?= base_url() ?>login">
                   <button class="btn btn-block btn-primary">Login</button>
                 </a>
               </div>
             <?php else: ?>
-              <p class="my-8 font-semibold text-center">We will send password reset link to your email address</p>
-              <form method="POST" action="/forgot-password">
+              <p class="my-8 text-center"><?= lang('Auth.enterEmailForInstructions') ?></p>
+              <form action="<?= url_to('forgot') ?>" method="post">
+                <?= csrf_field() ?>
+
                 <div class="mb-4">
-                  <label for="emailId" class="block text-sm font-medium leading-6 text-gray-900">Email Id</label>
-                  <input type="text" name="emailId" id="emailId" class="mt-4 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" value="<?= $userObj['emailId'] ?>" required />
+                  <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                  <input type="text" name="email" placeholder="<?= lang('Auth.email') ?>" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" />
                 </div>
 
-                <?php if ($errorMessage): ?>
-                  <div class="mt-12 text-red-500 text-sm"><?= $errorMessage ?></div>
-                <?php endif; ?>
+                <div class="my-2 text-red-500 text-sm"><?= session('errors.email') ?></div>
 
-                <button type="submit" class="btn mt-2 w-full text-neutral-content btn-primary <?= $loading ? 'loading' : '' ?>">Send Reset Link</button>
+                <button type="submit" class="btn mt-2 w-full text-neutral-content btn-primary <?= $loading ? 'loading' : '' ?>"><?= lang('Auth.sendInstructions') ?></button>
 
                 <div class="text-center mt-4">
-                  Don't have an account yet? 
-                  <a href="<?= base_url() ?>hubungi-kami" class="inline-block hover:text-primary hover:underline hover:cursor-pointer transition duration-200">Contact Us</a>
+                  <?= lang('Auth.needAnAccount') ?>
+                  <a href="<?= base_url() ?>register" class="inline-block hover:text-primary hover:underline transition duration-200">Register</a>
                 </div>
+                
               </form>
             <?php endif; ?>
           </div>

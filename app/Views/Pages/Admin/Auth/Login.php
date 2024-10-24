@@ -24,36 +24,66 @@
               <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
             </div>
             <div class="py-24 px-10">
-              <h2 class="text-2xl font-semibold mb-2 text-center">Login</h2>
-              <form action="/login" method="POST">
-                <div class="mb-4">
-                  <!-- Input Email -->
-                  <div class="mt-4">
-                    <label for="emailId" class="block text-sm font-medium text-gray-700">Email Id</label>
-                    <input type="email" name="emailId" id="emailId" class="input input-bordered w-full mt-2" placeholder="Enter your email" required>
+              <h2 class="text-2xl font-semibold mb-2 text-center"><?= lang('Auth.loginTitle') ?></h2>
+
+              <?= view('Myth\Auth\Views\_message_block') ?>
+
+              <form action="<?= url_to('login') ?>" method="post">
+                <?= csrf_field() ?>
+
+                <div class="">
+
+                  <?php if ($config->validFields === ['email']): ?>
+                    <div class="mt-4"> <!-- Input Email -->
+                      <label for="login" class="block text-sm font-medium text-gray-700"><?= lang('Auth.email') ?></label>
+                      <input type="email" name="login" placeholder="<?= lang('Auth.email') ?>" class="input input-bordered w-full mt-2 <?php if (session('errors.login')) : ?>input-error<?php endif ?>">
+                      <div class="label"><span class="label-text-alt text-error"><?= session('errors.login') ?></span></div>
+                    </div>
+                  <?php else: ?>
+                    <div class="mt-4"> <!-- Input Email or Username -->
+                      <label for="login" class="block text-sm font-medium text-gray-700"><?= lang('Auth.emailOrUsername') ?></label>
+                      <input type="text" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>" class="input input-bordered w-full mt-2 <?php if (session('errors.login')) : ?>input-error<?php endif ?>">
+                      <div class="label"><span class="label-text-alt text-error"><?= session('errors.login') ?></span></div>
+                    </div>
+                  <?php endif; ?>
+
+
+                  <div class="mt-4"> <!-- Input Password -->
+                    <label for="password" class="block text-sm font-medium text-gray-700"><?= lang('Auth.password') ?></label>
+                    <input type="password" name="password" placeholder="<?= lang('Auth.password') ?>" class="input input-bordered w-full mt-2 <?php if (session('errors.password')) : ?>input-error<?php endif ?>">
+                    <div class="label"><span class="label-text-alt text-error"><?= session('errors.password') ?></span></div>
                   </div>
 
-                  <!-- Input Password -->
-                  <div class="mt-4">
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" name="password" id="password" class="input input-bordered w-full mt-2" placeholder="Enter your password" required>
-                  </div>
+                  <?php if ($config->allowRemembering): ?>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" name="remember" class="form-check-input" <?php if (old('remember')) : ?> checked <?php endif ?>>
+                        <?= lang('Auth.rememberMe') ?>
+                      </label>
+                    </div>
+                  <?php endif; ?>
+
                 </div>
 
-                <div class="text-right text-primary">
-                  <a href="<?= base_url() ?>admin/forgot-password" class="text-sm inline-block hover:text-primary hover:underline transition duration-200">Forgot Password?</a>
-                </div>
+                <?php if ($config->activeResetter): ?>
+                  <div class="text-right text-primary">
+                    <a href="<?= base_url() ?>forgot" class="text-sm inline-block hover:text-primary hover:underline transition duration-200"><?= lang('Auth.forgotYourPassword') ?></a>
+                  </div>
+                <?php endif; ?>
 
                 <!-- Error Message Placeholder -->
-                <p class="text-red-500 mt-8" id="errorMessage"></p>
+                <p class="text-red-500 mt-4"></p>
 
                 <!-- Login Button -->
-                <button type="submit" class="btn mt-2 w-full btn-primary">Login</button>
+                <button type="submit" class="btn mt-2 w-full btn-primary"><?= lang('Auth.loginAction') ?></button>
 
-                <div class="text-center mt-4">
-                  Don't have an account yet?
-                  <a href="<?= base_url() ?>hubungi-kami" class="inline-block hover:text-primary hover:underline transition duration-200">Contact Us</a>
-                </div>
+                <?php if ($config->allowRegistration) : ?>
+                  <div class="text-center mt-4">
+                    <?= lang('Auth.needAnAccount') ?>
+                    <a href="<?= base_url() ?>register" class="inline-block hover:text-primary hover:underline transition duration-200">Register</a>
+                  </div>
+                <?php endif; ?>
+
               </form>
             </div>
           </div>

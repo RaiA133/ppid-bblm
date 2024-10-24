@@ -23,6 +23,11 @@
 
     <div class="divider"></div>
 
+    <?php if (in_groups('superadmin')) : ?>
+      <li><a href="<?= base_url() ?>admin/admin-management">Admin Management</a></li>
+    <?php endif; ?>
+
+
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
     <li><a href="<?= base_url() ?>admin/profil">Profil</a></li>
     <li>
