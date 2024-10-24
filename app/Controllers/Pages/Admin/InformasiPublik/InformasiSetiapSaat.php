@@ -30,7 +30,7 @@ class InformasiSetiapSaat extends BaseController
     if ($judul) $informasiSetiapSaat = $informasiSetiapSaat->where('judul', $judul);
 
     $results =  $informasiSetiapSaat->getinformasiSetiapSaat($dataCountOnePage); // use model untuk todo query
-    $informasiSetiapSaatJudul = $this->informasiSetiapSaatJudulModel->getinformasiSetiapSaatJudul();
+    $informasiSetiapSaatJudul = $this->informasiSetiapSaatJudulModel->getinformasiSetiapSaatJudul($dataCountOnePage);
     $data = [
       'title' => 'Data Informasi Setiap Saat',
       'pager' => $this->informasiSetiapSaatModel->pager,

@@ -45,11 +45,11 @@ class InformasiSetiapSaatJudulModel extends Model
   protected $afterDelete    = [];
 
   // get data informasi_setiap_saat_judul with paginate | admin
-  public function getInformasiSetiapSaatJudul()
+  public function getInformasiSetiapSaatJudul($dataCountOnePage = 5)
   {
     $query = $this->table('informasi_setiap_saat_judul');
     $query->orderBy('id_informasi_setiap_saat_judul', 'DESC');
-    $result = $query->findAll();
+    $result = $query->paginate($dataCountOnePage, 'informasi_setiap_saat_judul');
     return $result;
   }
 
