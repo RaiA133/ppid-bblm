@@ -4454,6 +4454,10 @@ html:has(.drawer-toggle:checked) {
   max-width: 42rem;
 }
 
+.max-w-32 {
+  max-width: 8rem;
+}
+
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -5313,6 +5317,18 @@ html:has(.drawer-toggle:checked) {
   }
 }
 
+.before\:bg-primary::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+}
+
+.after\:bg-secondary::after {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }
@@ -5320,6 +5336,11 @@ html:has(.drawer-toggle:checked) {
 .hover\:bg-base-200:hover {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+}
+
+.hover\:bg-gray-950:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 7 18 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-neutral:hover {

@@ -31,7 +31,7 @@ class InformasiBerkala extends BaseController
     if ($judul) $informasiBerkala = $informasiBerkala->where('judul', $judul);
 
     $results =  $informasiBerkala->getInformasiBerkala($dataCountOnePage); // use model untuk todo query
-    $informasiBerkalaJudul = $this->informasiBerkalaJudulModel->getInformasiBerkalaJudul();
+    $informasiBerkalaJudul = $this->informasiBerkalaJudulModel->getInformasiBerkalaJudul($dataCountOnePage);
     $data = [
       'title' => 'Data Informasi Berkala',
       'pager' => $this->informasiBerkalaModel->pager,
