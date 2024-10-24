@@ -35,6 +35,9 @@ class Profil extends Migration
       'content'         => [
         'type'          => 'LONGTEXT',
       ],
+      'link_gambar_content' => [
+        'type'          => 'TEXT',
+      ],
       'created_at' => [
         'type' => 'DATETIME',
         'null' => true

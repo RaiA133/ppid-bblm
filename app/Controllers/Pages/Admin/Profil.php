@@ -13,7 +13,7 @@ class Profil extends BaseController
     $this->profileModel = new ProfilModel();
   }
 
-  public function index($validation = null)
+  public function index()
   {
     $results = $this->profileModel->findAll();
     $data = [
@@ -47,6 +47,7 @@ class Profil extends BaseController
         'errors' => ['required' => 'Content harus diisi']
       ],
     ];
+
     if (! $this->validate($validationRule)) {
       return redirect()->back()->withInput();
     }
@@ -54,42 +55,81 @@ class Profil extends BaseController
     $fileGambar = $this->request->getFile('link_gambar_edit');
     $namaGambarLama = $this->request->getVar('link_gambar_edit_old');
 
-    // CEK JIKA GAMBAR MASIH GAMBAR OLD
-    if ($fileGambar->getError() == 4) {
-      $namaGambar = $namaGambarLama; // jika user tidak upload, pakai yg lama
-    } else {
-      $namaGambar = $fileGambar->getRandomName();
-      $fileGambar->move('img/profile/', $namaGambar); // pindahkan file baru
-      $fileLamaPath = 'img/profile/' . $namaGambarLama;
-      // unlink('img/profile/' . $namaGambarLama); // hapus file lama
-      if (file_exists($fileLamaPath)) {
-        if (!unlink($fileLamaPath)) {
+    $namaLinkGambarContentLama = $this->profileModel->find($id_profil)['link_gambar_content'];
+    $oldImagesArray = json_decode($namaLinkGambarContentLama, true); // Convert JSON to array
+    $newImagesArray = json_decode($this->request->getVar('link_gambar_content_edit'), true);
+
+    if ($oldImagesArray) {
+      $imagesToUnlink = array_diff($oldImagesArray, $newImagesArray);
+      foreach ($imagesToUnlink as $imageToDelete) {
+        $fileLamaPath = 'img/profile/' . $imageToDelete;
+        if (file_exists($fileLamaPath)) {
+          if (!unlink($fileLamaPath)) {
+            session()->setFlashdata('Message', [
+              'title' => 'Gagal menghapus file lama: ' . $imageToDelete,
+              'type' => 'error'
+            ]);
+          }
+        } else {
           session()->setFlashdata('Message', [
-            'title' => 'Gagal menghapus file lama: ' . $namaGambarLama,
-            'type' => 'error'
+            'title' => 'File lama tidak ditemukan: ' . $imageToDelete,
+            'type' => 'warning'
           ]);
         }
-      } else {
-        session()->setFlashdata('Message', [
-          'title' => 'File lama tidak ditemukan: ' . $namaGambarLama,
-          'type' => 'warning'
-        ]);
       }
-    };
+    }
 
+    if ($fileGambar->getError() == 4) {
+      $namaGambar = $namaGambarLama; // Use the old image if no new one is uploaded
+    } else {
+      $namaGambar = $fileGambar->getRandomName();
+      $fileGambar->move('img/profile/', $namaGambar); // Move the new file to the server
+      $fileLamaPath = 'img/profile/' . $namaGambarLama;
+      if (file_exists($fileLamaPath)) {
+        unlink($fileLamaPath); // Unlink the old image file
+      }
+    }
+
+    // Prepare data to be updated
     $dataToEdit = $this->request->getVar();
-    $dataToEdit['link_gambar_edit'] = $namaGambar;
+    $dataToEdit['link_gambar_edit'] = $namaGambar; // Update new image name
     $dataToEdit['latar_belakang_pendidikan_edit'] = json_encode($dataToEdit['latar_belakang_pendidikan_edit']);
     $dataToEdit['penghargaan_edit'] = json_encode($dataToEdit['penghargaan_edit']);
-    unset($dataToEdit['link_gambar_edit_old']);
-    $result = $this->profileModel->edit($id_profil, $dataToEdit);
 
-    if ($result) $message = 'Data updated !';
-    else $message = 'Updating Data Failed !';
-    session()->setFlashdata('Message', [
-      'title' => $message,
-    ]);
+    $dataToEdit['link_gambar_content'] = json_encode($newImagesArray);
+    unset($dataToEdit['link_gambar_edit_old']); // Remove the old image field
+
+    $result = $this->profileModel->edit($id_profil, $dataToEdit); // query
+
+    if ($result) {
+      $message = 'Data updated !';
+    } else {
+      $message = 'Updating Data Failed !';
+    }
+    session()->setFlashdata('Message', ['title' => $message]);
 
     return redirect()->to(base_url() . 'admin/profil');
+  }
+
+
+  public function uploadImage()
+  {
+    $fileGambar = $this->request->getFile('upload');
+    $namaGambar = $fileGambar->getRandomName();
+    $fileGambar->move('img/profile/', $namaGambar);
+    if ($fileGambar) {
+      $message = "";
+      $functionNumber = $_GET['CKEditorFuncNum'];
+      $url = base_url("img/profile/" . $namaGambar);
+      echo "
+      <script type='text/javascript'>
+        window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');
+        var imageInput = window.parent.document.getElementById('link_gambar_content_edit');
+        var currentImages = imageInput.value ? JSON.parse(imageInput.value) : [];
+        currentImages.push('$namaGambar');
+        imageInput.value = JSON.stringify(currentImages);
+      </script>
+      ";
+    }
   }
 }
