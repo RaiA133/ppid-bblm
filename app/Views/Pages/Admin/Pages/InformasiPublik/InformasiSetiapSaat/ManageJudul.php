@@ -51,8 +51,8 @@
         </div>
 
         <!-- Add Data -->
-        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataInformasiBerkalaJudul.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/InformasiPublik/InformasiBerkala/ManageJudulCreate') ?> 
+        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataInformasiSetiapSaatJudul.showModal()">Add Data</button>
+        <?= $this->include('Pages/Admin/Pages/InformasiPublik/InformasiSetiapSaat/ManageJudulCreate') ?> 
       </div>
 
     </div>
@@ -83,18 +83,18 @@
 
               <td class="">
 
-                <!-- Modal untuk EDIT Data Informasi Berkala -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiBerkalaJudul<?= $result['id_informasi_berkala_judul'] ?>.showModal()">Edit</a>
+                <!-- Modal untuk EDIT Data Informasi Setiap Saat -->
+                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiSetiapSaatJudul<?= $result['id_informasi_setiap_saat_judul'] ?>.showModal()">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataInformasiBerkalaJudul' . $result['id_informasi_berkala_judul'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataInformasiSetiapSaatJudul' . $result['id_informasi_setiap_saat_judul'])): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataInformasiBerkalaJudul<?= $result['id_informasi_berkala_judul'] ?>").showModal();
+                      document.getElementById("editDataInformasiSetiapSaatJudul<?= $result['id_informasi_setiap_saat_judul'] ?>").showModal();
                     });
                   </script>
                 <?php endif; ?>
 
-                <dialog id="editDataInformasiBerkalaJudul<?= $result['id_informasi_berkala_judul'] ?>" class="modal">
+                <dialog id="editDataInformasiSetiapSaatJudul<?= $result['id_informasi_setiap_saat_judul'] ?>" class="modal">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -103,7 +103,7 @@
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>api/admin/informasi-berkala/manage-judul/edit/<?= $result['id_informasi_berkala_judul'] ?>" method="post">
+                      <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/manage-judul/edit/<?= $result['id_informasi_setiap_saat_judul'] ?>" method="post">
 
                         <input name="judul_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
                         <?php if (isset($errors['judul_edit'])) : ?>
@@ -119,7 +119,7 @@
                 <!-- END Modal untuk Edit Data Regulasi -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/informasi-berkala/manage-judul/delete/<?= $result['id_informasi_berkala_judul'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/manage-judul/delete/<?= $result['id_informasi_setiap_saat_judul'] ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>
