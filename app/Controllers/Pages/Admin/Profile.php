@@ -3,7 +3,6 @@
 namespace App\Controllers\Pages\Admin;
 
 use App\Controllers\BaseController;
-
 class Profile extends BaseController
 {
   public function index(): string

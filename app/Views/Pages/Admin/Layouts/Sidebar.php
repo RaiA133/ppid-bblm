@@ -9,7 +9,8 @@
     <li><a href="<?= base_url() ?>admin/analytics">Analytics</a></li>
     <li><a href="<?= base_url() ?>admin/integration">Integration</a></li>
     <li>
-      <details open>
+      <!-- <details open> -->
+      <details>
         <summary>User</summary>
         <ul>
           <li><a href="<?= base_url() ?>admin/login">Login</a></li>

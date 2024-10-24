@@ -24,22 +24,25 @@
   </div>
 
   <div class="flex-none ">
-    <span><?= user()->username  ?></span>
-    <div class="dropdown dropdown-end ml-4 mr-2">
-      <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-          <img src="<?= base_url('img/icon/') . user()->user_image ?>" alt="profile" />
-        </div>
-      </label>
-      <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
-        <li class="justify-between">
-          <a href="">
-            Profile Settings
-          </a>
-        </li>
-        <li><a href="<?= base_url('logout') ?>">Logout</a></li>
-      </ul>
-    </div>
+    <span><?= user()->username ?></span>
+    <!-- <div class="indicator">
+      <span class="indicator-item indicator-bottom badge badge-primary">new</span> -->
+      <div class="dropdown dropdown-end ml-4 mr-2">
+        <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full">
+            <img src="<?= base_url('img/icon/') . user()->user_image ?>" alt="profile" />
+          </div>
+        </label>
+        <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
+          <li class="justify-between">
+            <a href="<?= base_url() ?>admin/profile">
+              Profile Settings
+            </a>
+          </li>
+          <li><a href="<?= base_url('logout') ?>">Logout</a></li>
+        </ul>
+      </div>
+    <!-- </div> -->
 
   </div>
 </div>
