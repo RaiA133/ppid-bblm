@@ -12,10 +12,10 @@ class MaklumatPelayananSeeder extends Seeder
     $data = [
       [
         'link_gambar'     => json_encode([
-          'img/standarLayanan/MaklumatPelayanan.png',
+          'img/standarLayanan/maklumatPelayanan/MaklumatPelayanan.png',
         ]),
         'content'         => '<figure class="lg:w-auto p-0 md:p-10">
-        <img src="' . base_url() . 'img/standarLayanan/MaklumatPelayanan.png" alt="MaklumatPelayanan" class="w-full max-w-3xl h-auto mx-auto">
+        <img src="' . base_url() . 'img/standarLayanan/maklumatPelayanan/MaklumatPelayanan.png" alt="MaklumatPelayanan" class="w-full max-w-3xl h-auto mx-auto">
       </figure>',
         'created_at'      => Time::now(),
         'updated_at'      => Time::now(),

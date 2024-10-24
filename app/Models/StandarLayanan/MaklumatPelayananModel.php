@@ -66,26 +66,25 @@ class MaklumatPelayananModel extends Model
     return true;
   }
 
-  public function updateLinkGambar($dataToUpdateLinkGambar)
-  {
-    $this->save([
-      'id_maklumat_pelayanan' => $dataToUpdateLinkGambar['id_maklumat_pelayanan'],
-      'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
-      'content' => $dataToUpdateLinkGambar['content'],
-    ]);
-    return true;
-  }
-
-
   // public function updateLinkGambar($dataToUpdateLinkGambar)
   // {
-  //   if (isset($dataToUpdateLinkGambar['id_maklumat_pelayanan'])) {
-  //     $this->update($dataToUpdateLinkGambar['id_maklumat_pelayanan'], [
-  //       'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
-  //       'content' => $dataToUpdateLinkGambar['content'],
-  //     ]);
-  //     return true;
-  //   }
-  //   return false;
+  //   $this->save([
+  //     'id_maklumat_pelayanan' => $dataToUpdateLinkGambar['id_maklumat_pelayanan'],
+  //     'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
+  //     'content' => $dataToUpdateLinkGambar['content'],
+  //   ]);
+  //   return true;
   // }
+
+  public function updateLinkGambar($dataToUpdateLinkGambar)
+  {
+    if (isset($dataToUpdateLinkGambar['id_maklumat_pelayanan'])) {
+      $this->update($dataToUpdateLinkGambar['id_maklumat_pelayanan'], [
+        'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
+        'content' => $dataToUpdateLinkGambar['content'],
+      ]);
+      return true;
+    }
+    return false;
+  }
 }
