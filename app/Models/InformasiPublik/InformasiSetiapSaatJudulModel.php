@@ -57,6 +57,7 @@ class InformasiSetiapSaatJudulModel extends Model
   public function search($keyword)
   {
     $query = $this->table('informasi_setiap_saat_judul');
+    $query->where('informasi_setiap_saat_judul.deleted_at', null);
     $query->like('judul', $keyword);
     return $query;
   }

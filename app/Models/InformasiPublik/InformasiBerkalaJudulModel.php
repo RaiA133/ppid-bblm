@@ -57,6 +57,7 @@ class InformasiBerkalaJudulModel extends Model
   public function search($keyword)
   {
     $query = $this->table('informasi_berkala_judul');
+    $query->where('informasi_berkala_judul.deleted_at', null);
     $query->like('judul', $keyword);
     return $query;
   }

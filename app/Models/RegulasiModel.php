@@ -60,6 +60,7 @@ class RegulasiModel extends Model
   public function search($keyword)
   {
     $query = $this->table('regulasi');
+    $query->where('regulasi.deleted_at', null);
     $query->like('judul', $keyword);
     return $query;
   }

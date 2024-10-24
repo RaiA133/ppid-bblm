@@ -58,6 +58,7 @@ class InformasiSetiapSaatModel extends Model
   public function search($keyword)
   {
     $query = $this->table('informasi_setiap_saat');
+    $query->where('informasi_setiap_saat.deleted_at', null);
     $query->like('jenis_informasi', $keyword);
     $query->orLike('informasi', $keyword);
     return $query;
