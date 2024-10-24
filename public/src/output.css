@@ -4486,6 +4486,22 @@ html:has(.drawer-toggle:checked) {
   max-width: 20rem;
 }
 
+.max-w-32 {
+  max-width: 8rem;
+}
+
+.max-w-10 {
+  max-width: 2.5rem;
+}
+
+.max-w-2 {
+  max-width: 0.5rem;
+}
+
+.max-w-20 {
+  max-width: 5rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -4782,16 +4798,6 @@ html:has(.drawer-toggle:checked) {
 
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);
-}
-
-.bg-neutral-content {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-nc,oklch(var(--nc)/var(--tw-bg-opacity)));
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
@@ -5171,6 +5177,14 @@ html:has(.drawer-toggle:checked) {
   text-decoration-line: underline;
 }
 
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
+.underline-offset-1 {
+  text-underline-offset: 1px;
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -5343,19 +5357,14 @@ html:has(.drawer-toggle:checked) {
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
 }
 
-.hover\:bg-neutral:hover {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-}
-
-.hover\:bg-stone-900:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(28 25 23 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-950:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(3 7 18 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-neutral:hover {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
 }
 
 .hover\:pb-3:hover {
