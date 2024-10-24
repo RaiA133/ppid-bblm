@@ -4,15 +4,15 @@ namespace App\Models\InformasiPublik;
 
 use CodeIgniter\Model;
 
-class InformasiBerkalaModel extends Model
+class InformasiSetiapSaatModel extends Model
 {
-  protected $table            = 'informasi_berkala';
-  protected $primaryKey       = 'id_informasi_berkala';
+  protected $table            = 'informasi_setiap_saat';
+  protected $primaryKey       = 'id_informasi_setiap_saat';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
   protected $useSoftDeletes   = true;
   protected $protectFields    = true;
-  protected $allowedFields    = ['id_informasi_berkala_judul', 'jenis_informasi', 'informasi'];
+  protected $allowedFields    = ['id_informasi_setiap_saat_judul', 'jenis_informasi', 'informasi'];
 
   protected bool $allowEmptyInserts = false;
   protected bool $updateOnlyChanged = true;
@@ -44,55 +44,54 @@ class InformasiBerkalaModel extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-  // get data informasi_berkala with paginate | admin
-  public function getInformasiBerkala($dataCountOnePage = 5)
+  // get data informasi_setiap_saat with paginate | admin
+  public function getInformasiSetiapSaat($dataCountOnePage = 5)
   {
-    $query = $this->table('informasi_berkala');
-    $query->join('informasi_berkala_judul', 'informasi_berkala_judul.id_informasi_berkala_judul = informasi_berkala.id_informasi_berkala_judul');
-    $query->orderBy('informasi_berkala.id_informasi_berkala', 'DESC');
-    $result = $query->paginate($dataCountOnePage, 'informasi_berkala');
+    $query = $this->table('informasi_setiap_saat');
+    $query->join('informasi_setiap_saat_judul', 'informasi_setiap_saat_judul.id_informasi_setiap_saat_judul = informasi_setiap_saat.id_informasi_setiap_saat_judul');
+    $query->orderBy('informasi_setiap_saat.id_informasi_setiap_saat', 'DESC');
+    $result = $query->paginate($dataCountOnePage, 'informasi_setiap_saat');
     return $result;
   }
 
-  // search data informasi_berkala | admin
+  // search data informasi_setiap_saat | admin
   public function search($keyword)
   {
-    $query = $this->table('informasi_berkala');
-    $query->where('informasi_berkala.deleted_at', null);
+    $query = $this->table('informasi_setiap_saat');
+    $query->where('informasi_setiap_saat.deleted_at', null);
     $query->like('jenis_informasi', $keyword);
     $query->orLike('informasi', $keyword);
     $query->orLike('judul', $keyword);
     return $query;
   }
 
-  // create data informasi_berkala | admin
+  // create data informasi_setiap_saat | admin
   public function create($data = [])
   {
     $this->save([
-      'id_informasi_berkala_judul' => $data['judul_create'],
+      'id_informasi_setiap_saat_judul' => $data['judul_create'],
       'jenis_informasi' => $data['jenis_informasi_create'],
       'informasi' => $data['informasi_create'],
     ]);
   }
 
-  // delete data informasi_berkala by ID | admin
-  public function remove($id_informasi_berkala)
+  // delete data informasi_setiap_saat by ID | admin
+  public function remove($id_informasi_setiap_saat)
   {
-    $query = $this->table('informasi_berkala');
-    $result = $query->delete($id_informasi_berkala); // auto soft delete from model
+    $query = $this->table('informasi_setiap_saat');
+    $result = $query->delete($id_informasi_setiap_saat); // auto soft delete from model
     return $result;
   }
 
-  // update data informasi_berkala | admin
-  public function edit($id_informasi_berkala, $dataToEdit = [])
+  // update data informasi_setiap_saat | admin
+  public function edit($id_informasi_setiap_saat, $dataToEdit = [])
   {
     $this->save([
-      'id_informasi_berkala' => $id_informasi_berkala,
-      'id_informasi_berkala_judul' =>  $dataToEdit['judul_edit'],
+      'id_informasi_setiap_saat' => $id_informasi_setiap_saat,
+      'id_informasi_setiap_saat_judul' =>  $dataToEdit['judul_edit'],
       'jenis_informasi' =>  $dataToEdit['jenis_informasi_edit'],
       'informasi' =>  $dataToEdit['informasi_edit'],
     ]);
     return true;
   }
-
 }

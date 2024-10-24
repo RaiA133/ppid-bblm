@@ -4,10 +4,10 @@ namespace App\Models\InformasiPublik;
 
 use CodeIgniter\Model;
 
-class InformasiBerkalaJudulModel extends Model
+class InformasiSetiapSaatJudulModel extends Model
 {
-  protected $table            = 'informasi_berkala_judul';
-  protected $primaryKey       = 'id_informasi_berkala_judul';
+  protected $table            = 'informasi_setiap_saat_judul';
+  protected $primaryKey       = 'id_informasi_setiap_saat_judul';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
   protected $useSoftDeletes   = true;
@@ -44,25 +44,25 @@ class InformasiBerkalaJudulModel extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-  // get data informasi_berkala_judul with paginate | admin
-  public function getInformasiBerkalaJudul($dataCountOnePage = 5)
+  // get data informasi_setiap_saat_judul with paginate | admin
+  public function getInformasiSetiapSaatJudul($dataCountOnePage = 5)
   {
-    $query = $this->table('informasi_berkala_judul');
-    $query->orderBy('id_informasi_berkala_judul', 'DESC');
-    $result = $query->paginate($dataCountOnePage, 'informasi_berkala_judul');
+    $query = $this->table('informasi_setiap_saat_judul');
+    $query->orderBy('id_informasi_setiap_saat_judul', 'DESC');
+    $result = $query->paginate($dataCountOnePage, 'informasi_setiap_saat_judul');
     return $result;
   }
 
-  // search data informasi_berkala_judul | admin
+  // search data informasi_setiap_saat_judul | admin
   public function search($keyword)
   {
-    $query = $this->table('informasi_berkala_judul');
-    $query->where('informasi_berkala_judul.deleted_at', null);
+    $query = $this->table('informasi_setiap_saat_judul');
+    $query->where('informasi_setiap_saat_judul.deleted_at', null);
     $query->like('judul', $keyword);
     return $query;
   }
 
-  // create data informasi_berkala_judul | admin
+  // create data informasi_setiap_saat_judul | admin
   public function create($data = [])
   {
     $this->save([
@@ -70,19 +70,19 @@ class InformasiBerkalaJudulModel extends Model
     ]);
   }
 
-  // delete data informasi_berkala_judul by ID | admin
-  public function remove($id_informasi_berkala_judul)
+  // delete data informasi_setiap_saat_judul by ID | admin
+  public function remove($id_informasi_setiap_saat_judul)
   {
-    $query = $this->table('informasi_berkala_judul');
-    $result = $query->delete($id_informasi_berkala_judul); // auto soft delete from model
+    $query = $this->table('informasi_setiap_saat_judul');
+    $result = $query->delete($id_informasi_setiap_saat_judul); // auto soft delete from model
     return $result;
   }
 
-  // update data informasi_berkala_judul | admin
-  public function edit($id_informasi_berkala_judul, $dataToEdit = [])
+  // update data informasi_setiap_saat_judul | admin
+  public function edit($id_informasi_setiap_saat_judul, $dataToEdit = [])
   {
     $this->save([
-      'id_informasi_berkala_judul' => $id_informasi_berkala_judul,
+      'id_informasi_setiap_saat_judul' => $id_informasi_setiap_saat_judul,
       'judul' =>  $dataToEdit['judul_edit'],
     ]);
     return true;
