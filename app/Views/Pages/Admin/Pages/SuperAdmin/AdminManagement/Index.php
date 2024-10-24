@@ -83,11 +83,25 @@
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
-                <div class="w-fit">
+
+                <div class="w-fit" onclick="viewImageProfile<?= $result->id ?>.showModal()">
                   <div class="w-10 rounded-full">
                     <img src="<?= base_url('img/icon/') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
                   </div>
                 </div>
+
+                <!-- Open the modal using ID.showModal() method -->
+                <dialog id="viewImageProfile<?= $result->id ?>" class="modal">
+                  <div class="modal-box">
+                    <form method="dialog">
+                      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <div class="w-full rounded-full">
+                      <img src="<?= base_url('img/icon/') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
+                    </div>
+                  </div>
+                </dialog>
+
               </td>
               <td class="p-2 sm:p-4 min-w-24"><?= $result->created_at ? $result->created_at : 'none' ?></td>
               <td class="p-2 sm:p-4"><?= $result->updated_at ? $result->updated_at : 'none' ?></td>
