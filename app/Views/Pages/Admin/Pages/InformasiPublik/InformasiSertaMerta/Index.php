@@ -53,7 +53,7 @@
 
           <!-- Filter Data By Judul -->
           <form action="" method="GET" class="w-fit">
-            <select name="judul" class="select select-bordered select-sm w-fit" onchange="this.form.submit()">
+            <select name="judul" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($informasiSetiapSaatJudul as $list) : ?>
                 <option value="<?= $list['judul'] ?>" <?= ($request->getVar('judul') == $list['judul']) ? 'selected' : '' ?>><?= $list['judul'] ?></option>

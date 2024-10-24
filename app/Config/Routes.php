@@ -69,3 +69,7 @@ $routes->get('/admin/informasi-setiap-saat', 'Pages\Admin\InformasiPublik\Inform
 $routes->post('/api/admin/informasi-setiap-saat/create', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexCreate');
 $routes->post('/api/admin/informasi-setiap-saat/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexUpdate/$1');
 $routes->delete('/api/admin/informasi-setiap-saat/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexDelete/$1');
+$routes->get('/admin/informasi-setiap-saat/manage-judul', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudul');
+$routes->post('/api/admin/informasi-setiap-saat/manage-judul/create', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulCreate');
+$routes->post('/api/admin/informasi-setiap-saat/manage-judul/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulUpdate/$1');
+$routes->delete('/api/admin/informasi-setiap-saat/manage-judul/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulDelete/$1');
