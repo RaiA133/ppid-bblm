@@ -124,7 +124,7 @@ class InformasiBerkala extends BaseController
   public function infomasiBerkalaJudul()
   {
     $currentPage = $this->request->getVar('page_informasi_berkala_judul') ? $this->request->getVar('page_informasi_berkala_judul') : 1;
-    $dataCountOnePage = 10; // jumlah data yang ditampilkan di satu halaman
+    $dataCountOnePage = 1; // jumlah data yang ditampilkan di satu halaman
 
     $keyword = $this->request->getVar('keyword');
     if ($keyword) $informasiBerkala = $this->informasiBerkalaJudulModel->search($keyword);
