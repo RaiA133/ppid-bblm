@@ -270,7 +270,7 @@
       <?php if (isset($errors['content_edit'])) : ?>
         <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
       <?php endif ?>
-      <textarea onchange="asd()" class="textarea textarea-bordered w-full" placeholder="Bio" name="content_edit" id="content">
+      <textarea class="textarea textarea-bordered w-full" placeholder="Bio" name="content_edit" id="content">
       <?php if (!empty($results['content'])) : ?>
         <?= $results['content'] ?>
       <?php else : ?>
