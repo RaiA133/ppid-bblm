@@ -37,7 +37,7 @@
     </li>
 
     <li>
-      <details open>
+      <details>
         <summary>Standar Layanan</summary>
         <ul>
           <li><a href="<?= base_url() ?>admin/tata-cara-permohonan-informasi">Tata Cara Permohonan Informasi</a></li>
