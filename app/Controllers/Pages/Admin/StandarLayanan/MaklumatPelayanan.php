@@ -83,7 +83,7 @@ class MaklumatPelayanan extends BaseController
           $dataMaklumatPelayanan = $this->maklumatPelayananModel->first();
           $dataToUpdateLinkGambar = [
             'id_maklumat_pelayanan' => $dataMaklumatPelayanan['id_maklumat_pelayanan'],
-            'link_gambar' => $newImageName,
+            'link_gambar' => json_encode($newImageName),
             'content' => $dataMaklumatPelayanan['content'],
           ];
           $this->maklumatPelayananModel->updateLinkGambar($dataToUpdateLinkGambar);
