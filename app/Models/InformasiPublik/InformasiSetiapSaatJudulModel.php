@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\InformasiPublik;
 
-use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
 
-class RegulasiModel extends Model
+class InformasiSetiapSaatJudulModel extends Model
 {
-  protected $table            = 'regulasi';
-  protected $primaryKey       = 'id_regulasi';
+  protected $table            = 'informasi_setiap_saat_judul';
+  protected $primaryKey       = 'id_informasi_setiap_saat_judul';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
-  protected $useSoftDeletes   = true; // jika true, tidak perlu get where deleted_at = null
+  protected $useSoftDeletes   = true;
   protected $protectFields    = true;
-  protected $allowedFields    = ['judul', 'link_drive'];
+  protected $allowedFields    = ['judul'];
 
   protected bool $allowEmptyInserts = false;
   protected bool $updateOnlyChanged = true;
@@ -45,50 +44,46 @@ class RegulasiModel extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-
-
-  // get data regulasi with paginate | admin
-  public function getRegulasi($dataCountOnePage = 5)
+  // get data informasi_setiap_saat_judul with paginate | admin
+  public function getInformasiSetiapSaatJudul($dataCountOnePage = 5)
   {
-    $query = $this->table('regulasi');
-    $query->orderBy('id_regulasi', 'DESC');
-    $result = $query->paginate($dataCountOnePage, 'regulasi');
+    $query = $this->table('informasi_setiap_saat_judul');
+    $query->orderBy('id_informasi_setiap_saat_judul', 'DESC');
+    $result = $query->paginate($dataCountOnePage, 'informasi_setiap_saat_judul');
     return $result;
   }
 
-  // search data regulasi | admin
+  // search data informasi_setiap_saat_judul | admin
   public function search($keyword)
   {
-    $query = $this->table('regulasi');
-    $query->where('regulasi.deleted_at', null);
+    $query = $this->table('informasi_setiap_saat_judul');
+    $query->where('informasi_setiap_saat_judul.deleted_at', null);
     $query->like('judul', $keyword);
     return $query;
   }
 
-  // create data regulasi | admin
+  // create data informasi_setiap_saat_judul | admin
   public function create($data = [])
   {
     $this->save([
       'judul' => $data['judul_create'],
-      'link_drive' => $data['link_drive_create'],
     ]);
   }
 
-  // delete data regulasi by ID | admin
-  public function remove($id_regulasi)
+  // delete data informasi_setiap_saat_judul by ID | admin
+  public function remove($id_informasi_setiap_saat_judul)
   {
-    $query = $this->table('regulasi');
-    $result = $query->delete($id_regulasi); // auto soft delete from model
+    $query = $this->table('informasi_setiap_saat_judul');
+    $result = $query->delete($id_informasi_setiap_saat_judul); // auto soft delete from model
     return $result;
   }
 
-  // update data regulasi | admin
-  public function edit($id_regulasi, $dataToEdit = [])
+  // update data informasi_setiap_saat_judul | admin
+  public function edit($id_informasi_setiap_saat_judul, $dataToEdit = [])
   {
     $this->save([
-      'id_regulasi' => $id_regulasi,
+      'id_informasi_setiap_saat_judul' => $id_informasi_setiap_saat_judul,
       'judul' =>  $dataToEdit['judul_edit'],
-      'link_drive' => $dataToEdit['link_drive_edit'],
     ]);
     return true;
   }

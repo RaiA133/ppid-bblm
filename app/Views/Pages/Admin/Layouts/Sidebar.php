@@ -25,6 +25,16 @@
 
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
     <li><a href="<?= base_url() ?>admin/profil">Profil</a></li>
+    <li>
+      <details>
+        <summary>Informasi Publik</summary>
+        <ul>
+          <li><a href="<?= base_url() ?>admin/informasi-berkala">Informasi Berkala</a></li>
+          <li><a href="<?= base_url() ?>admin/informasi-setiap-saat">Informasi Setiap Saat</a></li>
+          <li><a href="<?= base_url() ?>admin/informasi-serta-merta">Informasi Serta Merta</a></li>
+        </ul>
+      </details>
+    </li>
 
     <li>
       <details open>

@@ -62,6 +62,7 @@ class ProfilModel extends Model
       'penghargaan' =>  $dataToEdit['penghargaan_edit'],
       'link_gambar' =>  $dataToEdit['link_gambar_edit'],
       'content' =>  $dataToEdit['content_edit'],
+      'link_gambar_content' =>  $dataToEdit['link_gambar_content_edit'],
     ];
     $query = $this->table('profil');
     $query->replace($data);

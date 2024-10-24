@@ -1,0 +1,24 @@
+#carousel::-webkit-scrollbar {
+  display: none;
+  /* Hides the scrollbar */
+}
+
+#carousel {
+  -ms-overflow-style: none;
+  /* Internet Explorer and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+#carousel {
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+}
+
+#carousel {
+  scroll-behavior: smooth;
+}
+
+.cursor-grabbing {
+  cursor: grabbing;
+}
