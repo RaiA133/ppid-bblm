@@ -24,7 +24,8 @@ class InformasiPublik extends BaseController
 
   public function InformasiBerkala(): string
   {
-    $judulInformasiBerkala = $this->informasiBerkalaJudulModel->getInformasiBerkalaJudul();
+    // $judulInformasiBerkala = $this->informasiBerkalaJudulModel->getInformasiBerkalaJudul(1000);
+    $judulInformasiBerkala = $this->informasiBerkalaJudulModel->orderBy('id_informasi_berkala_judul', 'DESC')->findAll();
     $informasiBerkala = $this->informasiBerkalaModel->findAll();
     $data = [
       'title' => 'Informasi Berkala',
@@ -36,7 +37,8 @@ class InformasiPublik extends BaseController
 
   public function InformasiSetiapSaat(): string
   {
-    $judulInformasiSetiapSaat = $this->informasiSetiapSaatJudulModel->getInformasiSetiapSaatJudul();
+    // $judulInformasiSetiapSaat = $this->informasiSetiapSaatJudulModel->getInformasiSetiapSaatJudul(1000);
+    $judulInformasiSetiapSaat = $this->informasiSetiapSaatJudulModel->orderBy('id_informasi_setiap_saat_judul', 'DESC')->findAll();
     $informasiSetiapSaat = $this->informasiSetiapSaatModel->findAll();
     $data = [
       'title' => 'Informasi Setiap Saat',
