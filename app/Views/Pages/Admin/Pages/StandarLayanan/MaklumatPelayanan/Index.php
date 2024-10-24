@@ -94,8 +94,8 @@
         <script>
           CKEDITOR.replace('content', {
             extraPlugins: 'uploadimage',
-            uploadUrl: '<?= base_url('maklumatpelayanan/uploadImage/') ?>',
-            filebrowserUploadUrl: '<?= base_url('maklumatpelayanan/uploadImage/') ?>',
+            uploadUrl: '<?= base_url('/api/admin/maklumat-pelayanan/upload-image') ?>',
+            filebrowserUploadUrl: '<?= base_url('/api/admin/maklumat-pelayanan/upload-image') ?>',
             filebrowserUploadMethod: "form",
             width: '100%',
             height: 600,

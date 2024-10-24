@@ -60,63 +60,12 @@ class MaklumatPelayanan extends BaseController
     return redirect()->to(base_url() . 'admin/maklumat-pelayanan');
   }
 
-  // public function uploadImage()
-  // {
-  //   if (isset($_FILES['upload']['tmp_name'])) {
-  //     $file = $_FILES['upload']['tmp_name'];
-  //     $fileName = $_FILES['upload']['name'];
-  //     $fileNameArray = explode(".", $fileName);
-  //     $extension = strtolower(end($fileNameArray));
-  //     $newImageName = uniqid() . "." . $extension;
-
-  //     $allowedExtension = array("jpg", "jpeg", "png");
-
-  //     if (in_array($extension, $allowedExtension)) {
-  //       $uploadPath = FCPATH . "img/standarLayanan/maklumatPelayanan/";
-
-  //       if (!is_dir($uploadPath)) {
-  //         mkdir($uploadPath, 0755, true);
-  //       }
-
-  //       if (move_uploaded_file($file, $uploadPath . $newImageName)) {
-
-  //         $dataMaklumatPelayanan = $this->maklumatPelayananModel->first();
-  //         $dataToUpdateLinkGambar = [
-  //           'id_maklumat_pelayanan' => $dataMaklumatPelayanan['id_maklumat_pelayanan'],
-  //           'link_gambar' => json_encode($newImageName),
-  //           'content' => $dataMaklumatPelayanan['content'],
-  //         ];
-  //         $this->maklumatPelayananModel->updateLinkGambar($dataToUpdateLinkGambar);
-
-  //         $functionNumber = $_GET['CKEditorFuncNum'];
-  //         $url = base_url("img/standarLayanan/maklumatPelayanan/" . $newImageName);
-  //         $message = "";
-  //         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');</script>";
-  //       } else {
-  //         $functionNumber = $_GET['CKEditorFuncNum'];
-  //         $message = "Upload gambar gagal.";
-  //         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
-  //       }
-  //     } else {
-  //       $functionNumber = $_GET['CKEditorFuncNum'];
-  //       $message = "Ekstensi file tidak diperbolehkan. Hanya file JPG, JPEG, PNG yang diizinkan.";
-  //       echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
-  //     }
-  //   } else {
-  //     error_log("No file uploaded.");
-  //   }
-  // }
-
-
-  // public function uploadImage()
-  // {
-  //   if (isset($_FILES['upload'])) {
-  //     $files = $_FILES['upload'];
-
-  //     // Loop melalui semua file yang diupload
-  //     for ($i = 0; $i < count($files['tmp_name']); $i++) {
-  //       $file = $files['tmp_name'][$i];
-  //       $fileName = $files['name'][$i];
+  // OLD
+  //   public function uploadImage()
+  //   {
+  //     if (isset($_FILES['upload']['tmp_name'])) {
+  //       $file = $_FILES['upload']['tmp_name'];
+  //       $fileName = $_FILES['upload']['name'];
   //       $fileNameArray = explode(".", $fileName);
   //       $extension = strtolower(end($fileNameArray));
   //       $newImageName = uniqid() . "." . $extension;
@@ -131,43 +80,35 @@ class MaklumatPelayanan extends BaseController
   //         }
 
   //         if (move_uploaded_file($file, $uploadPath . $newImageName)) {
-  //           // Ambil data maklumat pelayanan yang ada
+
   //           $dataMaklumatPelayanan = $this->maklumatPelayananModel->first();
-
-  //           // Dekode link gambar yang sudah ada
-  //           $existingLinks = json_decode($dataMaklumatPelayanan['link_gambar'], true) ?? [];
-
-  //           // Tambahkan gambar baru ke dalam array
-  //           $existingLinks[] = $newImageName;
-
-  //           // Siapkan data untuk diupdate
   //           $dataToUpdateLinkGambar = [
   //             'id_maklumat_pelayanan' => $dataMaklumatPelayanan['id_maklumat_pelayanan'],
-  //             'link_gambar' => json_encode($existingLinks), // Simpan sebagai JSON
+  //             'link_gambar' => json_encode($newImageName),
   //             'content' => $dataMaklumatPelayanan['content'],
   //           ];
   //           $this->maklumatPelayananModel->updateLinkGambar($dataToUpdateLinkGambar);
 
-  //           // Kirim respons ke CKEditor
   //           $functionNumber = $_GET['CKEditorFuncNum'];
   //           $url = base_url("img/standarLayanan/maklumatPelayanan/" . $newImageName);
   //           $message = "";
   //           echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');</script>";
   //         } else {
   //           $functionNumber = $_GET['CKEditorFuncNum'];
-  //           $message = "Upload gambar gagal untuk $fileName.";
+  //           $message = "Upload gambar gagal.";
   //           echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
   //         }
   //       } else {
   //         $functionNumber = $_GET['CKEditorFuncNum'];
-  //         $message = "Ekstensi file tidak diperbolehkan untuk $fileName. Hanya file JPG, JPEG, PNG yang diizinkan.";
+  //         $message = "Ekstensi file tidak diperbolehkan. Hanya file JPG, JPEG, PNG yang diizinkan.";
   //         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
   //       }
+  //     } else {
+  //       error_log("No file uploaded.");
   //     }
-  //   } else {
-  //     error_log("Tidak ada file yang diupload.");
   //   }
   // }
+
 
   public function uploadImage()
   {
@@ -187,37 +128,48 @@ class MaklumatPelayanan extends BaseController
           mkdir($uploadPath, 0755, true);
         }
 
-        // Ambil data maklumat pelayanan yang ada
-        $dataMaklumatPelayanan = $this->maklumatPelayananModel->first();
-
-        // Ambil link gambar lama dari database
-        $oldImageName = json_decode($dataMaklumatPelayanan['link_gambar'], true);
-        $oldImagePath = $uploadPath . $oldImageName;
-
-        // Hapus gambar lama jika ada
-        if ($oldImageName && file_exists($oldImagePath)) {
-          unlink($oldImagePath);
-        }
-
         if (move_uploaded_file($file, $uploadPath . $newImageName)) {
-          // Perbarui data dengan link gambar baru
-          $dataToUpdateLinkGambar = [
-            'id_maklumat_pelayanan' => $dataMaklumatPelayanan['id_maklumat_pelayanan'],
-            'link_gambar' => json_encode($newImageName), // Simpan gambar baru
-            'content' => $dataMaklumatPelayanan['content'],
-          ];
-          $this->maklumatPelayananModel->updateLinkGambar($dataToUpdateLinkGambar);
+          // Ambil data maklumat pelayanan yang ada
+          $dataMaklumatPelayanan = $this->maklumatPelayananModel->first();
 
-          $functionNumber = $_GET['CKEditorFuncNum'];
-          $url = base_url("img/standarLayanan/maklumatPelayanan/" . $newImageName);
-          $message = "";
-          echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');</script>";
+          // Pastikan ID ada
+          if ($dataMaklumatPelayanan) {
+            // Siapkan data untuk diupdate
+            $dataToUpdateLinkGambar = [
+              'id_maklumat_pelayanan' => $dataMaklumatPelayanan['id_maklumat_pelayanan'],
+              'link_gambar' => json_encode(["img/standarLayanan/maklumatPelayanan/" . $newImageName]), // Ganti dengan gambar baru
+              'content' => $dataMaklumatPelayanan['content'], // Ambil content dari database
+            ];
+
+            // Panggil fungsi untuk update
+            $updateSuccess = $this->maklumatPelayananModel->updateLinkGambar($dataToUpdateLinkGambar);
+
+            // Cek apakah update berhasil
+            if ($updateSuccess) {
+              $functionNumber = $_GET['CKEditorFuncNum'];
+              $url = base_url("img/standarLayanan/maklumatPelayanan/" . $newImageName);
+              $message = "";
+              echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');</script>";
+            } else {
+              // Jika update gagal
+              $functionNumber = $_GET['CKEditorFuncNum'];
+              $message = "Gagal mengupdate link gambar.";
+              echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
+            }
+          } else {
+            // Jika tidak ada data yang diambil
+            $functionNumber = $_GET['CKEditorFuncNum'];
+            $message = "Data maklumat pelayanan tidak ditemukan.";
+            echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
+          }
         } else {
+          // Jika gagal upload
           $functionNumber = $_GET['CKEditorFuncNum'];
           $message = "Upload gambar gagal.";
           echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";
         }
       } else {
+        // Jika ekstensi tidak diizinkan
         $functionNumber = $_GET['CKEditorFuncNum'];
         $message = "Ekstensi file tidak diperbolehkan. Hanya file JPG, JPEG, PNG yang diizinkan.";
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($functionNumber, '', '$message');</script>";

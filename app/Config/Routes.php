@@ -24,7 +24,7 @@ $routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiay
 $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
 
 $routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::index');
-$routes->post('maklumatpelayanan/uploadImage', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
+$routes->post('/api/admin/maklumat-pelayanan/upload-image', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
 $routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexCreate');
 $routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1');
 $routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexDelete/$1');

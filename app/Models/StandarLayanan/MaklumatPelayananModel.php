@@ -79,11 +79,14 @@ class MaklumatPelayananModel extends Model
   public function updateLinkGambar($dataToUpdateLinkGambar)
   {
     if (isset($dataToUpdateLinkGambar['id_maklumat_pelayanan'])) {
-      $this->update($dataToUpdateLinkGambar['id_maklumat_pelayanan'], [
+      $updateResult = $this->update($dataToUpdateLinkGambar['id_maklumat_pelayanan'], [
         'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
         'content' => $dataToUpdateLinkGambar['content'],
       ]);
-      return true;
+      if (!$updateResult) {
+        log_message('error', 'Failed to update link_gambar: ' . json_encode($dataToUpdateLinkGambar));
+      }
+      return $updateResult;
     }
     return false;
   }
