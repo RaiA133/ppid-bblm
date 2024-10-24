@@ -167,7 +167,7 @@ class InformasiSetiapSaat extends BaseController
       'title' => 'New data added !',
     ]);
 
-    return redirect()->to(base_url() . 'admin/informasi-berkala/manage-judul');
+    return redirect()->to(base_url() . 'admin/informasi-setiap-saat/manage-judul');
   }
 
   public function infomasiSetiapSaatJudulUpdate($id_informasi_setiap_saat_judul)
@@ -191,7 +191,7 @@ class InformasiSetiapSaat extends BaseController
       'title' => $message,
     ]);
 
-    return redirect()->to(base_url() . 'admin/informasi-berkala/manage-judul');
+    return redirect()->to(base_url() . 'admin/informasi-setiap-saat/manage-judul');
   }
 
   public function infomasiSetiapSaatJudulDelete($id_informasi_setiap_saat_judul)
@@ -204,6 +204,6 @@ class InformasiSetiapSaat extends BaseController
       'title' => $message,
     ]);
 
-    return redirect()->to(base_url() . 'admin/informasi-berkala/manage-judul');
+    return redirect()->to(base_url() . 'admin/informasi-setiap-saat/manage-judul');
   }
 }
