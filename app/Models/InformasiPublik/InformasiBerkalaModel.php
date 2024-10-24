@@ -59,9 +59,11 @@ class InformasiBerkalaModel extends Model
   {
     $query = $this->table('informasi_berkala');
     $query->where('informasi_berkala.deleted_at', null);
-    $query->like('jenis_informasi', $keyword);
-    $query->orLike('informasi', $keyword);
-    $query->orLike('judul', $keyword);
+    $query->groupStart() 
+          ->like('jenis_informasi', $keyword)
+          ->orLike('informasi', $keyword)
+          ->orLike('judul', $keyword)
+          ->groupEnd(); 
     return $query;
   }
 
