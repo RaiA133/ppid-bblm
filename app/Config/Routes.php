@@ -5,28 +5,28 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Pages\User\Home::index');
-$routes->get('/profil', 'Pages\User\Profil::index');
-$routes->get('/regulasi', 'Pages\User\Regulasi::index');
-$routes->get('/hubungi-kami', 'Pages\User\HubungiKami::index');
+$routes->get('/', 'Pages\User\Home::index', ['filter' => 'role:user']);
+$routes->get('/profil', 'Pages\User\Profil::index', ['filter' => 'role:user']);
+$routes->get('/regulasi', 'Pages\User\Regulasi::index', ['filter' => 'role:user']);
+$routes->get('/hubungi-kami', 'Pages\User\HubungiKami::index', ['filter' => 'role:user']);
 
 // INFORMASI PUBLIK
-$routes->get('/informasi-berkala', 'Pages\User\InformasiPublik::InformasiBerkala');
-$routes->get('/informasi-setiap-saat', 'Pages\User\InformasiPublik::InformasiSetiapSaat');
-$routes->get('/informasi-serta-merta', 'Pages\User\InformasiPublik::InformasiSertaMerta');
+$routes->get('/informasi-berkala', 'Pages\User\InformasiPublik::InformasiBerkala', ['filter' => 'role:user']);
+$routes->get('/informasi-setiap-saat', 'Pages\User\InformasiPublik::InformasiSetiapSaat', ['filter' => 'role:user']);
+$routes->get('/informasi-serta-merta', 'Pages\User\InformasiPublik::InformasiSertaMerta', ['filter' => 'role:user']);
 
 // STANDAR LAYANAN
-$routes->get('/tata-cara-permohonan-informasi', 'Pages\User\StandarLayanan::TataCaraPermohonanInformasi');
-$routes->get('/mekanisme-keberatan', 'Pages\User\StandarLayanan::MekanismeKeberatan');
-$routes->get('/mekanisme-permohonan-penyelesaian-sengketa', 'Pages\User\StandarLayanan::MekanismePermohonanPenyelesaianSengketa');
-$routes->get('/maklumat-pelayanan', 'Pages\User\MaklumatPelayanan::MaklumatPelayanan');
-$routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiayaPelayanan');
-$routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan');
+$routes->get('/tata-cara-permohonan-informasi', 'Pages\User\StandarLayanan::TataCaraPermohonanInformasi', ['filter' => 'role:user']);
+$routes->get('/mekanisme-keberatan', 'Pages\User\StandarLayanan::MekanismeKeberatan', ['filter' => 'role:user']);
+$routes->get('/mekanisme-permohonan-penyelesaian-sengketa', 'Pages\User\StandarLayanan::MekanismePermohonanPenyelesaianSengketa', ['filter' => 'role:user']);
+$routes->get('/maklumat-pelayanan', 'Pages\User\MaklumatPelayanan::MaklumatPelayanan', ['filter' => 'role:user']);
+$routes->get('/standar-biaya-pelayanan', 'Pages\User\StandarLayanan::StandarBiayaPelayanan', ['filter' => 'role:user']);
+$routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan::WaktuPelayanan', ['filter' => 'role:user']);
 
 // LAYANAN INFORMASI
-$routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');
-$routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik');
-$routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::LaporanLayananInformasi');
+$routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi', ['filter' => 'role:user']);
+$routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik', ['filter' => 'role:user']);
+$routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::LaporanLayananInformasi', ['filter' => 'role:user']);
 
 // DASHBOARD ADMIN PANEL
 $routes->get('/admin', 'Pages\Admin\Dashboard::index', ['filter' => 'role:admin,superadmin']);

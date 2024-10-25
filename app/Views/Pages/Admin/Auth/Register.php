@@ -20,7 +20,7 @@
         </div>
 
         <div class="py-10 px-10">
-          <h2 class="text-2xl font-semibold mb-2 text-center"><?= lang('Auth.register') ?></h2>
+          <h2 class="text-2xl font-semibold mb-4 text-center"><?= lang('Auth.register') ?></h2>
 
           <?= view('Myth\Auth\Views\_message_block') ?>
 

@@ -26,7 +26,7 @@
             <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
           </div>
           <div class="py-24 px-10">
-            <h2 class="text-2xl mb-2 text-center"><?= lang('Auth.forgotPassword') ?></h2>
+            <h2 class="text-2xl mb-4 text-center"><?= lang('Auth.forgotPassword') ?></h2>
 
             <?= view('Myth\Auth\Views\_message_block') ?>
 

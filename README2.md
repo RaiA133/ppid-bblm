@@ -1,8 +1,9 @@
 1. ```npm install```
 2. ```composer install```
-3. configure .env
-4. ```npx tailwindcss -i ./public/src/input.css -o ./public/src/output.css --watch```
-5. to run type ```php spark serve``` or put this project to your htdocs and start xampp server
+3. Extract then Move & replace MythAuth to vendor
+4. configure .env
+5. ```npx tailwindcss -i ./public/src/input.css -o ./public/src/output.css --watch```
+6. to run type ```php spark serve``` or put this project to your htdocs and start xampp server
 
 
 
