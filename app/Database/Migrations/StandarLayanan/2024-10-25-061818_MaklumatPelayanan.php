@@ -15,11 +15,11 @@ class MaklumatPelayanan extends Migration
         'unsigned'       => true,
         'auto_increment' => true,
       ],
-      'link_gambar' => [
-        'type' => 'TEXT',
+      'link_gambar_content' => [
+        'type'              => 'TEXT',
       ],
-      'content' => [
-        'type' => 'LONGTEXT',
+      'content'          => [
+        'type'           => 'LONGTEXT',
       ],
       'created_at' => [
         'type' => 'DATETIME',

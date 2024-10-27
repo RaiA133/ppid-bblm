@@ -55,39 +55,13 @@ class MaklumatPelayananModel extends Model
   // Update data maklumat pelayanan | admin
   public function edit($id_maklumat_pelayanan, $dataToEdit = [])
   {
-
     $data = [
       'id_maklumat_pelayanan' => $id_maklumat_pelayanan,
-      'link_gambar' =>  $dataToEdit['link_gambar_edit'],
+      'link_gambar_content' =>  $dataToEdit['link_gambar_content_edit'],
       'content' =>  $dataToEdit['content_edit'],
     ];
     $query = $this->table('maklumat_pelayanan');
     $query->replace($data);
     return true;
-  }
-
-  // public function updateLinkGambar($dataToUpdateLinkGambar)
-  // {
-  //   $this->save([
-  //     'id_maklumat_pelayanan' => $dataToUpdateLinkGambar['id_maklumat_pelayanan'],
-  //     'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
-  //     'content' => $dataToUpdateLinkGambar['content'],
-  //   ]);
-  //   return true;
-  // }
-
-  public function updateLinkGambar($dataToUpdateLinkGambar)
-  {
-    if (isset($dataToUpdateLinkGambar['id_maklumat_pelayanan'])) {
-      $updateResult = $this->update($dataToUpdateLinkGambar['id_maklumat_pelayanan'], [
-        'link_gambar' => $dataToUpdateLinkGambar['link_gambar'],
-        'content' => $dataToUpdateLinkGambar['content'],
-      ]);
-      if (!$updateResult) {
-        log_message('error', 'Failed to update link_gambar: ' . json_encode($dataToUpdateLinkGambar));
-      }
-      return $updateResult;
-    }
-    return false;
   }
 }
