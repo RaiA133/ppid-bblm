@@ -50,10 +50,12 @@
 </section>
 
 <!-- CONTENT -->
-<?php if (!empty($results['content'])) : ?>
-  <?= $results['content'] ?>
-<?php else : ?>
-  <li class="text-xs">-</li>
-<?php endif; ?>
+<div data-scroll data-scroll-speed="2">
+  <?php if (!empty($results['content'])) : ?>
+    <?= $results['content'] ?>
+  <?php else : ?>
+    <li class="text-xs">-</li>
+  <?php endif; ?>
+</div>
 
 <?php $this->endSection(); ?>

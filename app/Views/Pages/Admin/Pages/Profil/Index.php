@@ -21,7 +21,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
     </div>
   </div>
   <script>
@@ -34,7 +34,7 @@
 <!-- Preview Data -->
 <section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg">
   <div class="collapse collapse-arrow join-item bg-base-100">
-    <input type="radio" name="my-accordion-4" />
+    <input type="checkbox" name="my-accordion-4" />
     <div class="collapse-title text-xl font-medium text-center">Preview</div>
     <div class="collapse-content px-0">
 
@@ -244,7 +244,7 @@
           <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
         <?php endif ?>
         <div class="relative border bg-neutral w-full">
-          <img id="img-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+          <img id="img-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= $results['link_gambar'] ?? 'img/profile/users/default-image.jpg' ?>" alt="">
           <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t from-black to-transparent"></div>
         </div>
 
