@@ -1,12 +1,23 @@
-1. ```npm install```
-2. ```composer install```
-3. Extract then Move & replace MythAuth to vendor
-4. configure .env
-5. ```npx tailwindcss -i ./public/src/input.css -o ./public/src/output.css --watch```
-6. to run type ```php spark serve``` or put this project to your htdocs and start xampp server
+```bash
+npm install
+```
+
+```bash
+composer install
+```
+
+Extract then Move & replace MythAuth to vendor <br>
+
+configure .env
+
+```bash
+npx tailwindcss -i ./public/src/input.css -o ./public/src/output.css --watch
+```
+
+to run type ```php spark serve``` or put this project to your htdocs and start xampp server
 
 
-
+<br><br>
 
 database
 - untuk membuat nama table menggunkan snake case
@@ -17,18 +28,55 @@ PHP Version > 8.x.x
 Change Tabesize in VsCode / textEditor to 2 space indent
 VsCode = setting > search 'tabsize' > change to 2
 
+<br><br>
+
+<b>Migrations : </b>
+
+```bash
+php spark migrate -all
+```
+
+<b>List Seeder Command (run all) : </b>
+
+```bash
+php spark db:seed RegulasiSeeder
+```
+```bash
+php spark db:seed ProfilSeeder
+```
+```bash
+php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaSeeder"
+```
+```bash
+php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaJudulSeeder"
+```
+```bash
+php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatSeeder"
+```
+```bash
+php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatJudulSeeder"
+```
+
+<br>
+
+<b>Myth Seeder : </b>
+
+```bash
+php spark db:seed "App\Database\Seeds\Myth\AuthGroups"
+```
+```bash
+php spark db:seed "App\Database\Seeds\Myth\Users"
+```
+```bash
+php spark db:seed "App\Database\Seeds\Myth\AuthPermissions"
+```
+```bash
+php spark db:seed "App\Database\Seeds\Myth\AuthGroupsPermissions"
+```
+```bash
+php spark db:seed "App\Database\Seeds\Myth\AuthGroupsUsers"
+```
 
 
-
-List Seeder Command (run all) : 
-
-```php spark db:seed RegulasiSeeder```
-```php spark db:seed ProfilSeeder```
-```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaSeeder"```
-```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaJudulSeeder"```
-```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatSeeder"```
-```php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatJudulSeeder"```
-
-
-
+<br><br><br>
 Link belajar Myth/Auth : https://www.youtube.com/watch?v=E5LC4v0_JVE

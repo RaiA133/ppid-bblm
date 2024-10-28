@@ -98,6 +98,7 @@ class ProfilSeeder extends Seeder
     </p>
   </div>
 </section>',
+        'link_gambar_content' => '["sejarah.png", "default-picture.jpg"]',
         'created_at'      => Time::now(),
         'updated_at'      => Time::now(),
       ],
