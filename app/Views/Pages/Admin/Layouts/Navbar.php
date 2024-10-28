@@ -30,7 +30,7 @@
       <div class="dropdown dropdown-end ml-4 mr-2">
         <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="<?= base_url('img/icon/') . user()->user_image ?>" alt="profile" />
+            <img src="<?= base_url('img/profile/users/') . user()->user_image ?>" alt="profile" />
           </div>
         </label>
         <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">

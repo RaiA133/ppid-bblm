@@ -87,7 +87,7 @@
 
                 <div class="w-fit" onclick="viewImageProfile<?= $result->userid ?>.showModal()">
                   <div class="w-10 rounded-full">
-                    <img src="<?= base_url('img/icon/') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
+                    <img src="<?= base_url('img/profile/users') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div class="w-full rounded-full">
-                      <img src="<?= base_url('img/icon/') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
+                      <img src="<?= base_url('img/profile/users') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
                     </div>
                   </div>
                 </dialog>
@@ -180,7 +180,7 @@
                         </label>
 
                         <div class="relative border bg-neutral w-full">
-                          <img id="img-edit-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= $result->user_image ?? 'img/icon/default-profile.jpg' ?>" alt="">
+                          <img id="img-edit-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= $result->user_image ?? 'img/profile/usersdefault-profile.jpg' ?>" alt="">
                           <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4"></div>
                         </div>
 
