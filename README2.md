@@ -6,8 +6,6 @@ npm install
 composer install
 ```
 
-Extract then Move & replace MythAuth to vendor <br>
-
 configure .env
 
 ```bash
@@ -19,9 +17,10 @@ to run type ```php spark serve``` or put this project to your htdocs and start x
 
 <br><br>
 
-database
+database : 
 - untuk membuat nama table menggunkan snake case
 - pembuatan id harus id_(nama table)
+
 
 PHP Version > 8.x.x
 
@@ -36,7 +35,7 @@ VsCode = setting > search 'tabsize' > change to 2
 php spark migrate -all
 ```
 
-<b>List Seeder Command (run all) : </b>
+<b>List Seeder Command (run all in sequence) : </b>
 
 ```bash
 php spark db:seed RegulasiSeeder
@@ -59,7 +58,7 @@ php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatJudulSe
 
 <br>
 
-<b>Myth Seeder : </b>
+<b>Myth Auth Seeder : </b>
 
 ```bash
 php spark db:seed "App\Database\Seeds\Myth\AuthGroups"

@@ -3,9 +3,9 @@
   <footer class="footer bg-base-200 text-base-content p-10" data-scroll>
     <nav>
       <h6 class="footer-title">Services</h6>
-      <a class="link link-hover">Informasi Berkala</a>
-      <a class="link link-hover">Informasi Setiap Saat</a>
-      <a class="link link-hover">Informasi Sertamerta</a>
+      <a class="link link-hover" href="<?= base_url() ?>informasi-berkala">Informasi Berkala</a>
+      <a class="link link-hover" href="<?= base_url() ?>informasi-setiap-saat">Informasi Setiap Saat</a>
+      <a class="link link-hover" href="<?= base_url() ?>informasi-serta-merta">Informasi Sertamerta</a>
     </nav>
     <nav>
       <h6 class="footer-title">Kontak Kami</h6>
