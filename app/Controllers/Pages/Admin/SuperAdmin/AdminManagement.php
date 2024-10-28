@@ -10,12 +10,14 @@ use Myth\Auth\Models\PermissionModel;
 
 class AdminManagement extends BaseController
 {
+  protected $db;
   protected $userModel;
   protected $groupModel;
   protected $loginModel;
   protected $permissionModel;
   public function __construct()
   {
+    $this->db = \Config\Database::connect();
     $this->userModel = new UserModel();
     $this->groupModel = new GroupModel();
     $this->loginModel = new LoginModel();
@@ -44,7 +46,7 @@ class AdminManagement extends BaseController
       ->paginate($dataCountOnePage, 'users');
     else {
       $results = $this->userModel
-        ->select('users.id as userid, username, email, fullname, user_image, auth_groups.name as role, created_at, updated_at, deleted_at')
+        ->select('users.id as userid, username, email, fullname, user_image, auth_groups_users.group_id as roleid, auth_groups.name as role, created_at, updated_at, deleted_at')
         ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
         ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
 
@@ -66,40 +68,49 @@ class AdminManagement extends BaseController
     return view('Pages/Admin/Pages/SuperAdmin/AdminManagement/Index', $data);
   }
 
-  public function indexUpdate($id_regulasi)
+  public function indexUpdate($id)
   {
+    
     $validationRule = [
-      'judul_edit' => [
+      'username_edit' => [
         'rules' => 'required',
-        'errors' => ['required' => '{field} harus diisi']
       ],
-      'link_drive_edit' => [
-        'rules' => 'required|regex_match[/^(https?:\/\/)?(www\.)?drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+$/]',
-        'errors' => [
-          'required' => 'Link Google Drive harus diisi',
-          'regex_match' => 'Link harus dalam format Google Drive yang valid.<br>Contoh : https://drive.google.com/file/d/1KefQXXB9d0uI3frBsdshvkcIUT6r1LE6D'
-        ]
+      'role_edit' => [
+        'rules' => 'required',
       ],
     ];
-    if (! $this->validate($validationRule)) {
-      return redirect()->back()->withInput()->with('openModalEditDataRegulasi' . $id_regulasi, true);
+
+    if (!$this->validate($validationRule)) {
+      return redirect()->back()->withInput()->with('openModalEditDataAdminManagement' . $id, true);
     }
 
     $dataToEdit = $this->request->getVar();
-    $result = $this->userModel->edit($id_regulasi, $dataToEdit);
 
-    if ($result) $message = 'Data updated !';
-    else $message = 'Updating Data Failed !';
-    session()->setFlashdata('Message', [
-      'title' => $message,
-    ]);
+    // Update username in users table
+    $this->userModel->set('username', $dataToEdit['username_edit']);
+    $this->userModel->where('id', $id);
+    $userUpdate = $this->userModel->update();
 
-    return redirect()->to(base_url() . 'admin/regulasi');
+    // Update group_id in pivot table (auth_groups_users)
+    $groupUpdate = $this->db->table('auth_groups_users')
+      ->where('user_id', $id)
+      ->set('group_id', $dataToEdit['role_edit'])
+      ->update();
+
+    if ($userUpdate && $groupUpdate) {
+      $message = 'Data updated!';
+    } else {
+      $message = 'Updating Data Failed!';
+    }
+
+    session()->setFlashdata('Message', ['title' => $message]);
+
+    return redirect()->to(base_url() . 'admin/admin-management');
   }
 
-  public function indexDelete($id_regulasi)
+  public function indexDelete($id)
   {
-    $result = $this->userModel->remove($id_regulasi);
+    $result = $this->userModel->delete($id);
 
     if ($result) $message = 'Data deleted !';
     else $message = 'Deleting Data Failed !';
@@ -107,6 +118,6 @@ class AdminManagement extends BaseController
       'title' => $message,
     ]);
 
-    return redirect()->to(base_url() . 'admin/regulasi');
+    return redirect()->to(base_url() . 'admin/admin-management');
   }
 }

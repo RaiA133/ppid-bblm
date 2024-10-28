@@ -27,9 +27,9 @@ class Profile extends BaseController
       'username_edit' => [
         'rules' => 'required|alpha_numeric_punct|min_length[3]|max_length[30]',
       ],
-      'email_edit' => [
-        'rules' => 'required|valid_email',
-      ],
+      // 'email_edit' => [
+      //   'rules' => 'required|valid_email',
+      // ],
       'user_image_edit' => [
         'label' => 'Profile Picture',
         'rules' => [

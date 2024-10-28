@@ -145,10 +145,13 @@
                     <div class="mb-4 flex gap-4">
 
                       <div class="w-8/12">
-                        <form action="<?= base_url() ?>/api/admin/admin-management/edit/<?= $result->userid ?>" method="post">
+                        <form action="<?= base_url() ?>api/admin/admin-management/edit/<?= $result->userid ?>" method="POST" enctype="multipart/form-data">
+                          
+                          <input type="hidden" name="user_image_edit_old" value="<?= user()->user_image ?>">
+
                           <label class="form-control w-full">
                             <div class="label"><span class="label-text">Email : </span></div>
-                            <input name="email_edit" type="email" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['email_edit'])) ? 'input-error' : '' ?>" value="<?= $result->email ?>" />
+                            <input name="email_edit" type="email" disabled placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['email_edit'])) ? 'input-error' : '' ?>" value="<?= $result->email ?>" />
                             <?php if (isset($errors['email_edit'])) : ?>
                               <div class="label"><span class="label-text-alt text-error"><?= $errors['email_edit'] ?></span></div>
                             <?php endif ?>
@@ -166,7 +169,7 @@
                             <div class="label"><span class="label-text">Role : </span></div>
                             <select name="role_edit" class="select select-bordered w-full <?= (isset($errors['role_edit'])) ? 'input-error' : '' ?>">
                               <?php foreach ($roleList as $list) : ?>
-                                <option value="<?= $list->id ?>" <?= ($list->id == $result->userid) ? 'selected' : '' ?>>
+                                <option value="<?= $list->id ?>" <?= ($list->id == $result->roleid) ? 'selected' : '' ?>>
                                   <?= $list->role ?>
                                 </option>
                               <?php endforeach; ?>
@@ -183,7 +186,7 @@
                       <div class="w-4/12">
                         <label class="form-control w-full">
                           <div class="label"><span class="label-text">Image : </span></div>
-                          <input id="img-edit-admin-profil" name="user_image_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['user_image_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminManagementProfil()" />
+                          <input id="img-edit-admin-profil" name="user_image_edit" disabled type="file" class="file-input file-input-bordered w-full <?= (isset($errors['user_image_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminManagementProfil()" />
                           <?php if (isset($errors['user_image_edit'])) : ?>
                             <div class="label"><span class="label-text-alt text-error"><?= $errors['user_image_edit'] ?></span></div>
                           <?php endif ?>

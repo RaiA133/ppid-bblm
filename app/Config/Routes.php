@@ -45,9 +45,9 @@ $routes->get('/admin/forgot-password', 'Pages\Admin\Auth::forgotPassword', ['fil
 $routes->get('/admin/blank-page', 'Pages\Admin\Error::blankPage', ['filter' => 'role:admin,superadmin']);
 $routes->get('/admin/404', 'Pages\Admin\Error::notFound404', ['filter' => 'role:admin,superadmin']);
 
-$routes->get('/admin/admin-management', 'Pages\Admin\SuperAdmin\AdminManagement::Index', ['filter' => 'role:superadmin']);
-$routes->get('/api/admin/admin-management/edit/:(num)', 'Pages\Admin\SuperAdmin\AdminManagement::IndexUpdate', ['filter' => 'role:superadmin']);
-$routes->get('/api/admin/admin-management/delete/:(num)', 'Pages\Admin\SuperAdmin\AdminManagement::IndexDelete', ['filter' => 'role:superadmin']);
+$routes->get('/admin/admin-management', 'Pages\Admin\SuperAdmin\AdminManagement::index', ['filter' => 'role:superadmin']);
+$routes->post('/api/admin/admin-management/edit/(:num)', 'Pages\Admin\SuperAdmin\AdminManagement::indexUpdate/$1', ['filter' => 'role:superadmin']);
+$routes->delete('/api/admin/admin-management/delete/(:num)', 'Pages\Admin\SuperAdmin\AdminManagement::indexDelete/$1', ['filter' => 'role:superadmin']);
 
 $routes->get('/admin/regulasi', 'Pages\Admin\Regulasi::index', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/regulasi/create', 'Pages\Admin\Regulasi::indexCreate', ['filter' => 'role:admin,superadmin']);
