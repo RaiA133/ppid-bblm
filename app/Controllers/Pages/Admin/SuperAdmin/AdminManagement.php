@@ -29,6 +29,8 @@ class AdminManagement extends BaseController
     $dataCountOnePage = 10;
 
     $keyword = $this->request->getVar('keyword');
+    $role = $this->request->getVar('role');
+
     if ($keyword) $results = $this->userModel
       ->select('users.id as userid, username, email, fullname, user_image, name, created_at, updated_at, deleted_at')
       ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
@@ -40,15 +42,21 @@ class AdminManagement extends BaseController
       ->groupEnd()
       ->orderBy('users.id', 'DESC')
       ->paginate($dataCountOnePage, 'users');
-    else $results = $this->userModel
-      ->select('users.id as userid, username, email, fullname, user_image, name as role, created_at, updated_at, deleted_at')
-      ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-      ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
-      ->orderBy('users.id', 'DESC')
-      ->paginate($dataCountOnePage, 'users');
+    else {
+      $results = $this->userModel
+        ->select('users.id as userid, username, email, fullname, user_image, auth_groups.name as role, created_at, updated_at, deleted_at')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+
+      if ($role) $results = $results->where('auth_groups.name', $role);
+      $results = $results
+        ->orderBy('users.id', 'DESC')
+        ->paginate($dataCountOnePage, 'users');
+    }
 
     $data = [
       'title' => 'Admin Management',
+      'request' => $this->request,
       'pager' => $this->userModel->pager,
       'currentPage' => $currentPage,
       'dataCountOnePage' => $dataCountOnePage,

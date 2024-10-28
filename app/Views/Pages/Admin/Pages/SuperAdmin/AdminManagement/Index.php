@@ -20,7 +20,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
     </div>
   </div>
   <script>
@@ -42,6 +42,16 @@
 
       <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
+          <!-- Filter Data By Judul -->
+          <form action="" method="GET" class="w-fit">
+            <select name="role" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
+              <option selected value="">All</option>
+              <?php foreach ($roleList as $list) : ?>
+                <option value="<?= $list->role ?>" <?= ($request->getVar('role') == $list->role) ? 'selected' : '' ?>><?= $list->role ?></option>
+              <?php endforeach; ?>
+            </select>
+          </form>
+
           <form action="" method="GET" class="w-full">
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
