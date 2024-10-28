@@ -27,6 +27,11 @@ $routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\StandarLayanan\MaklumatPe
 $routes->post('/api/admin/maklumat-pelayanan/upload-image', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
 $routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexCreate');
 $routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1');
+$routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexDelete/$1');
+
+$routes->get('/admin/waktu-pelayanan', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::index');
+$routes->post('/api/admin/waktu-pelayanan/upload-image', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
+$routes->post('/api/admin/waktu-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1');
 
 // LAYANAN INFORMASI
 $routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');

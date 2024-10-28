@@ -38,21 +38,98 @@
     <div class="collapse-content px-0">
 
 
-      <div class="h-[900px] overflow-auto mb-5" dir="rtl">
+      <div class="h-[1000px] overflow-auto mb-5" dir="rtl">
         <div class="flex justify-center w-full" data-scroll>
           <div class="h-full w-fit shadow-xl rounded-xl">
-            <h2 class="text-2xl font-semibold mb-4 text-center">Maklumat Pelayanan</h2>
           </div>
         </div>
 
 
-        <!-- CONTENT -->
-        <section dir="ltr">
-          <?php if (!empty($results['content'])) : ?>
-            <?= $results['content'] ?>
-          <?php else : ?>
-            <li class="text-xs">-</li>
-          <?php endif; ?>
+
+        <!-- Image & Content Section -->
+        <section class="flex flex-col md:flex-row items-center justify-center mx-10 my-20 h-full" id="fixed-elements" data-scroll>
+          <?php if (!empty($results['content']) && !empty($results['link_gambar'])) : ?>
+            <!-- Jika Gambar dan Konten Tersedia, Tampilkan Kanan-Kiri -->
+
+            <!-- Konten di Samping Gambar -->
+            <div class="flex justify-center w-full " data-scroll>
+              <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+                <div class="w-full max-w-2xl shadow-xl rounded-xl">
+                  <div class="w-full p-4 bg-white rounded-xl">
+                    <?= $results['content'] ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-center w-full">
+              <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+                <div data-scroll-offset class="w-full max-w-2xl mt-20 shadow-xl rounded-xl">
+                  <h2 class="text-2xl font-semibold mb-4 text-center">Maklumat Pelayanan</h2>
+                  <div class="w-full p-4 bg-white rounded-xl">
+                    <img src="<?= base_url() ?>img/standarLayanan/maklumatPelayanan/<?= $results['link_gambar'] ?>" alt="Maklumat Pelayanan" class="w-full h-full object-cover">
+                  </div>
+                </div>
+              </div>
+
+            <?php else : ?>
+              <!-- Jika Hanya Gambar atau Hanya Konten -->
+              <div class="flex justify-center w-full mb-10">
+                <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
+                  <h2 class="text-2xl font-semibold mb-4">Maklumat Pelayanan</h2>
+                  <div class="w-full p-4 bg-white rounded-xl">
+                    <?php if (!empty($results['link_gambar'])) : ?>
+                      <!-- Tampilkan Gambar di Tengah -->
+                      <img src="<?= base_url() ?>img/standarLayanan/maklumatPelayanan/<?= $results['link_gambar'] ?>" alt="Maklumat Pelayanan" class="w-full h-full object-cover">
+                    <?php endif; ?>
+
+                    <?php if (!empty($results['content'])) : ?>
+                      <!-- Tampilkan Konten di Tengah -->
+                      <div class="mt-4">
+                        <?= $results['content'] ?>
+                      </div>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            <?php endif; ?>
+
+            <script>
+              let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+              let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
+
+              function adjustAttributes() {
+                const div = document.getElementById('customHeight');
+
+                if (window.innerWidth <= 768 && !isAttributesRemoved) {
+                  console.log('hapus');
+                  div.removeAttribute('data-scroll');
+                  div.removeAttribute('data-scroll-sticky');
+                  div.removeAttribute('data-scroll-target');
+                  isAttributesRemoved = true;
+                  isAttributesAdded = false;
+                } else if (window.innerWidth > 768 && !isAttributesAdded) {
+                  console.log('ada');
+                  div.setAttribute('data-scroll', '');
+                  div.setAttribute('data-scroll-sticky', '');
+                  div.setAttribute('data-scroll-target', '#fixed-elements');
+                  isAttributesAdded = true;
+                  isAttributesRemoved = false;
+                }
+              }
+
+              // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+              window.addEventListener('resize', (event) => {
+                adjustAttributes();
+              });
+
+              // Menggunakan onresize untuk menangani perubahan ukuran jendela
+              window.onresize = (event) => {
+                adjustAttributes();
+              };
+
+              adjustAttributes();
+            </script>
         </section>
       </div>
     </div>
@@ -70,14 +147,38 @@
       <button type="submit" class="btn w-32 btn-neutral">Edit</button>
     </div>
 
+    <div class="divider"></div>
+
     <!-- Form -->
     <div class="flex flex-col xl:flex-row gap-4">
 
+      <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
       <input type="hidden" id="link_gambar_content_edit" name="link_gambar_content_edit" value="<?= $results['link_gambar_content'] ?>">
 
       <div class="w-full">
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
+          <div class="w-full sm:w-4/12">
+            <input id="img-input-admin-maklumatpelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminMaklumatPelayanan()" />
+            <?php if (isset($errors['link_gambar_edit'])) : ?>
+              <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
+            <?php endif ?>
+            <div class="relative border bg-neutral w-full">
+              <img id="img-preview-admin-maklumatpelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/maklumatPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+              <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t from-black to-transparent"></div>
+            </div>
 
+            <script>
+              function previewImgAdminMaklumatPelayanan() {
+                const cover = document.querySelector('#img-input-admin-maklumatpelayanan');
+                const imgPreview = document.querySelector('#img-preview-admin-maklumatpelayanan');
+                const fileCover = new FileReader();
+                fileCover.readAsDataURL(cover.files[0]);
+                fileCover.onload = function(e) {
+                  imgPreview.src = e.target.result;
+                }
+              }
+            </script>
+          </div>
         </div>
 
         <div class="divider"></div>

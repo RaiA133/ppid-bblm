@@ -57,6 +57,7 @@ class MaklumatPelayananModel extends Model
   {
     $data = [
       'id_maklumat_pelayanan' => $id_maklumat_pelayanan,
+      'link_gambar' =>  $dataToEdit['link_gambar_edit'],
       'link_gambar_content' =>  $dataToEdit['link_gambar_content_edit'],
       'content' =>  $dataToEdit['content_edit'],
     ];
