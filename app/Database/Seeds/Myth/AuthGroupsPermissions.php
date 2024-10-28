@@ -18,8 +18,20 @@ class AuthGroupsPermissions extends Seeder
         'permission_id'  => 2,
       ],
       [
+        'group_id'       => 1,
+        'permission_id'  => 3,
+      ],
+      [
         'group_id'       => 2,
         'permission_id'  => 2,
+      ],
+      [
+        'group_id'       => 2,
+        'permission_id'  => 3,
+      ],
+      [
+        'group_id'       => 3,
+        'permission_id'  => 3,
       ],
     ];
 

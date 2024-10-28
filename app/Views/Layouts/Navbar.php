@@ -2,6 +2,32 @@
 <div class="navbar bg-base-100">
   <div class="navbar-start">
 
+    <?php if (logged_in()) : ?>
+      <div class="z-10">
+        <!-- <div class="indicator">
+      <span class="indicator-item indicator-bottom badge badge-primary">new</span> -->
+        <div class="dropdown dropdown-start bg-base-100">
+          <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img src="<?= base_url('img/profile/users/') . user()->user_image ?>" alt="profile" />
+            </div>
+          </label>
+          <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
+            <?php if (in_groups('superadmin') || in_groups('admin')) : ?>
+            <li class="justify-between">
+              <a href="<?= base_url() ?>admin/profile">
+                Profile Settings
+              </a>
+            </li>
+            <?php endif; ?>
+            <li><a href="<?= base_url('logout') ?>">Logout</a></li>
+          </ul>
+        </div>
+        <!-- </div> -->
+
+      </div>
+    <?php endif; ?>
+
     <button class="btn btn-ghost btn-circle z-50">
       <div class="indicator">
         <svg
@@ -126,7 +152,7 @@
             <div class="ml-4 my-2" style="font-size: 10px">007</div>
             <li class="text-2xl"><a href="<?= base_url() ?>hubungi-kami">Hubungi Kami</a></li>
           </div>
-          
+
         </ul>
       </div>
 

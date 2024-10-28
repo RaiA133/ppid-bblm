@@ -35,7 +35,7 @@ class Users extends Seeder
         'username'          => 'asd',
         'user_image'        => 'default-profile.jpg',
         'password_hash'          => '$2y$10$zgAMa7.E4p/Mhn9d.8vOI.DhngV8s.b3nJwSC/MFO3dSASfBEceHi', // rahasia12345
-        'active'            => 0,
+        'active'            => 1,
         'force_pass_reset'  => 0,
         'created_at'        => Time::now(),
         'updated_at'        => Time::now(),

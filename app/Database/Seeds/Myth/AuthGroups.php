@@ -17,6 +17,10 @@ class AuthGroups extends Seeder
         'name'       => 'admin',
         'description'  => 'Site Administrator',
       ],
+      [
+        'name'       => 'user',
+        'description'  => 'Site User / Request to be Admin',
+      ],
     ];
 
     $this->db->table('auth_groups')->insertBatch($data);

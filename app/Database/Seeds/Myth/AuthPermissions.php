@@ -17,6 +17,10 @@ class AuthPermissions extends Seeder
         'name'       => 'manage-site',
         'description'  => 'Manage Site Data',
       ],
+      [
+        'name'       => 'site-viewer',
+        'description'  => 'View Site Data',
+      ],
     ];
 
     $this->db->table('auth_permissions')->insertBatch($data);
