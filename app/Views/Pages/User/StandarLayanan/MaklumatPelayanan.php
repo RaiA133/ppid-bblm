@@ -3,7 +3,7 @@
 <?php $this->section('content') ?>
 
 <!-- CONTENT -->
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center p-10">
   <section class="flex justify-center w-full" data-scroll>
     <div class="h-full w-fit shadow-xl rounded-xl">
       <h2 class="text-2xl font-semibold mb-4 text-center">Maklumat Pelayanan</h2>
