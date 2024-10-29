@@ -31,78 +31,204 @@
 <?php endif; ?>
 
 <!-- Preview Data -->
-<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg">
+<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg flex justify-center">
   <div class="collapse collapse-arrow join-item bg-base-100">
     <input type="radio" name="my-accordion-4" />
     <div class="collapse-title text-xl font-medium text-center">Preview</div>
     <div class="collapse-content px-0">
 
-      <section class="flex flex-col items-center">
+
+      <div class="h-[1000px] overflow-auto mb-5" dir="rtl">
         <div class="flex justify-center w-full" data-scroll>
           <div class="h-full w-fit shadow-xl rounded-xl">
-            <h2 class="text-2xl font-semibold mb-4 text-center">Maklumat Pelayanan</h2>
+            <!-- Image & Content Section -->
+            <section class="flex flex-col md:flex-row items-center justify-center mx-10 my-20 h-full" id="fixed-elements" data-scroll>
+              <?php if (!empty($results['content']) && !empty($results['link_gambar'])) : ?>
+                <!-- Jika Gambar dan Konten Tersedia, Tampilkan Kanan-Kiri -->
+
+                <!-- Konten di Samping Gambar -->
+                <div class="flex justify-center w-full " data-scroll>
+                  <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+                    <div class="w-full max-w-2xl shadow-xl rounded-xl">
+                      <div class="w-full p-4 bg-white rounded-xl">
+                        <?= $results['content'] ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex justify-center w-full">
+                  <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+                    <div data-scroll-offset class="w-full max-w-2xl mt-20 shadow-xl rounded-xl">
+                      <h2 class="text-2xl font-semibold mb-4 text-center">Waktu Pelayanan</h2>
+                      <div class="w-full p-4 bg-white rounded-xl">
+                        <img src="<?= base_url() ?>img/standarLayanan/waktuPelayanan/<?= $results['link_gambar'] ?>" alt="Waktu Pelayanan" class="w-full h-full object-cover">
+                      </div>
+                    </div>
+                  </div>
+
+                <?php else : ?>
+                  <!-- Jika Hanya Gambar atau Hanya Konten -->
+                  <div class="flex justify-center w-full mb-10">
+                    <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
+                      <h2 class="text-2xl font-semibold mb-4">Waktu Pelayanan</h2>
+                      <div class="w-full p-4 bg-white rounded-xl">
+                        <?php if (!empty($results['link_gambar'])) : ?>
+                          <!-- Tampilkan Gambar di Tengah -->
+                          <img src="<?= base_url() ?>img/standarLayanan/waktuPelayanan/<?= $results['link_gambar'] ?>" alt="Waktu Pelayanan" class="w-full h-full object-cover">
+                        <?php endif; ?>
+
+                        <?php if (!empty($results['content'])) : ?>
+                          <!-- Tampilkan Konten di Tengah -->
+                          <div class="mt-4">
+                            <?= $results['content'] ?>
+                          </div>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
+                <script>
+                  let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+                  let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
+
+                  function adjustAttributes() {
+                    const div = document.getElementById('customHeight');
+
+                    if (window.innerWidth <= 768 && !isAttributesRemoved) {
+                      console.log('hapus');
+                      div.removeAttribute('data-scroll');
+                      div.removeAttribute('data-scroll-sticky');
+                      div.removeAttribute('data-scroll-target');
+                      isAttributesRemoved = true;
+                      isAttributesAdded = false;
+                    } else if (window.innerWidth > 768 && !isAttributesAdded) {
+                      console.log('ada');
+                      div.setAttribute('data-scroll', '');
+                      div.setAttribute('data-scroll-sticky', '');
+                      div.setAttribute('data-scroll-target', '#fixed-elements');
+                      isAttributesAdded = true;
+                      isAttributesRemoved = false;
+                    }
+                  }
+
+                  // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+                  window.addEventListener('resize', (event) => {
+                    adjustAttributes();
+                  });
+
+                  // Menggunakan onresize untuk menangani perubahan ukuran jendela
+                  window.onresize = (event) => {
+                    adjustAttributes();
+                  };
+
+                  adjustAttributes();
+                </script>
+            </section>
           </div>
         </div>
-      </section>
-
-
-      <!-- CONTENT -->
-      <section dir="ltr">
-        <?php if (!empty($results['content'])) : ?>
-          <?= $results['content'] ?>
-        <?php else : ?>
-          <li class="text-xs">-</li>
-        <?php endif; ?>
-      </section>
+      </div>
+    </div>
 </section>
+
 
 <!-- Edit Data Maklumat Pelayanan -->
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
-  <form action="<?= base_url() ?>/api/admin/maklumat-pelayanan/edit/<?= $results['id_maklumat_pelayanan'] ?>" method="POST" enctype="multipart/form-data">
+  <form id="myForm" action="<?= base_url() ?>/api/admin/waktu-pelayanan/edit/<?= $results['id_waktu_pelayanan'] ?>" method="POST" enctype="multipart/form-data">
 
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full">
-      <div class="text-xl font-bold">Edit Data Maklumat Pelayanan</div>
+      <div class="text-xl font-bold">Edit Data Waktu Pelayanan</div>
       <button type="submit" class="btn w-32 btn-neutral">Edit</button>
     </div>
+
+    <div class="divider"></div>
 
     <!-- Form -->
     <div class="flex flex-col xl:flex-row gap-4">
 
-      <input type="hidden" name="link_gambar_edit" value="<?= $results['link_gambar'] ?>">
+      <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
+      <input type="hidden" id="link_gambar_content_edit" name="link_gambar_content_edit" value="<?= $results['link_gambar_content'] ?>">
 
       <div class="w-full">
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
+          <div class="w-full sm:w-4/12">
+            <input id="img-input-admin-waktupelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminWaktuPelayanan()" />
+            <?php if (isset($errors['link_gambar_edit'])) : ?>
+              <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
+            <?php endif ?>
+            <div class="relative border bg-neutral w-full">
+              <img id="img-preview-admin-waktupelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/waktuPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+              <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t"></div>
+            </div>
 
+            <script>
+              function previewImgAdminWaktuPelayanan() {
+                const cover = document.querySelector('#img-input-admin-waktupelayanan');
+                const imgPreview = document.querySelector('#img-preview-admin-waktupelayanan');
+                const fileCover = new FileReader();
+                fileCover.readAsDataURL(cover.files[0]);
+                fileCover.onload = function(e) {
+                  imgPreview.src = e.target.result;
+                }
+              }
+            </script>
+          </div>
         </div>
 
         <div class="divider"></div>
 
         <!-- Content -->
-        <div class="flex gap-3 justify-center mb-3">
-          <textarea class="textarea textarea-bordered w-full" placeholder="MaklumatPelayanan" name="content_edit" id="content">
-                  <?= $results['content'] ?? '-' ?>
-                </textarea>
+        <div class="flex gap-3 justify-center mb-3 flex-col">
           <?php if (isset($errors['content_edit'])) : ?>
-            <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit'] ?></span></div>
+            <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
+          <?php endif ?>
+          <textarea class="textarea textarea-bordered w-full" placeholder="WaktuPelayanan" name="content_edit" id="content">
+          <?php if (!empty($results['content'])) : ?>
+            <?= $results['content'] ?>
+          <?php else : ?>
+            <li class="text-xs">-</li>
           <?php endif; ?>
+          </textarea>
+
+
+          <!-- CKEditor Script -->
+          <script>
+            // Replace the textarea with CKEditor
+            CKEDITOR.config.width = '100%'
+            CKEDITOR.config.height = '900'
+            CKEDITOR.replace('content', {
+              extraPlugins: 'uploadimage',
+              uploadUrl: '<?= base_url('/api/admin/waktu-pelayanan/upload-image') ?>',
+              filebrowserUploadUrl: '<?= base_url('/api/admin/waktu-pelayanan/upload-image') ?>',
+              filebrowserUploadMethod: "form",
+            });
+
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+              let editorContent = CKEDITOR.instances['content'].getData();
+              const tempDiv = document.createElement('div');
+              tempDiv.innerHTML = editorContent;
+
+              let images = tempDiv.querySelectorAll('img');
+              let imageSrcArray = [];
+
+              images.forEach(function(image) {
+                let fullPath = image.src;
+                let fileName = fullPath.split('/').pop();
+                imageSrcArray.push(fileName);
+              });
+
+              let imageSrcJson = JSON.stringify(imageSrcArray);
+
+              document.getElementById('link_gambar_content_edit').value = imageSrcJson;
+              CKEDITOR.instances['content'].updateElement();
+            });
+          </script>
         </div>
-
-        <!-- CKEditor Script -->
-        <script>
-          CKEDITOR.replace('content', {
-            extraPlugins: 'uploadimage',
-            uploadUrl: '<?= base_url('/api/admin/maklumat-pelayanan/upload-image') ?>',
-            filebrowserUploadUrl: '<?= base_url('/api/admin/maklumat-pelayanan/upload-image') ?>',
-            filebrowserUploadMethod: "form",
-            width: '100%',
-            height: 600,
-          });
-        </script>
   </form>
-</section>
-</div>
 
+</section>
 
 <?php $this->endSection(); ?>

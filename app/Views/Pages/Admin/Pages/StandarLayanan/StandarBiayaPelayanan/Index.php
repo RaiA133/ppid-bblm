@@ -41,7 +41,6 @@
       <div class="h-[1000px] overflow-auto mb-5">
         <div class="flex justify-center w-full" data-scroll>
           <div class="h-full w-fit shadow-xl rounded-xl">
-
             <!-- Image & Content Section -->
             <section class="flex flex-col md:flex-row items-center justify-center mx-10 my-20 h-full" id="fixed-elements" data-scroll>
               <?php if (!empty($results['content']) && !empty($results['link_gambar'])) : ?>
@@ -50,9 +49,9 @@
                 <div class="flex justify-center w-full">
                   <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                     <div data-scroll-offset class="w-full max-w-2xl mt-20 shadow-xl rounded-xl">
-                      <h2 class="text-2xl font-semibold mb-4 text-center">Maklumat Pelayanan</h2>
+                      <h2 class="text-2xl font-semibold mb-4 text-center">Standar Biaya Pelayanan</h2>
                       <div class="w-full p-4 bg-white rounded-xl">
-                        <img src="<?= base_url() ?>img/standarLayanan/maklumatPelayanan/<?= $results['link_gambar'] ?>" alt="Maklumat Pelayanan" class="w-full h-full object-cover">
+                        <img src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>" alt="Standar Biaya Pelayanan" class="w-full h-full object-cover">
                       </div>
                     </div>
                   </div>
@@ -68,67 +67,78 @@
                     </div>
                   </div>
 
-                <?php else : ?>
-                  <!-- Jika Hanya Gambar atau Hanya Konten -->
-                  <div class="flex justify-center w-full mb-10">
-                    <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
-                      <h2 class="text-2xl font-semibold mb-4">Maklumat Pelayanan</h2>
-                      <div class="w-full p-4 bg-white rounded-xl">
-                        <?php if (!empty($results['link_gambar'])) : ?>
-                          <!-- Tampilkan Gambar di Tengah -->
-                          <img src="<?= base_url() ?>img/standarLayanan/maklumatPelayanan/<?= $results['link_gambar'] ?>" alt="Maklumat Pelayanan" class="w-full h-full object-cover">
-                        <?php endif; ?>
-
-                        <?php if (!empty($results['content'])) : ?>
-                          <!-- Tampilkan Konten di Tengah -->
-                          <div class="mt-4">
-                            <?= $results['content'] ?>
-                          </div>
-                        <?php endif; ?>
+                  <div class="flex justify-center w-full">
+                    <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+                      <div data-scroll-offset class="w-full max-w-2xl mt-20 shadow-xl rounded-xl">
+                        <h2 class="text-2xl font-semibold mb-4 text-center">Standar Biaya Pelayanan</h2>
+                        <div class="w-full p-4 bg-white rounded-xl">
+                          <img src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>" alt="Standar Biaya Pelayanan" class="w-full h-full object-cover">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                <?php endif; ?>
 
-                <script>
-                  let isAttributesRemoved = false; // Status apakah atribut telah dihapus
-                  let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
+                  <?php else : ?>
+                    <!-- Jika Hanya Gambar atau Hanya Konten -->
+                    <div class="flex justify-center w-full mb-10">
+                      <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
+                        <h2 class="text-2xl font-semibold mb-4">Standar Biaya Pelayanan</h2>
+                        <div class="w-full p-4 bg-white rounded-xl">
+                          <?php if (!empty($results['link_gambar'])) : ?>
+                            <!-- Tampilkan Gambar di Tengah -->
+                            <img src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>" alt="Standar Biaya Pelayanan" class="w-full h-full object-cover">
+                          <?php endif; ?>
 
-                  function adjustAttributes() {
-                    const div = document.getElementById('customHeight');
+                          <?php if (!empty($results['content'])) : ?>
+                            <!-- Tampilkan Konten di Tengah -->
+                            <div class="mt-4">
+                              <?= $results['content'] ?>
+                            </div>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endif; ?>
 
-                    if (window.innerWidth <= 768 && !isAttributesRemoved) {
-                      console.log('hapus');
-                      div.removeAttribute('data-scroll');
-                      div.removeAttribute('data-scroll-sticky');
-                      div.removeAttribute('data-scroll-target');
-                      isAttributesRemoved = true;
-                      isAttributesAdded = false;
-                    } else if (window.innerWidth > 768 && !isAttributesAdded) {
-                      console.log('ada');
-                      div.setAttribute('data-scroll', '');
-                      div.setAttribute('data-scroll-sticky', '');
-                      div.setAttribute('data-scroll-target', '#fixed-elements');
-                      isAttributesAdded = true;
-                      isAttributesRemoved = false;
+                  <script>
+                    let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+                    let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
+
+                    function adjustAttributes() {
+                      const div = document.getElementById('customHeight');
+
+                      if (window.innerWidth <= 768 && !isAttributesRemoved) {
+                        console.log('hapus');
+                        div.removeAttribute('data-scroll');
+                        div.removeAttribute('data-scroll-sticky');
+                        div.removeAttribute('data-scroll-target');
+                        isAttributesRemoved = true;
+                        isAttributesAdded = false;
+                      } else if (window.innerWidth > 768 && !isAttributesAdded) {
+                        console.log('ada');
+                        div.setAttribute('data-scroll', '');
+                        div.setAttribute('data-scroll-sticky', '');
+                        div.setAttribute('data-scroll-target', '#fixed-elements');
+                        isAttributesAdded = true;
+                        isAttributesRemoved = false;
+                      }
                     }
-                  }
 
-                  // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
-                  window.addEventListener('resize', (event) => {
+                    // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+                    window.addEventListener('resize', (event) => {
+                      adjustAttributes();
+                    });
+
+                    // Menggunakan onresize untuk menangani perubahan ukuran jendela
+                    window.onresize = (event) => {
+                      adjustAttributes();
+                    };
+
                     adjustAttributes();
-                  });
-
-                  // Menggunakan onresize untuk menangani perubahan ukuran jendela
-                  window.onresize = (event) => {
-                    adjustAttributes();
-                  };
-
-                  adjustAttributes();
-                </script>
+                  </script>
             </section>
           </div>
         </div>
+
 
       </div>
     </div>
@@ -138,11 +148,11 @@
 <!-- Edit Data Maklumat Pelayanan -->
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
-  <form id="myForm" action="<?= base_url() ?>/api/admin/maklumat-pelayanan/edit/<?= $results['id_maklumat_pelayanan'] ?>" method="POST" enctype="multipart/form-data">
+  <form id="myForm" action="<?= base_url() ?>/api/admin/standar-biaya-pelayanan/edit/<?= $results['id_standar_biaya_pelayanan'] ?>" method="POST" enctype="multipart/form-data">
 
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full">
-      <div class="text-xl font-bold">Edit Data Maklumat Pelayanan</div>
+      <div class="text-xl font-bold">Edit Data Standar Biaya Pelayanan</div>
       <button type="submit" class="btn w-32 btn-neutral">Edit</button>
     </div>
 
@@ -157,19 +167,19 @@
       <div class="w-full">
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
           <div class="w-full sm:w-4/12">
-            <input id="img-input-admin-maklumatpelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminMaklumatPelayanan()" />
+            <input id="img-input-admin-standarbiayapelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminStandarBiayaPelayanan()" />
             <?php if (isset($errors['link_gambar_edit'])) : ?>
               <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
             <?php endif ?>
             <div class="relative border bg-neutral w-full">
-              <img id="img-preview-admin-maklumatpelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/maklumatPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+              <img id="img-preview-admin-standarbiayapelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
               <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t"></div>
             </div>
 
             <script>
-              function previewImgAdminMaklumatPelayanan() {
-                const cover = document.querySelector('#img-input-admin-maklumatpelayanan');
-                const imgPreview = document.querySelector('#img-preview-admin-maklumatpelayanan');
+              function previewImgAdminStandarBiayaPelayanan() {
+                const cover = document.querySelector('#img-input-admin-standarbiayapelayanan');
+                const imgPreview = document.querySelector('#img-preview-admin-standarbiayapelayanan');
                 const fileCover = new FileReader();
                 fileCover.readAsDataURL(cover.files[0]);
                 fileCover.onload = function(e) {
@@ -187,7 +197,7 @@
           <?php if (isset($errors['content_edit'])) : ?>
             <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
           <?php endif ?>
-          <textarea class="textarea textarea-bordered w-full" placeholder="MaklumatPelayanan" name="content_edit" id="content">
+          <textarea class="textarea textarea-bordered w-full" placeholder="StandarBiayaPelayanan" name="content_edit" id="content">
           <?php if (!empty($results['content'])) : ?>
             <?= $results['content'] ?>
           <?php else : ?>
@@ -203,8 +213,8 @@
             CKEDITOR.config.height = '900'
             CKEDITOR.replace('content', {
               extraPlugins: 'uploadimage',
-              uploadUrl: '<?= base_url('/api/admin/maklumat-pelayanan/upload-image') ?>',
-              filebrowserUploadUrl: '<?= base_url('/api/admin/maklumat-pelayanan/upload-image') ?>',
+              uploadUrl: '<?= base_url('/api/admin/standar-biaya-pelayanan/upload-image') ?>',
+              filebrowserUploadUrl: '<?= base_url('/api/admin/standar-biaya-pelayanan/upload-image') ?>',
               filebrowserUploadMethod: "form",
             });
 

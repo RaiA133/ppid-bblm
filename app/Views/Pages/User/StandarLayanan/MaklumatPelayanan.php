@@ -21,7 +21,7 @@
       <div class="flex justify-center w-full md:w-1/2 mb-10 p-2" data-scroll>
         <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
           <div class="w-full max-w-2xl shadow-xl rounded-xl">
-            <div class="w-full p-4 bg-white rounded-xl">
+            <div class="w-full py-20 px-10 bg-white rounded-xl">
               <?= $results['content'] ?>
             </div>
           </div>

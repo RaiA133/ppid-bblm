@@ -3,37 +3,32 @@
 namespace App\Controllers\Pages\Admin\StandarLayanan;
 
 use App\Controllers\BaseController;
-use App\Models\StandarLayanan\MaklumatPelayananModel;
+use App\Models\StandarLayanan\WaktuPelayananModel;
 
-class MaklumatPelayanan extends BaseController
+class WaktuPelayanan extends BaseController
 {
-  protected $maklumatPelayananModel;
+  protected $waktuPelayananModel;
   public function __construct()
   {
-    $this->maklumatPelayananModel = new MaklumatPelayananModel();
+    $this->waktuPelayananModel = new WaktuPelayananModel();
   }
 
   public function index()
   {
-    $results = $this->maklumatPelayananModel->findAll();
+    $results = $this->waktuPelayananModel->findAll();
     $data = [
-      'title' => 'Halaman Maklumat Pelayanan',
+      'title' => 'Halaman Waktu Pelayanan',
       'results' => $results[0] ?? null,
     ];
-    return view('Pages/Admin/Pages/StandarLayanan/MaklumatPelayanan/Index', $data);
+    return view('Pages/Admin/Pages/StandarLayanan/WaktuPelayanan/Index', $data);
   }
 
-  public function indexUpdate($id_maklumat_pelayanan)
+  public function indexUpdate($id_waktu_pelayanan)
   {
     $validationRule = [
-      // 'content_edit' => [
-      //   'rules' => 'required',
-      //   'errors' => ['required' => 'Konten harus diisi'],
-      // ],
       'link_gambar_edit' => [
         'label' => 'Link Gambar',
         'rules' => [
-          // 'uploaded[link_gambar_edit]',
           'max_size[link_gambar_edit,5120]',
           'is_image[link_gambar_edit]',
           'mime_in[link_gambar_edit,image/jpg,image/jpeg,image/png]',
@@ -47,14 +42,15 @@ class MaklumatPelayanan extends BaseController
     $fileGambar = $this->request->getFile('link_gambar_edit');
     $namaGambarLama = $this->request->getVar('link_gambar_edit_old');
 
-    $namaLinkGambarContentLama = $this->maklumatPelayananModel->find($id_maklumat_pelayanan)['link_gambar_content'];
+    $namaLinkGambarContentLama = $this->waktuPelayananModel->find($id_waktu_pelayanan)['link_gambar_content'];
+    // d('namaLinkGambarContentLama', $namaLinkGambarContentLama);
     $oldImagesArray = json_decode($namaLinkGambarContentLama, true); // Convert JSON to array
     $newImagesArray = json_decode($this->request->getVar('link_gambar_content_edit'), true);
 
     if ($oldImagesArray) {
       $imagesToUnlink = array_diff($oldImagesArray, $newImagesArray);
       foreach ($imagesToUnlink as $imageToDelete) {
-        $fileLamaPath = 'img/standarLayanan/maklumatPelayanan/' . $imageToDelete;
+        $fileLamaPath = 'img/standarLayanan/waktuPelayanan/' . $imageToDelete;
         if (file_exists($fileLamaPath)) {
           if (!unlink($fileLamaPath)) {
             session()->setFlashdata('Message', [
@@ -75,8 +71,8 @@ class MaklumatPelayanan extends BaseController
       $namaGambar = $namaGambarLama; // Use the old image if no new one is uploaded
     } else {
       $namaGambar = $fileGambar->getRandomName();
-      $fileGambar->move('img/standarLayanan/maklumatPelayanan/', $namaGambar); // Move the new file to the server
-      $fileLamaPath = 'img/standarLayanan/maklumatPelayanan/' . $namaGambarLama;
+      $fileGambar->move('img/standarLayanan/waktuPelayanan/', $namaGambar); // Move the new file to the server
+      $fileLamaPath = 'img/standarLayanan/waktuPelayanan/' . $namaGambarLama;
       if (file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
@@ -89,7 +85,7 @@ class MaklumatPelayanan extends BaseController
     $dataToEdit['link_gambar_content'] = json_encode($newImagesArray);
     unset($dataToEdit['link_gambar_edit_old']); // Remove the old image field
 
-    $result = $this->maklumatPelayananModel->edit($id_maklumat_pelayanan, $dataToEdit);
+    $result = $this->waktuPelayananModel->edit($id_waktu_pelayanan, $dataToEdit);
 
     if ($result) {
       $message = 'Data updated !';
@@ -98,7 +94,7 @@ class MaklumatPelayanan extends BaseController
     }
     session()->setFlashdata('Message', ['title' => $message]);
 
-    return redirect()->to(base_url() . 'admin/maklumat-pelayanan');
+    return redirect()->to(base_url() . 'admin/waktu-pelayanan');
   }
 
 
@@ -107,11 +103,11 @@ class MaklumatPelayanan extends BaseController
   {
     $fileGambar = $this->request->getFile('upload');
     $namaGambar = $fileGambar->getRandomName();
-    $fileGambar->move('img/standarLayanan/maklumatPelayanan/', $namaGambar);
+    $fileGambar->move('img/standarLayanan/waktuPelayanan/', $namaGambar);
     if ($fileGambar) {
       $message = "";
       $functionNumber = $_GET['CKEditorFuncNum'];
-      $url = base_url("img/standarLayanan/maklumatPelayanan/" . $namaGambar);
+      $url = base_url("img/standarLayanan/waktuPelayanan/" . $namaGambar);
       echo "
       <script type='text/javascript'>
         window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Pages\User;
+namespace App\Controllers\Pages\User\StandarLayanan;
 
 use App\Controllers\BaseController;
 use App\Models\StandarLayanan\MaklumatPelayananModel;

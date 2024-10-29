@@ -1216,6 +1216,31 @@ html {
   min-height: fit-content;
 }
 
+.diff-resizer {
+  position: relative;
+  top: 50%;
+  z-index: 1;
+  height: 3rem;
+  width: 25rem;
+  min-width: 1rem;
+  max-width: calc(100cqi - 1rem);
+  resize: horizontal;
+  overflow: hidden;
+  opacity: 0;
+  transform-origin: 100% 100%;
+  scale: 4;
+  translate: 1.5rem -1.5rem;
+  clip-path: inset(calc(100% - 0.75rem) 0 0 calc(100% - 0.75rem));
+}
+
+.diff-resizer,
+.diff-item-1,
+.diff-item-2 {
+  position: relative;
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
 .divider {
   display: flex;
   flex-direction: row;
@@ -4185,11 +4210,6 @@ html:has(.drawer-toggle:checked) {
   margin-bottom: auto;
 }
 
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -4274,6 +4294,10 @@ html:has(.drawer-toggle:checked) {
   margin-top: 0.5rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -4300,10 +4324,6 @@ html:has(.drawer-toggle:checked) {
 
 .mt-\[80px\] {
   margin-top: 80px;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .block {
@@ -4382,6 +4402,10 @@ html:has(.drawer-toggle:checked) {
   height: 24rem;
 }
 
+.h-\[1000px\] {
+  height: 1000px;
+}
+
 .h-\[900px\] {
   height: 900px;
 }
@@ -4401,22 +4425,6 @@ html:has(.drawer-toggle:checked) {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[400px\] {
-  height: 400px;
-}
-
-.h-\[500px\] {
-  height: 500px;
-}
-
-.h-\[1000px\] {
-  height: 1000px;
-}
-
-.h-\[800px\] {
-  height: 800px;
 }
 
 .min-h-full {
@@ -4502,10 +4510,6 @@ html:has(.drawer-toggle:checked) {
 
 .w-full {
   width: 100%;
-}
-
-.w-screen {
-  width: 100vw;
 }
 
 .min-w-24 {
@@ -4847,13 +4851,13 @@ html:has(.drawer-toggle:checked) {
   background-color: rgb(28 25 23 / var(--tw-bg-opacity));
 }
 
-.bg-white\/30 {
-  background-color: rgb(255 255 255 / 0.3);
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-white\/30 {
+  background-color: rgb(255 255 255 / 0.3);
 }
 
 .bg-opacity-50 {
@@ -5038,10 +5042,6 @@ html:has(.drawer-toggle:checked) {
   padding-top: 1px;
 }
 
-.pb-10 {
-  padding-bottom: 2.5rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -5056,6 +5056,10 @@ html:has(.drawer-toggle:checked) {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-start {
+  text-align: start;
 }
 
 .text-2xl {
@@ -5638,6 +5642,10 @@ html:has(.drawer-toggle:checked) {
     margin-top: 0px;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
   .md\:w-4\/12 {
     width: 33.333333%;
   }
@@ -5648,10 +5656,6 @@ html:has(.drawer-toggle:checked) {
 
   .md\:w-auto {
     width: auto;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:grid-cols-2 {
@@ -5668,10 +5672,6 @@ html:has(.drawer-toggle:checked) {
 
   .md\:flex-row {
     flex-direction: row;
-  }
-
-  .md\:flex-col {
-    flex-direction: column;
   }
 
   .md\:justify-end {
