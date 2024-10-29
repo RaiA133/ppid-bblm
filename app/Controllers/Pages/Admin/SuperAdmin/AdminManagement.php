@@ -97,7 +97,7 @@ class AdminManagement extends BaseController
       ->set('group_id', $dataToEdit['role_edit'])
       ->update();
 
-    if ($userUpdate && $groupUpdate) {
+    if ($userUpdate || $groupUpdate) {
       $message = 'Data updated!';
     } else {
       $message = 'Updating Data Failed!';

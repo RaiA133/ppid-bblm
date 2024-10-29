@@ -95,26 +95,32 @@
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
 
+                <?php
+              $userImagePath = 'img/userProfilePics/' . $result->user_image;
+              if (file_exists(FCPATH . $userImagePath) && !empty($result->user_image)) $profileImage = base_url($userImagePath);
+              else $profileImage = base_url('img/icon/default-profile.jpg');
+              ?>
+ 
+
                 <div class="w-fit" onclick="viewImageProfile<?= $result->userid ?>.showModal()">
                   <div class="w-10 rounded-full">
-                    <img src="<?= base_url('img/profile/users/') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
+                    <img src="<?= $profileImage ?>" alt="profile" />
                   </div>
                 </div>
 
-                <!-- Open the modal using ID.showModal() method -->
                 <dialog id="viewImageProfile<?= $result->userid ?>" class="modal">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div class="w-full rounded-full">
-                      <img src="<?= base_url('img/profile/users/') . $result->user_image ?? 'default-profile.jpg' ?>" alt="profile" />
+                      <img src="<?= $profileImage ?>" alt="profile" />
                     </div>
                   </div>
                 </dialog>
 
               </td>
-              <td class="p-2 sm:p-4 w-fit text-center">
+              <td class=" p-2 sm:p-4 w-fit text-center">
                 <div class="w-fit">
                   <p class=""><?= $result->role ? $result->role : '-' ?></p>
                 </div>
@@ -146,7 +152,7 @@
 
                       <div class="w-8/12">
                         <form action="<?= base_url() ?>api/admin/admin-management/edit/<?= $result->userid ?>" method="POST" enctype="multipart/form-data">
-                          
+
                           <input type="hidden" name="user_image_edit_old" value="<?= user()->user_image ?>">
 
                           <label class="form-control w-full">

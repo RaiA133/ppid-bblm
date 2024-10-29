@@ -4037,6 +4037,14 @@ html:has(.drawer-toggle:checked) {
   left: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
+.left-10 {
+  left: 2.5rem;
+}
+
 .left-4 {
   left: 1rem;
 }
@@ -4071,6 +4079,34 @@ html:has(.drawer-toggle:checked) {
 
 .top-3 {
   top: 0.75rem;
+}
+
+.left-20 {
+  left: 5rem;
+}
+
+.left-12 {
+  left: 3rem;
+}
+
+.left-1 {
+  left: 0.25rem;
+}
+
+.left-9 {
+  left: 2.25rem;
+}
+
+.left-6 {
+  left: 1.5rem;
+}
+
+.left-7 {
+  left: 1.75rem;
+}
+
+.left-8 {
+  left: 2rem;
 }
 
 .z-0 {
@@ -4548,6 +4584,11 @@ html:has(.drawer-toggle:checked) {
 
 .table-auto {
   table-layout: auto;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-translate-y-1\/2 {
