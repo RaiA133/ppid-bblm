@@ -98,6 +98,7 @@ class AdminManagement extends BaseController
       ->update();
 
     if ($userUpdate || $groupUpdate) {
+      cache()->clean(); // hapus cache
       $message = 'Data updated!';
     } else {
       $message = 'Updating Data Failed!';

@@ -39,6 +39,7 @@ $routes->get('/admin/integration', 'Pages\Admin\Integration::index', ['filter' =
 
 $routes->get('/admin/profile', 'Pages\Admin\Profile::index', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/profil/user/edit/(:num)', 'Pages\Admin\Profile::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/profil/user/delete-profile/(:num)', 'Pages\Admin\Profile::profilePicDelete/$1', ['filter' => 'role:admin,superadmin']);
 
 $routes->get('/admin/login', 'Pages\Admin\Auth::login', ['filter' => 'role:admin,superadmin']);
 $routes->get('/admin/forgot-password', 'Pages\Admin\Auth::forgotPassword', ['filter' => 'role:admin,superadmin']);

@@ -127,7 +127,7 @@
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>/api/admin/regulasi/edit/<?= $result['id_regulasi'] ?>" method="post">
+                      <form action="<?= base_url() ?>api/admin/regulasi/edit/<?= $result['id_regulasi'] ?>" method="post">
                         <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
                         <?php if (isset($errors['judul_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>

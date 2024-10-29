@@ -50,13 +50,13 @@ class Profile extends BaseController
     $namaGambarLama = $this->request->getVar('user_image_edit_old');
 
     if ($fileGambar->getError() == 4) {
-      $namaGambar = $namaGambarLama; // Use the old image if no new one is uploaded
+      $namaGambar = $namaGambarLama;
     } else {
       $namaGambar = $fileGambar->getRandomName();
-      $fileGambar->move('img/userProfilePics/', $namaGambar); // Move the new file to the server
+      $fileGambar->move('img/userProfilePics/', $namaGambar);
       $fileLamaPath = 'img/userProfilePics/' . $namaGambarLama;
-      if (file_exists($fileLamaPath)) {
-        unlink($fileLamaPath); // Unlink the old image file
+      if (is_file($fileLamaPath) && file_exists($fileLamaPath)) {
+        unlink($fileLamaPath);
       }
     }
 
@@ -69,7 +69,7 @@ class Profile extends BaseController
     $changeUserImage = user()->user_image !== $dataToEdit['user_image_edit'];
 
     $user = $this->userModel->find($id);
-    
+
     if ($user) {
       $message = '';
       if ($changeUsername || $changeEmail || $changeUserImage) { // proses update hanya boleh terjadi jika ada minimal 1 perubahan data
@@ -84,5 +84,19 @@ class Profile extends BaseController
     }
 
     return redirect()->back()->with('error', 'User not found.');
+  }
+
+  public function profilePicDelete($id)
+  {
+    $imageToDelete = user()->user_image;
+    if ($imageToDelete && file_exists('img/userProfilePics/' . $imageToDelete)) {
+      if (unlink('img/userProfilePics/' . $imageToDelete)) {
+        $this->userModel->set('user_image', 'default-profile.jpg')->where('id', $id)->update();
+        $message = 'Profile picture deleted successfully!';
+      } else $message = 'Failed to delete profile picture!';
+    } else $message = 'Image not found / already deleted!';
+
+    session()->setFlashdata('Message', ['title' => $message]);
+    return redirect()->to(base_url() . 'admin/profile');
   }
 }

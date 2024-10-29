@@ -26,7 +26,7 @@
             <div class="py-24 px-10">
               <h2 class="text-2xl font-semibold mb-4 text-center"><?= lang('Auth.loginTitle') ?></h2>
 
-              <?= view('Myth\Auth\Views\_message_block') ?>
+              <div class="flex flex-col"><?= view('Myth\Auth\Views\_message_block') ?></div>
 
               <form action="<?= url_to('login') ?>" method="post">
                 <?= csrf_field() ?>

@@ -36,6 +36,7 @@
     <div class="bg-base-100 shadow-md rounded-lg p-6">
 
       <form action="<?= base_url() ?>api/admin/profil/user/edit/<?= user_id() ?>" method="POST" enctype="multipart/form-data">
+        <?= csrf_field() ?>
 
         <input type="hidden" name="user_image_edit_old" value="<?= user()->user_image ?>">
 
@@ -74,18 +75,19 @@
               <?php endif ?>
             </div>
           </div>
-          <div class="flex justify-center">
+          <div class="flex flex-col justify-center">
             <div class="w-64 rounded-full">
               <?php
-                $userImagePath = 'img/userProfilePics/' . user()->user_image;
-                if (file_exists(FCPATH . $userImagePath) && !empty(user()->user_image)) $profileImage = base_url($userImagePath);
-                else $profileImage = base_url('img/icon/default-profile.jpg');
+              $userImagePath = 'img/userProfilePics/' . user()->user_image;
+              if (file_exists(FCPATH . $userImagePath) && !empty(user()->user_image)) $profileImage = base_url($userImagePath);
+              else $profileImage = base_url('img/icon/default-profile.jpg');
               ?>
               <img
                 src="<?= $profileImage ?>"
                 alt="profile"
                 id="img-preview-admin-profile" />
             </div>
+
           </div>
 
           <script>
@@ -104,6 +106,14 @@
 
       </form>
 
+      <div class="w-full text-end">
+        <form action="<?= base_url() ?>api/admin/profil/user/delete-profile/<?= user()->id ?>" method="POST" class="inline">
+          <?= csrf_field() ?>
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete Picture</button>
+        </form>
+      </div>
+      
     </div>
   </section>
 
