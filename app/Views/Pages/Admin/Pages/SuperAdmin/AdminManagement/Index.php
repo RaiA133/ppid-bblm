@@ -222,11 +222,13 @@
                 <!-- END Modal untuk Edit Data admin-management -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/admin-management/delete/<?= $result->userid ?>" method="POST" class="inline">
-                  <?= csrf_field() ?>
-                  <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>
-                </form>
+                <?php if ($result->role !== 'superadmin') : ?>  <!-- Tombol Delete User hanya bisa digunakan untuk role user & admin -->
+                  <form action="<?= base_url() ?>api/admin/admin-management/delete/<?= $result->userid ?>" method="POST" class="inline">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>
+                  </form>
+                <?php endif; ?>
                 <!-- END HTTP METHOD SPOOFING for Delete-->
 
               </td>
