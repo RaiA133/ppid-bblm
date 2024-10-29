@@ -1,6 +1,6 @@
 <div class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
 
-  <div class="flex-1">
+  <div class="flex-1 ">
 
     <div class="drawer-content flex flex-col items-center justify-center">
       <!-- Tombol Sidebar Admin -->
@@ -20,7 +20,7 @@
       </label>
     </div>
 
-    <h1 class="text-2xl font-semibold ml-2"><?= $title ?></h1>
+    <h1 class="text-md sm:text-xl md:text-2xl font-semibold ml-2"><?= $title ?></h1>
   </div>
 
   <div class="flex-none ">

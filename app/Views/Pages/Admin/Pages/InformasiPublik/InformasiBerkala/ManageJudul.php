@@ -51,8 +51,10 @@
         </div>
 
         <!-- Add Data -->
-        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataInformasiBerkalaJudul.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/InformasiPublik/InformasiBerkala/ManageJudulCreate') ?> 
+        <div class="w-[277px] sm:w-fit">
+          <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-full" onclick="addDataInformasiBerkalaJudul.showModal()">Add Data</button>
+          <?= $this->include('Pages/Admin/Pages/InformasiPublik/InformasiBerkala/ManageJudulCreate') ?> 
+        </div>
       </div>
 
     </div>

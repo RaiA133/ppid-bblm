@@ -35,13 +35,12 @@
   <section class="container py-5 px-2 sm:px-5 md:px-7 mx-auto">
     <!-- Title and Button -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-      <h1 class="text-lg sm:text-2xl font-semibold ml-1 sm:ml-4">Regulasi</h1>
-
+      
       <div class="my-2 flex justify-center w-full sm:w-fit">
         <?= $pager->links('regulasi', 'daisyui_pagination'); ?>
       </div>
 
-      <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">
+      <div class="flex items-center gap-1 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
           <form action="" method="GET" class="w-full">
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
@@ -49,8 +48,10 @@
           </form>
         </div>
 
-        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataRegulasi.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/Regulasi/Create') ?> <!-- Load Modal Add Data -->
+        <div class="w-[277px] sm:w-fit">
+          <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-full" onclick="addDataRegulasi.showModal()">Add Data</button>
+          <?= $this->include('Pages/Admin/Pages/Regulasi/Create') ?> <!-- Load Modal Add Data -->
+        </div>
       </div>
 
     </div>

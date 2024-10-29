@@ -42,23 +42,23 @@
 
       <div class="flex items-center gap-2 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
-          <!-- Filter Data By Judul -->
-          <form action="" method="GET" class="w-fit">
-            <select name="role" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
+
+          <form action="" method="GET" class="flex flex-col sm:flex-row w-full sm:w-fit"> <!-- Filter Data & Search-->
+            <select name="role" class="select select-bordered select-sm w-full mb-1 sm:mb-0 sm:w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($roleList as $list) : ?>
                 <option value="<?= $list->role ?>" <?= ($request->getVar('role') == $list->role) ? 'selected' : '' ?>><?= $list->role ?></option>
               <?php endforeach; ?>
             </select>
+            <div>
+            <input name="keyword" class="input input-bordered input-sm join-item text-xs" placeholder="Search" />
+            <button type="submit" class="btn btn-sm btn-neutral join-item text-xs">Search</button>
+            </div>
           </form>
 
-          <form action="" method="GET" class="w-full">
-            <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
-            <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
-          </form>
         </div>
-
       </div>
+
 
     </div>
 
@@ -96,11 +96,11 @@
               <td class="p-2 sm:p-4 w-fit text-center">
 
                 <?php
-              $userImagePath = 'img/userProfilePics/' . $result->user_image;
-              if (file_exists(FCPATH . $userImagePath) && !empty($result->user_image)) $profileImage = base_url($userImagePath);
-              else $profileImage = base_url('img/icon/default-profile.jpg');
-              ?>
- 
+                $userImagePath = 'img/userProfilePics/' . $result->user_image;
+                if (file_exists(FCPATH . $userImagePath) && !empty($result->user_image)) $profileImage = base_url($userImagePath);
+                else $profileImage = base_url('img/icon/default-profile.jpg');
+                ?>
+
 
                 <div class="w-fit" onclick="viewImageProfile<?= $result->userid ?>.showModal()">
                   <div class="w-10 rounded-full">
@@ -227,7 +227,7 @@
                 <!-- END Modal untuk Edit Data admin-management -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <?php if ($result->role !== 'superadmin') : ?>  <!-- Tombol Delete User hanya bisa digunakan untuk role user & admin -->
+                <?php if ($result->role !== 'superadmin') : ?> <!-- Tombol Delete User hanya bisa digunakan untuk role user & admin -->
                   <form action="<?= base_url() ?>api/admin/admin-management/delete/<?= $result->userid ?>" method="POST" class="inline">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="DELETE">
