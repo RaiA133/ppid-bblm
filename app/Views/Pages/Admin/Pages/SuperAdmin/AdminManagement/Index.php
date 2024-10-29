@@ -122,7 +122,12 @@
               </td>
               <td class=" p-2 sm:p-4 w-fit text-center">
                 <div class="w-fit">
-                  <p class=""><?= $result->role ? $result->role : '-' ?></p>
+                  <?php
+                  $badgeRole = '';
+                  if ($result->role == 'superadmin') $badgeRole = 'badge-neutral';
+                  else if ($result->role == 'admin') $badgeRole = 'badge-accent';
+                  ?>
+                  <p class="badge <?= $badgeRole ?>"><?= $result->role ? $result->role : '-' ?></p>
                 </div>
               </td>
               <td class="p-2 sm:p-4 min-w-24"><?= $result->created_at ? $result->created_at : 'none' ?></td>

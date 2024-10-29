@@ -30,6 +30,7 @@ class AdminManagement extends BaseController
     $roleList = $this->groupModel->select('*, name as role')->findAll();
     $dataCountOnePage = 10;
 
+    $loggedUser = user();
     $keyword = $this->request->getVar('keyword');
     $role = $this->request->getVar('role');
 
@@ -38,6 +39,7 @@ class AdminManagement extends BaseController
       ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
       ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
       ->where('users.deleted_at', null)
+      ->where('users.id !=', $loggedUser->id) // Filter user yang sedang login
       ->groupStart()
       ->like('username', $keyword)
       ->orLike('email', $keyword)
@@ -48,7 +50,9 @@ class AdminManagement extends BaseController
       $results = $this->userModel
         ->select('users.id as userid, username, email, fullname, user_image, auth_groups_users.group_id as roleid, auth_groups.name as role, created_at, updated_at, deleted_at')
         ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('users.id !=', $loggedUser->id); // Filter user yang sedang login
 
       if ($role) $results = $results->where('auth_groups.name', $role);
       $results = $results
@@ -70,7 +74,7 @@ class AdminManagement extends BaseController
 
   public function indexUpdate($id)
   {
-    
+
     $validationRule = [
       'username_edit' => [
         'rules' => 'required',

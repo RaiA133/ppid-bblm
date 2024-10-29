@@ -79,3 +79,9 @@ php spark db:seed "App\Database\Seeds\Myth\AuthGroupsUsers"
 
 <br><br><br>
 Link belajar Myth/Auth : https://www.youtube.com/watch?v=E5LC4v0_JVE
+
+
+
+<br><br><br>
+catatan sebelum go production : 
+- ubah seeder user ke proper seeder dan seeder lainnya
