@@ -25,11 +25,13 @@ class Profile extends BaseController
   {
     $validationRule = [
       'username_edit' => [
-        'rules' => 'required|alpha_numeric_punct|min_length[3]|max_length[30]',
+        'label' => 'Username',
+        'rules' => 'required|alpha_numeric_punct|min_length[3]|max_length[30]|is_unique[users.username,id,' . $id . ']',
       ],
-      // 'email_edit' => [
-      //   'rules' => 'required|valid_email',
-      // ],
+      'email_edit' => [
+        'label' => 'Email',
+        'rules' => 'required|valid_email|is_unique[users.email,id,' . $id . ']',
+      ],
       'user_image_edit' => [
         'label' => 'Profile Picture',
         'rules' => [
@@ -51,32 +53,36 @@ class Profile extends BaseController
       $namaGambar = $namaGambarLama; // Use the old image if no new one is uploaded
     } else {
       $namaGambar = $fileGambar->getRandomName();
-      $fileGambar->move('img/profile/users/', $namaGambar); // Move the new file to the server
-      $fileLamaPath = 'img/profile/users/' . $namaGambarLama;
+      $fileGambar->move('img/userProfilePics/', $namaGambar); // Move the new file to the server
+      $fileLamaPath = 'img/userProfilePics/' . $namaGambarLama;
       if (file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
     }
 
-    // Prepare data to be updated
     $dataToEdit = $this->request->getVar();
-    $dataToEdit['user_image_edit'] = $namaGambar; // Update new image name
-    
-    // Perform the query directly in the controller
-    // $this->userModel->set('email', $dataToEdit['email_edit']);
-    $this->userModel->set('username', $dataToEdit['username_edit']);
-    $this->userModel->set('user_image', $dataToEdit['user_image_edit']);
-    $this->userModel->where('id', $id);
-    $query = $this->userModel->update();
+    $dataToEdit['user_image_edit'] = $namaGambar;
 
-    if ($query) {
-      $message = 'Data updated!';
-    } else {
-      $message = 'Updating Data Failed!';
+    // cek apa ada perubahan
+    $changeUsername = user()->username !== $dataToEdit['username_edit'];
+    $changeEmail = user()->email !== $dataToEdit['email_edit'];
+    $changeUserImage = user()->user_image !== $dataToEdit['user_image_edit'];
+
+    $user = $this->userModel->find($id);
+    
+    if ($user) {
+      $message = '';
+      if ($changeUsername || $changeEmail || $changeUserImage) { // proses update hanya boleh terjadi jika ada minimal 1 perubahan data
+        $user->username = $dataToEdit['username_edit'];
+        $user->email = $dataToEdit['email_edit'];
+        $user->user_image = $dataToEdit['user_image_edit'];
+        if ($this->userModel->save($user)) $message = 'Data updated!';
+        else $message = 'Updating Data Failed!';
+      } else $message = 'No data to update';
+      session()->setFlashdata('Message', ['title' => $message]);
+      return redirect()->to(base_url() . 'admin/profile');
     }
 
-    session()->setFlashdata('Message', ['title' => $message]);
-
-    return redirect()->to(base_url() . 'admin/profile');
+    return redirect()->back()->with('error', 'User not found.');
   }
 }

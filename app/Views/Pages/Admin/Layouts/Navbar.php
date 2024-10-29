@@ -27,21 +27,28 @@
     <span><?= user()->username ?></span>
     <!-- <div class="indicator">
       <span class="indicator-item indicator-bottom badge badge-primary">new</span> -->
-      <div class="dropdown dropdown-end ml-4 mr-2">
-        <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
-          <div class="w-10 rounded-full">
-            <img src="<?= base_url('img/profile/users/') . user()->user_image ?>" alt="profile" />
-          </div>
-        </label>
-        <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
-          <li class="justify-between">
-            <a href="<?= base_url() ?>admin/profile">
-              Profile Settings
-            </a>
-          </li>
-          <li><a href="<?= base_url('logout') ?>">Logout</a></li>
-        </ul>
-      </div>
+    <div class="dropdown dropdown-end ml-4 mr-2">
+      <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <?php
+          $userImagePath = 'img/userProfilePics/' . user()->user_image;
+          if (file_exists(FCPATH . $userImagePath) && !empty(user()->user_image)) $profileImage = base_url($userImagePath);
+          else $profileImage = base_url('img/icon/default-profile.jpg');
+          ?>
+          <img
+            src="<?= $profileImage ?>"
+            alt="profile" />
+        </div>
+      </label>
+      <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
+        <li class="justify-between">
+          <a href="<?= base_url() ?>admin/profile">
+            Profile Settings
+          </a>
+        </li>
+        <li><a href="<?= base_url('logout') ?>">Logout</a></li>
+      </ul>
+    </div>
     <!-- </div> -->
 
   </div>

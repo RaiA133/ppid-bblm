@@ -7,7 +7,7 @@
 
 <!-- Flash Data / Notif -->
 <?php if ($flashDataCreated) : ?>
-  <div class="z-10 absolute top-3 w-fit left-4 transition-opacity duration-[5000ms] opacity-100" id="alertBox">
+  <div class="z-10 absolute top-2 w-fit left-8 transition-opacity duration-[5000ms] opacity-100" id="alertBox">
     <div role="alert" class="alert shadow-lg bg-base-100 pr-6">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@
             </div>
             <div class="mb-3">
               <label class="block text-sm font-medium text-base-700 mb-1">Email :</label>
-              <input type="Email" disabled name="email_edit" class="input input-bordered w-full rounded-md <?= (isset($errors['email_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= user()->email ?>" />
+              <input type="Email" name="email_edit" class="input input-bordered w-full rounded-md <?= (isset($errors['email_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= user()->email ?>" />
               <?php if (isset($errors['email_edit'])) : ?>
                 <div class="label"><span class="label-text-alt text-error"><?= $errors['email_edit'] ?></span></div>
               <?php endif ?>
@@ -76,7 +76,15 @@
           </div>
           <div class="flex justify-center">
             <div class="w-64 rounded-full">
-              <img src="<?= base_url('img/profile/users/') . user()->user_image ?>" alt="profile" id="img-preview-admin-profile" />
+              <?php
+                $userImagePath = 'img/userProfilePics/' . user()->user_image;
+                if (file_exists(FCPATH . $userImagePath) && !empty(user()->user_image)) $profileImage = base_url($userImagePath);
+                else $profileImage = base_url('img/icon/default-profile.jpg');
+              ?>
+              <img
+                src="<?= $profileImage ?>"
+                alt="profile"
+                id="img-preview-admin-profile" />
             </div>
           </div>
 

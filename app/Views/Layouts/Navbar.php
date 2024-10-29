@@ -9,16 +9,24 @@
         <div class="dropdown dropdown-start bg-base-100">
           <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
-              <img src="<?= base_url('img/profile/users/') . user()->user_image ?>" alt="profile" />
+              <?php
+              $userImagePath = 'img/userProfilePics/' . user()->user_image;
+              if (file_exists(FCPATH . $userImagePath) && !empty(user()->user_image)) $profileImage = base_url($userImagePath);
+              else $profileImage = base_url('img/icon/default-profile.jpg');
+              ?>
+              <img
+                src="<?= $profileImage ?>"
+                alt="profile"
+                id="img-preview-admin-profile" />
             </div>
           </label>
           <ul tabIndex="0" class="menu menu-compact dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
             <?php if (in_groups('superadmin') || in_groups('admin')) : ?>
-            <li class="justify-between">
-              <a href="<?= base_url() ?>admin/profile">
-                Profile Settings
-              </a>
-            </li>
+              <li class="justify-between">
+                <a href="<?= base_url() ?>admin/profile">
+                  Profile Settings
+                </a>
+              </li>
             <?php endif; ?>
             <li><a href="<?= base_url('logout') ?>">Logout</a></li>
           </ul>
