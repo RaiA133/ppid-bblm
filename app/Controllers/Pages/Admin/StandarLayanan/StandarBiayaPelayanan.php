@@ -4,6 +4,7 @@ namespace App\Controllers\Pages\Admin\StandarLayanan;
 
 use App\Controllers\BaseController;
 use App\Models\StandarLayanan\StandarBiayaPelayananModel;
+use LDAP\Result;
 
 class StandarBiayaPelayanan extends BaseController
 {
@@ -100,8 +101,6 @@ class StandarBiayaPelayanan extends BaseController
     return redirect()->to(base_url() . 'admin/standar-biaya-pelayanan');
   }
 
-
-  // OLD
   public function uploadImage()
   {
     $fileGambar = $this->request->getFile('upload');
@@ -121,5 +120,26 @@ class StandarBiayaPelayanan extends BaseController
       </script>
       ";
     }
+  }
+
+  public function indexDelete($id_standar_biaya_pelayanan)
+  {
+    // Ambil data record untuk mendapatkan nama file gambar
+    $record = $this->standarBiayaPelayananModel->find($id_standar_biaya_pelayanan);
+    $imageToDelete = $record ? $record['link_gambar'] : null;
+
+    if ($imageToDelete && file_exists('img/standarLayanan/standarBiayaPelayanan/' . $imageToDelete)) {
+      if (unlink('img/standarLayanan/standarBiayaPelayanan/' . $imageToDelete)) {
+        // Update kolom link_gambar menjadi default-image.jpg jika berhasil menghapus
+        $this->standarBiayaPelayananModel->set('link_gambar', 'default-image.jpg')->where('id_standar_biaya_pelayanan', $id_standar_biaya_pelayanan)->update();
+        $message = 'Image deleted successfully!';
+      } else {
+        $message = 'Failed to delete image!';
+      }
+    } else {
+      $message = 'Image not found / already deleted!';
+    }
+    session()->setFlashdata('Message', ['title' => $message]);
+    return redirect()->to(base_url('admin/standar-biaya-pelayanan'));
   }
 }
