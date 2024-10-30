@@ -25,18 +25,14 @@ $routes->get('/waktu-pelayanan', 'Pages\User\StandarLayanan\WaktuPelayanan::Wakt
 
 $routes->get('/admin/maklumat-pelayanan', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::index');
 $routes->post('/api/admin/maklumat-pelayanan/upload-image', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::uploadImage');
-$routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexCreate');
 $routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1');
-$routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexDelete/$1');
 
 $routes->get('/admin/waktu-pelayanan', 'Pages\Admin\StandarLayanan\WaktuPelayanan::index');
 $routes->post('/api/admin/waktu-pelayanan/upload-image', 'Pages\Admin\StandarLayanan\WaktuPelayanan::uploadImage');
-$routes->post('/api/admin/waktu-pelayanan/create', 'Pages\Admin\StandarLayanan\WaktuPelayanan::indexCreate');
 $routes->post('/api/admin/waktu-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\WaktuPelayanan::indexUpdate/$1');
 
 $routes->get('/admin/mekanisme-keberatan', 'Pages\Admin\StandarLayanan\MekanismeKeberatan::index');
 $routes->post('/api/admin/mekanisme-keberatan/upload-image', 'Pages\Admin\StandarLayanan\MekanismeKeberatan::uploadImage');
-$routes->post('/api/admin/mekanisme-keberatan/create', 'Pages\Admin\StandarLayanan\MekanismeKeberatan::indexCreate');
 $routes->post('/api/admin/mekanisme-keberatan/edit/(:num)', 'Pages\Admin\StandarLayanan\MekanismeKeberatan::indexUpdate/$1');
 
 $routes->get('/admin/mekanisme-permohonan-penyelesaian-sengketa', 'Pages\Admin\StandarLayanan\MekanismePermohonanPenyelesaianSengketa::index');

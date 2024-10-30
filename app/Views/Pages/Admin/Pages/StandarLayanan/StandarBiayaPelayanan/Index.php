@@ -67,85 +67,73 @@
                     </div>
                   </div>
 
-                  <div class="flex justify-center w-full">
-                    <div id="customHeight" class="h-fit pb-20" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
-                      <div data-scroll-offset class="w-full max-w-2xl mt-20 shadow-xl rounded-xl">
-                        <h2 class="text-2xl font-semibold mb-4 text-center">Standar Biaya Pelayanan</h2>
-                        <div class="w-full p-4 bg-white rounded-xl">
+                <?php else : ?>
+                  <!-- Jika Hanya Gambar atau Hanya Konten -->
+                  <div class="flex justify-center w-full mb-10">
+                    <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
+                      <h2 class="text-2xl font-semibold mb-4">Standar Biaya Pelayanan</h2>
+                      <div class="w-full p-4 bg-white rounded-xl">
+                        <?php if (!empty($results['link_gambar'])) : ?>
+                          <!-- Tampilkan Gambar di Tengah -->
                           <img src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>" alt="Standar Biaya Pelayanan" class="w-full h-full object-cover">
-                        </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($results['content'])) : ?>
+                          <!-- Tampilkan Konten di Tengah -->
+                          <div class="mt-4">
+                            <?= $results['content'] ?>
+                          </div>
+                        <?php endif; ?>
                       </div>
                     </div>
+                  </div>
+                <?php endif; ?>
 
-                  <?php else : ?>
-                    <!-- Jika Hanya Gambar atau Hanya Konten -->
-                    <div class="flex justify-center w-full mb-10">
-                      <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
-                        <h2 class="text-2xl font-semibold mb-4">Standar Biaya Pelayanan</h2>
-                        <div class="w-full p-4 bg-white rounded-xl">
-                          <?php if (!empty($results['link_gambar'])) : ?>
-                            <!-- Tampilkan Gambar di Tengah -->
-                            <img src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>" alt="Standar Biaya Pelayanan" class="w-full h-full object-cover">
-                          <?php endif; ?>
+                <script>
+                  let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+                  let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
 
-                          <?php if (!empty($results['content'])) : ?>
-                            <!-- Tampilkan Konten di Tengah -->
-                            <div class="mt-4">
-                              <?= $results['content'] ?>
-                            </div>
-                          <?php endif; ?>
-                        </div>
-                      </div>
-                    </div>
-                  <?php endif; ?>
+                  function adjustAttributes() {
+                    const div = document.getElementById('customHeight');
 
-                  <script>
-                    let isAttributesRemoved = false; // Status apakah atribut telah dihapus
-                    let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
-
-                    function adjustAttributes() {
-                      const div = document.getElementById('customHeight');
-
-                      if (window.innerWidth <= 768 && !isAttributesRemoved) {
-                        console.log('hapus');
-                        div.removeAttribute('data-scroll');
-                        div.removeAttribute('data-scroll-sticky');
-                        div.removeAttribute('data-scroll-target');
-                        isAttributesRemoved = true;
-                        isAttributesAdded = false;
-                      } else if (window.innerWidth > 768 && !isAttributesAdded) {
-                        console.log('ada');
-                        div.setAttribute('data-scroll', '');
-                        div.setAttribute('data-scroll-sticky', '');
-                        div.setAttribute('data-scroll-target', '#fixed-elements');
-                        isAttributesAdded = true;
-                        isAttributesRemoved = false;
-                      }
+                    if (window.innerWidth <= 768 && !isAttributesRemoved) {
+                      console.log('hapus');
+                      div.removeAttribute('data-scroll');
+                      div.removeAttribute('data-scroll-sticky');
+                      div.removeAttribute('data-scroll-target');
+                      isAttributesRemoved = true;
+                      isAttributesAdded = false;
+                    } else if (window.innerWidth > 768 && !isAttributesAdded) {
+                      console.log('ada');
+                      div.setAttribute('data-scroll', '');
+                      div.setAttribute('data-scroll-sticky', '');
+                      div.setAttribute('data-scroll-target', '#fixed-elements');
+                      isAttributesAdded = true;
+                      isAttributesRemoved = false;
                     }
+                  }
 
-                    // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
-                    window.addEventListener('resize', (event) => {
-                      adjustAttributes();
-                    });
-
-                    // Menggunakan onresize untuk menangani perubahan ukuran jendela
-                    window.onresize = (event) => {
-                      adjustAttributes();
-                    };
-
+                  // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+                  window.addEventListener('resize', (event) => {
                     adjustAttributes();
-                  </script>
+                  });
+
+                  // Menggunakan onresize untuk menangani perubahan ukuran jendela
+                  window.onresize = (event) => {
+                    adjustAttributes();
+                  };
+
+                  adjustAttributes();
+                </script>
             </section>
           </div>
         </div>
-
-
       </div>
     </div>
 </section>
 
 
-<!-- Edit Data Maklumat Pelayanan -->
+<!-- Edit Data Standar Biaya Pelayanan -->
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
   <form id="myForm" action="<?= base_url() ?>/api/admin/standar-biaya-pelayanan/edit/<?= $results['id_standar_biaya_pelayanan'] ?>" method="POST" enctype="multipart/form-data">
@@ -159,6 +147,7 @@
     <div class="divider"></div>
 
     <!-- Form -->
+    <h2 class="flex justify-center p-5 text-xl font-bold">Gambar</h2>
     <div class="flex flex-col xl:flex-row gap-4">
 
       <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
@@ -191,6 +180,8 @@
         </div>
 
         <div class="divider"></div>
+
+        <h2 class="flex justify-center p-5 text-xl font-bold">Konten</h2>
 
         <!-- Content -->
         <div class="flex gap-3 justify-center mb-3 flex-col">

@@ -1216,31 +1216,6 @@ html {
   min-height: fit-content;
 }
 
-.diff-resizer {
-  position: relative;
-  top: 50%;
-  z-index: 1;
-  height: 3rem;
-  width: 25rem;
-  min-width: 1rem;
-  max-width: calc(100cqi - 1rem);
-  resize: horizontal;
-  overflow: hidden;
-  opacity: 0;
-  transform-origin: 100% 100%;
-  scale: 4;
-  translate: 1.5rem -1.5rem;
-  clip-path: inset(calc(100% - 0.75rem) 0 0 calc(100% - 0.75rem));
-}
-
-.diff-resizer,
-.diff-item-1,
-.diff-item-2 {
-  position: relative;
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
-
 .divider {
   display: flex;
   flex-direction: row;
@@ -4370,10 +4345,6 @@ html:has(.drawer-toggle:checked) {
   height: 50%;
 }
 
-.h-3\/5 {
-  height: 60%;
-}
-
 .h-32 {
   height: 8rem;
 }
@@ -4524,10 +4495,6 @@ html:has(.drawer-toggle:checked) {
   max-width: 8rem;
 }
 
-.max-w-3xl {
-  max-width: 48rem;
-}
-
 .max-w-5xl {
   max-width: 64rem;
 }
@@ -4543,10 +4510,6 @@ html:has(.drawer-toggle:checked) {
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-lg {
-  max-width: 32rem;
 }
 
 .max-w-md {
@@ -4624,10 +4587,6 @@ html:has(.drawer-toggle:checked) {
 
 .list-inside {
   list-style-position: inside;
-}
-
-.list-decimal {
-  list-style-type: decimal;
 }
 
 .list-disc {
@@ -4912,10 +4871,6 @@ html:has(.drawer-toggle:checked) {
      object-fit: cover;
 }
 
-.p-0 {
-  padding: 0px;
-}
-
 .p-10 {
   padding: 2.5rem;
 }
@@ -5058,10 +5013,6 @@ html:has(.drawer-toggle:checked) {
   text-align: justify;
 }
 
-.text-start {
-  text-align: start;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -5160,11 +5111,6 @@ html:has(.drawer-toggle:checked) {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
 .text-error {
@@ -5686,14 +5632,6 @@ html:has(.drawer-toggle:checked) {
     justify-self: end;
   }
 
-  .md\:p-10 {
-    padding: 2.5rem;
-  }
-
-  .md\:p-20 {
-    padding: 5rem;
-  }
-
   .md\:p-9 {
     padding: 2.25rem;
   }
@@ -5706,10 +5644,6 @@ html:has(.drawer-toggle:checked) {
   .md\:px-7 {
     padding-left: 1.75rem;
     padding-right: 1.75rem;
-  }
-
-  .md\:pt-20 {
-    padding-top: 5rem;
   }
 
   .md\:text-6xl {
@@ -5755,10 +5689,6 @@ html:has(.drawer-toggle:checked) {
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .lg\:justify-end {
-    justify-content: flex-end;
   }
 
   .lg\:p-20 {

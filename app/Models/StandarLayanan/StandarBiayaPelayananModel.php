@@ -52,7 +52,7 @@ class StandarBiayaPelayananModel extends Model
     return $query->findAll();
   }
 
-  // Update data maklumat pelayanan | admin
+  // Update data standar biaya pelayanan | admin
   public function edit($id_standar_biaya_pelayanan, $dataToEdit = [])
   {
     $data = [

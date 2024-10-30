@@ -127,15 +127,12 @@
             </section>
           </div>
         </div>
-
-
-
       </div>
     </div>
 </section>
 
 
-<!-- Edit Data Maklumat Pelayanan -->
+<!-- Edit Data Mekanisme Permohonan Penyelesaian Sengketa -->
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
   <form id="myForm" action="<?= base_url() ?>/api/admin/mekanisme-permohonan-penyelesaian-sengketa/edit/<?= $results['id_mekanisme_permohonan_penyelesaian_sengketa'] ?>" method="POST" enctype="multipart/form-data">
@@ -149,6 +146,7 @@
     <div class="divider"></div>
 
     <!-- Form -->
+    <h2 class="flex justify-center p-5 text-xl font-bold">Gambar</h2>
     <div class="flex flex-col xl:flex-row gap-4">
 
       <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
@@ -181,6 +179,8 @@
         </div>
 
         <div class="divider"></div>
+
+        <h2 class="flex justify-center p-5 text-xl font-bold">Gambar</h2>
 
         <!-- Content -->
         <div class="flex gap-3 justify-center mb-3 flex-col">

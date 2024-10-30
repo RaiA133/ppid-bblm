@@ -33,7 +33,6 @@ class StandarBiayaPelayanan extends BaseController
       'link_gambar_edit' => [
         'label' => 'Link Gambar',
         'rules' => [
-          // 'uploaded[link_gambar_edit]',
           'max_size[link_gambar_edit,5120]',
           'is_image[link_gambar_edit]',
           'mime_in[link_gambar_edit,image/jpg,image/jpeg,image/png]',

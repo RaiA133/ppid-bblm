@@ -44,7 +44,7 @@
           <li><a href="<?= base_url() ?>admin/mekanisme-keberatan">Mekanisme Keberatan</a></li>
           <li><a href="<?= base_url() ?>admin/mekanisme-permohonan-penyelesaian-sengketa">Mekanisme Permohonan Penyelesaian Sengketa</a></li>
           <li><a href="<?= base_url() ?>admin/maklumat-pelayanan">Maklumat Pelayanan</a></li>
-          <li><a href="<?= base_url() ?>admin/standar-biaya-layanan">Standar Biaya Pelayanan</a></li>
+          <li><a href="<?= base_url() ?>admin/standar-biaya-pelayanan">Standar Biaya Pelayanan</a></li>
           <li><a href="<?= base_url() ?>admin/waktu-pelayanan">Waktu Pelayanan</a></li>
         </ul>
       </details>
