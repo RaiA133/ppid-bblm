@@ -50,7 +50,7 @@
 </section>
 
 <!-- CONTENT -->
-<div data-scroll data-scroll-speed="2">
+<div data-scroll data-scroll-speed="2" class="mx-2 sm:mx-20 mb-10">
   <?php if (!empty($results['content'])) : ?>
     <?= $results['content'] ?>
   <?php else : ?>

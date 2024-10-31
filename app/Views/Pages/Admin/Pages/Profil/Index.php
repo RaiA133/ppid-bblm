@@ -283,6 +283,8 @@
         CKEDITOR.config.width = '100%'
         CKEDITOR.config.height = '900'
         CKEDITOR.replace('content', {
+          skin: 'office2013',
+          allowedContent: true,
           disallowedContent: 'script; *[on*]',
           extraPlugins: 'uploadimage',
           uploadUrl: '<?= base_url('/api/admin/profil/upload-image') ?>',

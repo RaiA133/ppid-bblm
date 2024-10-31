@@ -23,7 +23,7 @@ class ProfilSeeder extends Seeder
         ]),
         'link_gambar'     => 'profile.png',
         'content'         => '<!-- Sambutan -->
-<section class="p-7 m-7 card bg-base-100">
+<section class="card bg-base-100">
   <div class="card-body text-black mt-5 rounded p-5">
     <h2 class="text-2xl text-black font-bold mb-4">Sambutan Kepala BBSPJILM</h2>
     <p class="mt-4">"Puji dan syukur kita panjatkan kepada Tuhan yang Maha Kuasa karena hanya atas Rahmat dan hidayahNya sehingga Profil balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) ini dapat diterbitkan. Profil ini berisi tentang tugas pokok dan fungsi BBSPJILM sebagai salah satu Lembaga pemerintah yang memberikan layanan di bidang Pengujian, Kalibrasi, Sertifikasi, Pemesinan, Pengelasan, Penerapan Industri 4.0, Pelatihan Teknis. Bapak/Ibu dapat memanfaatkan berbagai layanan yang ada di BBSPJILM dalam mendukung pengembangan industri yang terstandar dengan baik. Kami di BBSPJILM terus berkomitmen untuk memberikan pelayanan terbaik, serta siap untuk membuka diri dan bekerjasama dengan berbagai pihak industri, perguruan tinggi, BUMN, kementerian, dan Lembaga atau pihak-pihak lain yang terkait. Besar harapan kami, profil BBSPJILM ini dapat menjadi manfaat bagi kita semua."</p>
@@ -32,8 +32,10 @@ class ProfilSeeder extends Seeder
   </div>
 </section>
 
+<br><br><br>
+
 <!-- Sejarah -->
-<section class="p-7 m-7 card bg-base-100">
+<section class="card bg-base-100">
   <div class="flex flex-col lg:flex-row text-black">
     <div class="card-body lg:w-full">
       <h2 class="text-2xl font-bold mb-4">SEJARAH BBSPJILM</h2>
@@ -57,8 +59,10 @@ class ProfilSeeder extends Seeder
   </div>
 </section>
 
+<br><br><br>
+
 <!-- Visi & Misi -->
-<section class="p-7 m-7 bg-base-100 rounded-lg">
+<section class="bg-base-100 rounded-lg">
   <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8">
 
     <div class="text-black p-6">
@@ -86,8 +90,10 @@ class ProfilSeeder extends Seeder
   </div>
 </section>
 
+<br><br><br>
+
 <!-- Tugas Pokok -->
-<section class="p-7 m-7 bg-base-100 rounded-lg">
+<section class="bg-base-100 rounded-lg">
   <div class="text-black p-6">
     <h2 class="text-2xl font-bold mb-4">TUGAS POKOK BBSPJILM</h2>
     <h3 class="font-semibold mb-4">
