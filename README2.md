@@ -43,7 +43,7 @@ Pembuatan controller :
 
 
 Pembuatan Model : 
-- Pembuatan model harus dengan menggunakan CLI ```php spark make:model (NamaModel)``` , NamaModel CamelCase
+- Pembuatan model harus dengan menggunakan CLI ```php spark make:model (NamaModel)``` , NamaModel CamelCase dan setelahnya diberi kata Model. ex : `ProfileModel` 
 - untuk membuat nama table menggunkan snake case
 - id harus id_(nama_table)
 - allowedFields wajib di isi dengan field mana saja yang berpotensi berubah-ubah

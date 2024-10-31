@@ -82,3 +82,8 @@ $routes->post('/api/admin/maklumat-pelayanan/upload-image', 'Pages\Admin\Standar
 $routes->post('/api/admin/maklumat-pelayanan/create', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexCreate', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/maklumat-pelayanan/edit/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
 $routes->delete('/api/admin/maklumat-pelayanan/delete/(:num)', 'Pages\Admin\StandarLayanan\MaklumatPelayanan::indexDelete/$1', ['filter' => 'role:admin,superadmin']);
+
+$routes->get('/admin/hubungi-kami', 'Pages\Admin\HubungiKami::index', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/hubungi-kami/create', 'Pages\Admin\HubungiKami::indexCreate');
+$routes->post('/api/admin/hubungi-kami/edit/(:num)', 'Pages\Admin\HubungiKami::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/hubungi-kami/delete/(:num)', 'Pages\Admin\HubungiKami::indexDelete/$1', ['filter' => 'role:admin,superadmin']);
