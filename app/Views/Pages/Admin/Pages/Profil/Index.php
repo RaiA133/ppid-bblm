@@ -104,7 +104,7 @@
 <section class="mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-10 mb-5">
 
   <form id="myForm" action="<?= base_url() ?>api/admin/profil/edit/<?= $results['id_profil'] ?>" method="POST" enctype="multipart/form-data">
-
+    <?= csrf_field() ?>
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full">
       <div class="text-xl font-bold">Edit Data Profil</div>

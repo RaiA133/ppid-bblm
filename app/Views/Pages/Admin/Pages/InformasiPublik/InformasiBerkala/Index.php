@@ -53,6 +53,7 @@
 
           <!-- Filter Data By Judul -->
           <form action="" method="GET" class="w-fit">
+            <?= csrf_field() ?>
             <select name="judul" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($informasiBerkalaJudul as $list) : ?>
@@ -71,6 +72,7 @@
         <!-- Searching Data -->
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
@@ -142,7 +144,8 @@
                     <div class="py-4">
 
                       <form action="<?= base_url() ?>api/admin/informasi-berkala/edit/<?= $result['id_informasi_berkala'] ?>" method="post">
-
+                        <?= csrf_field() ?>
+                        
                         <select name="judul_edit" class="select select-bordered w-full mb-3">
                           <?php foreach ($informasiBerkalaJudul as $list) : ?>
                             <option value="<?= $list['id_informasi_berkala_judul'] ?>" <?= ($list['id_informasi_berkala_judul'] == $result['id_informasi_berkala_judul']) ? 'selected' : '' ?>>

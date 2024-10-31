@@ -43,6 +43,7 @@
       <div class="flex items-center gap-1 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>

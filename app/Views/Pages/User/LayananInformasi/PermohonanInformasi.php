@@ -16,7 +16,7 @@
     <div class="p-10 shadow-xl border rounded-2xl w-fit">
 
       <form action="">
-
+        <?= csrf_field() ?>
         <div class="flex flex-col md:flex-row">
 
           <div class="flex-col mr-3">

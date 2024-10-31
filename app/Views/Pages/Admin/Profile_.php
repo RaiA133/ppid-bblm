@@ -8,6 +8,7 @@
     <div class="bg-base-100 shadow-md rounded-lg p-6">
 
       <form action="">
+      <?= csrf_field() ?>
         <h2 class="text-2xl font-semibold mb-4">Profile</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -45,6 +45,7 @@
         <!-- Searching Data -->
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
@@ -106,7 +107,7 @@
                     <div class="py-4">
 
                       <form action="<?= base_url() ?>api/admin/informasi-berkala/manage-judul/edit/<?= $result['id_informasi_berkala_judul'] ?>" method="post">
-
+                        <?= csrf_field() ?>
                         <input name="judul_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
                         <?php if (isset($errors['judul_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>

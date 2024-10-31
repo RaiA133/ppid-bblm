@@ -53,6 +53,7 @@
 
           <!-- Filter Data By Judul -->
           <form action="" method="GET" class="w-fit">
+            <?= csrf_field() ?>
             <select name="judul" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($informasiSetiapSaatJudul as $list) : ?>
@@ -71,6 +72,7 @@
         <!-- Searching Data -->
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
@@ -142,7 +144,7 @@
                     <div class="py-4">
 
                       <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/edit/<?= $result['id_informasi_setiap_saat'] ?>" method="post">
-
+                        <?= csrf_field() ?>
                         <select name="judul_edit" class="select select-bordered w-full mb-3">
                           <?php foreach ($informasiSetiapSaatJudul as $list) : ?>
                             <option value="<?= $list['id_informasi_setiap_saat_judul'] ?>" <?= ($list['id_informasi_setiap_saat_judul'] == $result['id_informasi_setiap_saat_judul']) ? 'selected' : '' ?>>

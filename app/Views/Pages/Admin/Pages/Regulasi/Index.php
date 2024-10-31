@@ -43,6 +43,7 @@
       <div class="flex items-center gap-1 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
@@ -129,6 +130,8 @@
                     <div class="py-4">
 
                       <form action="<?= base_url() ?>api/admin/regulasi/edit/<?= $result['id_regulasi'] ?>" method="post">
+                        <?= csrf_field() ?>
+                        
                         <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
                         <?php if (isset($errors['judul_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>

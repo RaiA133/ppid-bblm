@@ -18,6 +18,7 @@
     <div class="py-4">
 
       <form action="<?= base_url() ?>api/admin/informasi-berkala/create" method="post">
+        <?= csrf_field() ?>
         <select name="judul_create" class="select select-bordered w-full mb-3">
           <?php foreach ($informasiBerkalaJudul as $list) : ?>
             <option value="<?= $list['id_informasi_berkala_judul'] ?>">

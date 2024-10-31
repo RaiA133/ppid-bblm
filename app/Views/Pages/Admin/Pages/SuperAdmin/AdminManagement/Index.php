@@ -44,6 +44,8 @@
         <div class="join">
 
           <form action="" method="GET" class="flex flex-col sm:flex-row w-full sm:w-fit"> <!-- Filter Data & Search-->
+            <?= csrf_field() ?>
+
             <select name="role" class="select select-bordered select-sm w-full mb-1 sm:mb-0 sm:w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($roleList as $list) : ?>
@@ -157,7 +159,8 @@
 
                       <div class="w-8/12">
                         <form action="<?= base_url() ?>api/admin/admin-management/edit/<?= $result->userid ?>" method="POST" enctype="multipart/form-data">
-
+                          <?= csrf_field() ?>
+                          
                           <input type="hidden" name="user_image_edit_old" value="<?= user()->user_image ?>">
 
                           <label class="form-control w-full">
