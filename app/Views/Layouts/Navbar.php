@@ -96,7 +96,7 @@
       </div>
       <div class="drawer-side z-50">
         <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay" style="background-color: #0000;"></label>
-        <ul class="menu backdrop-blur-md bg-white/30 text-base-content min-h-full w-full sm:w-5/12 md:w-4/12 p-4">
+        <ul class="menu backdrop-blur-md bg-white/60 text-base-content min-h-full w-full sm:w-5/12 md:w-4/12 p-4">
 
           <!-- Sidebar content here -->
           <label class="btn btn-sm btn-circle btn-ghost absolute pt-[1px] text-2xl font-light" for="my-drawer-4" aria-label="close sidebar">✕</label>
