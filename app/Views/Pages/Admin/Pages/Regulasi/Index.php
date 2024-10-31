@@ -20,7 +20,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -43,6 +43,7 @@
       <div class="flex items-center gap-1 flex-col sm:flex-row w-full sm:w-fit">
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
@@ -77,20 +78,20 @@
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="p-2 sm:p-4 max-w-64 min-w-24 truncate ...">
                 <div class="w-fit">
-                  <p class=""><?= $result['judul'] ?></p>
+                  <p class=""><?= esc($result['judul']) ?></p>
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
-                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= $result['id_regulasi'] ?>.showModal(); loadPDF(<?= $result['id_regulasi'] ?>, '<?= $result['link_drive'] ?>')">View</button>
-                <dialog id="modalLihatDokumen<?= $result['id_regulasi'] ?>" class="modal">
+                <button class="btn btn-neutral btn-xs" onclick="modalLihatDokumen<?= esc($result['id_regulasi']) ?>.showModal(); loadPDF(<?= esc($result['id_regulasi']) ?>, '<?= esc($result['link_drive']) ?>')">View</button>
+                <dialog id="modalLihatDokumen<?= esc($result['id_regulasi']) ?>" class="modal">
                   <div class="modal-box w-11/12 max-w-5xl">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 class="text-lg font-bold"><?= $result['judul'] ?></h3>
+                    <h3 class="text-lg font-bold"><?= esc($result['judul']) ?></h3>
                     <div class="py-4">
-                      <a class="" target="_blank" href="<?= $result['link_drive'] ?>"><?= $result['link_drive'] ?></a>
-                      <iframe src="" width="100%" height="600px" title="<?= $result['judul'] ?>" id="iframe<?= $result['id_regulasi'] ?>"></iframe>
+                      <a class="" target="_blank" href="<?= esc($result['link_drive']) ?>"><?= esc($result['link_drive']) ?></a>
+                      <iframe src="" width="100%" height="600px" title="<?= esc($result['judul']) ?>" id="iframe<?= esc($result['id_regulasi']) ?>"></iframe>
                     </div>
                   </div>
                 </dialog>
@@ -103,38 +104,40 @@
                 </script>
 
               </td>
-              <td class="p-2 sm:p-4 min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
-              <td class="p-2 sm:p-4"><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
+              <td class="p-2 sm:p-4 min-w-24"><?= esc($result['created_at']) ? esc($result['created_at']) : 'none' ?></td>
+              <td class="p-2 sm:p-4"><?= esc($result['updated_at']) ? esc($result['updated_at']) : 'none' ?></td>
 
               <td class="p-2 sm:p-4">
 
                 <!-- Modal untuk EDIT Data Regulasi -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 xl:mb-0" onclick="editDataRegulasi<?= $result['id_regulasi'] ?>.showModal()">Edit</a>
+                <a class="btn btn-xs btn-neutral w-14 mb-1 xl:mb-0" onclick="editDataRegulasi<?= esc($result['id_regulasi']) ?>.showModal()">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataRegulasi' . $result['id_regulasi'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataRegulasi' . esc($result['id_regulasi']))): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataRegulasi<?= $result['id_regulasi'] ?>").showModal();
+                      document.getElementById("editDataRegulasi<?= esc($result['id_regulasi']) ?>").showModal();
                     });
                   </script>
                 <?php endif; ?>
 
-                <dialog id="editDataRegulasi<?= $result['id_regulasi'] ?>" class="modal">
+                <dialog id="editDataRegulasi<?= esc($result['id_regulasi']) ?>" class="modal">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 class="text-lg font-bold">Edit <?= $title ?></h3>
+                    <h3 class="text-lg font-bold">Edit <?= esc($title) ?></h3>
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>api/admin/regulasi/edit/<?= $result['id_regulasi'] ?>" method="post">
-                        <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
+                      <form action="<?= base_url() ?>api/admin/regulasi/edit/<?= esc($result['id_regulasi']) ?>" method="post">
+                        <?= csrf_field() ?>
+                        
+                        <input name="judul_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc($result['judul']) ?>" />
                         <?php if (isset($errors['judul_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>
                         <?php endif ?>
 
-                        <input name="link_drive_edit" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= (isset($errors['link_drive_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['link_drive'] ?>" />
+                        <input name="link_drive_edit" type="text" placeholder="Link Goggle Drive PDF" class="input input-bordered w-full <?= (isset($errors['link_drive_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc($result['link_drive']) ?>" />
                         <?php if (isset($errors['link_drive_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['link_drive_edit'] ?></span></div>
                         <?php endif ?>
@@ -148,7 +151,7 @@
                 <!-- END Modal untuk Edit Data Regulasi -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/regulasi/delete/<?= $result['id_regulasi'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/regulasi/delete/<?= esc($result['id_regulasi']) ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>

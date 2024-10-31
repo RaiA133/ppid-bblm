@@ -28,7 +28,7 @@
       <li><a href="<?= base_url() ?>admin/admin-management">Admin Management</a></li>
     <?php endif; ?>
 
-
+    <li><a href="<?= base_url() ?>admin/hubungi-kami">Hubungi Kami</a></li>
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
     <li><a href="<?= base_url() ?>admin/profil">Profil</a></li>
     <li>

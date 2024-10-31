@@ -20,8 +20,8 @@
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
       <div class="text-sm">
-        <p><?= $flashDataCreated['title'] ?></p>
-        <p><?= $flashDataCreated['message'] ?></p>
+        <p><?= esc($flashDataCreated['title']) ?></p>
+        <p><?= esc($flashDataCreated['message']) ?></p>
       </div>
     </div>
   </div>
@@ -137,7 +137,7 @@
   <!-- Video Autoplay -->
   <section data-scroll class="relative h-screen mt-32 md:mt-0">
     <video autoplay loop muted src="<?= base_url() ?>/vid/video_profile_bblm.mp4" class="absolute top-0 left-0 w-full h-full object-cover"></video>
-    <div class="absolute inset-0 flex justify-center items-center text-center bg-stone-900 bg-opacity-50 px-10 xl:px-72">
+    <div class="absolute inset-0 flex justify-center items-center text-center bg-stone-900 bg-opacity-50 px-10 xl:px-64">
       <div class="flex">
         <div class="text-lg lg:text-2xl text-stone-200">
           Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) berkomitmen untuk memberikan layanan terbaik dalam bidang pengujian, kalibrasi, dan sertifikasi, serta mendukung pengembangan industri yang mandiri, berdaya saing, dan sesuai dengan prinsip industri hijau melalui standardisasi dan optimalisasi teknologi.
@@ -152,12 +152,12 @@
   </section>
 
   <!-- Informasi Lainnya -->
-  <section class="flex flex-col justify-center items-center mt-10 relative">
+  <section class="flex flex-col justify-center items-center my-7 relative">
 
-    <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
+    <div class="flex flex-wrap justify-center gap-6 w-full" data-scroll>
         
       <a href="<?= base_url() ?>profil" class="flex justify-center" data-scroll data-scroll-speed="4">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
             <div class="h-32 flex items-end">
@@ -168,7 +168,7 @@
       </a>
 
       <a href="<?= base_url() ?>regulasi" class="flex justify-center" data-scroll data-scroll-speed="3">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
             <div class="h-32 flex items-end">
@@ -179,7 +179,7 @@
       </a>
 
       <a href="<?= base_url() ?>permohonan-informasi" class="flex justify-center" data-scroll data-scroll-speed="4">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
             <div class="h-32 flex items-end">
@@ -190,7 +190,7 @@
       </a>
 
       <a href="<?= base_url() ?>unit-pelayanan-publik" class="flex justify-center" data-scroll data-scroll-speed="2">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
             <div class="h-32 flex items-end">
@@ -201,7 +201,7 @@
       </a>
 
       <a href="<?= base_url() ?>laporan-layanan-informasi" class="flex justify-center" data-scroll data-scroll-speed="1.5">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
             <div class="h-32 flex items-end">
@@ -212,7 +212,7 @@
       </a>
 
       <a href="<?= base_url() ?>hubungi-kami" class="flex justify-center" data-scroll data-scroll-speed="6">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
             <div class="h-32 flex items-end">
@@ -228,7 +228,7 @@
 
   <!-- Judul Informasi lainnya -->
   <section class="absoulte z-40 w-full bg-primary py-20">
-    <div class="text-6xl md:text-9xl text-center font-bold">PELAYANAN KAMI</div>
+    <div class="text-6xl md:text-9xl text-center font-bold text-neutral-300">PELAYANAN KAMI</div>
   </section>
 
 </div>

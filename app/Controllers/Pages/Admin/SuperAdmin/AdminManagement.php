@@ -77,9 +77,11 @@ class AdminManagement extends BaseController
 
     $validationRule = [
       'username_edit' => [
+        'label' => 'Username',
         'rules' => 'required',
       ],
       'role_edit' => [
+        'label' => 'Role',
         'rules' => 'required',
       ],
     ];

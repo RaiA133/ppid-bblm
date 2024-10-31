@@ -14,6 +14,7 @@
   <!-- List Link Regulasi -->
   <section data-scroll-section>
     <div class="">
+
       <div class="" data-scroll>
         <div class="flex flex-col md:flex-row gap-4">
 
@@ -30,20 +31,20 @@
               <?php $no = 1; ?>
               <?php foreach ($results as $result) : ?>
                 <div class="collapse collapse-arrow join-item border-base-300 border group">
-                  <input type="checkbox" name="my-accordion-4" onclick="frontShowPDF(<?= $result['id_regulasi'] ?>)"/>
+                  <input type="checkbox" name="my-accordion-4" onclick="frontShowPDF(<?= esc($result['id_regulasi']) ?>)" />
                   <div class="collapse-title text-xl font-medium relative">
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
                     <?= "0" . $no++ . ". " . $result['judul'] ?>
                   </div>
                   <div class="collapse-content">
                     <p class="mt-4">
-                      <iframe src="" width="100%" height="600px" id="iframe<?= $result['id_regulasi'] ?>"></iframe>
+                      <iframe src="" width="100%" height="600px" id="iframe<?= esc($result['id_regulasi']) ?>"></iframe>
                     </p>
                   </div>
                 </div>
 
-                <script> 
-                  function frontShowPDF(id_regulasi) {  // Load Link For Iframe Only when View Button Clicked, to reduce alot of console error
+                <script>
+                  function frontShowPDF(id_regulasi) { // Load Link For Iframe Only when View Button Clicked, to reduce alot of console error
                     const iframe = document.getElementById('iframe' + id_regulasi);
                     iframe.src = '<?= $result['link_drive'] ?>/preview';
                   }
@@ -56,6 +57,16 @@
 
         </div>
       </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div data-scroll data-scroll-speed="5" class="mb-10 w-full flex justify-center">
+      <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        Kembali ke Home
+      </a>
     </div>
   </section>
 

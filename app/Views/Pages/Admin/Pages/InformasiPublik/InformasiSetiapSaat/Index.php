@@ -27,7 +27,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -53,10 +53,11 @@
 
           <!-- Filter Data By Judul -->
           <form action="" method="GET" class="w-fit">
+            <?= csrf_field() ?>
             <select name="judul" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($informasiSetiapSaatJudul as $list) : ?>
-                <option value="<?= $list['judul'] ?>" <?= ($request->getVar('judul') == $list['judul']) ? 'selected' : '' ?>><?= $list['judul'] ?></option>
+                <option value="<?= esc($list['judul']) ?>" <?= (esc($request->getVar('judul')) == esc($list['judul'])) ? 'selected' : '' ?>><?= esc($list['judul']) ?></option>
               <?php endforeach; ?>
             </select>
           </form>
@@ -71,6 +72,7 @@
         <!-- Searching Data -->
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
@@ -106,52 +108,52 @@
             <tr class="border-b">
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="max-w-32">
-                <p class="badge w-fit h-fit badge-outline text-xs"><?= $result['judul'] ?></p>
+                <p class="badge w-fit h-fit badge-outline text-xs text-center"><?= esc($result['judul']) ?></p>
               </td>
               <td class="max-w-32">
-                <a href="" class=""><?= $result['jenis_informasi'] ? $result['jenis_informasi'] : 'none' ?></a>
+                <a href="" class=""><?= esc($result['jenis_informasi']) ? esc($result['jenis_informasi']) : 'none' ?></a>
               </td>
               <td class="informasi w-fit text-center">
                 <a target="_blank" href="<?= $result['informasi'] ? $result['informasi'] : 'none' ?>" title="<?= $result['informasi'] ? $result['informasi'] : 'none' ?>">Link</a>
               </td>
-              <td class=""><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
-              <td class=""><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
+              <td class=""><?= esc($result['created_at']) ? esc($result['created_at']) : 'none' ?></td>
+              <td class=""><?= esc($result['updated_at']) ? esc($result['updated_at']) : 'none' ?></td>
 
               <td class="">
 
                 <!-- Modal untuk EDIT Data Informasi Setiap Saat -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiSetiapSaat<?= $result['id_informasi_setiap_saat'] ?>.showModal(); lazyLoadContent(<?= $result['id_informasi_setiap_saat'] ?>)">Edit</a>
+                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiSetiapSaat<?= esc($result['id_informasi_setiap_saat']) ?>.showModal(); lazyLoadContent(<?= esc($result['id_informasi_setiap_saat']) ?>)">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataInformasiSetiapSaat' . $result['id_informasi_setiap_saat'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataInformasiSetiapSaat' . esc($result['id_informasi_setiap_saat']))): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataInformasiSetiapSaat<?= $result['id_informasi_setiap_saat'] ?>").showModal();
-                      lazyLoadContent(<?= $result['id_informasi_setiap_saat'] ?>)
+                      document.getElementById("editDataInformasiSetiapSaat<?= esc($result['id_informasi_setiap_saat']) ?>").showModal();
+                      lazyLoadContent(<?= esc($result['id_informasi_setiap_saat']) ?>)
                     });
                   </script>
                 <?php endif; ?>
                 
 
-                <dialog id="editDataInformasiSetiapSaat<?= $result['id_informasi_setiap_saat'] ?>" class="modal">
+                <dialog id="editDataInformasiSetiapSaat<?= esc($result['id_informasi_setiap_saat']) ?>" class="modal">
                   <div class="modal-box w-11/12 max-w-5xl">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 class="text-lg font-bold">Edit <?= $title ?></h3>
+                    <h3 class="text-lg font-bold">Edit <?= esc($title) ?></h3>
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/edit/<?= $result['id_informasi_setiap_saat'] ?>" method="post">
-
+                      <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/edit/<?= esc($result['id_informasi_setiap_saat']) ?>" method="post">
+                        <?= csrf_field() ?>
                         <select name="judul_edit" class="select select-bordered w-full mb-3">
                           <?php foreach ($informasiSetiapSaatJudul as $list) : ?>
-                            <option value="<?= $list['id_informasi_setiap_saat_judul'] ?>" <?= ($list['id_informasi_setiap_saat_judul'] == $result['id_informasi_setiap_saat_judul']) ? 'selected' : '' ?>>
-                              <?= $list['judul'] ?>
+                            <option value="<?= esc($list['id_informasi_setiap_saat_judul']) ?>" <?= (esc($list['id_informasi_setiap_saat_judul']) == esc($result['id_informasi_setiap_saat_judul'])) ? 'selected' : '' ?>>
+                              <?= esc($list['judul']) ?>
                             </option>
                           <?php endforeach; ?>
                         </select>
 
-                        <input name="jenis_informasi_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['jenis_informasi_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['jenis_informasi'] ?>" />
+                        <input name="jenis_informasi_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['jenis_informasi_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc($result['jenis_informasi']) ?>" />
                         <?php if (isset($errors['jenis_informasi_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['jenis_informasi_edit'] ?></span></div>
                         <?php endif ?>
@@ -170,7 +172,7 @@
                 <!-- END Modal untuk Edit Data Regulasi -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/delete/<?= $result['id_informasi_setiap_saat'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/delete/<?= esc($result['id_informasi_setiap_saat']) ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>

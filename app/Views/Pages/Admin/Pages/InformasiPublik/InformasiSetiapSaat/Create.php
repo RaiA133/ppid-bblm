@@ -13,15 +13,17 @@
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
-    <h3 class="text-lg font-bold">Add <?= $title ?></h3>
+    <h3 class="text-lg font-bold">Add <?= esc($title) ?></h3>
     <div class="divider"></div>
     <div class="py-4">
 
       <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/create" method="post">
+        <?= csrf_field() ?>
+        
         <select name="judul_create" class="select select-bordered w-full mb-3">
           <?php foreach ($informasiSetiapSaatJudul as $list) : ?>
-            <option value="<?= $list['id_informasi_setiap_saat_judul'] ?>">
-              <?= $list['judul'] ?>
+            <option value="<?= esc($list['id_informasi_setiap_saat_judul']) ?>">
+              <?= esc($list['judul']) ?>
             </option>
           <?php endforeach; ?>
         </select>

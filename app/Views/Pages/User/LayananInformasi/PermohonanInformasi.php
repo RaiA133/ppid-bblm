@@ -16,7 +16,7 @@
     <div class="p-10 shadow-xl border rounded-2xl w-fit">
 
       <form action="">
-
+        <?= csrf_field() ?>
         <div class="flex flex-col md:flex-row">
 
           <div class="flex-col mr-3">
@@ -133,9 +133,18 @@
         <div class="flex justify-end">
           <button type="submit" class="btn btn-neutral w-32 ">Submit</button>
         </div>
-        
+
       </form>
 
+    </div>
+  </section>
+
+  <section>
+    <div data-scroll data-scroll-speed="5" class="mb-10 w-full flex justify-center">
+      <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+        Kembali ke Home
+      </a>
     </div>
   </section>
 

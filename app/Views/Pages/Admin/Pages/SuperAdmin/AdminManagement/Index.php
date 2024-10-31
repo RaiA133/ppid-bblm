@@ -20,7 +20,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -44,15 +44,17 @@
         <div class="join">
 
           <form action="" method="GET" class="flex flex-col sm:flex-row w-full sm:w-fit"> <!-- Filter Data & Search-->
+            <?= csrf_field() ?>
+
             <select name="role" class="select select-bordered select-sm w-full mb-1 sm:mb-0 sm:w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($roleList as $list) : ?>
-                <option value="<?= $list->role ?>" <?= ($request->getVar('role') == $list->role) ? 'selected' : '' ?>><?= $list->role ?></option>
+                <option value="<?= esc($list->role) ?>" <?= (esc($request->getVar('role')) == esc($list->role)) ? 'selected' : '' ?>><?= esc($list->role) ?></option>
               <?php endforeach; ?>
             </select>
             <div>
-            <input name="keyword" class="input input-bordered input-sm join-item text-xs" placeholder="Search" />
-            <button type="submit" class="btn btn-sm btn-neutral join-item text-xs">Search</button>
+              <input name="keyword" class="input input-bordered input-sm join-item text-xs" placeholder="Search" />
+              <button type="submit" class="btn btn-sm btn-neutral join-item text-xs">Search</button>
             </div>
           </form>
 
@@ -85,12 +87,12 @@
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="p-2 sm:p-4 max-w-64 min-w-24 truncate ...">
                 <div class="w-fit">
-                  <p class=""><?= $result->email ?></p>
+                  <p class=""><?= esc($result->email) ?></p>
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
                 <div class="w-fit">
-                  <p class=""><?= $result->username ?></p>
+                  <p class=""><?= esc($result->username) ?></p>
                 </div>
               </td>
               <td class="p-2 sm:p-4 w-fit text-center">
@@ -102,19 +104,19 @@
                 ?>
 
 
-                <div class="w-fit" onclick="viewImageProfile<?= $result->userid ?>.showModal()">
+                <div class="w-fit" onclick="viewImageProfile<?= esc($result->userid) ?>.showModal()">
                   <div class="w-10 rounded-full">
-                    <img src="<?= $profileImage ?>" alt="profile" />
+                    <img src="<?= esc($profileImage) ?>" alt="profile" />
                   </div>
                 </div>
 
-                <dialog id="viewImageProfile<?= $result->userid ?>" class="modal">
+                <dialog id="viewImageProfile<?= esc($result->userid) ?>" class="modal">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div class="w-full rounded-full">
-                      <img src="<?= $profileImage ?>" alt="profile" />
+                      <img src="<?= esc($profileImage) ?>" alt="profile" />
                     </div>
                   </div>
                 </dialog>
@@ -136,33 +138,34 @@
               <td class="p-2 sm:p-4">
 
                 <!-- Modal untuk EDIT Data AdminManagement -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 2xl:mb-0" onclick="editDataAdminManagement<?= $result->userid ?>.showModal()">Edit</a>
+                <a class="btn btn-xs btn-neutral w-14 mb-1 2xl:mb-0" onclick="editDataAdminManagement<?= esc($result->userid) ?>.showModal()">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataAdminManagement' . $result->userid)): ?>
+                <?php if (session()->getFlashdata('openModalEditDataAdminManagement' . esc($result->userid))): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataAdminManagement<?= $result->userid ?>").showModal();
+                      document.getElementById("editDataAdminManagement<?= esc($result->userid) ?>").showModal();
                     });
                   </script>
                 <?php endif; ?>
 
-                <dialog id="editDataAdminManagement<?= $result->userid ?>" class="modal">
+                <dialog id="editDataAdminManagement<?= esc($result->userid) ?>" class="modal">
                   <div class="modal-box w-10/12 max-w-4xl">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 class="text-lg font-bold">Edit <?= $title ?></h3>
+                    <h3 class="text-lg font-bold">Edit <?= esc($title) ?></h3>
                     <div class="divider"></div>
                     <div class="mb-4 flex gap-4">
 
                       <div class="w-8/12">
-                        <form action="<?= base_url() ?>api/admin/admin-management/edit/<?= $result->userid ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url() ?>api/admin/admin-management/edit/<?= esc($result->userid) ?>" method="POST" enctype="multipart/form-data">
+                          <?= csrf_field() ?>
 
                           <input type="hidden" name="user_image_edit_old" value="<?= user()->user_image ?>">
 
                           <label class="form-control w-full">
                             <div class="label"><span class="label-text">Email : </span></div>
-                            <input name="email_edit" type="email" disabled placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['email_edit'])) ? 'input-error' : '' ?>" value="<?= $result->email ?>" />
+                            <input name="email_edit" type="email" disabled placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['email_edit'])) ? 'input-error' : '' ?>" value="<?= esc($result->email) ?>" />
                             <?php if (isset($errors['email_edit'])) : ?>
                               <div class="label"><span class="label-text-alt text-error"><?= $errors['email_edit'] ?></span></div>
                             <?php endif ?>
@@ -170,7 +173,7 @@
 
                           <label class="form-control w-full">
                             <div class="label"><span class="label-text">Username : </span></div>
-                            <input name="username_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['username_edit'])) ? 'input-error' : '' ?>" value="<?= $result->username ?>" />
+                            <input name="username_edit" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['username_edit'])) ? 'input-error' : '' ?>" value="<?= esc($result->username) ?>" />
                             <?php if (isset($errors['username_edit'])) : ?>
                               <div class="label"><span class="label-text-alt text-error"><?= $errors['username_edit'] ?></span></div>
                             <?php endif ?>
@@ -181,7 +184,7 @@
                             <select name="role_edit" class="select select-bordered w-full <?= (isset($errors['role_edit'])) ? 'input-error' : '' ?>">
                               <?php foreach ($roleList as $list) : ?>
                                 <option value="<?= $list->id ?>" <?= ($list->id == $result->roleid) ? 'selected' : '' ?>>
-                                  <?= $list->role ?>
+                                  <?= esc($list->role) ?>
                                 </option>
                               <?php endforeach; ?>
                             </select>
@@ -204,8 +207,7 @@
                         </label>
 
                         <div class="relative border bg-neutral w-full">
-                          <img id="img-edit-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/users/<?= $result->user_image ?? 'img/icon/default-profile.jpg' ?>" alt="">
-                          <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4"></div>
+                          <img id="img-edit-preview-admin-profil" class="w-full h-auto" src="<?= esc($profileImage) ?>" alt="">
                         </div>
 
                         <script>
@@ -228,7 +230,7 @@
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
                 <?php if ($result->role !== 'superadmin') : ?> <!-- Tombol Delete User hanya bisa digunakan untuk role user & admin -->
-                  <form action="<?= base_url() ?>api/admin/admin-management/delete/<?= $result->userid ?>" method="POST" class="inline">
+                  <form action="<?= base_url() ?>api/admin/admin-management/delete/<?= esc($result->userid) ?>" method="POST" class="inline">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>
