@@ -22,9 +22,13 @@
     <div class="min-h-screen bg-stone-100 flex items-center">
       <div class="card mx-auto w-full max-w-5xl shadow-xl">
         <div class="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl">
-          <div class="flex items-center">
-            <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
-          </div>
+
+          <a href="<?= base_url() ?>">
+            <div class="flex items-center">
+              <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
+            </div>
+          </a>
+
           <div class="py-24 px-10">
             <h2 class="text-2xl mb-4 text-center"><?= lang('Auth.forgotPassword') ?></h2>
 
@@ -61,7 +65,7 @@
                   <?= lang('Auth.needAnAccount') ?>
                   <a href="<?= base_url() ?>register" class="inline-block hover:text-primary hover:underline transition duration-200">Register</a>
                 </div>
-                
+
               </form>
             <?php endif; ?>
           </div>
