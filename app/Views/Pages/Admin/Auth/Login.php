@@ -18,8 +18,8 @@
 
         <div class="card mx-auto w-full max-w-5xl">
           <div class="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl shadow-xl">
-            <a href="<?= base_url() ?>">
-              <div class="flex items-center">
+            <a href="<?= base_url() ?>" class="">
+              <div class="flex items-center h-full">
                 <!-- Ganti ini dengan konten yang diinginkan seperti gambar atau teks intro -->
                 <!-- <img src="https://via.placeholder.com/500x400" alt="Landing Intro" class="w-full h-full object-cover rounded-l-xl"> -->
                 <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>

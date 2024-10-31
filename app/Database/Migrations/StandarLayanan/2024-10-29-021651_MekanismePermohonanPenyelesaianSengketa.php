@@ -17,12 +17,14 @@ class MekanismePermohonanPenyelesaianSengketa extends Migration
       ],
       'link_gambar'     => [
         'type'          => 'TEXT',
+        'null'          => true,
       ],
       'link_gambar_content' => [
         'type'              => 'TEXT',
       ],
       'content'          => [
         'type'           => 'LONGTEXT',
+        'null'          => true,
       ],
       'created_at' => [
         'type' => 'DATETIME',

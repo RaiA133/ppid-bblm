@@ -11,7 +11,6 @@ class StandarBiayaPelayananSeeder extends Seeder
   {
     $data = [
       [
-        'link_gambar'     => '[]',
         'link_gambar_content' => '[]',
         'content'         => '
       <h3 class="font-semibold mb-4">BIAYA TARIF</h3>
