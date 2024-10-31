@@ -78,7 +78,7 @@
             <tr class="border-b">
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="w-fit">
-                <p class="badge w-fit h-fit badge-outline text-xs"><?= $result['judul'] ?></p>
+                <p class="badge w-fit h-fit badge-outline text-xs text-center"><?= $result['judul'] ?></p>
               </td>
               <td class="min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
               <td class=""><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>

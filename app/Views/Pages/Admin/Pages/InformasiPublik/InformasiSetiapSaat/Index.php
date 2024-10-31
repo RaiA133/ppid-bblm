@@ -106,7 +106,7 @@
             <tr class="border-b">
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="max-w-32">
-                <p class="badge w-fit h-fit badge-outline text-xs"><?= $result['judul'] ?></p>
+                <p class="badge w-fit h-fit badge-outline text-xs text-center"><?= $result['judul'] ?></p>
               </td>
               <td class="max-w-32">
                 <a href="" class=""><?= $result['jenis_informasi'] ? $result['jenis_informasi'] : 'none' ?></a>

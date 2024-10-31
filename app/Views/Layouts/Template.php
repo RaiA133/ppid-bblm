@@ -38,7 +38,7 @@
     </div>
   <?php endif; ?>
 
-  <div class="w-full">
+  <div class="w-full <?= (strpos($currentRoute, 'admin') === 0) ? "h-screen bg-base-200" : "" ?>">
     <div data-scroll-container class="<?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
 
       <?php if (strpos($currentRoute, 'admin') === 0) : ?> <!-- Jika admin tampilkan navbar admin -->
