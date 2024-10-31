@@ -34,28 +34,39 @@ class HubungiKami extends BaseController
 
   public function indexCreate()
   {
+    $data = $this->request->getVar();
     $validationRule = [
-      'judul_create' => [
+      'nama_create' => [
+        'label' => 'Nama',
         'rules' => 'required',
-        'errors' => ['required' => '{field} harus diisi']
       ],
-      'link_drive_create' => [
-        'rules' => 'required|regex_match[/^(https?:\/\/)?(www\.)?drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+$/]',
-        'errors' => [
-          'required' => 'Link Google Drive harus diisi',
-          'regex_match' => 'Link harus dalam format Google Drive yang valid.<br>Contoh : https://drive.google.com/file/d/1KefQXXB9d0uI3frBsdshvkcIUT6r1LE6D'
-        ]
+      'email_create' => [
+        'label' => 'Email',
+        'rules' => 'required|valid_email',
+      ],
+      'pesan_create' => [
+        'label' => 'Pesan',
+        'rules' => 'required',
       ],
     ];
+
+    if (logged_in()) {
+      unset($validationRule['nama_create']);
+      unset($validationRule['email_create']);
+      $data['nama_create'] = user()->username;
+      $data['email_create'] = user()->email;
+      $data['user_image_create'] = user()->user_image;
+    }
+
     if (! $this->validate($validationRule)) {
       return redirect()->back()->withInput();
     }
-
-    $data = $this->request->getVar();
-    $this->hubungiKamiModel->create($data);
-
+    
+    $query = $this->hubungiKamiModel->create($data);
+    if ($query == 1) $Message = 'Pesan berhasil dikirm, Silahkan tunggu balasan admin';
+    else $Message = 'Pesan gagal dikirim, Silahkan coba lagi nanti';
     session()->setFlashdata('Message', [ 
-      'title' => 'New data added !',
+      'title' => $Message,
     ]);
 
     return redirect()->to(base_url() . '/hubungi-kami');

@@ -71,24 +71,41 @@
           <?php foreach ($results as $result) : ?>
             <tr class="border-b border-base-300 <?= ($result['read']) ? 'bg-base-200' : '' ?>">
               <td class="text-center font-bold"><?= $no++ ?></td>
-              <?php
-              $userImagePath = 'img/userProfilePics/' . $result['user_image'];
-              if (file_exists(FCPATH . $userImagePath) && !empty($result['user_image'])) $profileImage = base_url($userImagePath);
-              else $profileImage = base_url('img/icon/default-profile.jpg');
-              ?>
-              <td class="p-2 sm:p-4 w-fit text-center">
+
+
+
+              <td class="p-2 sm:p-4 w-fit text-center" onclick="viewImageProfileHubungiKami<?= $result['id_hubungi_kami'] ?>.showModal()">
+                <?php
+                $userImagePath = 'img/userProfilePics/' . $result['user_image'];
+                if (file_exists(FCPATH . $userImagePath) && !empty($result['user_image'])) $profileImage = base_url($userImagePath);
+                else $profileImage = base_url('img/icon/default-profile.jpg');
+                ?>
                 <div class="w-10 h-10 rounded-full flex justify-center items-center mx-auto">
                   <img src="<?= $profileImage ?>" alt="profile" class="rounded-full" />
                 </div>
+
+                <dialog id="viewImageProfileHubungiKami<?= $result['id_hubungi_kami'] ?>" class="modal modal-bottom sm:modal-middle">
+                  <div class="modal-box">
+                    <form method="dialog">
+                      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <div class="rounded-full flex justify-center items-center mx-auto">
+                      <img src="<?= $profileImage ?>" alt="profile" />
+                    </div>
+                  </div>
+                </dialog>
               </td>
+
+
               <td class="p-2 sm:p-4 max-w-64 min-w-24 truncate ...">
                 <div class="w-fit">
                   <p class=""><?= $result['nama'] ?></p>
                 </div>
               </td>
+
               <td class="p-2 sm:p-4 w-fit text-center">
 
-                <form action="<?= base_url() ?>/api/admin/hubungi-kami/edit/<?= $result['id_hubungi_kami'] ?>" method="POST">
+                <form action="<?= base_url() ?>api/admin/hubungi-kami/edit/<?= $result['id_hubungi_kami'] ?>" method="post">
                   <button class="btn btn-neutral btn-xs" onclick="">Detail</button>
                 </form>
 
@@ -99,7 +116,7 @@
                     });
                   </script>
                 <?php endif; ?>
-                
+
                 <dialog id="modalLihatPesanHubungiKami<?= $result['id_hubungi_kami'] ?>" class="modal modal-bottom sm:modal-middle">
                   <div class="modal-box">
                     <form method="dialog">
@@ -112,13 +129,15 @@
                       <div class="text-lg"><?= $result['nama'] ?></div>
                       <div><span>Email : </span><span class="italic"><?= $result['email'] ?></span></div>
                       <div><span>Kota : </span><?= $result['kota'] ?>
-                      <div class="m-5 p-5 border rounded-md"><?= $result['pesan'] ?></div>
+                        <div class="m-5 p-5 border rounded-md"><?= $result['pesan'] ?></div>
+                      </div>
                     </div>
-                  </div>
                 </dialog>
 
               </td>
+
               <td class="p-2 sm:p-4 min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
+
               <td class="p-2 sm:p-4"><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
 
               <td class="p-2 sm:p-4">
@@ -132,6 +151,7 @@
                 <!-- END HTTP METHOD SPOOFING for Delete-->
 
               </td>
+
             </tr>
           <?php endforeach; ?>
 

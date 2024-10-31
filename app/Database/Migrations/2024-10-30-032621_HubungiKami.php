@@ -26,10 +26,12 @@ class HubungiKami extends Migration
       'perusahaan' => [
         'type'          => 'VARCHAR',
         'constraint'    => '255',
+        'null'          => true
       ],
       'no_telp' => [
         'type'          => 'VARCHAR',
         'constraint'    => '255',
+        'null'          => true
       ],
       'pesan' => [
         'type'          => 'TEXT',
@@ -37,26 +39,28 @@ class HubungiKami extends Migration
       'kota' => [
         'type'          => 'VARCHAR',
         'constraint'    => '255',
+        'null'          => true
       ],
       'user_image' => [
         'type'          => 'VARCHAR',
         'constraint'    => '255',
+        'null'          => true
       ],
       'read' => [
-        'type'          => 'BOOLEAN',
-        'default'       => false,
+        'type'          => 'DATETIME',
+        'null'          => true
       ],
       'created_at' => [
-        'type' => 'DATETIME',
-        'null' => true
+        'type'          => 'DATETIME',
+        'null'          => true
       ],
       'updated_at' => [
-        'type' => 'DATETIME',
-        'null' => true
+        'type'          => 'DATETIME',
+        'null'          => true
       ],
       'deleted_at' => [
-        'type' => 'DATETIME',
-        'null' => true
+        'type'          => 'DATETIME',
+        'null'          => true
       ],
     ]);
     $this->forge->addKey('id_hubungi_kami', true);

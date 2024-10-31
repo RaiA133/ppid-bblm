@@ -14,7 +14,7 @@ class HubungiKamiModel extends Model
   protected $returnType       = 'array';
   protected $useSoftDeletes   = true;
   protected $protectFields    = true;
-  protected $allowedFields    = ['nama', 'email', 'perusahaan', 'no_telp', 'pesan', 'kota'];
+  protected $allowedFields    = ['nama', 'email', 'perusahaan', 'no_telp', 'pesan', 'kota', 'user_image', 'read'];
 
   protected bool $allowEmptyInserts = false;
   protected bool $updateOnlyChanged = true;
@@ -83,13 +83,20 @@ class HubungiKamiModel extends Model
     return $query;
   }
 
-  // create data hubungi_kami | admin
+  // create data hubungi_kami | user
   public function create($data = [])
   {
     $this->save([
-      'judul' => $data['judul_create'],
-      'link_drive' => $data['link_drive_create'],
+      'nama' => $data['nama_create'],
+      'email' => $data['email_create'],
+      'perusahaan' => $data['perusahaan_create'],
+      'no_telp' => $data['no_telp_create'],
+      'pesan' => $data['pesan_create'],
+      'kota' => $data['kota_create'],
+      'user_image' => $data['user_image_create'],
+      'read' => null,
     ]);
+    return $this->db->affectedRows();
   }
 
   // delete data hubungi_kami by ID | admin
@@ -105,7 +112,7 @@ class HubungiKamiModel extends Model
   {
     $result = $this->db->table('hubungi_kami')
       ->where('id_hubungi_kami', $id_hubungi_kami)
-      ->set('read', 1)
+      ->set('read', Time::now())
       ->update();
     return $result;
   }
