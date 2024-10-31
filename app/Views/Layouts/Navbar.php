@@ -1,12 +1,12 @@
 <!-- Navbar -->
 <div class="navbar bg-base-100">
-  <div class="navbar-start">
+  <div class="navbar-start gap-2">
 
     <?php if (logged_in()) : ?>
       <div class="z-10">
         <!-- <div class="indicator">
       <span class="indicator-item indicator-bottom badge badge-primary">new</span> -->
-        <div class="dropdown dropdown-start bg-base-100">
+        <div class="dropdown dropdown-start bg-base-100 rounded-full">
           <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <?php
@@ -15,7 +15,7 @@
               else $profileImage = base_url('img/icon/default-profile.jpg');
               ?>
               <img
-                src="<?= $profileImage ?>"
+                src="<?= esc($profileImage) ?>"
                 alt="profile"
                 id="img-preview-admin-profile" />
             </div>
@@ -36,7 +36,7 @@
       </div>
     <?php endif; ?>
 
-    <button class="btn btn-ghost btn-circle z-50">
+    <button class="btn btn-ghost btn-circle z-50 bg-base-100">
       <div class="indicator">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@
       </div>
     </button>
 
-    <button class="btn btn-ghost btn-circle z-50">
+    <button class="btn btn-ghost btn-circle z-50 bg-base-100">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -71,11 +71,11 @@
 
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost text-xl z-50" href="<?= base_url() ?>">PPID BBSPJILM</a>
+    <a class="btn btn-ghost text-xl z-50 bg-base-100 rounded-full" href="<?= base_url() ?> ">PPID BBSPJILM</a>
   </div>
   <div class="navbar-end">
 
-    <div class="drawer drawer-end flex justify-end z-50">
+    <div class="drawer drawer-end flex justify-end z-50 w-fit bg-base-100 rounded-full">
       <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
         <!-- Page content here -->

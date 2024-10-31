@@ -15,7 +15,7 @@
       <div class="card h-fit mb-3 bg-neutral rounded-xl">
         <ul class="menu max-w-full shadow-lg text-neutral-content">
           <!-- Menampilkan judul utama -->
-          <li class="menu-title text-center text-neutral-content"><?= $judul['judul'] ?></li>
+          <li class="menu-title text-center text-neutral-content"><?= esc($judul['judul']) ?></li>
           <div class="divider before:bg-primary after:bg-secondary my-0"></div>
 
           <!-- Iterasi melalui informasi yang sesuai dengan judul saat ini -->

@@ -29,20 +29,20 @@
 
           <?php $no = 1; ?>
           <?php foreach ($judulInformasiBerkala as $judul) : ?>
-            <a id="card_carousel" class="flex-shrink-0 snap-center w-full md:w-[500px] xl:w-[700px]" onclick="informasiBerkalaModal<?= $judul['id_informasi_berkala_judul'] ?>.showModal()">
+            <a id="card_carousel" class="flex-shrink-0 snap-center w-full md:w-[500px] xl:w-[700px]" onclick="informasiBerkalaModal<?= esc($judul['id_informasi_berkala_judul']) ?>.showModal()">
               <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all rounded-xl">
                 <div class="p-5">
                   <h2 class="card-title text-7xl sm:text-[100px] mb-6 sm:mb-10">00<?= $no++ ?></h2>
                   <div class="h-96 flex items-end">
-                    <div class="text-6xl sm:text-7xl"><?= $judul['judul'] ?></div>
+                    <div class="text-6xl sm:text-7xl"><?= esc($judul['judul']) ?></div>
                   </div>
                 </div>
               </div>
             </a>
 
-            <dialog id="informasiBerkalaModal<?= $judul['id_informasi_berkala_judul'] ?>" class="modal modal-bottom sm:modal-middle">
+            <dialog id="informasiBerkalaModal<?= esc($judul['id_informasi_berkala_judul']) ?>" class="modal modal-bottom sm:modal-middle">
               <div class="modal-box sm:w-11/12 sm:max-w-5xl">
-                <h3 class="text-lg font-bold"><?= $judul['judul'] ?></h3>
+                <h3 class="text-lg font-bold"><?= esc($judul['judul']) ?></h3>
                 <ul class="py-4">
                   <?php
                   $filteredInformasi = array_filter($informasiBerkala, function ($info) use ($judul) {
@@ -64,7 +64,7 @@
                         <?php foreach ($filteredInformasi as $info) : ?>
                           <tr class="hover">
                             <th><?= $noInfo++ ?></th>
-                            <td><?= $info['jenis_informasi'] ?></td>
+                            <td><?= esc($info['jenis_informasi']) ?></td>
                             <td><?= $info['informasi'] ?></td>
                           </tr>
                         <?php endforeach; ?>

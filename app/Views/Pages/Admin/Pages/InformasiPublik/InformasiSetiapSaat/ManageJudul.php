@@ -20,7 +20,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -79,36 +79,36 @@
             <tr class="border-b">
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="w-fit">
-                <p class="badge w-fit h-fit badge-outline text-xs text-center"><?= $result['judul'] ?></p>
+                <p class="badge w-fit h-fit badge-outline text-xs text-center"><?= esc($result['judul']) ?></p>
               </td>
-              <td class="min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
-              <td class=""><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
+              <td class="min-w-24"><?= esc($result['created_at']) ? esc($result['created_at']) : 'none' ?></td>
+              <td class=""><?= esc($result['updated_at']) ? esc($result['updated_at']) : 'none' ?></td>
 
               <td class="">
 
                 <!-- Modal untuk EDIT Data Informasi Setiap Saat -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiSetiapSaatJudul<?= $result['id_informasi_setiap_saat_judul'] ?>.showModal()">Edit</a>
+                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiSetiapSaatJudul<?= esc($result['id_informasi_setiap_saat_judul']) ?>.showModal()">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataInformasiSetiapSaatJudul' . $result['id_informasi_setiap_saat_judul'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataInformasiSetiapSaatJudul' . esc($result['id_informasi_setiap_saat_judul']))): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataInformasiSetiapSaatJudul<?= $result['id_informasi_setiap_saat_judul'] ?>").showModal();
+                      document.getElementById("editDataInformasiSetiapSaatJudul<?= esc($result['id_informasi_setiap_saat_judul']) ?>").showModal();
                     });
                   </script>
                 <?php endif; ?>
 
-                <dialog id="editDataInformasiSetiapSaatJudul<?= $result['id_informasi_setiap_saat_judul'] ?>" class="modal">
+                <dialog id="editDataInformasiSetiapSaatJudul<?= esc($result['id_informasi_setiap_saat_judul']) ?>" class="modal">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 class="text-lg font-bold">Edit <?= $title ?></h3>
+                    <h3 class="text-lg font-bold">Edit <?= esc($title) ?></h3>
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/manage-judul/edit/<?= $result['id_informasi_setiap_saat_judul'] ?>" method="post">
+                      <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/manage-judul/edit/<?= esc($result['id_informasi_setiap_saat_judul']) ?>" method="post">
                         <?= csrf_field() ?>
-                        <input name="judul_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['judul'] ?>" />
+                        <input name="judul_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc($result['judul']) ?>" />
                         <?php if (isset($errors['judul_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>
                         <?php endif ?>
@@ -122,7 +122,7 @@
                 <!-- END Modal untuk Edit Data Regulasi -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/manage-judul/delete/<?= $result['id_informasi_setiap_saat_judul'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/informasi-setiap-saat/manage-judul/delete/<?= esc($result['id_informasi_setiap_saat_judul']) ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>

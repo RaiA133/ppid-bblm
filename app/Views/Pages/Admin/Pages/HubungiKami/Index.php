@@ -82,7 +82,7 @@
                 else $profileImage = base_url('img/icon/default-profile.jpg');
                 ?>
                 <div class="w-10 h-10 rounded-full flex justify-center items-center mx-auto">
-                  <img src="<?= $profileImage ?>" alt="profile" class="rounded-full" />
+                  <img src="<?= esc($profileImage) ?>" alt="profile" class="rounded-full" />
                 </div>
 
                 <dialog id="viewImageProfileHubungiKami<?= $result['id_hubungi_kami'] ?>" class="modal modal-bottom sm:modal-middle">
@@ -91,7 +91,7 @@
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div class="rounded-full flex justify-center items-center mx-auto">
-                      <img src="<?= $profileImage ?>" alt="profile" />
+                      <img src="<?= esc($profileImage) ?>" alt="profile" />
                     </div>
                   </div>
                 </dialog>
@@ -100,7 +100,7 @@
 
               <td class="p-2 sm:p-4 max-w-64 min-w-24 truncate ...">
                 <div class="w-fit">
-                  <p class=""><?= $result['nama'] ?></p>
+                  <p class=""><?= esc($result['nama']) ?></p>
                 </div>
               </td>
 
@@ -125,21 +125,21 @@
                     </form>
                     <div class="py-4">
                       <div class="w-16 h-16 rounded-full flex justify-center items-center mx-auto mb-2">
-                        <img src="<?= $profileImage ?>" alt="profile" class="rounded-full" />
+                        <img src="<?= esc($profileImage) ?>" alt="profile" class="rounded-full" />
                       </div>
-                      <div class="text-lg"><?= $result['nama'] ?></div>
-                      <div><span>Email : </span><span class="italic"><?= $result['email'] ?></span></div>
+                      <div class="text-lg"><?= esc($result['nama']) ?></div>
+                      <div><span>Email : </span><span class="italic"><?= esc($result['email']) ?></span></div>
                       <div><span>Kota : </span><?= $result['kota'] ?>
-                        <div class="m-5 p-5 border rounded-md"><?= $result['pesan'] ?></div>
+                        <div class="m-5 p-5 border rounded-md"><?= esc($result['pesan']) ?></div>
                       </div>
                     </div>
                 </dialog>
 
               </td>
 
-              <td class="p-2 sm:p-4 min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
+              <td class="p-2 sm:p-4 min-w-24"><?= esc($result['created_at']) ? esc($result['created_at']) : 'none' ?></td>
 
-              <td class="p-2 sm:p-4"><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
+              <td class="p-2 sm:p-4"><?= esc($result['updated_at']) ? esc($result['updated_at']) : 'none' ?></td>
 
               <td class="p-2 sm:p-4">
 

@@ -20,7 +20,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -38,7 +38,7 @@
       <form action="<?= base_url() ?>api/admin/profil/user/edit/<?= user_id() ?>" method="POST" enctype="multipart/form-data">
         <?= csrf_field() ?>
 
-        <input type="hidden" name="user_image_edit_old" value="<?= user()->user_image ?>">
+        <input type="hidden" name="user_image_edit_old" value="<?= esc(user()->user_image) ?>">
 
         <div class="flex justify-between items-center">
           <h2 class="text-2xl font-semibold">Profile</h2>
@@ -55,21 +55,21 @@
           <div class="w-full">
             <div class="mb-3">
               <label class="block text-sm font-medium text-base-700 mb-1">Username :</label>
-              <input type="text" name="username_edit" class="input input-bordered w-full rounded-md <?= (isset($errors['username_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= user()->username ?>" />
+              <input type="text" name="username_edit" class="input input-bordered w-full rounded-md <?= (isset($errors['username_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc(user()->username) ?>" />
               <?php if (isset($errors['username_edit'])) : ?>
                 <div class="label"><span class="label-text-alt text-error"><?= $errors['username_edit'] ?></span></div>
               <?php endif ?>
             </div>
             <div class="mb-3">
               <label class="block text-sm font-medium text-base-700 mb-1">Email :</label>
-              <input type="Email" name="email_edit" class="input input-bordered w-full rounded-md <?= (isset($errors['email_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= user()->email ?>" />
+              <input type="Email" name="email_edit" class="input input-bordered w-full rounded-md <?= (isset($errors['email_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc(user()->email) ?>" />
               <?php if (isset($errors['email_edit'])) : ?>
                 <div class="label"><span class="label-text-alt text-error"><?= $errors['email_edit'] ?></span></div>
               <?php endif ?>
             </div>
             <div class="mb-3">
               <label class="block text-sm font-medium text-base-700 mb-1">Profile Picture :</label>
-              <input type="file" name="user_image_edit" class="file-input file-input-bordered w-full rounded-md <?= (isset($errors['user_image_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= user()->user_image ?>" id="img-input-admin-profile" onchange=" previewImgAdminProfile()" />
+              <input type="file" name="user_image_edit" class="file-input file-input-bordered w-full rounded-md <?= (isset($errors['user_image_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc(user()->user_image) ?>" id="img-input-admin-profile" onchange=" previewImgAdminProfile()" />
               <?php if (isset($errors['user_image_edit'])) : ?>
                 <div class="label"><span class="label-text-alt text-error"><?= $errors['user_image_edit'] ?></span></div>
               <?php endif ?>
@@ -83,7 +83,7 @@
               else $profileImage = base_url('img/icon/default-profile.jpg');
               ?>
               <img
-                src="<?= $profileImage ?>"
+                src="<?= esc($profileImage) ?>"
                 alt="profile"
                 id="img-preview-admin-profile" />
             </div>

@@ -21,7 +21,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-sm"><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -42,15 +42,15 @@
         <!-- Hero -->
         <section dir="ltr" class="relative h-screen w-full bg-neutral flex items-center justify-center mb-5 sm:mb-10">
           <!-- Background Image -->
-          <img src="<?= base_url() ?>img/profile/<?= $results['link_gambar'] ?? '-' ?>" alt="Profile Background" class="absolute w-auto h-full object-cover z-0">
+          <img src="<?= base_url() ?>img/profile/<?= esc($results['link_gambar']) ?? '-' ?>" alt="Profile Background" class="absolute w-auto h-full object-cover z-0">
 
           <!-- Content Wrapper for Flexbox -->
           <div class="relative z-10 w-full flex flex-col md:flex-row justify-between p-8 md:p-9 h-full bg-gradient-to-t from-black from-10% via-transparent via-30%  to-transparent to-90%">
 
             <!-- Left Content (Name and Position) -->
             <div class="text-white my-auto mb-8 md:mb-0">
-              <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6"><?= $results['nama'] ?? '-' ?></h1>
-              <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight w- 9/12 sm:w-2/3"><?= $results['judul'] ?? '-' ?></h2>
+              <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6"><?= esc($results['nama']) ?? '-' ?></h1>
+              <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight w- 9/12 sm:w-2/3"><?= esc($results['judul']) ?? '-' ?></h2>
             </div>
 
             <?php
@@ -116,7 +116,7 @@
     <!-- Form -->
     <div class="flex flex-col xl:flex-row gap-4">
 
-      <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
+      <input type="hidden" name="link_gambar_edit_old" value="<?= esc($results['link_gambar']) ?>">
       <input type="hidden" id="link_gambar_content_edit" name="link_gambar_content_edit" value="<?= $results['link_gambar_content'] ?>">
 
       <div class="w-full">
@@ -124,7 +124,7 @@
 
           <div class="w-full">
             <label class="input input-bordered flex items-center gap-2 w-full <?= (isset($errors['nama_edit'])) ? 'input-error' : 'mb-3' ?>"> <span class=" font-bold">Nama</span>
-              <input name="nama_edit" type="text" class="grow w-full" placeholder="Nama" value="<?= old('nama_edit', htmlspecialchars($results['nama'])) ?>" />
+              <input name="nama_edit" type="text" class="grow w-full" placeholder="Nama" value="<?= old('nama_edit', esc($results['nama'])) ?>" />
             </label>
             <?php if (isset($errors['nama_edit'])) : ?>
               <div class="label"><span class="label-text-alt text-error"><?= $errors['nama_edit'] ?></span></div>
@@ -133,7 +133,7 @@
 
           <div class="w-full">
             <label class="input input-bordered flex items-center gap-2 w-full <?= (isset($errors['judul_edit'])) ? 'input-error' : 'mb-3' ?>"> <span class=" font-bold">Judul</span>
-              <input name="judul_edit" type="text" class="grow w-full" placeholder="Judul" value="<?= old('judul_edit', htmlspecialchars($results['judul'])) ?>" />
+              <input name="judul_edit" type="text" class="grow w-full" placeholder="Judul" value="<?= old('judul_edit', esc($results['judul'])) ?>" />
             </label>
             <?php if (isset($errors['judul_edit'])) : ?>
               <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_edit'] ?></span></div>
@@ -207,7 +207,7 @@
             <div id="formContainerLatarBelakang">
               <?php if (isset($results['latar_belakang_pendidikan'])): ?>
                 <?php foreach (json_decode($results['latar_belakang_pendidikan']) as $inputValue): ?>
-                  <input type="text" name="latar_belakang_pendidikan_edit[]" value="<?= htmlspecialchars($inputValue); ?>" class="input input-bordered w-full mb-3 <?= (isset($errors['latar_belakang_pendidikan_edit'])) ? 'input-error' : '' ?>" />
+                  <input type="text" name="latar_belakang_pendidikan_edit[]" value="<?= esc($inputValue); ?>" class="input input-bordered w-full mb-3 <?= (isset($errors['latar_belakang_pendidikan_edit'])) ? 'input-error' : '' ?>" />
                 <?php endforeach; ?>
               <?php endif; ?>
             </div>
@@ -227,7 +227,7 @@
               <?php if (isset($results['penghargaan'])): ?>
                 <?php foreach (json_decode($results['penghargaan']) as $inputValue): ?>
                   <div class="join gap-3 w-full">
-                    <input type="text" name="penghargaan_edit[]" value="<?= htmlspecialchars($inputValue); ?>" class="input input-bordered w-full mb-3" />
+                    <input type="text" name="penghargaan_edit[]" value="<?= esc($inputValue); ?>" class="input input-bordered w-full mb-3" />
                   </div>
                 <?php endforeach; ?>
               <?php endif; ?>
@@ -244,7 +244,7 @@
           <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
         <?php endif ?>
         <div class="relative border bg-neutral w-full">
-          <img id="img-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= $results['link_gambar'] ?? 'img/profile/users/default-image.jpg' ?>" alt="">
+          <img id="img-preview-admin-profil" class="w-full h-auto" src="<?= base_url() ?>img/profile/<?= esc($results['link_gambar']) ?? 'img/profile/users/default-image.jpg' ?>" alt="">
           <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t from-black to-transparent"></div>
         </div>
 
@@ -283,6 +283,7 @@
         CKEDITOR.config.width = '100%'
         CKEDITOR.config.height = '900'
         CKEDITOR.replace('content', {
+          disallowedContent: 'script; *[on*]',
           extraPlugins: 'uploadimage',
           uploadUrl: '<?= base_url('/api/admin/profil/upload-image') ?>',
           filebrowserUploadUrl: '<?= base_url('/api/admin/profil/upload-image') ?>',

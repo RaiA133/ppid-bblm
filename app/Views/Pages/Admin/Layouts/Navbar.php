@@ -20,11 +20,11 @@
       </label>
     </div>
 
-    <h1 class="text-md sm:text-xl md:text-2xl font-semibold ml-2"><?= $title ?></h1>
+    <h1 class="text-md sm:text-xl md:text-2xl font-semibold ml-2"><?= esc($title) ?></h1>
   </div>
 
   <div class="flex-none ">
-    <span><?= user()->username ?></span>
+    <span><?= esc(user()->username) ?></span>
     <!-- <div class="indicator">
       <span class="indicator-item indicator-bottom badge badge-primary">new</span> -->
     <div class="dropdown dropdown-end ml-4 mr-2">
@@ -36,7 +36,7 @@
           else $profileImage = base_url('img/icon/default-profile.jpg');
           ?>
           <img
-            src="<?= $profileImage ?>"
+            src="<?= esc($profileImage) ?>"
             alt="profile" />
         </div>
       </label>
