@@ -77,7 +77,7 @@ class StandarBiayaPelayanan extends BaseController
       $namaGambar = $fileGambar->getRandomName();
       $fileGambar->move('img/standarLayanan/standarBiayaPelayanan/', $namaGambar); // Move the new file to the server
       $fileLamaPath = 'img/standarLayanan/standarBiayaPelayanan/' . $namaGambarLama;
-      if (file_exists($fileLamaPath)) {
+      if (is_file($fileLamaPath) && file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
     }
@@ -122,22 +122,24 @@ class StandarBiayaPelayanan extends BaseController
     }
   }
 
-  public function indexDelete($id_standar_biaya_pelayanan)
+  public function linkGambarDelete($id_standar_biaya_pelayanan)
   {
-    // Ambil data record untuk mendapatkan nama file gambar
     $record = $this->standarBiayaPelayananModel->find($id_standar_biaya_pelayanan);
-    $imageToDelete = $record ? $record['link_gambar'] : null;
-
-    if ($imageToDelete && file_exists('img/standarLayanan/standarBiayaPelayanan/' . $imageToDelete)) {
-      if (unlink('img/standarLayanan/standarBiayaPelayanan/' . $imageToDelete)) {
-        // Update kolom link_gambar menjadi default-image.jpg jika berhasil menghapus
-        $this->standarBiayaPelayananModel->set('link_gambar', 'default-image.jpg')->where('id_standar_biaya_pelayanan', $id_standar_biaya_pelayanan)->update();
-        $message = 'Image deleted successfully!';
+    if ($record && !empty($record['link_gambar'])) {
+      $namaGambar = $record['link_gambar'];
+      $filePath = 'img/standarLayanan/standarBiayaPelayanan/' . $namaGambar;
+      if (file_exists($filePath)) {
+        if (unlink($filePath)) {
+          $this->standarBiayaPelayananModel->set('link_gambar', null)->where('id_standar_biaya_pelayanan', $id_standar_biaya_pelayanan)->update();
+          $message = 'Image successfully deleted!';
+        } else {
+          $message = ' Failed to delete image!';
+        }
       } else {
-        $message = 'Failed to delete image!';
+        $message = 'Image not found or previously deleted!';
       }
     } else {
-      $message = 'Image not found / already deleted!';
+      $message = 'No images found to delete!';
     }
     session()->setFlashdata('Message', ['title' => $message]);
     return redirect()->to(base_url('admin/standar-biaya-pelayanan'));

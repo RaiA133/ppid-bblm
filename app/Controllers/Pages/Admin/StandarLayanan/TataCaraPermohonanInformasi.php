@@ -77,7 +77,7 @@ class TataCaraPermohonanInformasi extends BaseController
       $namaGambar = $fileGambar->getRandomName();
       $fileGambar->move('img/standarLayanan/tataCaraPermohonanInformasi/', $namaGambar); // Move the new file to the server
       $fileLamaPath = 'img/standarLayanan/tataCaraPermohonanInformasi/' . $namaGambarLama;
-      if (file_exists($fileLamaPath)) {
+      if (is_file($fileLamaPath) && file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
     }
@@ -122,5 +122,28 @@ class TataCaraPermohonanInformasi extends BaseController
       </script>
       ";
     }
+  }
+
+  public function linkGambarDelete($id_tata_cara_permohonan_informasi)
+  {
+    $record = $this->tataCaraPermohonanInformasiModel->find($id_tata_cara_permohonan_informasi);
+    if ($record && !empty($record['link_gambar'])) {
+      $namaGambar = $record['link_gambar'];
+      $filePath = 'img/standarLayanan/tataCaraPermohonanInformasi/' . $namaGambar;
+      if (file_exists($filePath)) {
+        if (unlink($filePath)) {
+          $this->tataCaraPermohonanInformasiModel->set('link_gambar', null)->where('id_tata_cara_permohonan_informasi', $id_tata_cara_permohonan_informasi)->update();
+          $message = 'Image successfully deleted!';
+        } else {
+          $message = ' Failed to delete image!';
+        }
+      } else {
+        $message = 'Image not found or previously deleted!';
+      }
+    } else {
+      $message = 'No images found to delete!';
+    }
+    session()->setFlashdata('Message', ['title' => $message]);
+    return redirect()->to(base_url('admin/tata-cara-permohonan-informasi'));
   }
 }

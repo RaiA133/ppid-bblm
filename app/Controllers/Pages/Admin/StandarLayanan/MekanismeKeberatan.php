@@ -76,7 +76,7 @@ class MekanismeKeberatan extends BaseController
       $namaGambar = $fileGambar->getRandomName();
       $fileGambar->move('img/standarLayanan/mekanismeKeberatan/', $namaGambar); // Move the new file to the server
       $fileLamaPath = 'img/standarLayanan/mekanismeKeberatan/' . $namaGambarLama;
-      if (file_exists($fileLamaPath)) {
+      if (is_file($fileLamaPath) && file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
     }
@@ -121,5 +121,28 @@ class MekanismeKeberatan extends BaseController
       </script>
       ";
     }
+  }
+
+  public function linkGambarDelete($id_mekanisme_keberatan)
+  {
+    $record = $this->mekanismeKeberatanModel->find($id_mekanisme_keberatan);
+    if ($record && !empty($record['link_gambar'])) {
+      $namaGambar = $record['link_gambar'];
+      $filePath = 'img/standarLayanan/mekanismeKeberatan/' . $namaGambar;
+      if (file_exists($filePath)) {
+        if (unlink($filePath)) {
+          $this->mekanismeKeberatanModel->set('link_gambar', null)->where('id_mekanisme_keberatan', $id_mekanisme_keberatan)->update();
+          $message = 'Image successfully deleted!';
+        } else {
+          $message = ' Failed to delete image!';
+        }
+      } else {
+        $message = 'Image not found or previously deleted!';
+      }
+    } else {
+      $message = 'No images found to delete!';
+    }
+    session()->setFlashdata('Message', ['title' => $message]);
+    return redirect()->to(base_url('admin/mekanisme-keberatan'));
   }
 }

@@ -33,7 +33,7 @@
 <!-- Preview Data -->
 <section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg flex justify-center">
   <div class="collapse collapse-arrow join-item bg-base-100">
-    <input type="radio" name="my-accordion-4" />
+    <input type="checkbox" name="my-accordion-4" />
     <div class="collapse-title text-xl font-medium text-center">Preview</div>
     <div class="collapse-content px-0">
 
@@ -70,8 +70,8 @@
                 <?php else : ?>
                   <!-- Jika Hanya Gambar atau Hanya Konten -->
                   <div class="flex justify-center w-full mb-10">
-                    <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
-                      <h2 class="text-2xl font-semibold mb-4">Standar Biaya Pelayanan</h2>
+                    <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-start">
+                      <h2 class="text-2xl font-semibold mb-4 text-center">Standar Biaya Pelayanan</h2>
                       <div class="w-full p-4 bg-white rounded-xl">
                         <?php if (!empty($results['link_gambar'])) : ?>
                           <!-- Tampilkan Gambar di Tengah -->
@@ -147,7 +147,7 @@
     <div class="divider"></div>
 
     <!-- Form -->
-    <h2 class="flex justify-center p-5 text-xl font-bold">Gambar</h2>
+    <h2 class="flex justify-center p-5 text-xl font-bold mr-32">Gambar</h2>
     <div class="flex flex-col xl:flex-row gap-4">
 
       <input type="hidden" name="link_gambar_edit_old" value="<?= $results['link_gambar'] ?>">
@@ -203,6 +203,7 @@
             CKEDITOR.config.width = '100%'
             CKEDITOR.config.height = '900'
             CKEDITOR.replace('content', {
+              allowedContent: true,
               extraPlugins: 'uploadimage',
               uploadUrl: '<?= base_url('/api/admin/standar-biaya-pelayanan/upload-image') ?>',
               filebrowserUploadUrl: '<?= base_url('/api/admin/standar-biaya-pelayanan/upload-image') ?>',
@@ -230,8 +231,19 @@
             });
           </script>
         </div>
+      </div>
   </form>
 
+  <!-- Form Delete -->
+  <div class="flex justify-center w-32">
+    <form action="<?= base_url('api/admin/standar-biaya-pelayanan/delete-image/' . $results['id_standar_biaya_pelayanan']) ?>" method="POST" class="inline">
+      <?= csrf_field() ?>
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete Image</button>
+    </form>
+  </div>
+
 </section>
+
 
 <?php $this->endSection(); ?>

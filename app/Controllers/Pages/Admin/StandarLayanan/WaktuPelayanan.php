@@ -73,7 +73,7 @@ class WaktuPelayanan extends BaseController
       $namaGambar = $fileGambar->getRandomName();
       $fileGambar->move('img/standarLayanan/waktuPelayanan/', $namaGambar); // Move the new file to the server
       $fileLamaPath = 'img/standarLayanan/waktuPelayanan/' . $namaGambarLama;
-      if (file_exists($fileLamaPath)) {
+      if (is_file($fileLamaPath) && file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
     }
@@ -118,5 +118,28 @@ class WaktuPelayanan extends BaseController
       </script>
       ";
     }
+  }
+
+  public function linkGambarDelete($id_waktu_pelayanan)
+  {
+    $record = $this->waktuPelayananModel->find($id_waktu_pelayanan);
+    if ($record && !empty($record['link_gambar'])) {
+      $namaGambar = $record['link_gambar'];
+      $filePath = 'img/standarLayanan/waktuPelayanan/' . $namaGambar;
+      if (file_exists($filePath)) {
+        if (unlink($filePath)) {
+          $this->waktuPelayananModel->set('link_gambar', null)->where('id_waktu_pelayanan', $id_waktu_pelayanan)->update();
+          $message = 'Image successfully deleted!';
+        } else {
+          $message = ' Failed to delete image!';
+        }
+      } else {
+        $message = 'Image not found or previously deleted!';
+      }
+    } else {
+      $message = 'No images found to delete!';
+    }
+    session()->setFlashdata('Message', ['title' => $message]);
+    return redirect()->to(base_url('admin/waktu-pelayanan'));
   }
 }

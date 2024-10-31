@@ -31,8 +31,8 @@
     <?php else : ?>
       <!-- Jika Hanya Gambar atau Hanya Konten -->
       <div class="flex justify-center w-full mb-10">
-        <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-center">
-          <h2 class="text-2xl font-semibold mb-4">Waktu Pelayanan</h2>
+        <div data-scroll-offset class="w-full max-w-2xl shadow-xl rounded-xl text-start">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Waktu Pelayanan</h2>
           <div class="w-full p-4 bg-white rounded-xl">
             <?php if (!empty($results['link_gambar'])) : ?>
               <!-- Tampilkan Gambar di Tengah -->

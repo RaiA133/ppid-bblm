@@ -17,7 +17,7 @@
     <div class="divider"></div>
     <div class="py-4">
 
-      <form action="<?= base_url() ?>/api/admin/regulasi/create" method="post">
+      <form action="<?= base_url() ?>api/admin/regulasi/create" method="post">
         <input name="judul_create" type="text" placeholder="Judul" class="input input-bordered w-full <?= (isset($errors['judul_create'])) ? 'input-error' : 'mb-3' ?>" value="<?= old('judul_create') ?>" />
         <?php if (isset($errors['judul_create'])) : ?>
           <div class="label"><span class="label-text-alt text-error"><?= $errors['judul_create'] ?></span></div>

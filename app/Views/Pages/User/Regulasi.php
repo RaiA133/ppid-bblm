@@ -30,7 +30,7 @@
               <?php $no = 1; ?>
               <?php foreach ($results as $result) : ?>
                 <div class="collapse collapse-arrow join-item border-base-300 border group">
-                  <input type="radio" name="my-accordion-4" onclick="frontShowPDF(<?= $result['id_regulasi'] ?>)"/>
+                  <input type="checkbox" name="my-accordion-4" onclick="frontShowPDF(<?= $result['id_regulasi'] ?>)"/>
                   <div class="collapse-title text-xl font-medium relative">
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
                     <?= "0" . $no++ . ". " . $result['judul'] ?>
