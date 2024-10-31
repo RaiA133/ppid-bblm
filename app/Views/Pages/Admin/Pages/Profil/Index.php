@@ -85,7 +85,7 @@
         </section>
 
         <!-- CONTENT -->
-        <section dir="ltr">
+        <section dir="ltr" class="mx-2 sm:mx-20 mb-10">
           <?php if (!empty($results['content'])) : ?>
             <?= $results['content'] ?>
           <?php else : ?>
