@@ -27,7 +27,7 @@
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span><?= $flashDataCreated['title'] ?></span>
+      <span class="text-sm"><?= esc($flashDataCreated['title']) ?></span>
     </div>
   </div>
   <script>
@@ -53,10 +53,11 @@
 
           <!-- Filter Data By Judul -->
           <form action="" method="GET" class="w-fit">
+            <?= csrf_field() ?>
             <select name="judul" class="select select-bordered select-sm w-fit text-xs" onchange="this.form.submit()">
               <option selected value="">All</option>
               <?php foreach ($informasiBerkalaJudul as $list) : ?>
-                <option value="<?= $list['judul'] ?>" <?= ($request->getVar('judul') == $list['judul']) ? 'selected' : '' ?>><?= $list['judul'] ?></option>
+                <option value="<?= esc($list['judul']) ?>" <?= (esc($request->getVar('judul')) == esc($list['judul'])) ? 'selected' : '' ?>><?= esc($list['judul']) ?></option>
               <?php endforeach; ?>
             </select>
           </form>
@@ -71,14 +72,17 @@
         <!-- Searching Data -->
         <div class="join">
           <form action="" method="GET" class="w-full">
+            <?= csrf_field() ?>
             <input name="keyword" class="input input-bordered input-sm join-item" placeholder="Search" />
             <button type="submit" class="btn btn-sm btn-neutral join-item">Search</button>
           </form>
         </div>
 
         <!-- Add Data -->
-        <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-fit" onclick="addDataInformasiBerkala.showModal()">Add Data</button>
-        <?= $this->include('Pages/Admin/Pages/InformasiPublik/InformasiBerkala/Create') ?> <!-- Load Modal Add Data -->
+        <div class="w-[277px] sm:w-fit">
+          <button class="btn px-4 sm:px-6 btn-sm normal-case btn-neutral text-neutral-content py-2 border w-full text-xs" onclick="addDataInformasiBerkala.showModal()">Add Data</button>
+          <?= $this->include('Pages/Admin/Pages/InformasiPublik/InformasiBerkala/Create') ?> <!-- Load Modal Add Data -->
+        </div>
       </div>
 
     </div>
@@ -104,57 +108,58 @@
             <tr class="border-b">
               <td class="text-center font-bold"><?= $no++ ?></td>
               <td class="w-fit">
-                <p class="badge w-fit h-fit badge-outline text-xs"><?= $result['judul'] ?></p>
+                <p class="badge w-fit h-fit badge-outline text-xs text-center"><?= esc($result['judul']) ?></p>
               </td>
               <td class="max-w-fit">
-                <p><?= $result['jenis_informasi'] ? $result['jenis_informasi'] : 'none' ?></p>
+                <p><?= esc($result['jenis_informasi']) ? esc($result['jenis_informasi']) : 'none' ?></p>
               </td>
               <td class="informasi max-w-64 min-w-24">
                 <p><?= $result['informasi'] ? $result['informasi'] : 'none' ?></p>
               </td>
-              <td class="min-w-24"><?= $result['created_at'] ? $result['created_at'] : 'none' ?></td>
-              <td class=""><?= $result['updated_at'] ? $result['updated_at'] : 'none' ?></td>
+              <td class="min-w-24"><?= esc($result['created_at']) ? esc($result['created_at']) : 'none' ?></td>
+              <td class=""><?= esc($result['updated_at']) ? esc($result['updated_at']) : 'none' ?></td>
 
               <td class="">
 
                 <!-- Modal untuk EDIT Data Informasi Berkala -->
-                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiBerkala<?= $result['id_informasi_berkala'] ?>.showModal(); lazyLoadContent(<?= $result['id_informasi_berkala'] ?>)">Edit</a>
+                <a class="btn btn-xs btn-neutral w-14 mb-1 lg:xl-0" onclick="editDataInformasiBerkala<?= esc($result['id_informasi_berkala']) ?>.showModal(); lazyLoadContent(<?= esc($result['id_informasi_berkala']) ?>)">Edit</a>
 
-                <?php if (session()->getFlashdata('openModalEditDataInformasiBerkala' . $result['id_informasi_berkala'])): ?>
+                <?php if (session()->getFlashdata('openModalEditDataInformasiBerkala' . esc($result['id_informasi_berkala']))): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("editDataInformasiBerkala<?= $result['id_informasi_berkala'] ?>").showModal();
-                      lazyLoadContent(<?= $result['id_informasi_berkala'] ?>)
+                      document.getElementById("editDataInformasiBerkala<?= esc($result['id_informasi_berkala']) ?>").showModal();
+                      lazyLoadContent(<?= esc($result['id_informasi_berkala']) ?>)
                     });
                   </script>
                 <?php endif; ?>
                 
 
-                <dialog id="editDataInformasiBerkala<?= $result['id_informasi_berkala'] ?>" class="modal">
+                <dialog id="editDataInformasiBerkala<?= esc($result['id_informasi_berkala']) ?>" class="modal">
                   <div class="modal-box w-11/12 max-w-5xl">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 class="text-lg font-bold">Edit <?= $title ?></h3>
+                    <h3 class="text-lg font-bold">Edit <?= esc($title) ?></h3>
                     <div class="divider"></div>
                     <div class="py-4">
 
-                      <form action="<?= base_url() ?>api/admin/informasi-berkala/edit/<?= $result['id_informasi_berkala'] ?>" method="post">
-
+                      <form action="<?= base_url() ?>api/admin/informasi-berkala/edit/<?= esc($result['id_informasi_berkala']) ?>" method="post">
+                        <?= csrf_field() ?>
+                        
                         <select name="judul_edit" class="select select-bordered w-full mb-3">
                           <?php foreach ($informasiBerkalaJudul as $list) : ?>
-                            <option value="<?= $list['id_informasi_berkala_judul'] ?>" <?= ($list['id_informasi_berkala_judul'] == $result['id_informasi_berkala_judul']) ? 'selected' : '' ?>>
-                              <?= $list['judul'] ?>
+                            <option value="<?= esc($list['id_informasi_berkala_judul']) ?>" <?= (esc($list['id_informasi_berkala_judul']) == esc($result['id_informasi_berkala_judul'])) ? 'selected' : '' ?>>
+                              <?= esc($list['judul']) ?>
                             </option>
                           <?php endforeach; ?>
                         </select>
 
-                        <input name="jenis_informasi_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['jenis_informasi_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= $result['jenis_informasi'] ?>" />
+                        <input name="jenis_informasi_edit" type="text" placeholder="Jenis Informasi" class="input input-bordered w-full <?= (isset($errors['jenis_informasi_edit'])) ? 'input-error' : 'mb-3' ?>" value="<?= esc($result['jenis_informasi']) ?>" />
                         <?php if (isset($errors['jenis_informasi_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['jenis_informasi_edit'] ?></span></div>
                         <?php endif ?>
 
-                        <textarea name="informasi_edit" class="textarea textarea-bordered w-full mb-3" placeholder="Bio" id="infomasi<?= $result['id_informasi_berkala'] ?>"><?= $result['informasi'] ?></textarea>
+                        <textarea name="informasi_edit" class="textarea textarea-bordered w-full mb-3" placeholder="Bio" id="infomasi<?= esc($result['id_informasi_berkala']) ?>"><?= $result['informasi'] ?></textarea>
                         <?php if (isset($errors['informasi_edit'])) : ?>
                           <div class="label"><span class="label-text-alt text-error"><?= $errors['informasi_edit'] ?></span></div>
                         <?php endif ?>
@@ -175,7 +180,7 @@
                 <!-- END Modal untuk Edit Data Regulasi -->
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/informasi-berkala/delete/<?= $result['id_informasi_berkala'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/informasi-berkala/delete/<?= esc($result['id_informasi_berkala']) ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>

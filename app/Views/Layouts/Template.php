@@ -10,16 +10,17 @@
 
   <!-- Locomotive Scroll -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
-  
+
   <!-- chartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+
   <!-- flatpickr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
   <!-- CKEditor 4 -->
-   <script src="<?= base_url() ?>ckeditor/ckeditor.js"></script>
+  <script src="<?= base_url() ?>ckeditor/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.16.2/standard-all/ckeditor.js"></script>
 
 </head>
 
@@ -38,7 +39,7 @@
     </div>
   <?php endif; ?>
 
-  <div class="w-full">
+  <div class="w-full <?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
     <div data-scroll-container class="<?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
 
       <?php if (strpos($currentRoute, 'admin') === 0) : ?> <!-- Jika admin tampilkan navbar admin -->

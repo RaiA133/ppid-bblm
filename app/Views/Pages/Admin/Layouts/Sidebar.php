@@ -9,7 +9,8 @@
     <li><a href="<?= base_url() ?>admin/analytics">Analytics</a></li>
     <li><a href="<?= base_url() ?>admin/integration">Integration</a></li>
     <li>
-      <details open>
+      <!-- <details open> -->
+      <details>
         <summary>User</summary>
         <ul>
           <li><a href="<?= base_url() ?>admin/login">Login</a></li>
@@ -23,6 +24,11 @@
 
     <div class="divider"></div>
 
+    <?php if (in_groups('superadmin')) : ?>
+      <li><a href="<?= base_url() ?>admin/admin-management">Admin Management</a></li>
+    <?php endif; ?>
+
+    <li><a href="<?= base_url() ?>admin/hubungi-kami">Hubungi Kami</a></li>
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
     <li><a href="<?= base_url() ?>admin/profil">Profil</a></li>
     <li>
@@ -36,5 +42,18 @@
       </details>
     </li>
 
+    <li>
+      <details open>
+        <summary>Standar Layanan</summary>
+        <ul>
+          <li><a href="<?= base_url() ?>admin/tata-cara-permohonan-informasi">Tata Cara Permohonan Informasi</a></li>
+          <li><a href="<?= base_url() ?>admin/mekanisme-keberatan">Mekanisme Keberatan</a></li>
+          <li><a href="<?= base_url() ?>admin/mekanisme-permohonan-penyelesaian-sengketa">Mekanisme Permohonan Penyelesaian Sengketa</a></li>
+          <li><a href="<?= base_url() ?>admin/maklumat-pelayanan">Maklumat Pelayanan</a></li>
+          <li><a href="<?= base_url() ?>admin/standar-biaya-pelayanan">Standar Biaya Pelayanan</a></li>
+          <li><a href="<?= base_url() ?>admin/waktu-pelayanan">Waktu Pelayanan</a></li>
+        </ul>
+      </details>
+    </li>
   </ul>
 </div>

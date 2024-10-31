@@ -3,6 +3,35 @@
 
 <?php $this->section('content') ?>
 
+<?php $flashDataCreated = session()->getFlashdata('flashDataCreated'); ?>
+
+<?php if ($flashDataCreated) : ?>
+  <div class="z-10 absolute top-3 w-fit left-1/2 -translate-x-1/2 transition-opacity duration-[5000ms] opacity-100" id="alertBox">
+    <div role="alert" class="alert shadow-lg bg-base-100 pr-6">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="stroke-info h-6 w-6 shrink-0">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <div class="text-sm">
+        <p><?= esc($flashDataCreated['title']) ?></p>
+        <p><?= esc($flashDataCreated['message']) ?></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    setTimeout(function() { // akan hilang dalam 5 detik
+      document.getElementById('alertBox').classList.add('opacity-0');
+    }, 5000);
+  </script>
+<?php endif; ?>
+
 <div class="flex flex-col" id="header-home">
 
   <!-- Judul Halaman -->
@@ -108,7 +137,7 @@
   <!-- Video Autoplay -->
   <section data-scroll class="relative h-screen mt-32 md:mt-0">
     <video autoplay loop muted src="<?= base_url() ?>/vid/video_profile_bblm.mp4" class="absolute top-0 left-0 w-full h-full object-cover"></video>
-    <div class="absolute inset-0 flex justify-center items-center text-center bg-stone-900 bg-opacity-50 px-10 xl:px-72">
+    <div class="absolute inset-0 flex justify-center items-center text-center bg-stone-900 bg-opacity-50 px-10 xl:px-64">
       <div class="flex">
         <div class="text-lg lg:text-2xl text-stone-200">
           Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) berkomitmen untuk memberikan layanan terbaik dalam bidang pengujian, kalibrasi, dan sertifikasi, serta mendukung pengembangan industri yang mandiri, berdaya saing, dan sesuai dengan prinsip industri hijau melalui standardisasi dan optimalisasi teknologi.
@@ -123,12 +152,12 @@
   </section>
 
   <!-- Informasi Lainnya -->
-  <section class="flex flex-col justify-center items-center mt-10 relative">
+  <section class="flex flex-col justify-center items-center my-7 relative">
 
-    <div class="flex flex-wrap justify-center gap-6 w-full mb-5" data-scroll>
+    <div class="flex flex-wrap justify-center gap-6 w-full" data-scroll>
         
       <a href="<?= base_url() ?>profil" class="flex justify-center" data-scroll data-scroll-speed="4">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">004</h2>
             <div class="h-32 flex items-end">
@@ -139,7 +168,7 @@
       </a>
 
       <a href="<?= base_url() ?>regulasi" class="flex justify-center" data-scroll data-scroll-speed="3">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">005</h2>
             <div class="h-32 flex items-end">
@@ -150,7 +179,7 @@
       </a>
 
       <a href="<?= base_url() ?>permohonan-informasi" class="flex justify-center" data-scroll data-scroll-speed="4">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">006</h2>
             <div class="h-32 flex items-end">
@@ -161,7 +190,7 @@
       </a>
 
       <a href="<?= base_url() ?>unit-pelayanan-publik" class="flex justify-center" data-scroll data-scroll-speed="2">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">007</h2>
             <div class="h-32 flex items-end">
@@ -172,7 +201,7 @@
       </a>
 
       <a href="<?= base_url() ?>laporan-layanan-informasi" class="flex justify-center" data-scroll data-scroll-speed="1.5">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">008</h2>
             <div class="h-32 flex items-end">
@@ -183,7 +212,7 @@
       </a>
 
       <a href="<?= base_url() ?>hubungi-kami" class="flex justify-center" data-scroll data-scroll-speed="6">
-        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
+        <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">
             <h2 class="card-title text-4xl sm:text-5xl mb-6 sm:mb-10">009</h2>
             <div class="h-32 flex items-end">
@@ -199,7 +228,7 @@
 
   <!-- Judul Informasi lainnya -->
   <section class="absoulte z-40 w-full bg-primary py-20">
-    <div class="text-6xl md:text-9xl text-center font-bold">PELAYANAN KAMI</div>
+    <div class="text-6xl md:text-9xl text-center font-bold text-neutral-300">PELAYANAN KAMI</div>
   </section>
 
 </div>

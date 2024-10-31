@@ -15,14 +15,14 @@
       <div class="card h-fit mb-3 bg-neutral rounded-xl">
         <ul class="menu max-w-full shadow-lg text-neutral-content">
           <!-- Menampilkan judul utama -->
-          <li class="menu-title text-center text-neutral-content"><?= $judul['judul'] ?></li>
+          <li class="menu-title text-center text-neutral-content"><?= esc($judul['judul']) ?></li>
           <div class="divider before:bg-primary after:bg-secondary my-0"></div>
 
           <!-- Iterasi melalui informasi yang sesuai dengan judul saat ini -->
-          <?php 
+          <?php
           // Menyaring informasi yang sesuai dengan id judul
-          $filteredInformasi = array_filter($informasiSetiapSaat, function($informasi) use ($judul) {
-              return $informasi['id_informasi_setiap_saat_judul'] == $judul['id_informasi_setiap_saat_judul'];
+          $filteredInformasi = array_filter($informasiSetiapSaat, function ($informasi) use ($judul) {
+            return $informasi['id_informasi_setiap_saat_judul'] == $judul['id_informasi_setiap_saat_judul'];
           });
           ?>
 
@@ -35,6 +35,15 @@
       </div>
     <?php endforeach; ?>
 
+  </div>
+</section>
+
+<section>
+  <div data-scroll data-scroll-speed="5" class="mb-10 w-full flex justify-center">
+    <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>">
+      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+      Kembali ke Home
+    </a>
   </div>
 </section>
 

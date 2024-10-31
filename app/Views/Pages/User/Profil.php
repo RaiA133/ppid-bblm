@@ -6,15 +6,15 @@
 <!-- Hero -->
 <section class="relative h-screen w-full bg-neutral flex items-center justify-center">
   <!-- Background Image -->
-  <img src="<?= base_url() ?>img/profile/<?= $results['link_gambar'] ?? '-' ?>" alt="Profile Background" class="absolute w-auto h-full object-cover z-0">
+  <img src="<?= base_url() ?>img/profile/<?= esc($results['link_gambar']) ?? '-' ?>" alt="Profile Background" class="absolute w-auto h-full object-cover z-0">
 
   <!-- Content Wrapper for Flexbox -->
   <div class="relative z-10 w-full flex flex-col md:flex-row justify-between p-8 md:p-9 h-full bg-gradient-to-t from-black from-10% via-transparent via-30%  to-transparent to-90%">
 
     <!-- Left Content (Name and Position) -->
     <div class="text-white my-auto mb-8 md:mb-0">
-      <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6"><?= $results['nama'] ?? '-' ?></h1>
-      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight w- 9/12 sm:w-2/3"><?= $results['judul'] ?? '-' ?></h2>
+      <h1 class="text-base md:text-lg lg:text-xl font-bold mb-6"><?= esc($results['nama']) ?? '-' ?></h1>
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight w- 9/12 sm:w-2/3"><?= esc($results['judul']) ?? '-' ?></h2>
     </div>
 
     <?php
@@ -50,10 +50,12 @@
 </section>
 
 <!-- CONTENT -->
-<?php if (!empty($results['content'])) : ?>
-  <?= $results['content'] ?>
-<?php else : ?>
-  <li class="text-xs">-</li>
-<?php endif; ?>
+<div data-scroll data-scroll-speed="2" class="mx-2 sm:mx-20 mb-10">
+  <?php if (!empty($results['content'])) : ?>
+    <?= $results['content'] ?>
+  <?php else : ?>
+    <li class="text-xs">-</li>
+  <?php endif; ?>
+</div>
 
 <?php $this->endSection(); ?>
