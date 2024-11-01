@@ -63,7 +63,7 @@
               <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="w-full max-w-2xl shadow-xl rounded-xl">
                   <div class="w-full py-10 px-10 rounded-xl border">
-                    <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-mekanisme-permohonan-penyelesaian-sengketa">
+                    <article class="prose prose-sm prose-headings:text-indigo-500">
                       <?= $results['content'] ?>
                     </article>
                   </div>
@@ -239,11 +239,6 @@
               uploadUrl: '<?= base_url('/api/admin/mekanisme-permohonan-penyelesaian-sengketa/upload-image') ?>',
               filebrowserUploadUrl: '<?= base_url('/api/admin/mekanisme-permohonan-penyelesaian-sengketa/upload-image') ?>',
               filebrowserUploadMethod: "form",
-            });
-
-            CKEDITOR.instances['content'].on('change', function() {
-              let editorContent = CKEDITOR.instances['content'].getData();
-              document.getElementById('content-preview-mekanisme-permohonan-penyelesaian-sengketa').innerHTML = editorContent;
             });
 
             document.getElementById('myForm').addEventListener('submit', function(e) {
