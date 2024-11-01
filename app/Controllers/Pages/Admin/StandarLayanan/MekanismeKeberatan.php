@@ -17,7 +17,7 @@ class MekanismeKeberatan extends BaseController
   {
     $results = $this->mekanismeKeberatanModel->findAll();
     $data = [
-      'title' => 'Halaman Mekanisme Pelayanan',
+      'title' => 'Halaman Mekanisme keberatan',
       'results' => $results[0] ?? null,
     ];
     return view('Pages/Admin/Pages/StandarLayanan/MekanismeKeberatan/Index', $data);

@@ -48,13 +48,13 @@
                 <div class="card border w-full shadow-xl rounded-xl">
                   <figure class="px-4 pt-4">
                     <img
-                      id="img-preview-admin-tataCaraPermohonanInformasi-preview"
-                      src="<?= base_url() ?>img/standarLayanan/tataCaraPermohonanInformasi/<?= $results['link_gambar'] ?>"
-                      alt="Tata Cara Permohonan Informasi"
+                      id="img-preview-admin-waktuPelayanan-preview"
+                      src="<?= base_url() ?>img/standarLayanan/waktuPelayanan/<?= $results['link_gambar'] ?>"
+                      alt="Waktu Pelayanan"
                       class="rounded-xl bg-base-200 border" />
                   </figure>
                   <div class="py-5 pr-5 text-end self-end w-1/2">
-                    <h2 class="text-xl text-indigo-500 font-extrabold">TATA CARA PERMOHONAN INFORMASI</h2>
+                    <h2 class="text-xl text-indigo-500 font-extrabold">WAKTU PELAYANAN</h2>
                   </div>
                 </div>
               </div>
@@ -63,7 +63,7 @@
               <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="w-full max-w-2xl shadow-xl rounded-xl">
                   <div class="w-full py-10 px-10 rounded-xl border">
-                    <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-tata-cara-permohonan-informasi">
+                    <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-waktu-pelayanan">
                       <?= $results['content'] ?>
                     </article>
                   </div>
@@ -79,12 +79,12 @@
                     <div class="card w-full">
                       <figure class="px-4 pt-4">
                         <img
-                          src="<?= base_url() ?>img/standarLayanan/tataCaraPermohonanInformasi/<?= $results['link_gambar'] ?>"
-                          alt="Tata Cara Permohonan Informasi"
+                          src="<?= base_url() ?>img/standarLayanan/waktuPelayanan/<?= $results['link_gambar'] ?>"
+                          alt="Waktu Pelayanan"
                           class="rounded-xl bg-base-200 border" />
                       </figure>
                       <div class="py-5 pr-5 text-end self-end w-1/2">
-                        <h2 class="text-xl text-indigo-500 font-extrabold">TATA CARA PERMOHONAN INFORMASI</h2>
+                        <h2 class="text-xl text-indigo-500 font-extrabold">WAKTU PELAYANAN</h2>
                       </div>
                     </div>
                   <?php endif; ?>
@@ -92,11 +92,11 @@
                   <?php if (!empty($results['content'])) : ?>
                     <div class="w-full max-w-2xl">
                       <div class="w-full py-8 px-10">
-                        <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-tata-cara-permohonan-informasi">
+                        <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-waktu-pelayanan">
                           <?= $results['content'] ?>
                         </article>
                         <div class="divider"></div>
-                        <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">TATA CARA PERMOHONAN INFORMASI</h2>
+                        <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">WAKTU PELAYANAN</h2>
                       </div>
                     </div>
 
@@ -149,23 +149,23 @@
   </div>
 </section>
 
-<!-- Edit Data Standar Tata cara Permohonan Informasi -->
+<!-- Edit Data Waktu Pelayanan -->
 <section class="relative mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-4 sm:p-10 mb-5">
 
   <!-- Form Delete -->
   <div class="absolute transform translate-x-[1px] translate-y-[190px]">
-    <form action="<?= base_url('api/admin/tata-cara-permohonan-informasi/delete-image/' . $results['id_tata_cara_permohonan_informasi']) ?>" method="POST" class="inline">
+    <form action="<?= base_url('api/admin/waktu-pelayanan/delete-image/' . $results['id_waktu_pelayanan']) ?>" method="POST" class="inline">
       <?= csrf_field() ?>
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" class="btn btn-xs btn-error w-[120px]" onclick="return confirm('Are you sure?')">Delete Image</button>
     </form>
   </div>
 
-  <form id="myForm" action="<?= base_url() ?>/api/admin/tata-cara-permohonan-informasi/edit/<?= $results['id_tata_cara_permohonan_informasi'] ?>" method="POST" enctype="multipart/form-data">
+  <form id="myForm" action="<?= base_url() ?>/api/admin/waktu-pelayanan/edit/<?= $results['id_waktu_pelayanan'] ?>" method="POST" enctype="multipart/form-data">
 
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full gap-3">
-      <div class="text-md sm:text-xl font-bold">Edit Data Standar Tata cara Permohonan Informasi</div>
+      <div class="text-md sm:text-xl font-bold">Edit Data Waktu Pelayanan</div>
       <button type="submit" class="btn w-32 btn-neutral">Edit</button>
     </div>
 
@@ -182,7 +182,7 @@
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
           <div class="w-full sm:w-8/12">
             <h2 class="flex justify-center font-bold mb-3 ml-1 text-md sm:text-xl">Gambar Utama</h2>
-            <input id="img-input-admin-tataCaraPermohonanInformasi" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdmintataCaraPermohonanInformasi()" />
+            <input id="img-input-admin-waktuPelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminwaktuPelayanan()" />
             <?php if (isset($errors['link_gambar_edit'])) : ?>
               <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
             <?php endif ?>
@@ -190,15 +190,15 @@
           </div>
           <div class="w-4/12">
             <div class="relative border bg-neutral w-full mt-7">
-              <img id="img-preview-admin-tataCaraPermohonanInformasi" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/tataCaraPermohonanInformasi/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+              <img id="img-preview-admin-waktuPelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/waktuPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
               <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t"></div>
             </div>
 
             <script>
-              function previewImgAdmintataCaraPermohonanInformasi() {
-                const cover = document.querySelector('#img-input-admin-tataCaraPermohonanInformasi');
-                const imgPreview = document.querySelector('#img-preview-admin-tataCaraPermohonanInformasi');
-                const imgPreviewDropdown = document.querySelector('#img-preview-admin-tataCaraPermohonanInformasi-preview');
+              function previewImgAdminwaktuPelayanan() {
+                const cover = document.querySelector('#img-input-admin-waktuPelayanan');
+                const imgPreview = document.querySelector('#img-preview-admin-waktuPelayanan');
+                const imgPreviewDropdown = document.querySelector('#img-preview-admin-waktuPelayanan-preview');
                 const fileCover = new FileReader();
                 fileCover.readAsDataURL(cover.files[0]);
                 fileCover.onload = function(e) {
@@ -219,7 +219,7 @@
           <?php if (isset($errors['content_edit'])) : ?>
             <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
           <?php endif ?>
-          <textarea class="textarea textarea-bordered w-full" placeholder="Tata cara Permohonan Informasi" name="content_edit" id="content">
+          <textarea class="textarea textarea-bordered w-full" placeholder="Waktu Pelayanan" name="content_edit" id="content">
           <?php if (!empty($results['content'])) : ?>
             <?= $results['content'] ?>
           <?php else : ?>
@@ -236,14 +236,14 @@
             CKEDITOR.replace('content', {
               allowedContent: true,
               extraPlugins: 'uploadimage',
-              uploadUrl: '<?= base_url('/api/admin/tata-cara-permohonan-informasi/upload-image') ?>',
-              filebrowserUploadUrl: '<?= base_url('/api/admin/tata-cara-permohonan-informasi/upload-image') ?>',
+              uploadUrl: '<?= base_url('/api/admin/waktu-pelayanan/upload-image') ?>',
+              filebrowserUploadUrl: '<?= base_url('/api/admin/waktu-pelayanan/upload-image') ?>',
               filebrowserUploadMethod: "form",
             });
 
             CKEDITOR.instances['content'].on('change', function() {
               let editorContent = CKEDITOR.instances['content'].getData();
-              document.getElementById('content-preview-tata-cara-permohonan-informasi').innerHTML = editorContent;
+              document.getElementById('content-preview-waktu-pelayanan').innerHTML = editorContent;
             });
 
             document.getElementById('myForm').addEventListener('submit', function(e) {
