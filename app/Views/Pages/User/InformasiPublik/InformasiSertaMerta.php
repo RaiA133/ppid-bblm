@@ -46,7 +46,7 @@
 
 <section>
   <div data-scroll data-scroll-speed="5" class="mb-10 w-full flex justify-center">
-  <a class="relative group py-1.5 px-2.5 text-neutral-content-950 text-4xl ml-4" href="<?= base_url() ?>">
+    <a class="relative group py-1.5 px-2.5 text-neutral-content-950 text-4xl" href="<?= base_url() ?>">
       <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-neutral-500  transition-all duration-300 group-hover:w-full"></span>
       Kembali ke Home
     </a>

@@ -101,24 +101,23 @@
           <!-- Sidebar content here -->
           <label class="btn btn-sm btn-circle btn-ghost absolute pt-[1px] text-2xl font-light" for="my-drawer-4" aria-label="close sidebar">✕</label>
           <div class="mt-[80px]">
+
             <div class="ml-4 my-2" style="font-size: 10px;">001</div>
             <li class="text-2xl"><a href="<?= base_url() ?>">Home</a></li>
+
             <div class="ml-4 my-2" style="font-size: 10px">002</div>
             <li class="text-2xl"><a href="<?= base_url() ?>profil">Profil</a></li>
+
             <div class="ml-4 my-2" style="font-size: 10px">003</div>
             <li class="text-2xl"><a href="<?= base_url() ?>regulasi">Regulasi</a></li>
+
             <div class="ml-4 my-2" style="font-size: 10px">004</div>
             <li class="">
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
-                <div tabindex="0" role="button" class="text-2xl">
+                <div class="text-2xl">
                   Informasi Publik
                   <span class="text-4xl ml-2">↓</span>
                 </div>
-                <!-- Arrow animated like accordion -->
-                <!-- <div class="collapse collapse-arrow">
-                  <input tabindex="0" role="button" type="radio" name="my-accordion-2" class="" />
-                  <div class="collapse-title text-2xl">Informasi Publik</div>
-                </div> -->
                 <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-64 p-2 shadow">
                   <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-base-900 transition-all"><a href="<?= base_url() ?>informasi-berkala">Informasi Berkala</a></li>
                   <li class="hover:bg-neutral bg-base-200 hover:text-neutral-content text-base-900 transition-all"><a href="<?= base_url() ?>informasi-setiap-saat">Informasi Setiap Saat</a></li>
@@ -126,6 +125,7 @@
                 </ul>
               </div>
             </li>
+
             <div class="ml-4 my-2" style="font-size: 10px">005</div>
             <li class="">
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
@@ -143,6 +143,7 @@
                 </ul>
               </div>
             </li>
+
             <div class="ml-4 my-2" style="font-size: 10px">006</div>
             <li class="">
               <div class="dropdown dropdown-bottom md:dropdown-left w-full" tabindex="0" role="button">
@@ -157,8 +158,10 @@
                 </ul>
               </div>
             </li>
+
             <div class="ml-4 my-2" style="font-size: 10px">007</div>
             <li class="text-2xl"><a href="<?= base_url() ?>hubungi-kami">Hubungi Kami</a></li>
+            
           </div>
 
         </ul>
