@@ -48,10 +48,10 @@
                 <div class="card border w-full shadow-xl rounded-xl">
                   <figure class="px-4 pt-4">
                     <img
-                      id="img-preview-admin-standarbiayapelayanan"
+                      id="img-preview-admin-standarBiayaPelayanan-preview"
                       src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>"
                       alt="Standar Biaya Pelayanan"
-                      class="rounded-xl bg-base-200" />
+                      class="rounded-xl bg-base-200 border" />
                   </figure>
                   <div class="py-5 pr-5 text-end self-end w-1/2">
                     <h2 class="text-xl text-indigo-500 font-extrabold">STANDAR BIAYA PELAYANAN</h2>
@@ -81,7 +81,7 @@
                         <img
                           src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>"
                           alt="Standar Biaya Pelayanan"
-                          class="rounded-xl bg-base-200" />
+                          class="rounded-xl bg-base-200 border" />
                       </figure>
                       <div class="py-5 pr-5 text-end self-end w-1/2">
                         <h2 class="text-xl text-indigo-500 font-extrabold">STANDAR BIAYA PELAYANAN</h2>
@@ -182,7 +182,7 @@
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
           <div class="w-full sm:w-8/12">
             <h2 class="flex justify-center font-bold mb-3 ml-1 text-md sm:text-xl">Gambar Utama</h2>
-            <input id="img-input-admin-standarbiayapelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminStandarBiayaPelayanan()" />
+            <input id="img-input-admin-standarBiayaPelayanan" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminStandarBiayaPelayanan()" />
             <?php if (isset($errors['link_gambar_edit'])) : ?>
               <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
             <?php endif ?>
@@ -190,17 +190,19 @@
           </div>
           <div class="w-4/12">
             <div class="relative border bg-neutral w-full mt-7">
-              <img id="img-preview-admin-standarbiayapelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+              <img id="img-preview-admin-standarBiayaPelayanan" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
               <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t"></div>
             </div>
 
             <script>
               function previewImgAdminStandarBiayaPelayanan() {
-                const cover = document.querySelector('#img-input-admin-standarbiayapelayanan');
-                const imgPreview = document.querySelector('#img-preview-admin-standarbiayapelayanan');
+                const cover = document.querySelector('#img-input-admin-standarBiayaPelayanan');
+                const imgPreview = document.querySelector('#img-preview-admin-standarBiayaPelayanan');
+                const imgPreviewDropdown = document.querySelector('#img-preview-admin-standarBiayaPelayanan-preview');
                 const fileCover = new FileReader();
                 fileCover.readAsDataURL(cover.files[0]);
                 fileCover.onload = function(e) {
+                  imgPreviewDropdown.src = e.target.result;
                   imgPreview.src = e.target.result;
                 }
               }
@@ -217,7 +219,7 @@
           <?php if (isset($errors['content_edit'])) : ?>
             <div class="label"><span class="label-text-alt text-error"><?= $errors['content_edit']; ?></span></div>
           <?php endif ?>
-          <textarea class="textarea textarea-bordered w-full" placeholder="StandarBiayaPelayanan" name="content_edit" id="content">
+          <textarea class="textarea textarea-bordered w-full" placeholder="Standar Biaya Pelayanan" name="content_edit" id="content">
           <?php if (!empty($results['content'])) : ?>
             <?= $results['content'] ?>
           <?php else : ?>
