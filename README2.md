@@ -43,8 +43,6 @@ Pembuatan controller :
 - Buat folder untuk controller sesuai posisi halaman, misal kita membuat subhalaman yang berisi tiga page berbeda di website, maka tempatkan 3 controller di folder
 - jika masih bingung, bisa lihat controller yang sudah dibuat sebelumnya
 
-Pembuatan Model :
-
 Pembuatan Model : 
 - Pembuatan model harus dengan menggunakan CLI ```php spark make:model (NamaModel)``` , NamaModel CamelCase dan setelahnya diberi kata Model. ex : `ProfileModel` 
 - untuk membuat nama table menggunkan snake case
