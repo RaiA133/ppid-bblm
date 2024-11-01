@@ -40,7 +40,7 @@
 
       <div class="h-[1000px] overflow-auto mb-5">
         <div class="flex justify-center w-full" data-scroll>
-          <div class="h-full w-fit shadow-xl rounded-xl">
+          <div class="h-full w-fit">
 
             <!-- Image & Content Section -->
             <section class="flex flex-col md:flex-row items-center justify-center mx-10 my-20 h-full" id="fixed-elements" data-scroll>
