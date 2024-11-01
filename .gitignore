@@ -90,7 +90,7 @@ vendor/*
 #-------------------------
 # Node Modules
 #-------------------------
-node_modules/*
+node_modules
 
 #-------------------------
 # IDE / Development Files
