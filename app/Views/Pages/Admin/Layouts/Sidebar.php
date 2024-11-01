@@ -43,7 +43,7 @@
     </li>
 
     <li>
-      <details open>
+      <details>
         <summary>Standar Layanan</summary>
         <ul>
           <li><a href="<?= base_url() ?>admin/tata-cara-permohonan-informasi">Tata Cara Permohonan Informasi</a></li>
@@ -52,6 +52,17 @@
           <li><a href="<?= base_url() ?>admin/maklumat-pelayanan">Maklumat Pelayanan</a></li>
           <li><a href="<?= base_url() ?>admin/standar-biaya-pelayanan">Standar Biaya Pelayanan</a></li>
           <li><a href="<?= base_url() ?>admin/waktu-pelayanan">Waktu Pelayanan</a></li>
+        </ul>
+      </details>
+    </li>
+
+    <li>
+      <details open>
+        <summary>Layanan Informasi</summary>
+        <ul>
+          <li><a href="<?= base_url() ?>admin/permohonan-informasi">Permohonan Informasi</a></li>
+          <li><a href="<?= base_url() ?>admin/unit-pelayanan-publik">Unit Pelayanan Publik</a></li>
+          <li><a href="<?= base_url() ?>admin/laporan-layanan-informasi">Laporan Layanan Informasi</a></li>
         </ul>
       </details>
     </li>
