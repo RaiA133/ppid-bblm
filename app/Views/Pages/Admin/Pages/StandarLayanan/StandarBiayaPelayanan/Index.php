@@ -235,7 +235,7 @@
             CKEDITOR.config.height = '900'
             CKEDITOR.replace('content', {
               allowedContent: true,
-              extraPlugins: 'uploadimage'
+              extraPlugins: 'uploadimage',
               uploadUrl: '<?= base_url('/api/admin/standar-biaya-pelayanan/upload-image') ?>',
               filebrowserUploadUrl: '<?= base_url('/api/admin/standar-biaya-pelayanan/upload-image') ?>',
               filebrowserUploadMethod: "form",
