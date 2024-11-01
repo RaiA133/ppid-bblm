@@ -57,7 +57,7 @@
     </li>
 
     <li>
-      <details open>
+      <details>
         <summary>Layanan Informasi</summary>
         <ul>
           <li><a href="<?= base_url() ?>admin/permohonan-informasi">Permohonan Informasi</a></li>
