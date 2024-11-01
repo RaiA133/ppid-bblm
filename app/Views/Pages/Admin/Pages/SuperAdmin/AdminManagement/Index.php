@@ -105,8 +105,8 @@
 
 
                 <div class="w-fit" onclick="viewImageProfile<?= esc($result->userid) ?>.showModal()">
-                  <div class="w-10 rounded-full">
-                    <img src="<?= esc($profileImage) ?>" alt="profile" />
+                  <div class="w-10 h-10 rounded-full flex justify-center items-center mx-auto">
+                    <img src="<?= esc($profileImage) ?>" alt="profile" class="rounded-full" />
                   </div>
                 </div>
 

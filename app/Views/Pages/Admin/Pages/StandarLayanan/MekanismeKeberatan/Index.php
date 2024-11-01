@@ -39,7 +39,9 @@
       <div class="h-full overflow-auto flex justify-center">
 
         <section class="flex flex-col md:flex-row items-center justify-center mx-2 mb-40" id="fixed-elements" data-scroll>
-          <?php if (!empty($results['link_gambar']) && !empty($results['content'])) : ?>
+          
+          <?php $isContentChange = false ?>
+          <?php if (!empty($results['link_gambar']) && (!empty($results['content']) || $isContentChange)) : ?>
             <!-- Jika Gambar dan Konten Tersedia, Tampilkan Kanan-Kiri -->
 
             <div class="flex flex-col sm:flex-row justify-center w-full gap-4 mt-20">
@@ -63,7 +65,7 @@
               <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="w-full max-w-2xl shadow-xl rounded-xl">
                   <div class="w-full py-10 px-10 rounded-xl border">
-                    <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-mekanisme-keberatan">
+                    <article class="prose prose-sm prose-headings:text-indigo-500">
                       <?= $results['content'] ?>
                     </article>
                   </div>
@@ -239,11 +241,6 @@
               uploadUrl: '<?= base_url('/api/admin/mekanisme-keberatan/upload-image') ?>',
               filebrowserUploadUrl: '<?= base_url('/api/admin/mekanisme-keberatan/upload-image') ?>',
               filebrowserUploadMethod: "form",
-            });
-
-            CKEDITOR.instances['content'].on('change', function() {
-              let editorContent = CKEDITOR.instances['content'].getData();
-              document.getElementById('content-preview-mekanisme-keberatan').innerHTML = editorContent;
             });
 
             document.getElementById('myForm').addEventListener('submit', function(e) {
