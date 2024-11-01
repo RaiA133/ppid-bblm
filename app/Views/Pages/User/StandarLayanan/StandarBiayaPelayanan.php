@@ -16,7 +16,7 @@
             <img
               src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>"
               alt="Standar Biaya Pelayanan"
-              class="rounded-xl bg-base-200" />
+              class="rounded-xl bg-base-200 border" />
           </figure>
           <div class="py-5 pr-5 text-end self-end w-1/2">
             <h2 class="text-xl text-indigo-500 font-extrabold">STANDAR BIAYA PELAYANAN</h2>
@@ -25,10 +25,10 @@
       </div>
 
       <!-- Konten di Samping Gambar -->
-      <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <div id="customHeight" class="h-fit w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
         <div class="w-full max-w-2xl shadow-xl rounded-xl">
           <div class="w-full py-10 px-10 rounded-xl border">
-            <article class="prose prose-sm prose-headings:text-indigo-500">
+            <article class="prose prose-sm prose-headings:text-indigo-500 max-w-full">
               <?= $results['content'] ?>
             </article>
           </div>
@@ -46,7 +46,7 @@
                 <img
                   src="<?= base_url() ?>img/standarLayanan/standarBiayaPelayanan/<?= $results['link_gambar'] ?>"
                   alt="Standar Biaya Pelayanan"
-                  class="rounded-xl bg-base-200" />
+                  class="rounded-xl bg-base-200 border" />
               </figure>
               <div class="py-5 pr-5 text-end self-end w-1/2">
                 <h2 class="text-xl text-indigo-500 font-extrabold">STANDAR BIAYA PELAYANAN</h2>
@@ -57,7 +57,7 @@
           <?php if (!empty($results['content'])) : ?>
             <div class="w-full max-w-2xl">
               <div class="w-full py-8 px-10">
-                <article class="prose prose-sm prose-headings:text-indigo-500">
+                <article class="prose prose-sm prose-headings:text-indigo-500 max-w-full">
                   <?= $results['content'] ?>
                 </article>
                 <div class="divider"></div>
