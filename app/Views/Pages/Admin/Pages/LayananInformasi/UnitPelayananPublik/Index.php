@@ -167,7 +167,7 @@
             </div>
 
             <script>
-              function previewImgAdminUnitPe() {
+              function previewImgAdminUnitPelayananPublik() {
                 const cover = document.querySelector('#img-input-admin-unitpelayananpublik');
                 const imgPreview = document.querySelector('#img-preview-admin-unitpelayananpublik');
                 const fileCover = new FileReader();
