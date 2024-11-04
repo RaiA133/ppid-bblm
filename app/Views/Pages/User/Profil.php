@@ -52,7 +52,9 @@
 <!-- CONTENT -->
 <div data-scroll data-scroll-speed="2" class="mx-2 sm:mx-20 mb-10">
   <?php if (!empty($results['content'])) : ?>
-    <?= $results['content'] ?>
+    <article class="prose prose-md prose-headings:text-indigo-500 max-w-full">
+      <?= $results['content'] ?>
+    </article>
   <?php else : ?>
     <li class="text-xs">-</li>
   <?php endif; ?>

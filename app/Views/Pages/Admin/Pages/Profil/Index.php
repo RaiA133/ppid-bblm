@@ -87,7 +87,9 @@
         <!-- CONTENT -->
         <section dir="ltr" class="mx-2 sm:mx-20 mb-10">
           <?php if (!empty($results['content'])) : ?>
-            <?= $results['content'] ?>
+            <article class="prose prose-md prose-headings:text-indigo-500 max-w-full">
+              <?= $results['content'] ?>
+            </article>
           <?php else : ?>
             <li class="text-xs">-</li>
           <?php endif; ?>
@@ -282,7 +284,7 @@
         CKEDITOR.config.width = '100%'
         CKEDITOR.config.height = '900'
         CKEDITOR.replace('content', {
-          skin: 'office2013',
+          // skin: 'office2013',
           allowedContent: true,
           disallowedContent: 'script; *[on*]',
           extraPlugins: 'uploadimage',

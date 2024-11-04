@@ -23,9 +23,9 @@ class ProfilSeeder extends Seeder
         ]),
         'link_gambar'     => 'profile.png',
         'content'         => '<!-- Sambutan -->
-<section class="card bg-base-100">
-  <div class="card-body text-black mt-5 rounded p-5">
-    <h2 class="text-2xl text-black font-bold mb-4">Sambutan Kepala BBSPJILM</h2>
+<section class="card bg-base-950">
+  <div class="card-body text-base-950 mt-5 rounded p-5">
+    <h2 class="text-2xl font-bold mb-4">Sambutan Kepala BBSPJILM</h2>
     <p class="mt-4">"Puji dan syukur kita panjatkan kepada Tuhan yang Maha Kuasa karena hanya atas Rahmat dan hidayahNya sehingga Profil balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) ini dapat diterbitkan. Profil ini berisi tentang tugas pokok dan fungsi BBSPJILM sebagai salah satu Lembaga pemerintah yang memberikan layanan di bidang Pengujian, Kalibrasi, Sertifikasi, Pemesinan, Pengelasan, Penerapan Industri 4.0, Pelatihan Teknis. Bapak/Ibu dapat memanfaatkan berbagai layanan yang ada di BBSPJILM dalam mendukung pengembangan industri yang terstandar dengan baik. Kami di BBSPJILM terus berkomitmen untuk memberikan pelayanan terbaik, serta siap untuk membuka diri dan bekerjasama dengan berbagai pihak industri, perguruan tinggi, BUMN, kementerian, dan Lembaga atau pihak-pihak lain yang terkait. Besar harapan kami, profil BBSPJILM ini dapat menjadi manfaat bagi kita semua."</p>
     <br>
     <p>All praise and gratitude to Allah, The Greatest One because it is only for His grace and guidance that the Profile of Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) can be published. This profile contains the main tasks and functions of BBSPJILM as a government agency that provides services in the fields of Testing, Calibration, Certification, Machining, Welding, Application of Industry 4.0, Technical Training. We really hope that you can utilize the various services available at BBSPJILM in supporting the development of a well-standardized industry. We at BBSPJILM continue to be committed to providing the best service and are ready to open up and cooperate with various institutions including industries, universities, government-owned corporations, ministries, and other related parties. We really hope that this BBSPJILM profile can be of benefit to all of us."</p>
@@ -35,8 +35,8 @@ class ProfilSeeder extends Seeder
 <br><br><br>
 
 <!-- Sejarah -->
-<section class="card bg-base-100">
-  <div class="flex flex-col lg:flex-row text-black">
+<section class="card bg-base-950">
+  <div class="flex flex-col lg:flex-row text-base-950">
     <div class="card-body lg:w-full">
       <h2 class="text-2xl font-bold mb-4">SEJARAH BBSPJILM</h2>
       <ul class="list-disc list-inside pl-5 space-y-4">
@@ -62,23 +62,23 @@ class ProfilSeeder extends Seeder
 <br><br><br>
 
 <!-- Visi & Misi -->
-<section class="bg-base-100 rounded-lg">
+<section class="bg-base-950 rounded-lg">
   <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8">
 
-    <div class="text-black p-6">
+    <div class="text-base-950 p-6">
       <h2 class="text-2xl font-bold mb-4">VISI BBSPJILM</h2>
       <p class="leading-relaxed">
         “Menjadi badan yang akuntabel, adaptif, kolaboratif, dan berorientasi pelayanan dalam mewujudkan industri nasional yang mandiri dan berdaya saing.”
       </p>
     </div>
 
-    <div class="text-black p-6">
+    <div class="text-base-950 p-6">
       <h2 class="text-2xl font-bold mb-4">MISI BBSPJILM</h2>
       <p class="leading-relaxed mb-4">
         “Peningkatan kemandirian, daya saing, dan kolaborasi industri melalui pemanfaatan infrastruktur dan revitalisasi standardisasi, optimalisasi pemanfaatan teknologi industri, jasa industri dan industri hijau.”
       </p>
-      <p class="font-semibold text-gray-700 mb-4">Yang bercirikan:</p>
-      <ol class="list-decimal list-inside space-y-2 text-gray-700">
+      <p class="font-semibold text-base-800 mb-4">Yang bercirikan:</p>
+      <ol class="list-decimal list-inside space-y-2 text-base-800">
         <li>Standardisasi industri yang mandiri (mengurangi ketergantungan pada asing), produktif (efektif, efisien dan optimasi teknologi), dan berorientasi industri dalam negeri.</li>
         <li>Pengawasan implementasi standardisasi industri yang efektif.</li>
         <li>Optimalisasi pemanfaatan teknologi industri untuk meningkatkan kemandirian dan daya saing industri.</li>
@@ -93,8 +93,8 @@ class ProfilSeeder extends Seeder
 <br><br><br>
 
 <!-- Tugas Pokok -->
-<section class="bg-base-100 rounded-lg">
-  <div class="text-black p-6">
+<section class="bg-base-950 rounded-lg">
+  <div class="text-base-950 p-6">
     <h2 class="text-2xl font-bold mb-4">TUGAS POKOK BBSPJILM</h2>
     <h3 class="font-semibold mb-4">
       Permen Perindustrian RI No. 01 tahun 2022 Organisasi dan Tata Kerja UPT di Lingkungan BSKJI
