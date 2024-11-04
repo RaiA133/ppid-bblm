@@ -15,7 +15,7 @@ class PermohonanInformasi extends BaseController
   public function index(): string
   {
     $currentPage = $this->request->getVar('page_permohonan_informasi') ? $this->request->getVar('page_permohonan_informasi') : 1;
-    $dataCountOnePage = 10; // jumlah data yang ditampilkan di satu halaman
+    $dataCountOnePage = 2; // jumlah data yang ditampilkan di satu halaman
 
     $keyword = $this->request->getVar('keyword');
     if ($keyword) $perhomonanInformasi = $this->permohonanInformasiModel->search($keyword);
@@ -112,8 +112,9 @@ class PermohonanInformasi extends BaseController
 
   public function indexUpdate($id_permohonan_infomasi)
   {
+    $currentPage = $this->request->getGet('page_permohonan_informasi');
     $this->permohonanInformasiModel->read($id_permohonan_infomasi);
-    return redirect()->to(base_url() . 'admin/permohonan-informasi')->with('openModalLihatPesanPermohonanInformasi' . $id_permohonan_infomasi, true);
+    return redirect()->to(base_url('admin/permohonan-informasi') . '?page_permohonan_informasi=' . $currentPage)->with('openModalLihatPesanPermohonanInformasi' . $id_permohonan_infomasi, true);
   }
 
   public function indexDelete($id_permohonan_infomasi)

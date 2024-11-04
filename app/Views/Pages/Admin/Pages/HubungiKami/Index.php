@@ -1,3 +1,4 @@
+<?php use CodeIgniter\I18n\Time; ?>
 <?php $this->extend('Layouts/Template'); ?>
 
 <?php $this->section('content') ?>
@@ -100,13 +101,17 @@
 
               <td class="p-2 sm:p-4 max-w-64 min-w-24 truncate ...">
                 <div class="w-fit">
-                  <p class=""><?= esc($result['nama']) ?></p>
+                  <p class="flex gap-3 items-center"><?= esc($result['nama']) ?>
+                  <?php if ($result['read'] === null && Time::parse($result['created_at'])->toDateString() === Time::today()->toDateString()) : ?>
+                    <span class="badge badge-xs badge-accent">New</span>
+                    <?php endif ?>
+                  </p>
                 </div>
               </td>
 
               <td class="p-2 sm:p-4 w-fit text-center">
 
-                <form action="<?= base_url() ?>api/admin/hubungi-kami/edit/<?= $result['id_hubungi_kami'] ?>" method="post">
+                <form action="<?= base_url() ?>api/admin/hubungi-kami/edit/<?= $result['id_hubungi_kami'] ?>?page_hubungi_kami=<?= $currentPage ?>" method="post">
                   <button class="btn btn-neutral btn-xs" onclick="">Detail</button>
                 </form>
 

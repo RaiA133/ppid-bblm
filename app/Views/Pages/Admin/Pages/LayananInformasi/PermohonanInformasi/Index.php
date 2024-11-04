@@ -1,6 +1,4 @@
-<?php
-
-use CodeIgniter\I18n\Time; ?>
+<?php use CodeIgniter\I18n\Time; ?>
 <?php $this->extend('Layouts/Template'); ?>
 
 <?php $this->section('content') ?>
@@ -113,7 +111,7 @@ use CodeIgniter\I18n\Time; ?>
 
               <td class="p-2 sm:p-4 w-fit text-center">
 
-                <form action="<?= base_url() ?>api/admin/permohonan-informasi/edit/<?= $result['id_permohonan_informasi'] ?>" method="post">
+                <form action="<?= base_url() ?>api/admin/permohonan-informasi/edit/<?= $result['id_permohonan_informasi'] ?>?page_permohonan_informasi=<?= $currentPage ?>" method="post">
                   <button class="btn btn-neutral btn-xs" onclick="">Detail</button>
                 </form>
 

@@ -74,8 +74,9 @@ class HubungiKami extends BaseController
 
   public function indexUpdate($id_hubungi_kami)
   {
+    $currentPage = $this->request->getGet('page_hubungi_kami');
     $this->hubungiKamiModel->read($id_hubungi_kami);
-    return redirect()->to(base_url() . 'admin/hubungi-kami')->with('openModalLihatPesanHubungiKami' . $id_hubungi_kami, true);
+    return redirect()->to(base_url('admin/hubungi-kami') . '?page_hubungi_kami=' . $currentPage)->with('openModalLihatPesanHubungiKami' . $id_hubungi_kami, true);
   }
 
   public function indexDelete($id_hubungi_kami)
