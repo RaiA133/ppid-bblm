@@ -14,7 +14,7 @@
         <div class="card border w-full shadow-xl rounded-xl">
           <figure class="px-4 pt-4">
             <img
-              src="<?= base_url() ?>img/standarLayanan/tataCaraPermohonanInformasi/<?= $results['link_gambar'] ?>" 
+              src="<?= base_url() ?>img/standarLayanan/tataCaraPermohonanInformasi/<?= $results['link_gambar'] ?>"
               alt="Tata Cara Permohonan Informasi"
               class="rounded-xl bg-base-200 border" />
           </figure>
@@ -64,7 +64,7 @@
                 <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">TATA CARA PELAYANAN INFORMASI</h2>
               </div>
             </div>
-            
+
           <?php endif; ?>
 
         </div>

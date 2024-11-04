@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\StandarLayanan;
+namespace App\Models\InformasiPublik;
 
 use CodeIgniter\Model;
 
-class MaklumatPelayananModel extends Model
+class InformasiSertaMertaModel extends Model
 {
-  protected $table            = 'maklumat_pelayanan';
-  protected $primaryKey       = 'id_maklumat_pelayanan';
+  protected $table            = 'informasi_serta_merta';
+  protected $primaryKey       = 'id_informasi_serta_merta';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';
   protected $useSoftDeletes   = true;
@@ -44,24 +44,24 @@ class MaklumatPelayananModel extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-  // Get data maklumat pelayanan with paginate | admin
-  public function getMaklumat_Pelayanan()
+  // Get data informasi serta merta with paginate | admin
+  public function getInformasi_Serta_Merta()
   {
-    $query = $this->table('maklumat_pelayanan');
-    $query->orderBy('id_maklumat_pelayanan', 'DESC');
+    $query = $this->table('informasi_serta_merta');
+    $query->orderBy('id_informasi_serta_merta', 'DESC');
     return $query->findAll();
   }
 
-  // Update data maklumat pelayanan | admin
-  public function edit($id_maklumat_pelayanan, $dataToEdit = [])
+  // Update data unit pelayanan publik | admin
+  public function edit($id_informasi_serta_merta, $dataToEdit = [])
   {
     $data = [
-      'id_maklumat_pelayanan' => $id_maklumat_pelayanan,
+      'id_informasi_serta_merta' => $id_informasi_serta_merta,
       'link_gambar' =>  $dataToEdit['link_gambar_edit'],
       'link_gambar_content' =>  $dataToEdit['link_gambar_content_edit'],
       'content' =>  $dataToEdit['content_edit'],
     ];
-    $query = $this->table('maklumat_pelayanan');
+    $query = $this->table('informasi_serta_merta');
     $query->replace($data);
     return true;
   }

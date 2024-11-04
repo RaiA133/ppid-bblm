@@ -55,5 +55,17 @@
         </ul>
       </details>
     </li>
+
+    <li>
+      <details>
+        <summary>Layanan Informasi</summary>
+        <ul>
+          <li><a href="<?= base_url() ?>admin/permohonan-informasi">Permohonan Informasi</a></li>
+          <li><a href="<?= base_url() ?>admin/unit-pelayanan-publik">Unit Pelayanan Publik</a></li>
+          <li><a href="<?= base_url() ?>admin/laporan-layanan-informasi">Laporan Layanan Informasi</a></li>
+        </ul>
+      </details>
+    </li>
+
   </ul>
 </div>

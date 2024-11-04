@@ -13,7 +13,7 @@
         <div class="card border w-full shadow-xl rounded-xl">
           <figure class="px-4 pt-4">
             <img
-              src="<?= base_url() ?>img/standarLayanan/mekanismeKeberatan/<?= $results['link_gambar'] ?>" 
+              src="<?= base_url() ?>img/standarLayanan/mekanismeKeberatan/<?= $results['link_gambar'] ?>"
               alt="Mekanisme Keberatan"
               class="rounded-xl bg-base-200 border" />
           </figure>
@@ -60,10 +60,10 @@
                   <?= $results['content'] ?>
                 </article>
                 <div class="divider"></div>
-                <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">WAKTU PELAYANAN</h2>
+                <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">MEKANISME KEBERATAN</h2>
               </div>
             </div>
-            
+
           <?php endif; ?>
 
         </div>

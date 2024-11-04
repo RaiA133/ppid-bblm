@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Controllers\Pages\Admin\InformasiPublik;
+namespace App\Controllers\Pages\Admin\LayananInformasi;
 
 use App\Controllers\BaseController;
-use App\Models\InformasiPublik\InformasiSertaMertaModel;
+use App\Models\LayananInformasi\UnitPelayananPublikModel;
 
-class InformasiSertaMerta extends BaseController
+class UnitPelayananPublik extends BaseController
 {
-  protected $informasiSertaMertaModel;
+  protected $unitPelayananPublikModel;
   public function __construct()
   {
-    $this->informasiSertaMertaModel = new InformasiSertaMertaModel();
+    $this->unitPelayananPublikModel = new UnitPelayananPublikModel();
   }
 
   public function index()
   {
-    $results = $this->informasiSertaMertaModel->findAll();
+    $results = $this->unitPelayananPublikModel->findAll();
     $data = [
-      'title' => 'Halaman Informasi Serta Merta',
+      'title' => 'Halaman Unit Pelayanan Publik',
       'results' => $results[0] ?? null,
     ];
-    return view('Pages/Admin/Pages/InformasiPublik/InformasiSertaMerta/Index', $data);
+    return view('Pages/Admin/Pages/LayananInformasi/UnitPelayananPublik/Index', $data);
   }
 
-  public function indexUpdate($id_informasi_serta_merta)
+  public function indexUpdate($id_unit_pelayanan_publik)
   {
     $validationRule = [
       'link_gambar_edit' => [
@@ -42,14 +42,14 @@ class InformasiSertaMerta extends BaseController
     $fileGambar = $this->request->getFile('link_gambar_edit');
     $namaGambarLama = $this->request->getVar('link_gambar_edit_old');
 
-    $namaLinkGambarContentLama = $this->informasiSertaMertaModel->find($id_informasi_serta_merta)['link_gambar_content'];
+    $namaLinkGambarContentLama = $this->unitPelayananPublikModel->find($id_unit_pelayanan_publik)['link_gambar_content'];
     $oldImagesArray = json_decode($namaLinkGambarContentLama, true); // Convert JSON to array
     $newImagesArray = json_decode($this->request->getVar('link_gambar_content_edit'), true);
 
     if ($oldImagesArray) {
       $imagesToUnlink = array_diff($oldImagesArray, $newImagesArray);
       foreach ($imagesToUnlink as $imageToDelete) {
-        $fileLamaPath = 'img/informasiPublik/informasiSertaMerta/' . $imageToDelete;
+        $fileLamaPath = 'img/layananInformasi/unitPelayananPublik/' . $imageToDelete;
         if (file_exists($fileLamaPath)) {
           if (!unlink($fileLamaPath)) {
             session()->setFlashdata('Message', [
@@ -70,8 +70,8 @@ class InformasiSertaMerta extends BaseController
       $namaGambar = $namaGambarLama; // Use the old image if no new one is uploaded
     } else {
       $namaGambar = $fileGambar->getRandomName();
-      $fileGambar->move('img/informasiPublik/informasiSertaMerta/', $namaGambar); // Move the new file to the server
-      $fileLamaPath = 'img/informasiPublik/informasiSertaMerta/' . $namaGambarLama;
+      $fileGambar->move('img/layananInformasi/unitPelayananPublik/', $namaGambar); // Move the new file to the server
+      $fileLamaPath = 'img/layananInformasi/unitPelayananPublik/' . $namaGambarLama;
       if (is_file($fileLamaPath) && file_exists($fileLamaPath)) {
         unlink($fileLamaPath); // Unlink the old image file
       }
@@ -84,7 +84,7 @@ class InformasiSertaMerta extends BaseController
     $dataToEdit['link_gambar_content'] = json_encode($newImagesArray);
     unset($dataToEdit['link_gambar_edit_old']); // Remove the old image field
 
-    $result = $this->informasiSertaMertaModel->edit($id_informasi_serta_merta, $dataToEdit);
+    $result = $this->unitPelayananPublikModel->edit($id_unit_pelayanan_publik, $dataToEdit);
 
     if ($result) {
       $message = 'Data updated !';
@@ -93,7 +93,7 @@ class InformasiSertaMerta extends BaseController
     }
     session()->setFlashdata('Message', ['title' => $message]);
 
-    return redirect()->to(base_url() . 'admin/informasi-serta-merta');
+    return redirect()->to(base_url() . 'admin/unit-pelayanan-publik');
   }
 
 
@@ -102,11 +102,11 @@ class InformasiSertaMerta extends BaseController
   {
     $fileGambar = $this->request->getFile('upload');
     $namaGambar = $fileGambar->getRandomName();
-    $fileGambar->move('img/informasiPublik/informasiSertaMerta/', $namaGambar);
+    $fileGambar->move('img/layananInformasi/unitPelayananPublik/', $namaGambar);
     if ($fileGambar) {
       $message = "";
       $functionNumber = $_GET['CKEditorFuncNum'];
-      $url = base_url("img/informasiPublik/informasiSertaMerta/" . $namaGambar);
+      $url = base_url("img/layananInformasi/unitPelayananPublik/" . $namaGambar);
       echo "
       <script type='text/javascript'>
         window.parent.CKEDITOR.tools.callFunction($functionNumber, '$url', '$message');
@@ -119,15 +119,15 @@ class InformasiSertaMerta extends BaseController
     }
   }
 
-  public function linkGambarDelete($id_informasi_serta_merta)
+  public function linkGambarDelete($id_unit_pelayanan_publik)
   {
-    $record = $this->informasiSertaMertaModel->find($id_informasi_serta_merta);
+    $record = $this->unitPelayananPublikModel->find($id_unit_pelayanan_publik);
     if ($record && !empty($record['link_gambar'])) {
       $namaGambar = $record['link_gambar'];
-      $filePath = 'img/informasiPublik/informasiSertaMerta/' . $namaGambar;
+      $filePath = 'img/layananInformasi/unitPelayananPublik/' . $namaGambar;
       if (file_exists($filePath)) {
         if (unlink($filePath)) {
-          $this->informasiSertaMertaModel->set('link_gambar', null)->where('id_informasi_serta_merta', $id_informasi_serta_merta)->update();
+          $this->unitPelayananPublikModel->set('link_gambar', null)->where('id_unit_pelayanan_publik', $id_unit_pelayanan_publik)->update();
           $message = 'Image successfully deleted!';
         } else {
           $message = ' Failed to delete image!';
@@ -139,6 +139,6 @@ class InformasiSertaMerta extends BaseController
       $message = 'No images found to delete!';
     }
     session()->setFlashdata('Message', ['title' => $message]);
-    return redirect()->to(base_url('admin/informasi-serta-merta'));
+    return redirect()->to(base_url('admin/unit-pelayanan-publik'));
   }
 }

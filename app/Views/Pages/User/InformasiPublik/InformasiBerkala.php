@@ -21,8 +21,9 @@
   <div class="relative">
 
     <!-- Left and right buttons -->
-    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal"> < </button>
-    <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal"> > </button>
+    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal">
+      < </button>
+        <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal"> > </button>
 
         <!-- Carousel container -->
         <div id="carousel" class="flex gap-6 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory cursor-grab">

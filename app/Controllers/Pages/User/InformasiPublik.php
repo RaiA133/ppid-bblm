@@ -7,6 +7,7 @@ use App\Models\InformasiPublik\InformasiBerkalaJudulModel;
 use App\Models\InformasiPublik\InformasiBerkalaModel;
 use App\Models\InformasiPublik\InformasiSetiapSaatJudulModel;
 use App\Models\InformasiPublik\InformasiSetiapSaatModel;
+use App\Models\InformasiPublik\InformasiSertaMertaModel;
 
 class InformasiPublik extends BaseController
 {
@@ -14,12 +15,14 @@ class InformasiPublik extends BaseController
   protected $informasiBerkalaJudulModel;
   protected $informasiSetiapSaatModel;
   protected $informasiSetiapSaatJudulModel;
+  protected $informasiSertaMertaModel;
   public function __construct()
   {
     $this->informasiBerkalaModel = new InformasiBerkalaModel();
     $this->informasiBerkalaJudulModel = new InformasiBerkalaJudulModel();
     $this->informasiSetiapSaatModel = new InformasiSetiapSaatModel();
     $this->informasiSetiapSaatJudulModel = new InformasiSetiapSaatJudulModel();
+    $this->informasiSertaMertaModel = new InformasiSertaMertaModel();
   }
 
   public function InformasiBerkala(): string
@@ -50,6 +53,11 @@ class InformasiPublik extends BaseController
 
   public function InformasiSertaMerta(): string
   {
-    return view('Pages/User/InformasiPublik/InformasiSertaMerta');
+    $results = $this->informasiSertaMertaModel->findAll();
+    $data = [
+      'title' => 'Informasi Serta Merta',
+      'results' => $results[0] ?? null,
+    ];
+    return view('Pages/User/InformasiPublik/InformasiSertaMerta', $data);
   }
 }

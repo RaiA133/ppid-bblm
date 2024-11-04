@@ -15,6 +15,11 @@ $routes->get('/informasi-berkala', 'Pages\User\InformasiPublik::InformasiBerkala
 $routes->get('/informasi-setiap-saat', 'Pages\User\InformasiPublik::InformasiSetiapSaat');
 $routes->get('/informasi-serta-merta', 'Pages\User\InformasiPublik::InformasiSertaMerta');
 
+$routes->get('/admin/informasi-serta-merta', 'Pages\Admin\InformasiPublik\InformasiSertaMerta::index', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/informasi-serta-merta/upload-image', 'Pages\Admin\InformasiPublik\InformasiSertaMerta::uploadImage', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/informasi-serta-merta/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSertaMerta::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/informasi-serta-merta/delete-image/(:num)', 'Pages\Admin\InformasiPublik\InformasiSertaMerta::linkGambarDelete/$1', ['filter' => 'role:admin,superadmin']);
+
 // STANDAR LAYANAN
 $routes->get('/tata-cara-permohonan-informasi', 'Pages\User\StandarLayanan\TataCaraPermohonanInformasi::TataCaraPermohonanInformasi');
 $routes->get('/mekanisme-keberatan', 'Pages\User\StandarLayanan\MekanismeKeberatan::MekanismeKeberatan');
@@ -57,6 +62,16 @@ $routes->delete('/api/admin/waktu-pelayanan/delete-image/(:num)', 'Pages\Admin\S
 $routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanInformasi');
 $routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik');
 $routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::LaporanLayananInformasi');
+
+$routes->get('/admin/unit-pelayanan-publik', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::index', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/unit-pelayanan-publik/upload-image', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::uploadImage', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/unit-pelayanan-publik/edit/(:num)', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/unit-pelayanan-publik/delete-image/(:num)', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::linkGambarDelete/$1', ['filter' => 'role:admin,superadmin']);
+
+$routes->get('/admin/laporan-layanan-informasi', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::index', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/laporan-layanan-informasi/upload-image', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::uploadImage', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/laporan-layanan-informasi/edit/(:num)', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/laporan-layanan-informasi/delete-image/(:num)', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::linkGambarDelete/$1', ['filter' => 'role:admin,superadmin']);
 
 // DASHBOARD ADMIN PANEL
 $routes->get('/admin', 'Pages\Admin\Dashboard::index', ['filter' => 'role:admin,superadmin']);

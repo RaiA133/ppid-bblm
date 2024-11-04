@@ -43,8 +43,9 @@ Pembuatan controller :
 - Buat folder untuk controller sesuai posisi halaman, misal kita membuat subhalaman yang berisi tiga page berbeda di website, maka tempatkan 3 controller di folder
 - jika masih bingung, bisa lihat controller yang sudah dibuat sebelumnya
 
-Pembuatan Model : 
-- Pembuatan model harus dengan menggunakan CLI ```php spark make:model (NamaModel)``` , NamaModel CamelCase dan setelahnya diberi kata Model. ex : `ProfileModel` 
+Pembuatan Model :
+
+- Pembuatan model harus dengan menggunakan CLI `php spark make:model (NamaModel)` , NamaModel CamelCase dan setelahnya diberi kata Model. ex : `ProfileModel`
 - untuk membuat nama table menggunkan snake case
 - id harus id\_(nama_table)
 - allowedFields wajib di isi dengan field mana saja yang berpotensi berubah-ubah
@@ -129,6 +130,18 @@ php spark db:seed "App\Database\Seeds\StandarLayanan\StandarBiayaPelayananSeeder
 
 ```bash
 php spark db:seed "App\Database\Seeds\StandarLayanan\WaktuPelayananSeeder"
+```
+
+```bash
+php spark db:seed "App\Database\Seeds\LayananInformasi\UnitPelayananPublikSeeder"
+```
+
+```bash
+php spark db:seed "App\Database\Seeds\LayananInformasi\LaporanLayananInformasiSeeder"
+```
+
+```bash
+php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSertaMertaSeeder"
 ```
 
 <br>
