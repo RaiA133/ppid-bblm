@@ -38,7 +38,7 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
 
       <div class="my-2 flex justify-center w-full sm:w-fit">
-        <?= $pager->links('hubungi_kami', 'daisyui_pagination'); ?>
+        <?= $pager->links('permohonan_informasi', 'daisyui_pagination'); ?>
       </div>
 
       <div class="flex items-center gap-1 flex-col sm:flex-row w-full sm:w-fit">
@@ -76,7 +76,7 @@
 
 
 
-              <td class="p-2 sm:p-4 w-fit text-center" onclick="viewImageProfileHubungiKami<?= $result['id_hubungi_kami'] ?>.showModal()">
+              <td class="p-2 sm:p-4 w-fit text-center" onclick="viewImageProfilePermohonanInformasi<?= $result['id_permohonan_informasi'] ?>.showModal()">
                 <?php
                 $userImagePath = 'img/userProfilePics/' . $result['user_image'];
                 if (file_exists(FCPATH . $userImagePath) && !empty($result['user_image'])) $profileImage = base_url($userImagePath);
@@ -86,7 +86,7 @@
                   <img src="<?= esc($profileImage) ?>" alt="profile" class="rounded-full" />
                 </div>
 
-                <dialog id="viewImageProfileHubungiKami<?= $result['id_hubungi_kami'] ?>" class="modal modal-bottom sm:modal-middle">
+                <dialog id="viewImageProfilePermohonanInformasi<?= $result['id_permohonan_informasi'] ?>" class="modal modal-bottom sm:modal-middle">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -102,8 +102,8 @@
               <td class="p-2 sm:p-4 max-w-64 min-w-24 truncate ...">
                 <div class="w-fit">
                   <p class="flex gap-3 items-center"><?= esc($result['nama']) ?>
-                  <?php if ($result['read'] === null && Time::parse($result['created_at'])->toDateString() === Time::today()->toDateString()) : ?>
-                    <span class="badge badge-xs badge-accent">New</span>
+                    <?php if ($result['read'] === null && Time::parse($result['created_at'])->toDateString() === Time::today()->toDateString()) : ?>
+                      <span class="badge badge-xs badge-accent">New</span>
                     <?php endif ?>
                   </p>
                 </div>
@@ -111,19 +111,19 @@
 
               <td class="p-2 sm:p-4 w-fit text-center">
 
-                <form action="<?= base_url() ?>api/admin/hubungi-kami/edit/<?= $result['id_hubungi_kami'] ?>?page_hubungi_kami=<?= $currentPage ?>" method="post">
+                <form action="<?= base_url() ?>api/admin/permohonan-informasi/edit/<?= $result['id_permohonan_informasi'] ?>?page_permohonan_informasi=<?= $currentPage ?>" method="post">
                   <button class="btn btn-neutral btn-xs" onclick="">Detail</button>
                 </form>
 
-                <?php if (session()->getFlashdata('openModalLihatPesanHubungiKami' . $result['id_hubungi_kami'])): ?>
+                <?php if (session()->getFlashdata('openModalLihatPesanPermohonanInformasi' . $result['id_permohonan_informasi'])): ?>
                   <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                      document.getElementById("modalLihatPesanHubungiKami<?= $result['id_hubungi_kami'] ?>").showModal();
+                      document.getElementById("modalLihatPesanPermohonanInformasi<?= $result['id_permohonan_informasi'] ?>").showModal();
                     });
                   </script>
                 <?php endif; ?>
 
-                <dialog id="modalLihatPesanHubungiKami<?= $result['id_hubungi_kami'] ?>" class="modal modal-bottom sm:modal-middle">
+                <dialog id="modalLihatPesanPermohonanInformasi<?= $result['id_permohonan_informasi'] ?>" class="modal modal-bottom sm:modal-middle">
                   <div class="modal-box">
                     <form method="dialog">
                       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -134,11 +134,49 @@
                       </div>
                       <div class="text-lg"><?= esc($result['nama']) ?></div>
                       <div><span class="font-medium">Email : </span><span class="italic"><?= esc($result['email']) ?></span></div>
-                      <div><span class="font-medium">Kota : </span><?= $result['kota'] ?></div>
+                      <div><span class="font-medium">No Telp : </span><?= $result['no_telp'] ?></div>
 
-                      <div class="divider">Pesan</div>
+                      <div class="divider">Detail</div>
 
-                      <div class="m-5 p-5 border rounded-md"><?= esc($result['pesan']) ?></div>
+                      <div class="flex justify-start flex-col">
+                        <div class="overflow-x-auto">
+                          <table class="table table-xs">
+                            <tbody>
+                              <tr>
+                                <th>Alamat</th>
+                                <td><?= $result['alamat'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>No Idetitas</th>
+                                <td><?= $result['no_id'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Tujuan Penggunaan Informasi</th>
+                                <td><?= $result['tujuan_penggunaan_info'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Cara Memperoleh Informasi</th>
+                                <td><?= $result['cara_memperoleh_info'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Jenis Dokumen Informasi yang Diminta</th>
+                                <td><?= $result['jenis_dokumen_info'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Cara Mendapatkan Salinan Informasi</th>
+                                <td><?= $result['cara_dapat_salinan_info'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Agreement</th>
+                                <td><?= $result['agreement'] ? 'Yes' : 'No' ?></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="divider">Pertanyaan</div>
+                      <div class="p-5 border rounded-md"><?= esc($result['pertanyaan']) ?></div>
                     </div>
                 </dialog>
 
@@ -151,7 +189,7 @@
               <td class="p-2 sm:p-4">
 
                 <!-- HTTP METHOD SPOOFING for Delete-->
-                <form action="<?= base_url() ?>api/admin/hubungi-kami/delete/<?= $result['id_hubungi_kami'] ?>" method="POST" class="inline">
+                <form action="<?= base_url() ?>api/admin/permohonan-informasi/delete/<?= $result['id_permohonan_informasi'] ?>" method="POST" class="inline">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-xs btn-error" onclick="return confirm('Are you sure ?')">Delete</button>

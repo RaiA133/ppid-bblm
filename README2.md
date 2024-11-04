@@ -109,6 +109,10 @@ php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSetiapSaatJudulSe
 ```
 
 ```bash
+php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSertaMertaSeeder"
+```
+
+```bash
 php spark db:seed "App\Database\Seeds\StandarLayanan\TataCaraPermohonanInformasiSeeder"
 ```
 
@@ -133,15 +137,15 @@ php spark db:seed "App\Database\Seeds\StandarLayanan\WaktuPelayananSeeder"
 ```
 
 ```bash
+php spark db:seed "App\Database\Seeds\LayananInformasi\PermohonanInformasiSeeder"
+```
+
+```bash
 php spark db:seed "App\Database\Seeds\LayananInformasi\UnitPelayananPublikSeeder"
 ```
 
 ```bash
 php spark db:seed "App\Database\Seeds\LayananInformasi\LaporanLayananInformasiSeeder"
-```
-
-```bash
-php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiSertaMertaSeeder"
 ```
 
 <br>

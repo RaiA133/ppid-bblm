@@ -4,7 +4,6 @@ namespace App\Database\Seeds;
 
 use App\Models\HubungiKamiModel;
 use CodeIgniter\Database\Seeder;
-use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\Fabricator;
 
 class HubungiKamiSeeder extends Seeder

@@ -63,6 +63,11 @@ $routes->get('/permohonan-informasi', 'Pages\User\LayananInformasi::PermohonanIn
 $routes->get('/unit-pelayanan-publik', 'Pages\User\LayananInformasi::UnitPelayananPublik');
 $routes->get('/laporan-layanan-informasi', 'Pages\User\LayananInformasi::LaporanLayananInformasi');
 
+$routes->get('/admin/permohonan-informasi', 'Pages\Admin\LayananInformasi\PermohonanInformasi::index', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/permohonan-informasi/create', 'Pages\Admin\LayananInformasi\PermohonanInformasi::indexCreate');
+$routes->post('/api/admin/permohonan-informasi/edit/(:num)', 'Pages\Admin\LayananInformasi\PermohonanInformasi::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/permohonan-informasi/delete/(:num)', 'Pages\Admin\LayananInformasi\PermohonanInformasi::indexDelete/$1', ['filter' => 'role:admin,superadmin']);
+
 $routes->get('/admin/unit-pelayanan-publik', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::index', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/unit-pelayanan-publik/upload-image', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::uploadImage', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/unit-pelayanan-publik/edit/(:num)', 'Pages\Admin\LayananInformasi\UnitPelayananPublik::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
