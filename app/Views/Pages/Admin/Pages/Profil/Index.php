@@ -32,7 +32,7 @@
 <?php endif; ?>
 
 <!-- Preview Data -->
-<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lgF">
+<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg shadow-md">
   <div class="collapse collapse-arrow join-item bg-base-100">
     <input type="checkbox" name="my-accordion-4" />
     <div class="collapse-title text-xl font-medium text-center">Preview</div>
