@@ -63,7 +63,7 @@ class HubungiKami extends BaseController
     }
     
     $query = $this->hubungiKamiModel->create($data);
-    if ($query == 1) $Message = 'Pesan berhasil dikirm, Silahkan tunggu balasan admin';
+    if ($query == 1) $Message = 'Pesan berhasil dikirim, Silahkan tunggu balasan admin';
     else $Message = 'Pesan gagal dikirim, Silahkan coba lagi nanti';
     session()->setFlashdata('Message', [ 
       'title' => $Message,
