@@ -39,7 +39,7 @@
       <div class="h-full overflow-auto flex justify-center">
 
         <section class="flex flex-col md:flex-row items-center justify-center mx-2 mb-40" id="fixed-elements" data-scroll>
-          
+
           <?php $isContentChange = false ?>
           <?php if (!empty($results['link_gambar']) && (!empty($results['content']) || $isContentChange)) : ?>
             <!-- Jika Gambar dan Konten Tersedia, Tampilkan Kanan-Kiri -->
@@ -62,7 +62,7 @@
               </div>
 
               <!-- Konten di Samping Gambar -->
-              <div id="customHeight" class="h-fit w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+              <div id="customHeight" class="h-fit sm:w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="w-full max-w-2xl shadow-xl rounded-xl">
                   <div class="w-full py-10 px-10 rounded-xl border">
                     <article class="prose prose-sm prose-headings:text-indigo-500">

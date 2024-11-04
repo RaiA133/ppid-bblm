@@ -38,106 +38,110 @@
     <div class="collapse-content">
       <div class="h-full overflow-auto flex justify-center">
 
-        <!-- Main Content Section -->
-        <section class="flex flex-col md:flex-row items-center justify-center mx-2 md:mx-10 mb-20 md:mb-40" id="fixed-elements" data-scroll>
+        <section class="flex flex-col md:flex-row items-center justify-center mx-2 mb-40" id="fixed-elements" data-scroll>
           <?php if (!empty($results['link_gambar']) && !empty($results['content'])) : ?>
-            <!-- Display Side-by-Side if Image and Content are Available -->
+            <!-- Jika Gambar dan Konten Tersedia, Tampilkan Kanan-Kiri -->
 
-            <div class="flex flex-col md:flex-row justify-center w-full gap-4 mt-10 md:mt-20">
+            <div class="flex flex-col sm:flex-row justify-center w-full gap-4 mt-20">
 
-              <!-- Image Section -->
-              <div id="customHeight" class="h-fit w-full md:w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+              <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="card border w-full shadow-xl rounded-xl">
                   <figure class="px-4 pt-4">
                     <img
-                      id="img-preview-admin-informasisertamerta-preview"
+                      id="img-preview-admin-informasiSertaMerta-preview"
                       src="<?= base_url() ?>img/informasiPublik/informasiSertaMerta/<?= $results['link_gambar'] ?>"
                       alt="Informasi Serta Merta"
-                      class="rounded-xl bg-base-200 border w-full" />
+                      class="rounded-xl bg-base-200 border" />
                   </figure>
-                  <div class="py-5 pr-5 text-end w-full">
-                    <h2 class="text-xl md:text-2xl text-indigo-500 font-extrabold">INFORMASI SERTA MERTA</h2>
+                  <div class="py-5 pr-5 text-end self-end w-1/2">
+                    <h2 class="text-xl text-indigo-500 font-extrabold">INFORMASI SERTA MERTA</h2>
                   </div>
                 </div>
               </div>
 
-              <!-- Content Section -->
-              <div id="customHeight" class="h-fit w-full md:w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+              <!-- Konten di Samping Gambar -->
+              <div id="customHeight" class="h-fit sm:w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="w-full max-w-2xl shadow-xl rounded-xl">
-                  <div class="w-full py-6 md:py-10 px-6 md:px-10 rounded-xl border">
-                    <article class="prose prose-sm md:prose lg:prose-lg prose-headings:text-indigo-500">
+                  <div class="w-full py-10 px-10 rounded-xl border">
+                    <article class="prose prose-sm prose-headings:text-indigo-500">
                       <?= $results['content'] ?>
                     </article>
                   </div>
                 </div>
               </div>
 
-            </div>
-          <?php else : ?>
-            <!-- Display Only Image or Only Content -->
-            <div class="flex justify-center w-full mt-10 md:mt-20">
-              <div class="max-w-2xl shadow-xl border rounded-xl w-full">
+            <?php else : ?>
+              <!-- Jika Hanya Gambar atau Hanya Konten -->
+              <div class="flex justify-center w-full mt-20">
+                <div data-scroll-offset class="w-fit max-w-2xl text-start border shadow-xl rounded-xl">
 
-                <?php if (!empty($results['link_gambar'])) : ?>
-                  <!-- Only Image Display -->
-                  <figure class="px-4 pt-4">
-                    <img
-                      src="<?= base_url() ?>img/informasiPublik/informasiSertaMerta/<?= $results['link_gambar'] ?>"
-                      alt="Informasi Serta Merta"
-                      class="rounded-xl bg-base-200 border w-full" />
-                  </figure>
-                  <div class="py-5 pr-5 text-end w-full">
-                    <h2 class="text-xl md:text-2xl text-indigo-500 font-extrabold">INFORMASI SERTA MERTA</h2>
-                  </div>
-                <?php endif; ?>
-
-                <?php if (!empty($results['content'])) : ?>
-                  <!-- Only Content Display -->
-                  <div class="px-6 md:px-10 py-6 md:py-8">
-                    <article class="prose prose-sm md:prose lg:prose-lg prose-headings:text-indigo-500" id="content-preview-unit-pelayanan-publik">
-                      <?= $results['content'] ?>
-                    </article>
-                    <div class="border-t mt-4 pt-4">
-                      <h2 class="text-xl md:text-2xl text-indigo-500 font-extrabold text-end">INFORMASI SERTA MERTA</h2>
+                  <?php if (!empty($results['link_gambar'])) : ?>
+                    <div class="card w-full">
+                      <figure class="px-4 pt-4">
+                        <img
+                          src="<?= base_url() ?>img/informasiPublik/informasiSertaMerta/<?= $results['link_gambar'] ?>"
+                          alt="Informasi Serta Merta"
+                          class="rounded-xl bg-base-200 border" />
+                      </figure>
+                      <div class="py-5 pr-5 text-end self-end w-1/2">
+                        <h2 class="text-xl text-indigo-500 font-extrabold">INFORMASI SERTA MERTA</h2>
+                      </div>
                     </div>
-                  </div>
-                <?php endif; ?>
+                  <?php endif; ?>
 
+                  <?php if (!empty($results['content'])) : ?>
+                    <div class="w-full max-w-2xl">
+                      <div class="w-full py-8 px-10">
+                        <article class="prose prose-sm prose-headings:text-indigo-500" id="content-preview-laporan-layanan-informasi">
+                          <?= $results['content'] ?>
+                        </article>
+                        <div class="divider"></div>
+                        <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">INFORMASI SERTA MERTA</h2>
+                      </div>
+                    </div>
+
+                  <?php endif; ?>
+
+                </div>
               </div>
-            </div>
-          <?php endif; ?>
+            <?php endif; ?>
 
-          <!-- Responsive JavaScript for Scroll Attributes -->
-          <script>
-            let isAttributesRemoved = false;
-            let isAttributesAdded = false;
+            <script>
+              let isAttributesRemoved = false; // Status apakah atribut telah dihapus
+              let isAttributesAdded = false; // Status apakah atribut telah ditambahkan
 
-            function adjustAttributes() {
-              const divs = document.querySelectorAll('#customHeight');
+              function adjustAttributes() {
+                const div = document.getElementById('customHeight');
 
-              divs.forEach(div => {
                 if (window.innerWidth <= 768 && !isAttributesRemoved) {
+                  console.log('hapus');
                   div.removeAttribute('data-scroll');
                   div.removeAttribute('data-scroll-sticky');
                   div.removeAttribute('data-scroll-target');
                   isAttributesRemoved = true;
                   isAttributesAdded = false;
                 } else if (window.innerWidth > 768 && !isAttributesAdded) {
+                  console.log('ada');
                   div.setAttribute('data-scroll', '');
                   div.setAttribute('data-scroll-sticky', '');
                   div.setAttribute('data-scroll-target', '#fixed-elements');
                   isAttributesAdded = true;
                   isAttributesRemoved = false;
                 }
+              }
+
+              // Menggunakan addEventListener untuk menangani perubahan ukuran jendela
+              window.addEventListener('resize', (event) => {
+                adjustAttributes();
               });
-            }
 
-            // Attach resize event listener
-            window.addEventListener('resize', adjustAttributes);
+              // Menggunakan onresize untuk menangani perubahan ukuran jendela
+              window.onresize = (event) => {
+                adjustAttributes();
+              };
 
-            // Initial adjustment on page load
-            adjustAttributes();
-          </script>
+              adjustAttributes();
+            </script>
         </section>
 
       </div>
@@ -194,7 +198,7 @@
               function previewImgAdminUnitPelayananPublik() {
                 const cover = document.querySelector('#img-input-admin-informasiSertaMerta');
                 const imgPreview = document.querySelector('#img-preview-admin-informasiSertaMerta');
-                const imgPreviewDropdown = document.querySelector('#img-preview-admin-informasisertamerta-preview');
+                const imgPreviewDropdown = document.querySelector('#img-preview-admin-informasiSertaMerta-preview');
                 const fileCover = new FileReader();
                 fileCover.readAsDataURL(cover.files[0]);
                 fileCover.onload = function(e) {
