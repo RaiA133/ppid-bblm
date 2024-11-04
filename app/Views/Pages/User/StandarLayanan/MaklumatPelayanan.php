@@ -24,7 +24,7 @@
       </div>
 
       <!-- Konten di Samping Gambar -->
-      <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <div id="customHeight" class="h-fit w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
         <div class="w-full max-w-2xl shadow-xl rounded-xl">
           <div class="w-full py-10 px-10 rounded-xl border">
             <article class="prose prose-sm prose-headings:text-indigo-500 max-w-full">
@@ -60,7 +60,7 @@
                   <?= $results['content'] ?>
                 </article>
                 <div class="divider"></div>
-                <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">Maklumat PELAYANAN</h2>
+                <h2 class="text-xl text-indigo-500 font-extrabold mt-5 text-end">MAKLUMAT PELAYANAN</h2>
               </div>
             </div>
 
