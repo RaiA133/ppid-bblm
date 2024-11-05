@@ -138,6 +138,7 @@ class TataCaraPermohonanInformasi extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->tataCaraPermohonanInformasiModel->set('link_gambar', null)->where('id_tata_cara_permohonan_informasi', $id_tata_cara_permohonan_informasi)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

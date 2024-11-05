@@ -133,6 +133,7 @@ class InformasiSertaMerta extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->informasiSertaMertaModel->set('link_gambar', null)->where('id_informasi_serta_merta', $id_informasi_serta_merta)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

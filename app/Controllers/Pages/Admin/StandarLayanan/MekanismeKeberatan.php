@@ -137,6 +137,7 @@ class MekanismeKeberatan extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->mekanismeKeberatanModel->set('link_gambar', null)->where('id_mekanisme_keberatan', $id_mekanisme_keberatan)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

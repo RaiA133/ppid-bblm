@@ -138,6 +138,7 @@ class MaklumatPelayanan extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->maklumatPelayananModel->set('link_gambar', null)->where('id_maklumat_pelayanan', $id_maklumat_pelayanan)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

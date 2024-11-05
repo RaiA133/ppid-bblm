@@ -136,6 +136,7 @@ class StandarBiayaPelayanan extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->standarBiayaPelayananModel->set('link_gambar', null)->where('id_standar_biaya_pelayanan', $id_standar_biaya_pelayanan)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

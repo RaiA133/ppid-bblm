@@ -133,6 +133,7 @@ class LaporanLayananInformasi extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->laporanLayananInformasiModel->set('link_gambar', null)->where('id_laporan_layanan_informasi', $id_laporan_layanan_informasi)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

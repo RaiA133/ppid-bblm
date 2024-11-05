@@ -137,6 +137,7 @@ class MekanismePermohonanPenyelesaianSengketa extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->mekanismePermohonanPenyelesaianSengketaModel->set('link_gambar', null)->where('id_mekanisme_permohonan_penyelesaian_sengketa', $id_mekanisme_permohonan_penyelesaian_sengketa)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

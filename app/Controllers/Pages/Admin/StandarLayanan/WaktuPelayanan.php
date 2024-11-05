@@ -134,6 +134,7 @@ class WaktuPelayanan extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->waktuPelayananModel->set('link_gambar', null)->where('id_waktu_pelayanan', $id_waktu_pelayanan)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {

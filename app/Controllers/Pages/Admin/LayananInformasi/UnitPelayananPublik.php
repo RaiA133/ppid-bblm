@@ -133,6 +133,7 @@ class UnitPelayananPublik extends BaseController
           $message = ' Failed to delete image!';
         }
       } else {
+        $this->unitPelayananPublikModel->set('link_gambar', null)->where('id_unit_pelayanan_publik', $id_unit_pelayanan_publik)->update();
         $message = 'Image not found or previously deleted!';
       }
     } else {
