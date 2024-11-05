@@ -48,8 +48,8 @@
                 <div class="card border w-full shadow-xl rounded-xl">
                   <figure class="px-4 pt-4">
                     <img
-                      id="img-preview-admin-mekanismePerhomonanPenyelesaianSengketa-preview"
-                      src="<?= base_url() ?>img/standarLayanan/mekanismePerhomonanPenyelesaianSengketa/<?= $results['link_gambar'] ?>"
+                      id="img-preview-admin-mekanismePermohonanPenyelesaianSengketa-preview"
+                      src="<?= base_url() ?>img/standarLayanan/mekanismePermohonanPenyelesaianSengketa/<?= $results['link_gambar'] ?>"
                       alt="Mekanisme Permohonan Penyelesaian Sengketa"
                       class="rounded-xl bg-base-200 border" />
                   </figure>
@@ -79,7 +79,7 @@
                     <div class="card w-full">
                       <figure class="px-4 pt-4">
                         <img
-                          src="<?= base_url() ?>img/standarLayanan/mekanismePerhomonanPenyelesaianSengketa/<?= $results['link_gambar'] ?>"
+                          src="<?= base_url() ?>img/standarLayanan/mekanismePermohonanPenyelesaianSengketa/<?= $results['link_gambar'] ?>"
                           alt="Mekanisme Permohonan Penyelesaian Sengketa"
                           class="rounded-xl bg-base-200 border" />
                       </figure>
@@ -182,7 +182,7 @@
         <div class="flex flex-col sm:flex-row gap-3 justify-center w-full mb-3">
           <div class="w-full sm:w-8/12">
             <h2 class="flex justify-center font-bold mb-3 ml-1 text-md sm:text-xl">Gambar Utama</h2>
-            <input id="img-input-admin-mekanismePerhomonanPenyelesaianSengketa" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminMekanismePerhomonanPenyelesaianSengketa()" />
+            <input id="img-input-admin-mekanismePermohonanPenyelesaianSengketa" name="link_gambar_edit" type="file" class="file-input file-input-bordered w-full <?= (isset($errors['link_gambar_edit'])) ? 'input-error' : 'mb-4' ?>" onchange=" previewImgAdminmekanismePermohonanPenyelesaianSengketa()" />
             <?php if (isset($errors['link_gambar_edit'])) : ?>
               <div class="label"><span class="label-text-alt text-error"><?= $errors['link_gambar_edit'] ?></span></div>
             <?php endif ?>
@@ -190,15 +190,15 @@
           </div>
           <div class="w-4/12">
             <div class="relative border bg-neutral w-full mt-7">
-              <img id="img-preview-admin-mekanismePerhomonanPenyelesaianSengketa" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/mekanismePerhomonanPenyelesaianSengketa/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
+              <img id="img-preview-admin-mekanismePermohonanPenyelesaianSengketa" class="w-full h-auto" src="<?= base_url() ?>img/standarLayanan/mekanismePermohonanPenyelesaianSengketa/<?= $results['link_gambar'] ?? 'img/icon/default-image.jpg' ?>" alt="">
               <div class="absolute bottom-0 left-0 right-0 z-10 h-2/4 bg-gradient-to-t"></div>
             </div>
 
             <script>
-              function previewImgAdminMekanismePerhomonanPenyelesaianSengketa() {
-                const cover = document.querySelector('#img-input-admin-mekanismePerhomonanPenyelesaianSengketa');
-                const imgPreview = document.querySelector('#img-preview-admin-mekanismePerhomonanPenyelesaianSengketa');
-                const imgPreviewDropdown = document.querySelector('#img-preview-admin-mekanismePerhomonanPenyelesaianSengketa-preview');
+              function previewImgAdminmekanismePermohonanPenyelesaianSengketa() {
+                const cover = document.querySelector('#img-input-admin-mekanismePermohonanPenyelesaianSengketa');
+                const imgPreview = document.querySelector('#img-preview-admin-mekanismePermohonanPenyelesaianSengketa');
+                const imgPreviewDropdown = document.querySelector('#img-preview-admin-mekanismePermohonanPenyelesaianSengketa-preview');
                 const fileCover = new FileReader();
                 fileCover.readAsDataURL(cover.files[0]);
                 fileCover.onload = function(e) {
