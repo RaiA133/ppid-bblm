@@ -46,7 +46,7 @@
 
             <div class="flex flex-col sm:flex-row justify-center w-full gap-4 mt-20">
 
-              <div class="h-fit w-fit sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+              <div class="h-fit sm:w-1/2 sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="card border w-full shadow-xl rounded-xl">
                   <figure class="px-4 pt-4">
                     <img
