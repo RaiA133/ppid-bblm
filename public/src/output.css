@@ -5316,6 +5316,10 @@ html:has(.drawer-toggle:checked) {
   height: 100vh;
 }
 
+.max-h-\[100\%\] {
+  max-height: 100%;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -5427,10 +5431,6 @@ html:has(.drawer-toggle:checked) {
 
 .w-full {
   width: 100%;
-}
-
-.w-1 {
-  width: 0.25rem;
 }
 
 .min-w-24 {
@@ -5839,6 +5839,11 @@ html:has(.drawer-toggle:checked) {
   stroke: var(--fallback-in,oklch(var(--in)/1));
 }
 
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -5900,6 +5905,11 @@ html:has(.drawer-toggle:checked) {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-1 {
@@ -6517,6 +6527,10 @@ html:has(.drawer-toggle:checked) {
 
   .sm\:max-w-5xl {
     max-width: 64rem;
+  }
+
+  .sm\:max-w-\[50vw\] {
+    max-width: 50vw;
   }
 
   .sm\:grid-cols-2 {
