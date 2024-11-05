@@ -165,7 +165,7 @@
 
     <!-- Title & Edit Button -->
     <div class="flex justify-between items-center w-full gap-3">
-      <div class="text-md sm:text-xl font-bold">Edit Data Standar Mekanisme Permohonan Penyelesaian Sengketa</div>
+      <div class="text-md sm:text-xl font-bold ml-2">Edit Data</div>
       <button type="submit" class="btn w-32 btn-neutral">Edit</button>
     </div>
 
