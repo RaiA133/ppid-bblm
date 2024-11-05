@@ -5,6 +5,7 @@ namespace App\Controllers\Pages\Admin;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 
+// Profile Account Admin
 class Profile extends BaseController
 {
   protected $userModel;
@@ -18,7 +19,7 @@ class Profile extends BaseController
     $data = [
       'title' => 'Profile'
     ];
-    return view('Pages/Admin/Profile', $data);
+    return view('Pages/Admin/Pages/Profile/Index', $data);
   }
 
   public function indexUpdate($id)

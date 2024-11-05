@@ -78,14 +78,14 @@ $routes->post('/api/admin/laporan-layanan-informasi/upload-image', 'Pages\Admin\
 $routes->post('/api/admin/laporan-layanan-informasi/edit/(:num)', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
 $routes->delete('/api/admin/laporan-layanan-informasi/delete-image/(:num)', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::linkGambarDelete/$1', ['filter' => 'role:admin,superadmin']);
 
-// DASHBOARD ADMIN PANEL
-$routes->get('/admin', 'Pages\Admin\Dashboard::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/dashboard', 'Pages\Admin\Dashboard::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/leads', 'Pages\Admin\Leads::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/transactions', 'Pages\Admin\Transactions::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/login', 'Pages\Admin\Auth::login', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/analytics', 'Pages\Admin\Analytics::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/integration', 'Pages\Admin\Integration::index', ['filter' => 'role:admin,superadmin']);
+// DASHBOARD ADMIN PANEL TEMPLATES
+$routes->get('/admin', 'Pages\Admin\Templates\Dashboard::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/dashboard', 'Pages\Admin\Templates\Dashboard::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/leads', 'Pages\Admin\Templates\Leads::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/transactions', 'Pages\Admin\Templates\Transactions::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/login', 'Pages\Admin\Templates\Auth::login', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/analytics', 'Pages\Admin\Templates\Analytics::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/integration', 'Pages\Admin\Templates\Integration::index', ['filter' => 'role:admin,superadmin']);
 
 $routes->get('/admin/profile', 'Pages\Admin\Profile::index', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/profil/user/edit/(:num)', 'Pages\Admin\Profile::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);

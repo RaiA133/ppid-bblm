@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Pages\Admin;
+namespace App\Controllers\Pages\Admin\Templates;
 
 use App\Controllers\BaseController;
 
@@ -11,6 +11,6 @@ class Integration extends BaseController
     $data = [
       'title' => 'Integration'
     ];
-    return view('Pages/Admin/Integration', $data);
+    return view('Pages/Admin/Templates/Integration', $data);
   }
 }

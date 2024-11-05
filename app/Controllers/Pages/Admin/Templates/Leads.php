@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Pages\Admin;
+namespace App\Controllers\Pages\Admin\Templates;
 
 use App\Controllers\BaseController;
 
@@ -11,6 +11,6 @@ class Leads extends BaseController
     $data = [
       'title' => 'Leads'
     ];
-    return view('Pages/Admin/Leads', $data);
+    return view('Pages/Admin/Templates/Leads', $data);
   }
 }

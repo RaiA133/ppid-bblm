@@ -5,6 +5,7 @@ namespace App\Controllers\Pages\Admin;
 use App\Controllers\BaseController;
 use App\Models\ProfilModel;
 
+// Profil Pemimpin
 class Profil extends BaseController
 {
   protected $profileModel;
