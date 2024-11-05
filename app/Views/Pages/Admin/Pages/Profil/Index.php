@@ -32,7 +32,7 @@
 <?php endif; ?>
 
 <!-- Preview Data -->
-<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg">
+<section class="join join-vertical mx-5 sm:mx-10 mt-10 mb-5 rounded-lg shadow-md">
   <div class="collapse collapse-arrow join-item bg-base-100">
     <input type="checkbox" name="my-accordion-4" />
     <div class="collapse-title text-xl font-medium text-center">Preview</div>
@@ -87,7 +87,9 @@
         <!-- CONTENT -->
         <section dir="ltr" class="mx-2 sm:mx-20 mb-10">
           <?php if (!empty($results['content'])) : ?>
-            <?= $results['content'] ?>
+            <article class="prose prose-md prose-headings:text-indigo-500 max-w-full">
+              <?= $results['content'] ?>
+            </article>
           <?php else : ?>
             <li class="text-xs">-</li>
           <?php endif; ?>
@@ -282,7 +284,7 @@
         CKEDITOR.config.width = '100%'
         CKEDITOR.config.height = '900'
         CKEDITOR.replace('content', {
-          skin: 'office2013',
+          // skin: 'office2013',
           allowedContent: true,
           disallowedContent: 'script; *[on*]',
           extraPlugins: 'uploadimage',

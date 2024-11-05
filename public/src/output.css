@@ -5457,6 +5457,14 @@ html:has(.drawer-toggle:checked) {
   max-width: 16rem;
 }
 
+.max-w-\[500px\] {
+  max-width: 500px;
+}
+
+.max-w-\[946px\] {
+  max-width: 946px;
+}
+
 .max-w-fit {
   max-width: -moz-fit-content;
   max-width: fit-content;

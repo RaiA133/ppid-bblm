@@ -63,7 +63,7 @@ class HubungiKami extends BaseController
     }
     
     $query = $this->hubungiKamiModel->create($data);
-    if ($query == 1) $Message = 'Pesan berhasil dikirm, Silahkan tunggu balasan admin';
+    if ($query == 1) $Message = 'Pesan berhasil dikirim, Silahkan tunggu balasan admin';
     else $Message = 'Pesan gagal dikirim, Silahkan coba lagi nanti';
     session()->setFlashdata('Message', [ 
       'title' => $Message,
@@ -74,8 +74,9 @@ class HubungiKami extends BaseController
 
   public function indexUpdate($id_hubungi_kami)
   {
+    $currentPage = $this->request->getGet('page_hubungi_kami');
     $this->hubungiKamiModel->read($id_hubungi_kami);
-    return redirect()->to(base_url() . 'admin/hubungi-kami')->with('openModalLihatPesanHubungiKami' . $id_hubungi_kami, true);
+    return redirect()->to(base_url('admin/hubungi-kami') . '?page_hubungi_kami=' . $currentPage)->with('openModalLihatPesanHubungiKami' . $id_hubungi_kami, true);
   }
 
   public function indexDelete($id_hubungi_kami)
