@@ -61,7 +61,7 @@ pada aplikasi ini sudah digunakan Library Myth Auth dalam system login dan regis
 - allowedFields wajib di isi dengan field mana saja yang berpotensi berubah-ubah
 - useSoftDeletes selalu true (ALL DATABASE TABLE USE SOFT DELETE)
 - useTimestamps selalu true
-- Semua jenis query selalu dilakukan dimodel, tidak di conroller (terkecuali untuk model dari myth, query dilakukan di controller)
+- Semua jenis query selalu dilakukan dimodel, tidak di controller (terkecuali untuk model dari myth, query dilakukan di controller)
 - jika masih bingung, bisa lihat model yang sudah dibuat sebelumnya
 
 #### ATURAN PEMBUATAN `MIGRATION` :
