@@ -87,7 +87,7 @@
     </div>
     <!-- Logo MIDC Animated -->
     <section>
-      <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <div class="h-fit w-fit sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
         <div data-scroll-offset>
           <video src="<?= base_url() ?>/vid/animasi_logo_bblm.mp4" autoplay loop muted class=""></video>
         </div>
@@ -155,7 +155,7 @@
   <section class="flex flex-col justify-center items-center my-7 relative">
 
     <div class="flex flex-wrap justify-center gap-6 w-full" data-scroll>
-        
+
       <a href="<?= base_url() ?>profil" class="flex justify-center" data-scroll data-scroll-speed="4">
         <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all w-40 sm:w-52 rounded-xl">
           <div class="p-5">

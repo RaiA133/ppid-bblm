@@ -44,11 +44,11 @@
 
             <div class="flex flex-col sm:flex-row justify-center w-full gap-4 mt-20">
 
-              <div id="customHeight" class="h-fit w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+              <div class="h-fit sm:w-1/2 sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="card border w-full shadow-xl rounded-xl">
                   <figure class="px-4 pt-4">
                     <img
-                      id="img-preview-admin-laporanlayananinformasi-preview"
+                      id="img-preview-admin-laporanLayananInformasi-preview"
                       src="<?= base_url() ?>img/layananInformasi/laporanLayananInformasi/<?= $results['link_gambar'] ?>"
                       alt="Laporan Layanan Informasi"
                       class="rounded-xl bg-base-200 border" />
@@ -60,7 +60,7 @@
               </div>
 
               <!-- Konten di Samping Gambar -->
-              <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+              <div class="h-fit sm:w-1/2 sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
                 <div class="w-full max-w-2xl shadow-xl rounded-xl">
                   <div class="w-full py-10 px-10 rounded-xl border">
                     <article class="prose prose-sm prose-headings:text-indigo-500">
@@ -149,7 +149,7 @@
   </div>
 </section>
 
-<!-- Edit Data Maklumat Pelayanan -->
+<!-- Edit Data Laporan Layanan Informasi -->
 <section class="relative mx-5 sm:mx-10 bg-base-100 shadow-lg rounded-lg p-4 sm:p-10 mb-5">
 
   <!-- Form Delete -->
@@ -198,7 +198,7 @@
               function previewImgAdminLaporanLayananInformasi() {
                 const cover = document.querySelector('#img-input-admin-laporanLayananInformasi');
                 const imgPreview = document.querySelector('#img-preview-admin-laporanLayananInformasi');
-                const imgPreviewDropdown = document.querySelector('#img-preview-admin-laporanlayananinformasi-preview');
+                const imgPreviewDropdown = document.querySelector('#img-preview-admin-laporanLayananInformasi-preview');
                 const fileCover = new FileReader();
                 fileCover.readAsDataURL(cover.files[0]);
                 fileCover.onload = function(e) {

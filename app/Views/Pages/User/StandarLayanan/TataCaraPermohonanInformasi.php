@@ -10,7 +10,7 @@
 
     <div class="flex flex-col sm:flex-row justify-center w-full gap-4 mt-20">
 
-      <div id="customHeight" class="h-fit" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <div class="h-fit w-fit sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
         <div class="card border w-full shadow-xl rounded-xl">
           <figure class="px-4 pt-4">
             <img
@@ -25,7 +25,7 @@
       </div>
 
       <!-- Konten di Samping Gambar -->
-      <div id="customHeight" class="h-fit w-1/2" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
+      <div class="h-fit sm:w-1/2 sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
         <div class="w-full max-w-2xl shadow-xl rounded-xl">
           <div class="w-full py-10 px-10 rounded-xl border">
             <article class="prose prose-sm prose-headings:text-indigo-500 max-w-full">
