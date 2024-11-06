@@ -79,14 +79,14 @@
         const div = document.getElementById('customHeight');
 
         if (window.innerWidth <= 768 && !isAttributesRemoved) {
-          console.log('hapus');
+          
           div.removeAttribute('data-scroll');
           div.removeAttribute('data-scroll-sticky');
           div.removeAttribute('data-scroll-target');
           isAttributesRemoved = true;
           isAttributesAdded = false;
         } else if (window.innerWidth > 768 && !isAttributesAdded) {
-          console.log('ada');
+          
           div.setAttribute('data-scroll', '');
           div.setAttribute('data-scroll-sticky', '');
           div.setAttribute('data-scroll-target', '#fixed-elements');
