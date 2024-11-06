@@ -78,23 +78,27 @@ $routes->post('/api/admin/laporan-layanan-informasi/upload-image', 'Pages\Admin\
 $routes->post('/api/admin/laporan-layanan-informasi/edit/(:num)', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
 $routes->delete('/api/admin/laporan-layanan-informasi/delete-image/(:num)', 'Pages\Admin\LayananInformasi\LaporanLayananInformasi::linkGambarDelete/$1', ['filter' => 'role:admin,superadmin']);
 
+// DASHBOARD
+$routes->get('/admin', 'Pages\Admin\Dashboard::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/dashboard', 'Pages\Admin\Dashboard::index', ['filter' => 'role:admin,superadmin']);
+
 // DASHBOARD ADMIN PANEL TEMPLATES
-$routes->get('/admin', 'Pages\Admin\Templates\Dashboard::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/dashboard', 'Pages\Admin\Templates\Dashboard::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/leads', 'Pages\Admin\Templates\Leads::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/transactions', 'Pages\Admin\Templates\Transactions::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/login', 'Pages\Admin\Templates\Auth::login', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/analytics', 'Pages\Admin\Templates\Analytics::index', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/integration', 'Pages\Admin\Templates\Integration::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates', 'Pages\Admin\Templates\Dashboard::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/dashboard', 'Pages\Admin\Templates\Dashboard::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/leads', 'Pages\Admin\Templates\Leads::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/transactions', 'Pages\Admin\Templates\Transactions::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/login', 'Pages\Admin\Templates\Auth::login', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/analytics', 'Pages\Admin\Templates\Analytics::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/integration', 'Pages\Admin\Templates\Integration::index', ['filter' => 'role:admin,superadmin']);
+
+$routes->get('/admin/templates/login', 'Pages\Admin\Templates\Auth::login', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/forgot-password', 'Pages\Admin\Templates\Auth::forgotPassword', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/blank-page', 'Pages\Admin\Templates\Error::blankPage', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/templates/404', 'Pages\Admin\Templates\Error::notFound404', ['filter' => 'role:admin,superadmin']);
 
 $routes->get('/admin/profile', 'Pages\Admin\Profile::index', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/profil/user/edit/(:num)', 'Pages\Admin\Profile::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
 $routes->delete('/api/admin/profil/user/delete-profile/(:num)', 'Pages\Admin\Profile::profilePicDelete/$1', ['filter' => 'role:admin,superadmin']);
-
-$routes->get('/admin/login', 'Pages\Admin\Auth::login', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/forgot-password', 'Pages\Admin\Auth::forgotPassword', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/blank-page', 'Pages\Admin\Error::blankPage', ['filter' => 'role:admin,superadmin']);
-$routes->get('/admin/404', 'Pages\Admin\Error::notFound404', ['filter' => 'role:admin,superadmin']);
 
 $routes->get('/admin/admin-management', 'Pages\Admin\SuperAdmin\AdminManagement::index', ['filter' => 'role:superadmin']);
 $routes->post('/api/admin/admin-management/edit/(:num)', 'Pages\Admin\SuperAdmin\AdminManagement::indexUpdate/$1', ['filter' => 'role:superadmin']);

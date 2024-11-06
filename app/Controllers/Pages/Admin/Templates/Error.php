@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Pages\Admin;
+namespace App\Controllers\Pages\Admin\Templates;
 
 use App\Controllers\BaseController;
 
@@ -11,13 +11,13 @@ class Error extends BaseController
     $data = [
       'title' => 'Blank Page'
     ];
-    return view('Pages/Admin/Error/BlankPage', $data);
+    return view('Pages/Admin/Templates/Error/BlankPage', $data);
   }
   public function notFound404(): string
   {
     $data = [
       'title' => '404'
     ];
-    return view('Pages/Admin/Error/404Page', $data);
+    return view('Pages/Admin/Templates/Error/404Page', $data);
   }
 }

@@ -7,6 +7,7 @@
       <li><a href="<?= base_url() ?>admin/admin-management">Admin Management</a></li>
     <?php endif; ?>
 
+    <li><a href="<?= base_url() ?>admin/dashboard">Dashboard</a></li>
     <li><a href="<?= base_url() ?>admin/hubungi-kami">Hubungi Kami</a></li>
     <li><a href="<?= base_url() ?>admin/regulasi">Regulasi</a></li>
     <li><a href="<?= base_url() ?>admin/profil">Profil</a></li>
@@ -49,21 +50,21 @@
     <div class="divider"></div>
 
     <!-- Sidebar content here -->
-    <li><a href="<?= base_url() ?>admin/dashboard">Dashboard</a></li>
-    <li><a href="<?= base_url() ?>admin/leads">Leads</a></li>
-    <li><a href="<?= base_url() ?>admin/transactions">Transactions</a></li>
-    <li><a href="<?= base_url() ?>admin/analytics">Analytics</a></li>
-    <li><a href="<?= base_url() ?>admin/integration">Integration</a></li>
+    <li><a href="<?= base_url() ?>admin/templates/dashboard">Dashboard</a></li>
+    <li><a href="<?= base_url() ?>admin/templates/leads">Leads</a></li>
+    <li><a href="<?= base_url() ?>admin/templates/transactions">Transactions</a></li>
+    <li><a href="<?= base_url() ?>admin/templates/analytics">Analytics</a></li>
+    <li><a href="<?= base_url() ?>admin/templates/integration">Integration</a></li>
     <li>
       <!-- <details open> -->
       <details>
         <summary>User</summary>
         <ul>
-          <li><a href="<?= base_url() ?>admin/login">Login</a></li>
+          <li><a href="<?= base_url() ?>login">Login</a></li>
           <li><a href="<?= base_url() ?>admin/profile">Profile</a></li>
-          <li><a href="<?= base_url() ?>admin/forgot-password">Forgot Password</a></li>
-          <li><a href="<?= base_url() ?>admin/blank-page">Blank Page</a></li>
-          <li><a href="<?= base_url() ?>admin/404">404</a></li>
+          <li><a href="<?= base_url() ?>forgot-password">Forgot Password</a></li>
+          <li><a href="<?= base_url() ?>admin/templates/blank-page">Blank Page</a></li>
+          <li><a href="<?= base_url() ?>admin/templates/404">404</a></li>
         </ul>
       </details>
     </li>
