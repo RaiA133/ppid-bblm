@@ -21,9 +21,9 @@
   <div class="relative">
 
     <!-- Left and right buttons -->
-    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal">
+    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-base-900 text-3xl px-3 font-bold shadow-md rounded-full leading-normal">
       < </button>
-        <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-neutral text-3xl px-3 font-bold shadow-md rounded-full leading-normal"> > </button>
+        <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-base-100 text-base-900 text-3xl px-3 font-bold shadow-md rounded-full leading-normal"> > </button>
 
         <!-- Carousel container -->
         <div id="carousel" class="flex gap-6 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory cursor-grab">
@@ -31,7 +31,7 @@
           <?php $no = 1; ?>
           <?php foreach ($judulInformasiBerkala as $judul) : ?>
             <a id="card_carousel" class="flex-shrink-0 snap-center w-full md:w-[500px] xl:w-[700px]" onclick="informasiBerkalaModal<?= esc($judul['id_informasi_berkala_judul']) ?>.showModal()">
-              <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-stone-900 text-neutral-content transition-all rounded-xl">
+              <div class="card hover:shadow-2xl hover:pb-3 hover:bg-base-200 bg-neutral hover:text-neutral text-neutral-content transition-all rounded-xl">
                 <div class="p-5">
                   <h2 class="card-title text-7xl sm:text-[100px] mb-6 sm:mb-10">00<?= $no++ ?></h2>
                   <div class="h-96 flex items-end">
