@@ -162,39 +162,8 @@
 
 
     </div>
-    <!-- <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Revenue</div>
-      <div class="divider"></div>
-      <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
-      <script>
-        const dashboardRevenue = document.getElementById('dashboard-revenue');
-        const totalAdminLabels = <?= json_encode($charts['totalAdminCountChart']['labels']) ?>;
-        const totalAdminData = <?= json_encode($charts['totalAdminCountChart']['data']) ?>;
-
-        new Chart(dashboardRevenue, {
-          type: 'bar',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: '# of Votes',
-              data: data,
-              borderWidth: 1
-            }]
-          },
-          options: {
-            maintainAspectRatio: false,
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
-
-    </div> -->
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Revenue</div>
+      <div class="text-md font-bold">Total Admin</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
       <script>
@@ -225,7 +194,6 @@
         });
       </script>
     </div>
-
 
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">Total Data & Dokumen</div>
