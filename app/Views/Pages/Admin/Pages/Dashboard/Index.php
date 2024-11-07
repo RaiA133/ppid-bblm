@@ -3,15 +3,16 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-5" id="header-home" data-scroll>
 
-  <section class="mx-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2">
-      <div class="my-auto mb-4 md:mb-0">
+  <section class="sm:mx-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 ">
+      <div class="my-auto mb-4 md:mb-0 mx-auto sm:mx-0">
         <!-- Datepicker Placeholder: Implement with your preferred datepicker in PHP -->
-        <input type="date" class="input input-bordered input-sm w-30" placeholder="Select date range" />
-        <span> - </span>
-        <input type="date" class="input input-bordered input-sm w-30" placeholder="Select date range" />
+        <form action="" method="GET" class="flex items-center gap-2">
+          <input id="datepicker" name="range" class="input input-sm input-bordered w-80 sm:w-72 mt-1 block p-2 border-gray-300 rounded-md" type="text" placeholder="Select a date range" value="<?= $stringRange ?>">
+          <button type="submit" class="btn btn-neutral btn-sm">Submit</button>
+        </form>
       </div>
       <div class="text-right gap-4 flex items-center justify-center md:justify-end">
         <button class="btn btn-ghost btn-sm normal-case">
@@ -44,7 +45,7 @@
     </div>
   </section>
 
-  <div class="divider mb-3"></div>
+  <div class="divider"></div>
 
   <!-- Stats -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4 justify-center mb-4">
@@ -70,9 +71,9 @@
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
         </div>
-        <div class="stat-title">Downloads</div>
-        <div class="stat-value">31K</div>
-        <div class="stat-desc">Jan 1st - Feb 1st</div>
+        <div class="stat-title">Success Login</div>
+        <div class="stat-value"><?= $totalLoginAttemptSuccess['count'] ?></div>
+        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
       </div>
     </div>
     <div class="stats shadow-md">
@@ -91,8 +92,8 @@
               d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
           </svg>
         </div>
-        <div class="stat-title">New Users</div>
-        <div class="stat-value">4,200</div>
+        <div class="stat-title">Total Admin</div>
+        <div class="stat-value"><?= $totalAdmin ?></div>
         <div class="stat-desc">↗︎ 400 (22%)</div>
       </div>
     </div>
@@ -113,7 +114,7 @@
           </svg>
         </div>
         <div class="stat-title">New Registers</div>
-        <div class="stat-value">1,200</div>
+        <div class="stat-value"><?= $newRegister ?></div>
         <div class="stat-desc">↘︎ 90 (14%)</div>
       </div>
     </div>
@@ -124,47 +125,62 @@
   <section class="mx-4 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center mb-4">
 
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Montly Active Users (in K)</div>
+      <div class="text-md font-bold">New Register</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="active-user"></canvas></div>
+
       <script>
         const activeUser = document.getElementById('active-user');
-
+        const labels = <?= json_encode($charts['newRegisterCountChart']['labels']) ?>;
+        const data = <?= json_encode($charts['newRegisterCountChart']['data']) ?>;
         new Chart(activeUser, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'April', 'Mei'],
+            labels: labels,
             datasets: [{
-              label: 'My First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40],
+              label: 'New Register Accounts',
+              data: data,
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
               tension: 0.1
             }]
           },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
+            scales: {
+              y: {
+                ticks: {
+                  callback: function(value) {
+                    return Math.round(value); // Membulatkan nilai pada sumbu Y
+                  }
+                }
+              }
+            }
+          }
         });
       </script>
 
+
+
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Revenue</div>
+      <div class="text-md font-bold">Total Admin</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
       <script>
         const dashboardRevenue = document.getElementById('dashboard-revenue');
+        const totalAdminLabels = <?= json_encode($charts['totalAdminCountChart']['labels']) ?>;
+        const totalAdminData = <?= json_encode($charts['totalAdminCountChart']['data']) ?>;
 
         new Chart(dashboardRevenue, {
           type: 'bar',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: totalAdminLabels,
             datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              borderWidth: 1
+              label: '# of Admins',
+              data: totalAdminData,
+              borderWidth: 1,
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)'
             }]
           },
           options: {
@@ -177,10 +193,10 @@
           }
         });
       </script>
-
     </div>
+
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">User Signup Source</div>
+      <div class="text-md font-bold">Total Data & Dokumen</div>
       <div class="divider"></div>
       <div class="overflow-x-auto">
         <table class="table">
@@ -188,55 +204,81 @@
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Jenis Data</th>
+              <th>Jumlah</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <!-- row 1 -->
-            <tr>
+
+            <tr class="hover">
               <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
+              <td>Hubungi Kami</td>
+              <td><?= $totalDataDanDokumen['totalHubungiKami'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/hubungi-kami') ?>">Detail</a>
+              </td>
             </tr>
-            <!-- row 2 -->
+
             <tr class="hover">
               <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
+              <td>Regulasi</td>
+              <td><?= $totalDataDanDokumen['totalRegulasi'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/regulasi') ?>">Detail</a>
+              </td>
             </tr>
-            <!-- row 3 -->
-            <tr>
+
+            <tr class="hover">
               <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
+              <td>Informasi Berkala</td>
+              <td><?= $totalDataDanDokumen['totalInformasiBerkala'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/informasi-berkala') ?>">Detail</a>
+              </td>
             </tr>
+
+            <tr class="hover">
+              <th>4</th>
+              <td>Informasi Setiap Saat</td>
+              <td><?= $totalDataDanDokumen['totalInformasiSetiapSaat'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/informasi-setiap-saat') ?>">Detail</a>
+              </td>
+            </tr>
+
+            <tr class="hover">
+              <th>5</th>
+              <td>Permohonan Informasi</td>
+              <td><?= $totalDataDanDokumen['totalPermohonanInformasi'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/permohonan-informasi') ?>">Detail</a>
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </div>
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Orders by Category</div>
+      <div class="text-md font-bold">Account Categories</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="user-category"></canvas></div>
       <script>
         const userCategory = document.getElementById('user-category');
+        const totalAccountCategories = <?= json_encode(array_values($charts['totalAccountCategories'])); ?>;
 
         new Chart(userCategory, {
           type: 'doughnut',
           data: {
             labels: [
-              'Red',
-              'Blue',
-              'Yellow'
+              'superadmin',
+              'admin',
+              'user'
             ],
             datasets: [{
               label: 'My First Dataset',
-              data: [300, 50, 100],
+              data: totalAccountCategories,
               backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
@@ -250,9 +292,23 @@
           },
         });
       </script>
+
     </div>
 
   </section>
+
+  <script>
+    // Initialize Flatpickr datepicker with range option
+    flatpickr("#datepicker", {
+      mode: "range",
+      dateFormat: "Y-m-d",
+    });
+
+    // Date Picker initialization
+    $(function() {
+      $("#datepicker").datepicker();
+    });
+  </script>
 
 </div>
 

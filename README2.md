@@ -77,16 +77,27 @@ pada aplikasi ini sudah digunakan Library Myth Auth dalam system login dan regis
 
 - Pembuatan seeder harus dengan menggunakan CLI `php spark make:seeder (NamaSeeder)` NamaSeeder CamelCase dan setelahnya diberi kata Seeder. ex : `ProfileSeeder`
 - jika masih bingung, bisa lihat seeder yang sudah dibuat sebelumnya
+- Jika sudah membuat seeder jangan lupa update readme ini, dengan menambahkan list command baru untuk seeder yang baru dan juga update DatabaseSeeder.php
 
 <br><br>
 
-## <b>Migrations : </b>
+## <b>Migrations & Seeder : </b>
 
 ```bash
 php spark migrate -all
 ```
 
-## <b>List Seeder Command (run all in sequence) : </b>
+```bash
+php spark db:seed DatabaseSeeder
+```
+Dua command diatas sudah menjalanakan migrasi dan semua seeder secara otomatis, <b>Sampai sini aplikasi sudah bisa dijalankan.</b>
+
+<hr>
+<br><br><br>
+
+## LIST MANUAL EVERY INDIVIDUAL SEEDER 
+
+### <b>List Seeder Command (run all in sequence) : </b>
 
 ```bash
 php spark db:seed RegulasiSeeder
@@ -94,6 +105,10 @@ php spark db:seed RegulasiSeeder
 
 ```bash
 php spark db:seed ProfilSeeder
+```
+
+```bash
+php spark db:seed HubungiKamiSeeder
 ```
 
 ##### INFORMASI PUBLIK
