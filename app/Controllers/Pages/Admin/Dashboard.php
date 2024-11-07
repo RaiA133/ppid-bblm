@@ -35,6 +35,7 @@ class Dashboard extends BaseController
     $totalAdmin = $this->getTotalAdminCount($dateRangeArray, $string);
     $totalLoginAttemptSuccess = $this->getTotalLoginAttemptSuccessCount($dateRangeArray, $string);
     $newRegisterCountChart = $this->getNewRegisterCountChart($dateRangeArray, $string);
+    $totalAdminCountChart = $this->getTotalAdminCountChart($dateRangeArray, $string);
 
     $data = [
       'title' => 'Dashboard',
@@ -45,13 +46,17 @@ class Dashboard extends BaseController
         'count' => $totalLoginAttemptSuccess,
         'formattedDateRange' => $formattedDateRange,
       ],
-      
+
       // CHART
       'charts' => [
         'newRegisterCountChart' => [
           'labels' => $newRegisterCountChart['labels'],
           'data' => $newRegisterCountChart['data'],
-        ]
+        ],
+        'totalAdminCountChart' => [
+          'labels' => $totalAdminCountChart['labels'],
+          'data' => $totalAdminCountChart['data'],
+        ],
       ],
     ];
 
@@ -211,7 +216,7 @@ class Dashboard extends BaseController
       $currentYear = date('Y');
       $months = [];
       $dataPerMonth = [];
-      
+
       for ($month = 1; $month <= 12; $month++) {
         $startOfMonth = "{$currentYear}-" . str_pad($month, 2, "0", STR_PAD_LEFT) . "-01";  // Awal bulan
         $endOfMonth = date("Y-m-t", strtotime($startOfMonth));  // Akhir bulan
@@ -222,12 +227,12 @@ class Dashboard extends BaseController
           ->where('users.created_at <=', $endOfMonth . ' 23:59:59')
           ->countAllResults();
 
-        $months[] = date("M", strtotime($startOfMonth)); 
-        $dataPerMonth[] = $userCount; 
+        $months[] = date("M", strtotime($startOfMonth));
+        $dataPerMonth[] = $userCount;
       }
 
       $NewRegisterChart = [
-        'labels' => $months,  
+        'labels' => $months,
         'data' => $dataPerMonth
       ];
     }
@@ -294,6 +299,164 @@ class Dashboard extends BaseController
       $labels[] = $startDateObj->format('M Y');
       $count = $this->userModel
         ->where('users.deleted_at', null)
+        ->where('users.created_at >=', $startDateObj->format('Y-m-01') . ' 00:00:00')
+        ->where('users.created_at <=', $startDateObj->format('Y-m-t') . ' 23:59:59')
+        ->countAllResults();
+
+      $data[] = $count;
+      $startDateObj->modify('+1 month');
+    }
+
+    return ['labels' => $labels, 'data' => $data];
+  }
+
+
+
+
+
+  //Total Admin
+  private function getTotalAdminCountChart($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $labels = [];
+        $data = [];
+
+        for ($hour = 0; $hour < 24; $hour++) {
+          $labels[] = sprintf('%02d:00', $hour);
+        }
+
+        for ($hour = 0; $hour < 24; $hour++) {
+          $hourStart = $startDate . ' ' . sprintf('%02d:00:00', $hour); // Mulai jam
+          $hourEnd = $startDate . ' ' . sprintf('%02d:59:59', $hour);   // Akhir jam
+          $count = $this->userModel
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->where('users.deleted_at', null)
+            ->where('auth_groups.name', 'admin')
+            ->where('users.created_at >=', $hourStart)
+            ->where('users.created_at <=', $hourEnd)
+            ->countAllResults();
+          $data[] = $count;
+        }
+
+        $TotalAdminChart = ['labels' => $labels, 'data' => $data];
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+
+        $startDateObj = new DateTime($startDate);
+        $endDateObj = new DateTime($endDate);
+        $dateDiff = $startDateObj->diff($endDateObj);
+
+        if ($dateDiff->days <= 7) $TotalAdminChart = $this->getTotalAdminCountChartByDay($startDate, $endDate);       // Rentang waktu <= 1 minggu
+        else if ($dateDiff->m <= 2) $TotalAdminChart = $this->getTotalAdminCountChartByWeek($startDate, $endDate);   // Rentang waktu <= 2 bulan
+        else $TotalAdminChart = $this->getTotalAdminCountChartByMonth($startDate, $endDate);                        // Rentang waktu > 2 bulan
+      }
+    } else {
+      $currentYear = date('Y');
+      $months = [];
+      $dataPerMonth = [];
+
+      for ($month = 1; $month <= 12; $month++) {
+        $startOfMonth = "{$currentYear}-" . str_pad($month, 2, "0", STR_PAD_LEFT) . "-01"; // Awal bulan
+        $endOfMonth = date("Y-m-t", strtotime($startOfMonth)); // Akhir bulan
+
+        $userCount = $this->userModel
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups.name', 'admin')
+          ->where('users.created_at >=', $startOfMonth . ' 00:00:00')
+          ->where('users.created_at <=', $endOfMonth . ' 23:59:59')
+          ->countAllResults();
+
+        $months[] = date("M", strtotime($startOfMonth));
+        $dataPerMonth[] = $userCount;
+      }
+
+      $TotalAdminChart = [
+        'labels' => $months,
+        'data' => $dataPerMonth
+      ];
+    }
+
+    return $TotalAdminChart;
+  }
+
+  private function getTotalAdminCountChartByDay($startDate, $endDate)
+  {
+    $labels = [];
+    $data = [];
+
+    $currentDate = new DateTime($startDate);
+    $endDateObj = new DateTime($endDate);
+
+    while ($currentDate <= $endDateObj) {
+      $labels[] = $currentDate->format('M jS'); // Format tanggal per hari
+      $count = $this->userModel
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('auth_groups.name', 'admin')
+        ->where('users.created_at >=', $currentDate->format('Y-m-d') . ' 00:00:00')
+        ->where('users.created_at <=', $currentDate->format('Y-m-d') . ' 23:59:59')
+        ->countAllResults();
+
+      $data[] = $count;
+      $currentDate->modify('+1 day');
+    }
+
+    return ['labels' => $labels, 'data' => $data];
+  }
+
+  private function getTotalAdminCountChartByWeek($startDate, $endDate)
+  {
+    $labels = [];
+    $data = [];
+
+    $startDateObj = new DateTime($startDate);
+    $endDateObj = new DateTime($endDate);
+    $startDateObj->modify('this week');  // Menyusun minggu pertama
+    $endDateObj->modify('this week');    // Menyusun minggu terakhir
+
+    while ($startDateObj <= $endDateObj) {
+      $weekStart = $startDateObj->format('Y-m-d');
+      $weekEnd = $startDateObj->modify('+6 days')->format('Y-m-d');
+
+      $labels[] = (new DateTime($weekStart))->format('M jS') . ' - ' . (new DateTime($weekEnd))->format('M jS');
+      $count = $this->userModel
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('auth_groups.name', 'admin')
+        ->where('users.created_at >=', $weekStart . ' 00:00:00')
+        ->where('users.created_at <=', $weekEnd . ' 23:59:59')
+        ->countAllResults();
+
+      $data[] = $count;
+      $startDateObj->modify('+1 day'); // Lanjut ke minggu berikutnya
+    }
+
+    return ['labels' => $labels, 'data' => $data];
+  }
+
+  private function getTotalAdminCountChartByMonth($startDate, $endDate)
+  {
+    $labels = [];
+    $data = [];
+
+    $startDateObj = new DateTime($startDate);
+    $endDateObj = new DateTime($endDate);
+
+    while ($startDateObj <= $endDateObj) {
+      $labels[] = $startDateObj->format('M Y');
+      $count = $this->userModel
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('auth_groups.name', 'admin')
         ->where('users.created_at >=', $startDateObj->format('Y-m-01') . ' 00:00:00')
         ->where('users.created_at <=', $startDateObj->format('Y-m-t') . ' 23:59:59')
         ->countAllResults();

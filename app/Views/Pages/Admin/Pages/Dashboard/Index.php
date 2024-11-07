@@ -162,20 +162,22 @@
 
 
     </div>
-    <div class="w-full rounded-md shadow-md p-5 bg-base-100">
+    <!-- <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">Revenue</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
       <script>
         const dashboardRevenue = document.getElementById('dashboard-revenue');
+        const totalAdminLabels = <?= json_encode($charts['totalAdminCountChart']['labels']) ?>;
+        const totalAdminData = <?= json_encode($charts['totalAdminCountChart']['data']) ?>;
 
         new Chart(dashboardRevenue, {
           type: 'bar',
           data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: labels,
             datasets: [{
               label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              data: data,
               borderWidth: 1
             }]
           },
@@ -190,7 +192,41 @@
         });
       </script>
 
+    </div> -->
+    <div class="w-full rounded-md shadow-md p-5 bg-base-100">
+      <div class="text-md font-bold">Revenue</div>
+      <div class="divider"></div>
+      <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
+      <script>
+        const dashboardRevenue = document.getElementById('dashboard-revenue');
+        const totalAdminLabels = <?= json_encode($charts['totalAdminCountChart']['labels']) ?>;
+        const totalAdminData = <?= json_encode($charts['totalAdminCountChart']['data']) ?>;
+
+        new Chart(dashboardRevenue, {
+          type: 'bar',
+          data: {
+            labels: totalAdminLabels,
+            datasets: [{
+              label: '# of Admins',
+              data: totalAdminData,
+              borderWidth: 1,
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)'
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
     </div>
+
+
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
       <div class="text-md font-bold">User Signup Source</div>
       <div class="divider"></div>
