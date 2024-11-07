@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Pages\Admin\SuperAdmin;
 
+use CodeIgniter\I18n\Time;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
@@ -35,7 +36,7 @@ class AdminManagement extends BaseController
     $role = $this->request->getVar('role');
 
     if ($keyword) $results = $this->userModel
-      ->select('users.id as userid, username, email, fullname, user_image, name, created_at, updated_at, deleted_at')
+      ->select('users.id as userid, username, email, fullname, user_image, name, users.created_at, users.updated_at, deleted_at')
       ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
       ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
       ->where('users.deleted_at', null)
@@ -48,7 +49,7 @@ class AdminManagement extends BaseController
       ->paginate($dataCountOnePage, 'users');
     else {
       $results = $this->userModel
-        ->select('users.id as userid, username, email, fullname, user_image, auth_groups_users.group_id as roleid, auth_groups.name as role, created_at, updated_at, deleted_at')
+        ->select('users.id as userid, username, email, fullname, user_image, auth_groups_users.group_id as roleid, auth_groups.name as role, users.created_at, users.updated_at, deleted_at')
         ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
         ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
         ->where('users.deleted_at', null)
@@ -101,6 +102,7 @@ class AdminManagement extends BaseController
     $groupUpdate = $this->db->table('auth_groups_users')
       ->where('user_id', $id)
       ->set('group_id', $dataToEdit['role_edit'])
+      ->set('updated_at', Time::now())
       ->update();
 
     if ($userUpdate || $groupUpdate) {

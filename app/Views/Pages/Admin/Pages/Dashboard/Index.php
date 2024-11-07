@@ -125,7 +125,7 @@
   <section class="mx-4 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center mb-4">
 
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Montly Active Users (in K)</div>
+      <div class="text-md font-bold">New Register</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="active-user"></canvas></div>
 
@@ -138,7 +138,7 @@
           data: {
             labels: labels,
             datasets: [{
-              label: 'My First Dataset',
+              label: 'New Register Accounts',
               data: data,
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
