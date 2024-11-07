@@ -29,7 +29,6 @@ class Dashboard extends BaseController
   {
     $string = $this->request->getVar('range');
     $dateRangeArray = explode(" to ", $string);
-    $string = $this->request->getVar('range');
 
     if (empty($string)) $formattedDateRange = 'All Time';
     else $formattedDateRange = $this->formatDateRange($dateRangeArray);
