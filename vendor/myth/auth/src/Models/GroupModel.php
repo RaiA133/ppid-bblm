@@ -2,6 +2,7 @@
 
 namespace Myth\Auth\Models;
 
+use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
 use Faker\Generator;
 use Myth\Auth\Entities\Group;
@@ -47,6 +48,8 @@ class GroupModel extends Model
         $data = [
             'user_id'  => $userId,
             'group_id' => $groupId,
+            'created_at' => Time::now(),
+            'updated_at' => Time::now(),
         ];
 
         return (bool) $this->db->table('auth_groups_users')->insert($data);

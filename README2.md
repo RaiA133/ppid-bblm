@@ -80,13 +80,22 @@ pada aplikasi ini sudah digunakan Library Myth Auth dalam system login dan regis
 
 <br><br>
 
-## <b>Migrations : </b>
+## <b>Migrations & Seeder : </b>
 
 ```bash
 php spark migrate -all
 ```
 
-## <b>List Seeder Command (run all in sequence) : </b>
+```bash
+php spark db:seed DatabaseSeeder
+```
+Dua command diatas sudah menjalanakan migrasi dan semua seeder secara otomatis, sampai sini aplikasi sudah bisa dijalankan.
+
+<br>
+
+## LIST MANUAL EVERY INDIVIDUAL SEEDER 
+
+### <b>List Seeder Command (run all in sequence) : </b>
 
 ```bash
 php spark db:seed RegulasiSeeder

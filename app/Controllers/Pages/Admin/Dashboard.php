@@ -116,8 +116,8 @@ class Dashboard extends BaseController
           ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
           ->where('users.deleted_at', null)
           ->where('auth_groups.name', 'admin')
-          ->where('users.created_at >=', $startDate . ' 00:00:00')
-          ->where('users.created_at <=', $startDate . ' 23:59:59')
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $startDate . ' 23:59:59')
           ->countAllResults();
       } else {
         $startDate = $dateRangeArray[0];
@@ -128,8 +128,8 @@ class Dashboard extends BaseController
           ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
           ->where('users.deleted_at', null)
           ->where('auth_groups.name', 'admin')
-          ->where('users.created_at >=', $startDate . ' 00:00:00')
-          ->where('users.created_at <=', $endDate . ' 23:59:59')
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
       }
     } else {
