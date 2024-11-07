@@ -73,7 +73,7 @@
         </div>
         <div class="stat-title">Success Login</div>
         <div class="stat-value"><?= $totalLoginAttemptSuccess['count'] ?></div>
-        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
+        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?></div>
       </div>
     </div>
     <div class="stats shadow-md">

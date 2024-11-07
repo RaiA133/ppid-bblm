@@ -2,9 +2,8 @@
 
 namespace App\Controllers\Pages\Admin;
 
-use App\Controllers\BaseController;
-use CodeIgniter\Database\SQLite3\Table;
 use DateTime;
+use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
 use Myth\Auth\Models\LoginModel;
@@ -25,91 +24,18 @@ class Dashboard extends BaseController
     $this->loginModel = new LoginModel();
     $this->permissionModel = new PermissionModel();
   }
+
   public function index(): string
   {
     $string = $this->request->getVar('range');
     $dateRangeArray = explode(" to ", $string);
 
-    if ($string) {
-      if (count($dateRangeArray) === 1) {
-        $startDate = $dateRangeArray[0];
+    if (empty($string)) $formattedDateRange = 'All Time';
+    else $formattedDateRange = $this->formatDateRange($dateRangeArray);
 
-        $formatedStartDate = new DateTime($startDate);
-        $formattedDateRange = $formatedStartDate->format('M jS');
-
-        $newRegister = $this->userModel
-          ->where('users.deleted_at', null)
-          ->where('users.created_at >=', $startDate . ' 00:00:00')
-          ->where('users.created_at <=', $startDate . ' 23:59:59')
-          ->countAllResults();
-
-        $totalAdmin = $this->userModel
-          ->select('name as role, created_at, updated_at, deleted_at')
-          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
-          ->where('users.deleted_at', null)
-          ->where('auth_groups.name', 'admin')
-          ->where('users.created_at >=', $startDate . ' 00:00:00')
-          ->where('users.created_at <=', $startDate . ' 23:59:59')
-          ->countAllResults();
-
-        $totalLoginAttemptSuccess = $this->db->table('auth_logins')
-          ->where('success', 1)
-          ->where('date >=', $startDate . ' 00:00:00')
-          ->where('date <=', $startDate . ' 23:59:59')
-          ->countAllResults();
-      } else {
-        $startDate = $dateRangeArray[0];
-        $endDate = $dateRangeArray[1];
-
-        $formatedStartDate = new DateTime($startDate);
-        $formatedEndDate = new DateTime($endDate);
-        $startFormatted = $formatedStartDate->format('M jS');
-        $endFormatted = $formatedEndDate->format('M jS');
-        $formattedDateRange = "$startFormatted - $endFormatted";
-
-        $newRegister = $this->userModel
-          ->where('users.deleted_at', null)
-          ->where('users.created_at >=', $startDate . ' 00:00:00')
-          ->where('users.created_at <=', $endDate . ' 23:59:59')
-          ->countAllResults();
-
-        $totalAdmin = $this->userModel
-          ->select('name as role, created_at, updated_at, deleted_at')
-          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
-          ->where('users.deleted_at', null)
-          ->where('auth_groups.name', 'admin')
-          ->where('users.created_at >=', $startDate . ' 00:00:00')
-          ->where('users.created_at <=', $endDate . ' 23:59:59')
-          ->countAllResults();
-
-        $totalLoginAttemptSuccess = $this->db->table('auth_logins')
-          ->where('success', 1)
-          ->where('date >=', $startDate . ' 00:00:00')
-          ->where('date <=', $endDate . ' 23:59:59')
-          ->countAllResults();
-      }
-    } else {
-
-      $formattedDateRange = null;
-
-      $newRegister = $this->userModel
-        ->where('users.deleted_at', null)
-        ->countAllResults();
-
-      $totalAdmin = $this->userModel
-        ->select('name as role, created_at, updated_at, deleted_at')
-        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
-        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
-        ->where('users.deleted_at', null)
-        ->where('auth_groups.name', 'admin')
-        ->countAllResults();
-
-      $totalLoginAttemptSuccess = $this->db->table('auth_logins')
-        ->where('success', 1)
-        ->countAllResults();
-    }
+    $newRegister = $this->getNewRegisterCount($dateRangeArray);
+    $totalAdmin = $this->getTotalAdminCount($dateRangeArray);
+    $totalLoginAttemptSuccess = $this->getTotalLoginAttemptSuccessCount($dateRangeArray);
 
     $data = [
       'title' => 'Dashboard',
@@ -121,6 +47,101 @@ class Dashboard extends BaseController
         'formattedDateRange' => $formattedDateRange,
       ],
     ];
+
     return view('Pages/Admin/Pages/Dashboard/Index', $data);
+  }
+
+  private function formatDateRange(array $dateRangeArray): string
+  {
+    if (count($dateRangeArray) === 1) {
+      $formatedStartDate = new DateTime($dateRangeArray[0]);
+      return $formatedStartDate->format('M jS');
+    } else if (count($dateRangeArray) === 2) {
+      $formatedStartDate = new DateTime($dateRangeArray[0]);
+      $formatedEndDate = new DateTime($dateRangeArray[1]);
+      return $formatedStartDate->format('M jS') . ' - ' . $formatedEndDate->format('M jS');
+    };
+  }
+
+  private function getNewRegisterCount(array $dateRangeArray): int
+  {
+    if (count($dateRangeArray) === 1) {
+      $startDate = $dateRangeArray[0];
+      return $this->userModel
+        ->where('users.deleted_at', null)
+        ->where('users.created_at >=', $startDate . ' 00:00:00')
+        ->where('users.created_at <=', $startDate . ' 23:59:59')
+        ->countAllResults();
+    } else if (count($dateRangeArray) === 2) {
+      $startDate = $dateRangeArray[0];
+      $endDate = $dateRangeArray[1];
+      return $this->userModel
+        ->where('users.deleted_at', null)
+        ->where('users.created_at >=', $startDate . ' 00:00:00')
+        ->where('users.created_at <=', $endDate . ' 23:59:59')
+        ->countAllResults();
+    }
+
+    return $this->userModel->where('users.deleted_at', null)->countAllResults();
+  }
+
+  private function getTotalAdminCount(array $dateRangeArray): int
+  {
+    if (count($dateRangeArray) === 1) {
+      $startDate = $dateRangeArray[0];
+      return $this->userModel
+        ->select('name as role, created_at, updated_at, deleted_at')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('auth_groups.name', 'admin')
+        ->where('users.created_at >=', $startDate . ' 00:00:00')
+        ->where('users.created_at <=', $startDate . ' 23:59:59')
+        ->countAllResults();
+    } else if (count($dateRangeArray) === 2) {
+      $startDate = $dateRangeArray[0];
+      $endDate = $dateRangeArray[1];
+      return $this->userModel
+        ->select('name as role, created_at, updated_at, deleted_at')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('auth_groups.name', 'admin')
+        ->where('users.created_at >=', $startDate . ' 00:00:00')
+        ->where('users.created_at <=', $endDate . ' 23:59:59')
+        ->countAllResults();
+    }
+
+    return $this->userModel
+      ->select('name as role, created_at, updated_at, deleted_at')
+      ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+      ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+      ->where('users.deleted_at', null)
+      ->where('auth_groups.name', 'admin')
+      ->countAllResults();
+  }
+
+  private function getTotalLoginAttemptSuccessCount(array $dateRangeArray): int
+  {
+    if (count($dateRangeArray) === 1) {
+      $startDate = $dateRangeArray[0];
+      return $this->db->table('auth_logins')
+        ->where('success', 1)
+        ->where('date >=', $startDate . ' 00:00:00')
+        ->where('date <=', $startDate . ' 23:59:59')
+        ->countAllResults();
+    } else if (count($dateRangeArray) === 2) {
+      $startDate = $dateRangeArray[0];
+      $endDate = $dateRangeArray[1];
+      return $this->db->table('auth_logins')
+        ->where('success', 1)
+        ->where('date >=', $startDate . ' 00:00:00')
+        ->where('date <=', $endDate . ' 23:59:59')
+        ->countAllResults();
+    }
+
+    return $this->db->table('auth_logins')
+      ->where('success', 1)
+      ->countAllResults();
   }
 }
