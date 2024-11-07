@@ -257,23 +257,24 @@
       </div>
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Orders by Category</div>
+      <div class="text-md font-bold">Account Categories</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="user-category"></canvas></div>
       <script>
         const userCategory = document.getElementById('user-category');
+        const totalAccountCategories = <?= json_encode(array_values($totalAccountCategories)); ?>;
 
         new Chart(userCategory, {
           type: 'doughnut',
           data: {
             labels: [
-              'Red',
-              'Blue',
-              'Yellow'
+              'superadmin',
+              'admin',
+              'user'
             ],
             datasets: [{
               label: 'My First Dataset',
-              data: [300, 50, 100],
+              data: totalAccountCategories,
               backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',

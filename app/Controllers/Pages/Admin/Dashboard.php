@@ -43,7 +43,6 @@ class Dashboard extends BaseController
     $this->informasiBerkalaModel = new InformasiBerkalaModel();
     $this->informasiSetiapSaatModel = new InformasiSetiapSaatModel();
     $this->permohonanInformasiModel = new PermohonanInformasiModel();
-
   }
 
   public function index(): string
@@ -56,12 +55,13 @@ class Dashboard extends BaseController
     $totalAdmin = $this->getTotalAdminCount($dateRangeArray, $string);
     $totalLoginAttemptSuccess = $this->getTotalLoginAttemptSuccessCount($dateRangeArray, $string);
     $newRegisterCountChart = $this->getNewRegisterCountChart($dateRangeArray, $string);
-    
+
     $totalHubungiKami = $this->getTotalHubungiKami($dateRangeArray, $string);
     $totalRegulasi = $this->getTotalRegulasi($dateRangeArray, $string);
     $totalInformasiBerkala = $this->getTotalInformasiBerkala($dateRangeArray, $string);
     $totalInformasiSetiapSaat = $this->getTotalInformasiSetiapSaat($dateRangeArray, $string);
     $totalPermohonanInformasi = $this->getTotalPermohonanInformasi($dateRangeArray, $string);
+    $totalAccountCategories = $this->getAccountCategories($dateRangeArray, $string);
 
     $data = [
       'title' => 'Dashboard',
@@ -72,7 +72,8 @@ class Dashboard extends BaseController
         'count' => $totalLoginAttemptSuccess,
         'formattedDateRange' => $formattedDateRange,
       ],
-      
+      'totalAccountCategories' => $totalAccountCategories,
+
       // CHART
       'charts' => [
         'newRegisterCountChart' => [
@@ -247,7 +248,7 @@ class Dashboard extends BaseController
       $currentYear = date('Y');
       $months = [];
       $dataPerMonth = [];
-      
+
       for ($month = 1; $month <= 12; $month++) {
         $startOfMonth = "{$currentYear}-" . str_pad($month, 2, "0", STR_PAD_LEFT) . "-01";  // Awal bulan
         $endOfMonth = date("Y-m-t", strtotime($startOfMonth));  // Akhir bulan
@@ -258,12 +259,12 @@ class Dashboard extends BaseController
           ->where('users.created_at <=', $endOfMonth . ' 23:59:59')
           ->countAllResults();
 
-        $months[] = date("M", strtotime($startOfMonth)); 
-        $dataPerMonth[] = $userCount; 
+        $months[] = date("M", strtotime($startOfMonth));
+        $dataPerMonth[] = $userCount;
       }
 
       $NewRegisterChart = [
-        'labels' => $months,  
+        'labels' => $months,
         'data' => $dataPerMonth
       ];
     }
@@ -355,7 +356,7 @@ class Dashboard extends BaseController
         $startDate = $dateRangeArray[0];
         $endDate = $dateRangeArray[1];
         $totalHubungiKami = $this->hubungiKamiModel
-        ->where('deleted_at', null)
+          ->where('deleted_at', null)
           ->where('created_at >=', $startDate . ' 00:00:00')
           ->where('created_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
@@ -382,7 +383,7 @@ class Dashboard extends BaseController
         $startDate = $dateRangeArray[0];
         $endDate = $dateRangeArray[1];
         $totalRegulasi = $this->regulasiModel
-        ->where('deleted_at', null)
+          ->where('deleted_at', null)
           ->where('created_at >=', $startDate . ' 00:00:00')
           ->where('created_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
@@ -409,7 +410,7 @@ class Dashboard extends BaseController
         $startDate = $dateRangeArray[0];
         $endDate = $dateRangeArray[1];
         $totalInformasiBerkala = $this->informasiBerkalaModel
-        ->where('deleted_at', null)
+          ->where('deleted_at', null)
           ->where('created_at >=', $startDate . ' 00:00:00')
           ->where('created_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
@@ -436,7 +437,7 @@ class Dashboard extends BaseController
         $startDate = $dateRangeArray[0];
         $endDate = $dateRangeArray[1];
         $totalInformasiSetiapSaat = $this->informasiSetiapSaatModel
-        ->where('deleted_at', null)
+          ->where('deleted_at', null)
           ->where('created_at >=', $startDate . ' 00:00:00')
           ->where('created_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
@@ -463,7 +464,7 @@ class Dashboard extends BaseController
         $startDate = $dateRangeArray[0];
         $endDate = $dateRangeArray[1];
         $totalPermohonanInformasi = $this->permohonanInformasiModel
-        ->where('deleted_at', null)
+          ->where('deleted_at', null)
           ->where('created_at >=', $startDate . ' 00:00:00')
           ->where('created_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
@@ -474,5 +475,55 @@ class Dashboard extends BaseController
         ->countAllResults();
     }
     return $totalPermohonanInformasi;
+  }
+
+  private function getAccountCategories($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $roleCounts = $this->userModel
+          ->select('auth_groups.name as role, COUNT(users.id) as count')
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $startDate . ' 23:59:59')
+          ->groupBy('auth_groups.name')
+          ->get()->getResultArray();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $roleCounts = $this->userModel
+          ->select('auth_groups.name as role, COUNT(users.id) as count')
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $endDate . ' 23:59:59')
+          ->groupBy('auth_groups.name')
+          ->get()->getResultArray();
+      }
+    } else {
+      $roleCounts = $this->userModel
+        ->select('auth_groups.name as role, COUNT(users.id) as count')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->groupBy('auth_groups.name')
+        ->get()->getResultArray();
+    }
+
+    $result = [
+      'superadmin' => 0,
+      'admin' => 0,
+      'user' => 0,
+    ];
+
+    foreach ($roleCounts as $role) {
+      $result[$role['role']] = $role['count'];
+    }
+
+    return $result;
   }
 }
