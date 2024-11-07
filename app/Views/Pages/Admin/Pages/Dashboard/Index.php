@@ -73,7 +73,7 @@
         </div>
         <div class="stat-title">Success Login</div>
         <div class="stat-value"><?= $totalLoginAttemptSuccess['count'] ?></div>
-        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?></div>
+        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
       </div>
     </div>
     <div class="stats shadow-md">
@@ -128,27 +128,38 @@
       <div class="text-md font-bold">Montly Active Users (in K)</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="active-user"></canvas></div>
+
       <script>
         const activeUser = document.getElementById('active-user');
-
+        const labels = <?= json_encode($charts['newRegisterCountChart']['labels']) ?>;
+        const data = <?= json_encode($charts['newRegisterCountChart']['data']) ?>;
         new Chart(activeUser, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'April', 'Mei', 'Jun', 'April', 'Mei'],
+            labels: labels,
             datasets: [{
               label: 'My First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40],
+              data: data,
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
               tension: 0.1
             }]
           },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
+            scales: {
+              y: {
+                ticks: {
+                  callback: function(value) {
+                    return Math.round(value); // Membulatkan nilai pada sumbu Y
+                  }
+                }
+              }
+            }
+          }
         });
       </script>
+
+
 
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">

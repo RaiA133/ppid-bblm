@@ -34,6 +34,7 @@ class Dashboard extends BaseController
     $newRegister = $this->getNewRegisterCount($dateRangeArray, $string);
     $totalAdmin = $this->getTotalAdminCount($dateRangeArray, $string);
     $totalLoginAttemptSuccess = $this->getTotalLoginAttemptSuccessCount($dateRangeArray, $string);
+    $newRegisterCountChart = $this->getNewRegisterCountChart($dateRangeArray, $string);
 
     $data = [
       'title' => 'Dashboard',
@@ -43,6 +44,14 @@ class Dashboard extends BaseController
       'totalLoginAttemptSuccess' => [
         'count' => $totalLoginAttemptSuccess,
         'formattedDateRange' => $formattedDateRange,
+      ],
+      
+      // CHART
+      'charts' => [
+        'newRegisterCountChart' => [
+          'labels' => $newRegisterCountChart['labels'],
+          'data' => $newRegisterCountChart['data'],
+        ]
       ],
     ];
 
@@ -135,7 +144,8 @@ class Dashboard extends BaseController
     return $totalAdmin;
   }
 
-  private function getTotalLoginAttemptSuccessCount($dateRangeArray, $string) {
+  private function getTotalLoginAttemptSuccessCount($dateRangeArray, $string)
+  {
     if ($string) {
       if (count($dateRangeArray) === 1) {
         $startDate = $dateRangeArray[0];
@@ -159,5 +169,139 @@ class Dashboard extends BaseController
         ->countAllResults();
     }
     return $totalLoginAttemptSuccess;
+  }
+
+  private function getNewRegisterCountChart($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $labels = [];
+        $data = [];
+
+        for ($hour = 0; $hour < 24; $hour++) {
+          $labels[] = sprintf('%02d:00', $hour);
+        }
+
+        for ($hour = 0; $hour < 24; $hour++) {
+          $hourStart = $startDate . ' ' . sprintf('%02d:00:00', $hour);  // Mulai jam
+          $hourEnd = $startDate . ' ' . sprintf('%02d:59:59', $hour);    // Akhir jam
+          $count = $this->userModel
+            ->where('users.deleted_at', null)
+            ->where('users.created_at >=', $hourStart)
+            ->where('users.created_at <=', $hourEnd)
+            ->countAllResults();
+          $data[] = $count;
+        }
+
+        $NewRegisterChart = ['labels' => $labels, 'data' => $data];
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+
+        $startDateObj = new DateTime($startDate);
+        $endDateObj = new DateTime($endDate);
+        $dateDiff = $startDateObj->diff($endDateObj);
+
+        if ($dateDiff->days <= 7) $NewRegisterChart = $this->getNewRegisterCountChartByDay($startDate, $endDate);     // Rentang waktu <= 1 minggu, Hitung per hari
+        else if ($dateDiff->m <= 2) $NewRegisterChart = $this->getNewRegisterCountChartByWeek($startDate, $endDate);  // Rentang waktu <= 2 bulan, Hitung per minggu
+        else $NewRegisterChart = $this->getNewRegisterCountChartByMonth($startDate, $endDate);                        // Rentang waktu > 2 bulan, Hitung per bulan
+      }
+    } else {                                                                                                          // Rentang waktu 1 Tahun , Hitung per bulan
+      $currentYear = date('Y');
+      $months = [];
+      $dataPerMonth = [];
+      
+      for ($month = 1; $month <= 12; $month++) {
+        $startOfMonth = "{$currentYear}-" . str_pad($month, 2, "0", STR_PAD_LEFT) . "-01";  // Awal bulan
+        $endOfMonth = date("Y-m-t", strtotime($startOfMonth));  // Akhir bulan
+
+        $userCount = $this->userModel
+          ->where('users.deleted_at', null)
+          ->where('users.created_at >=', $startOfMonth . ' 00:00:00')
+          ->where('users.created_at <=', $endOfMonth . ' 23:59:59')
+          ->countAllResults();
+
+        $months[] = date("M", strtotime($startOfMonth)); 
+        $dataPerMonth[] = $userCount; 
+      }
+
+      $NewRegisterChart = [
+        'labels' => $months,  
+        'data' => $dataPerMonth
+      ];
+    }
+    return $NewRegisterChart;
+  }
+
+  private function getNewRegisterCountChartByDay($startDate, $endDate)
+  {
+    $labels = [];
+    $data = [];
+
+    $currentDate = new DateTime($startDate);
+    $endDateObj = new DateTime($endDate);
+
+    while ($currentDate <= $endDateObj) {
+      $labels[] = $currentDate->format('M jS');  // Format tanggal per hari
+      $count = $this->userModel
+        ->where('users.deleted_at', null)
+        ->where('users.created_at >=', $currentDate->format('Y-m-d') . ' 00:00:00')
+        ->where('users.created_at <=', $currentDate->format('Y-m-d') . ' 23:59:59')
+        ->countAllResults();
+
+      $data[] = $count;
+      $currentDate->modify('+1 day');
+    }
+
+    return ['labels' => $labels, 'data' => $data];
+  }
+
+  private function getNewRegisterCountChartByWeek($startDate, $endDate)
+  {
+    $labels = [];
+    $data = [];
+
+    $startDateObj = new DateTime($startDate);
+    $endDateObj = new DateTime($endDate);
+    $startDateObj->modify('this week');  // Menyusun minggu pertama
+    $endDateObj->modify('this week');    // Menyusun minggu terakhir
+
+    while ($startDateObj <= $endDateObj) {
+      $labels[] = $startDateObj->format('M jS');
+      $count = $this->userModel
+        ->where('users.deleted_at', null)
+        ->where('users.created_at >=', $startDateObj->format('Y-m-d') . ' 00:00:00')
+        ->where('users.created_at <=', $startDateObj->format('Y-m-d') . ' 23:59:59')
+        ->countAllResults();
+
+      $data[] = $count;
+      $startDateObj->modify('+1 week');
+    }
+
+    return ['labels' => $labels, 'data' => $data];
+  }
+
+  private function getNewRegisterCountChartByMonth($startDate, $endDate)
+  {
+    $labels = [];
+    $data = [];
+
+    $startDateObj = new DateTime($startDate);
+    $endDateObj = new DateTime($endDate);
+
+    while ($startDateObj <= $endDateObj) { // Loop melalui setiap bulan dalam rentang waktu
+      $labels[] = $startDateObj->format('M Y');
+      $count = $this->userModel
+        ->where('users.deleted_at', null)
+        ->where('users.created_at >=', $startDateObj->format('Y-m-01') . ' 00:00:00')
+        ->where('users.created_at <=', $startDateObj->format('Y-m-t') . ' 23:59:59')
+        ->countAllResults();
+
+      $data[] = $count;
+      $startDateObj->modify('+1 month');
+    }
+
+    return ['labels' => $labels, 'data' => $data];
   }
 }
