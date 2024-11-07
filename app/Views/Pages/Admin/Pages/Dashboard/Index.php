@@ -134,7 +134,7 @@
         new Chart(activeUser, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'April', 'Mei'],
+            labels: ['Jan', 'Feb', 'April', 'Mei', 'Jun', 'April', 'Mei'],
             datasets: [{
               label: 'My First Dataset',
               data: [65, 59, 80, 81, 56, 55, 40],
