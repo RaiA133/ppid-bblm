@@ -15,7 +15,7 @@ class PermohonanInformasi extends BaseController
   public function index(): string
   {
     $currentPage = $this->request->getVar('page_permohonan_informasi') ? $this->request->getVar('page_permohonan_informasi') : 1;
-    $dataCountOnePage = 2; // jumlah data yang ditampilkan di satu halaman
+    $dataCountOnePage = 10; // jumlah data yang ditampilkan di satu halaman
 
     $keyword = $this->request->getVar('keyword');
     if ($keyword) $perhomonanInformasi = $this->permohonanInformasiModel->search($keyword);

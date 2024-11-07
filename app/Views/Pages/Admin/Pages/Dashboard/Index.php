@@ -192,7 +192,7 @@
 
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">User Signup Source</div>
+      <div class="text-md font-bold">Total Data & Dokumen</div>
       <div class="divider"></div>
       <div class="overflow-x-auto">
         <table class="table">
@@ -200,33 +200,58 @@
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Jenis Data</th>
+              <th>Jumlah</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <!-- row 1 -->
-            <tr>
+
+            <tr class="hover">
               <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
+              <td>Hubungi Kami</td>
+              <td><?= $totalDataDanDokumen['totalHubungiKami'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/hubungi-kami') ?>">Detail</a>
+              </td>
             </tr>
-            <!-- row 2 -->
+
             <tr class="hover">
               <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
+              <td>Regulasi</td>
+              <td><?= $totalDataDanDokumen['totalRegulasi'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/regulasi') ?>">Detail</a>
+              </td>
             </tr>
-            <!-- row 3 -->
-            <tr>
+
+            <tr class="hover">
               <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
+              <td>Informasi Berkala</td>
+              <td><?= $totalDataDanDokumen['totalInformasiBerkala'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/informasi-berkala') ?>">Detail</a>
+              </td>
             </tr>
+
+            <tr class="hover">
+              <th>4</th>
+              <td>Informasi Setiap Saat</td>
+              <td><?= $totalDataDanDokumen['totalInformasiSetiapSaat'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/informasi-setiap-saat') ?>">Detail</a>
+              </td>
+            </tr>
+
+            <tr class="hover">
+              <th>5</th>
+              <td>Permohonan Informasi</td>
+              <td><?= $totalDataDanDokumen['totalPermohonanInformasi'] ?></td>
+              <td>
+                <a class="btn btn-neutral btn-xs" href="<?= base_url('admin/permohonan-informasi') ?>">Detail</a>
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </div>

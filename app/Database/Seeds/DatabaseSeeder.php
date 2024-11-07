@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
     // Seed Regulasi and Profil
     $this->call('RegulasiSeeder');
     $this->call('ProfilSeeder');
+    $this->call('HubungiKamiSeeder');
 
     // Seed Informasi Publik
     $this->call('App\Database\Seeds\InformasiPublik\InformasiBerkalaSeeder');
