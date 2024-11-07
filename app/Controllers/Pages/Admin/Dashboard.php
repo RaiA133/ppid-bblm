@@ -72,14 +72,14 @@ class Dashboard extends BaseController
         'count' => $totalLoginAttemptSuccess,
         'formattedDateRange' => $formattedDateRange,
       ],
-      'totalAccountCategories' => $totalAccountCategories,
 
       // CHART
       'charts' => [
         'newRegisterCountChart' => [
           'labels' => $newRegisterCountChart['labels'],
           'data' => $newRegisterCountChart['data'],
-        ]
+        ],
+        'totalAccountCategories' => $totalAccountCategories,
       ],
 
       // Total Data & Dokumen

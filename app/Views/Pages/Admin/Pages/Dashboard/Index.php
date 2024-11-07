@@ -262,7 +262,7 @@
       <div class="h-72"><canvas id="user-category"></canvas></div>
       <script>
         const userCategory = document.getElementById('user-category');
-        const totalAccountCategories = <?= json_encode(array_values($totalAccountCategories)); ?>;
+        const totalAccountCategories = <?= json_encode(array_values($charts['totalAccountCategories'])); ?>;
 
         new Chart(userCategory, {
           type: 'doughnut',
