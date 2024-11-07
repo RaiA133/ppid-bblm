@@ -4,10 +4,17 @@ namespace App\Controllers\Pages\Admin;
 
 use DateTime;
 use App\Controllers\BaseController;
+
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
 use Myth\Auth\Models\LoginModel;
 use Myth\Auth\Models\PermissionModel;
+
+use App\Models\HubungiKamiModel;
+use App\Models\RegulasiModel;
+use App\Models\InformasiPublik\InformasiBerkalaModel;
+use App\Models\InformasiPublik\InformasiSetiapSaatModel;
+use App\Models\LayananInformasi\PermohonanInformasiModel;
 
 class Dashboard extends BaseController
 {
@@ -16,6 +23,13 @@ class Dashboard extends BaseController
   protected $groupModel;
   protected $loginModel;
   protected $permissionModel;
+
+  protected $hubungiKamiModel;
+  protected $regulasiModel;
+  protected $informasiBerkalaModel;
+  protected $informasiSetiapSaatModel;
+  protected $permohonanInformasiModel;
+
   public function __construct()
   {
     $this->db = \Config\Database::connect();
@@ -23,6 +37,12 @@ class Dashboard extends BaseController
     $this->groupModel = new GroupModel();
     $this->loginModel = new LoginModel();
     $this->permissionModel = new PermissionModel();
+
+    $this->hubungiKamiModel = new HubungiKamiModel();
+    $this->regulasiModel = new RegulasiModel();
+    $this->informasiBerkalaModel = new InformasiBerkalaModel();
+    $this->informasiSetiapSaatModel = new InformasiSetiapSaatModel();
+    $this->permohonanInformasiModel = new PermohonanInformasiModel();
   }
 
   public function index(): string
@@ -36,6 +56,13 @@ class Dashboard extends BaseController
     $totalLoginAttemptSuccess = $this->getTotalLoginAttemptSuccessCount($dateRangeArray, $string);
     $newRegisterCountChart = $this->getNewRegisterCountChart($dateRangeArray, $string);
     $totalAdminCountChart = $this->getTotalAdminCountChart($dateRangeArray, $string);
+
+    $totalHubungiKami = $this->getTotalHubungiKami($dateRangeArray, $string);
+    $totalRegulasi = $this->getTotalRegulasi($dateRangeArray, $string);
+    $totalInformasiBerkala = $this->getTotalInformasiBerkala($dateRangeArray, $string);
+    $totalInformasiSetiapSaat = $this->getTotalInformasiSetiapSaat($dateRangeArray, $string);
+    $totalPermohonanInformasi = $this->getTotalPermohonanInformasi($dateRangeArray, $string);
+    $totalAccountCategories = $this->getAccountCategories($dateRangeArray, $string);
 
     $data = [
       'title' => 'Dashboard',
@@ -57,6 +84,16 @@ class Dashboard extends BaseController
           'labels' => $totalAdminCountChart['labels'],
           'data' => $totalAdminCountChart['data'],
         ],
+        'totalAccountCategories' => $totalAccountCategories,
+      ],
+
+      // Total Data & Dokumen
+      'totalDataDanDokumen' => [
+        'totalHubungiKami' => $totalHubungiKami,
+        'totalRegulasi' => $totalRegulasi,
+        'totalInformasiBerkala' => $totalInformasiBerkala,
+        'totalInformasiSetiapSaat' => $totalInformasiSetiapSaat,
+        'totalPermohonanInformasi' => $totalPermohonanInformasi,
       ],
     ];
 
@@ -310,11 +347,6 @@ class Dashboard extends BaseController
     return ['labels' => $labels, 'data' => $data];
   }
 
-
-
-
-
-  //Total Admin
   private function getTotalAdminCountChart($dateRangeArray, $string)
   {
     if ($string) {
@@ -466,5 +498,190 @@ class Dashboard extends BaseController
     }
 
     return ['labels' => $labels, 'data' => $data];
+  }
+
+  private function getTotalHubungiKami($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $totalHubungiKami = $this->hubungiKamiModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
+          ->countAllResults();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $totalHubungiKami = $this->hubungiKamiModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
+          ->countAllResults();
+      }
+    } else {
+      $totalHubungiKami = $this->hubungiKamiModel
+        ->where('deleted_at', null)
+        ->countAllResults();
+    }
+    return $totalHubungiKami;
+  }
+
+  private function getTotalRegulasi($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $totalRegulasi = $this->regulasiModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
+          ->countAllResults();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $totalRegulasi = $this->regulasiModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
+          ->countAllResults();
+      }
+    } else {
+      $totalRegulasi = $this->regulasiModel
+        ->where('deleted_at', null)
+        ->countAllResults();
+    }
+    return $totalRegulasi;
+  }
+
+  private function getTotalInformasiBerkala($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $totalInformasiBerkala = $this->informasiBerkalaModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
+          ->countAllResults();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $totalInformasiBerkala = $this->informasiBerkalaModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
+          ->countAllResults();
+      }
+    } else {
+      $totalInformasiBerkala = $this->informasiBerkalaModel
+        ->where('deleted_at', null)
+        ->countAllResults();
+    }
+    return $totalInformasiBerkala;
+  }
+
+  private function getTotalInformasiSetiapSaat($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $totalInformasiSetiapSaat = $this->informasiSetiapSaatModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
+          ->countAllResults();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $totalInformasiSetiapSaat = $this->informasiSetiapSaatModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
+          ->countAllResults();
+      }
+    } else {
+      $totalInformasiSetiapSaat = $this->informasiSetiapSaatModel
+        ->where('deleted_at', null)
+        ->countAllResults();
+    }
+    return $totalInformasiSetiapSaat;
+  }
+
+  private function getTotalPermohonanInformasi($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $totalPermohonanInformasi = $this->permohonanInformasiModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
+          ->countAllResults();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $totalPermohonanInformasi = $this->permohonanInformasiModel
+          ->where('deleted_at', null)
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
+          ->countAllResults();
+      }
+    } else {
+      $totalPermohonanInformasi = $this->permohonanInformasiModel
+        ->where('deleted_at', null)
+        ->countAllResults();
+    }
+    return $totalPermohonanInformasi;
+  }
+
+  private function getAccountCategories($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $roleCounts = $this->userModel
+          ->select('auth_groups.name as role, COUNT(users.id) as count')
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $startDate . ' 23:59:59')
+          ->groupBy('auth_groups.name')
+          ->get()->getResultArray();
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $roleCounts = $this->userModel
+          ->select('auth_groups.name as role, COUNT(users.id) as count')
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $endDate . ' 23:59:59')
+          ->groupBy('auth_groups.name')
+          ->get()->getResultArray();
+      }
+    } else {
+      $roleCounts = $this->userModel
+        ->select('auth_groups.name as role, COUNT(users.id) as count')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->groupBy('auth_groups.name')
+        ->get()->getResultArray();
+    }
+
+    $result = [
+      'superadmin' => 0,
+      'admin' => 0,
+      'user' => 0,
+    ];
+
+    foreach ($roleCounts as $role) {
+      $result[$role['role']] = $role['count'];
+    }
+
+    return $result;
   }
 }
