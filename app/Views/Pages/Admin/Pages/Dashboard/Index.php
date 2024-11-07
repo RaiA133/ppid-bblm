@@ -9,10 +9,10 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 ">
       <div class="my-auto mb-4 md:mb-0 mx-auto sm:mx-0">
         <!-- Datepicker Placeholder: Implement with your preferred datepicker in PHP -->
-         <form action="" method="GET" class="flex items-center gap-2">
-           <input id="datepicker" name="range" class="input input-sm input-bordered w-80 sm:w-72 mt-1 block p-2 border-gray-300 rounded-md" type="text" placeholder="Select a date range" value="<?= $stringRange ?>">
-           <button type="submit" class="btn btn-neutral btn-sm">Submit</button>
-          </form>
+        <form action="" method="GET" class="flex items-center gap-2">
+          <input id="datepicker" name="range" class="input input-sm input-bordered w-80 sm:w-72 mt-1 block p-2 border-gray-300 rounded-md" type="text" placeholder="Select a date range" value="<?= $stringRange ?>">
+          <button type="submit" class="btn btn-neutral btn-sm">Submit</button>
+        </form>
       </div>
       <div class="text-right gap-4 flex items-center justify-center md:justify-end">
         <button class="btn btn-ghost btn-sm normal-case">
@@ -73,7 +73,7 @@
         </div>
         <div class="stat-title">Success Login</div>
         <div class="stat-value"><?= $totalLoginAttemptSuccess['count'] ?></div>
-        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?></div>
+        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
       </div>
     </div>
     <div class="stats shadow-md">
@@ -128,27 +128,38 @@
       <div class="text-md font-bold">Montly Active Users (in K)</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="active-user"></canvas></div>
+
       <script>
         const activeUser = document.getElementById('active-user');
-
+        const labels = <?= json_encode($charts['newRegisterCountChart']['labels']) ?>;
+        const data = <?= json_encode($charts['newRegisterCountChart']['data']) ?>;
         new Chart(activeUser, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'April', 'Mei', 'Jun', 'April', 'Mei'],
+            labels: labels,
             datasets: [{
               label: 'My First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40],
+              data: data,
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
               tension: 0.1
             }]
           },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
+            scales: {
+              y: {
+                ticks: {
+                  callback: function(value) {
+                    return Math.round(value); // Membulatkan nilai pada sumbu Y
+                  }
+                }
+              }
+            }
+          }
         });
       </script>
+
+
 
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
