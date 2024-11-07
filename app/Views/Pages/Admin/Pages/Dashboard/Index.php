@@ -3,15 +3,16 @@
 
 <?php $this->section('content') ?>
 
-<div class="flex flex-col bg-base-200 py-10" id="header-home" data-scroll>
+<div class="flex flex-col bg-base-200 py-5" id="header-home" data-scroll>
 
-  <section class="mx-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2">
-      <div class="my-auto mb-4 md:mb-0">
+  <section class="sm:mx-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 ">
+      <div class="my-auto mb-4 md:mb-0 mx-auto sm:mx-0">
         <!-- Datepicker Placeholder: Implement with your preferred datepicker in PHP -->
-        <input type="date" class="input input-bordered input-sm w-30" placeholder="Select date range" />
-        <span> - </span>
-        <input type="date" class="input input-bordered input-sm w-30" placeholder="Select date range" />
+         <form action="" method="GET" class="flex items-center gap-2">
+           <input id="datepicker" name="range" class="input input-sm input-bordered w-80 sm:w-72 mt-1 block p-2 border-gray-300 rounded-md" type="text" placeholder="Select a date range" value="<?= $stringRange ?>">
+           <button type="submit" class="btn btn-neutral btn-sm">Submit</button>
+          </form>
       </div>
       <div class="text-right gap-4 flex items-center justify-center md:justify-end">
         <button class="btn btn-ghost btn-sm normal-case">
@@ -44,7 +45,7 @@
     </div>
   </section>
 
-  <div class="divider mb-3"></div>
+  <div class="divider"></div>
 
   <!-- Stats -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4 justify-center mb-4">
@@ -70,9 +71,9 @@
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
         </div>
-        <div class="stat-title">Downloads</div>
-        <div class="stat-value">31K</div>
-        <div class="stat-desc">Jan 1st - Feb 1st</div>
+        <div class="stat-title">Success Login</div>
+        <div class="stat-value"><?= $totalLoginAttemptSuccess['count'] ?></div>
+        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
       </div>
     </div>
     <div class="stats shadow-md">
@@ -91,8 +92,8 @@
               d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
           </svg>
         </div>
-        <div class="stat-title">New Users</div>
-        <div class="stat-value">4,200</div>
+        <div class="stat-title">Total Admin</div>
+        <div class="stat-value"><?= $totalAdmin ?></div>
         <div class="stat-desc">↗︎ 400 (22%)</div>
       </div>
     </div>
@@ -113,7 +114,7 @@
           </svg>
         </div>
         <div class="stat-title">New Registers</div>
-        <div class="stat-value">1,200</div>
+        <div class="stat-value"><?= $newRegister ?></div>
         <div class="stat-desc">↘︎ 90 (14%)</div>
       </div>
     </div>
@@ -133,7 +134,7 @@
         new Chart(activeUser, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'April', 'Mei'],
+            labels: ['Jan', 'Feb', 'April', 'Mei', 'Jun', 'April', 'Mei'],
             datasets: [{
               label: 'My First Dataset',
               data: [65, 59, 80, 81, 56, 55, 40],
@@ -250,9 +251,23 @@
           },
         });
       </script>
+
     </div>
 
   </section>
+
+  <script>
+    // Initialize Flatpickr datepicker with range option
+    flatpickr("#datepicker", {
+      mode: "range",
+      dateFormat: "Y-m-d",
+    });
+
+    // Date Picker initialization
+    $(function() {
+      $("#datepicker").datepicker();
+    });
+  </script>
 
 </div>
 

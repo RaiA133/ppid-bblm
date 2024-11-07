@@ -41,15 +41,15 @@
   </section>
 
   <!-- Informasi Utama -->
-  <section class="flex flex-col items-start md:flex-row mx-10" id="fixed-elements">
+  <section class="flex flex-col items-start md:flex-row mx-10 " id="fixed-elements">
 
-    <div class="flex flex-col gap-4">
+    <section class="flex flex-col gap-4">
 
       <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="2">
         <div class="flex items-center" data-scroll data-scroll-speed="1">
           <div class="ml-0 md:ml-4 my-3">001</div>
-          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>informasi-berkala">
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+          <a class="relative group py-1.5 px-2.5 text-neutral-content-950 text-4xl ml-4" href="<?= base_url() ?>informasi-berkala">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-neutral-500 transition-all duration-300 group-hover:w-full"></span>
             Informasi Berkala
           </a>
         </div>
@@ -61,8 +61,8 @@
       <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="3">
         <div class="flex items-center" data-scroll data-scroll-speed="2">
           <div class="ml-0 md:ml-4 my-3">002</div>
-          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>informasi-setiap-saat">
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+          <a class="relative group py-1.5 px-2.5 text-neutral-content-950 text-4xl ml-4" href="<?= base_url() ?>informasi-setiap-saat">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-neutral-500 transition-all duration-300 group-hover:w-full"></span>
             Informasi Setiap Saat
           </a>
         </div>
@@ -74,8 +74,8 @@
       <div class="flex flex-col w-full my-32" data-scroll data-scroll-speed="3">
         <div class="flex items-center" data-scroll data-scroll-speed="1">
           <div class="ml-0 md:ml-4 my-3">003</div>
-          <a class="relative group py-1.5 px-2.5 text-stone-900 text-4xl ml-4" href="<?= base_url() ?>informasi-serta-merta">
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-900 transition-all duration-300 group-hover:w-full"></span>
+          <a class="relative group py-1.5 px-2.5 text-neutral-content-950 text-4xl ml-4" href="<?= base_url() ?>informasi-serta-merta">
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-neutral-500 transition-all duration-300 group-hover:w-full"></span>
             Informasi Sertamerta
           </a>
         </div>
@@ -84,7 +84,8 @@
         </div>
       </div>
 
-    </div>
+    </section>
+
     <!-- Logo MIDC Animated -->
     <section>
       <div class="h-fit w-fit sm:max-w-[50vw]" data-scroll data-scroll-sticky data-scroll-target="#fixed-elements">
@@ -100,7 +101,7 @@
           const div = document.getElementById('customHeight');
 
           if (window.innerWidth <= 768 && !isAttributesRemoved) {
-            console.log('hapus');
+            
             div.removeAttribute('data-scroll');
             div.removeAttribute('data-scroll-sticky');
             // div.removeAttribute('data-scroll-offset');
@@ -108,7 +109,7 @@
             isAttributesRemoved = true;
             isAttributesAdded = false;
           } else if (window.innerWidth > 768 && !isAttributesAdded) {
-            console.log('ada');
+            
             div.setAttribute('data-scroll', '');
             div.setAttribute('data-scroll-sticky', '');
             // div.setAttribute('data-scroll-offset', '200%');
@@ -228,7 +229,7 @@
 
   <!-- Judul Informasi lainnya -->
   <section class="absoulte z-40 w-full bg-primary py-20">
-    <div class="text-6xl md:text-9xl text-center font-bold text-neutral-300">PELAYANAN KAMI</div>
+    <div class="text-6xl md:text-9xl text-center font-bold text-base-100">PELAYANAN KAMI</div>
   </section>
 
 </div>

@@ -27,6 +27,11 @@
 <?php $currentRoute = service('request')->getPath(); ?>
 
 <body data-theme="<?= getenv('ui_theme') ?>" class="flex">
+  
+  <script>
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.setAttribute("data-theme", savedTheme);
+  </script>
 
   <?php if (strpos($currentRoute, 'admin') === 0) : ?>
     <div class="z-50">
