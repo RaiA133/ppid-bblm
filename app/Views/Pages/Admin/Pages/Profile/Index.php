@@ -41,7 +41,7 @@
         <input type="hidden" name="user_image_edit_old" value="<?= esc(user()->user_image) ?>">
 
         <div class="flex justify-between items-center">
-          <h2 class="text-2xl font-semibold">Profile</h2>
+          <h2 class="text-2xl font-semibold">Profile Settings</h2>
           <div class="col-span-1 md:col-span-2 lg:col-span-1 flex items-center gap-4 justify-between">
             <button type="submit" class="btn btn-sm w-32 md:w-auto lg:w-auto btn-neutral px-4 py-2 text-neutral-content font-semibold rounded-md">
               Update

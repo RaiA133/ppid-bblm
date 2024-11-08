@@ -16,9 +16,10 @@
         </form>
       </div>
       <div class="text-right gap-4 flex items-center justify-center md:justify-end">
-        <button class="btn btn-ghost btn-sm normal-case">
+
+        <a class="btn btn-ghost btn-sm normal-case" href="<?= current_url() . '?' . $_SERVER['QUERY_STRING'] ?>">
           Refresh Data
-        </button>
+        </a>
         <button class="btn btn-ghost btn-sm normal-case">
           Share
         </button>
@@ -50,7 +51,7 @@
 
   <!-- Stats -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4 justify-center mb-4">
-   
+
     <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-title">Total Page Views</div>
@@ -86,7 +87,8 @@
         <form method="dialog">
           <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="text-md font-bold mb-2">List User Success Login Attempt</h3><hr>
+        <h3 class="text-md font-bold mb-2">List User Success Login Attempt</h3>
+        <hr>
         <p class="py-2">
         <div class="overflow-x-auto">
           <table class="table table-xs">
@@ -99,12 +101,12 @@
             </thead>
             <tbody>
               <?php $no = 1; ?>
-              <?php foreach($totalLoginAttemptSuccess['data'] as $dataLoginAttemptSuccess) : ?>
-              <tr>
-                <th><?= $no++ ?></th>
-                <td><?= $dataLoginAttemptSuccess->email ?></td>
-                <td><?= $dataLoginAttemptSuccess->date ?></td>
-              </tr>
+              <?php foreach ($totalLoginAttemptSuccess['data'] as $dataLoginAttemptSuccess) : ?>
+                <tr>
+                  <th><?= $no++ ?></th>
+                  <td><?= $dataLoginAttemptSuccess->email ?></td>
+                  <td><?= $dataLoginAttemptSuccess->date ?></td>
+                </tr>
               <?php endforeach; ?>
             </tbody>
           </table>
@@ -140,7 +142,8 @@
         <form method="dialog">
           <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="text-md font-bold mb-2">List New Admin</h3><hr>
+        <h3 class="text-md font-bold mb-2">List New Admin</h3>
+        <hr>
         <p class="py-2">
         <div class="overflow-x-auto">
           <table class="table table-xs">
@@ -153,12 +156,12 @@
             </thead>
             <tbody>
               <?php $no = 1; ?>
-              <?php foreach($totalAdmin['data'] as $newRegisterData) : ?>
-              <tr>
-                <th><?= $no++ ?></th>
-                <td><?= $newRegisterData->email ?></td>
-                <td><?= $newRegisterData->adminUpdatedAt ?></td>
-              </tr>
+              <?php foreach ($totalAdmin['data'] as $newRegisterData) : ?>
+                <tr>
+                  <th><?= $no++ ?></th>
+                  <td><?= $newRegisterData->email ?></td>
+                  <td><?= $newRegisterData->adminUpdatedAt ?></td>
+                </tr>
               <?php endforeach; ?>
             </tbody>
           </table>
@@ -194,7 +197,8 @@
         <form method="dialog">
           <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="text-md font-bold mb-2">List New Register</h3><hr>
+        <h3 class="text-md font-bold mb-2">List New Register</h3>
+        <hr>
         <p class="py-2">
         <div class="overflow-x-auto">
           <table class="table table-xs">
@@ -207,12 +211,12 @@
             </thead>
             <tbody>
               <?php $no = 1; ?>
-              <?php foreach($newRegister['data'] as $datanewRegisterData) : ?>
-              <tr>
-                <th><?= $no++ ?></th>
-                <td><?= $datanewRegisterData->email ?></td>
-                <td><?= $datanewRegisterData->created_at ?></td>
-              </tr>
+              <?php foreach ($newRegister['data'] as $datanewRegisterData) : ?>
+                <tr>
+                  <th><?= $no++ ?></th>
+                  <td><?= $datanewRegisterData->email ?></td>
+                  <td><?= $datanewRegisterData->created_at ?></td>
+                </tr>
               <?php endforeach; ?>
             </tbody>
           </table>
@@ -279,7 +283,7 @@
           data: {
             labels: totalAdminLabels,
             datasets: [{
-              label: '# of Admins',
+              label: 'New Admin Accounts',
               data: totalAdminData,
               borderWidth: 1,
               backgroundColor: 'rgba(54, 162, 235, 0.5)',
