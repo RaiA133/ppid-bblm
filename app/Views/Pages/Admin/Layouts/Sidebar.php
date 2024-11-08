@@ -9,7 +9,7 @@
       <li><a href="<?= base_url('admin/admin-management') ?>" class="<?= (current_url() == base_url('admin/admin-management')) ? 'bg-base-200' : '' ?>">Admin Management</a></li>
     <?php endif; ?>
 
-    <li><a href="<?= base_url() ?>admin/dashboard" class="<?= (current_url() == base_url('admin/dashboard')) ? 'bg-base-200' : '' ?>">Dashboard</a></li>
+    <li><a href="<?= base_url() ?>admin/dashboard" class="<?= (current_url() == base_url('admin/dashboard') || current_url() == base_url('admin')) ? 'bg-base-200' : '' ?>">Dashboard</a></li>
     <li><a href="<?= base_url() ?>admin/hubungi-kami" class="<?= (current_url() == base_url('admin/hubungi-kami')) ? 'bg-base-200' : '' ?>">Hubungi Kami</a></li>
     <li><a href="<?= base_url() ?>admin/regulasi" class="<?= (current_url() == base_url('admin/regulasi')) ? 'bg-base-200' : '' ?>">Regulasi</a></li>
     <li><a href="<?= base_url() ?>admin/profil" class="<?= (current_url() == base_url('admin/profil')) ? 'bg-base-200' : '' ?>">Profil</a></li>
@@ -106,6 +106,6 @@
 
 
 
-    
+
   </ul>
 </div>
