@@ -9,8 +9,9 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 ">
       <div class="my-auto mb-4 md:mb-0 mx-auto sm:mx-0">
         <!-- Datepicker Placeholder: Implement with your preferred datepicker in PHP -->
-        <form action="" method="GET" class="flex items-center gap-2">
-          <input id="datepicker" name="range" class="input input-sm input-bordered w-80 sm:w-72 mt-1 block p-2 border-gray-300 rounded-md" type="text" placeholder="Select a date range" value="<?= $stringRange ?>">
+        <form action="" method="GET" class="flex items-center gap-2 flatpickr">
+          <input id="datepicker" name="range" class="input input-sm input-bordered w-45 sm:w-72 rounded-md" type="text" placeholder="Select a date range" value="<?= $stringRange ?>">
+          <a class="btn btn-sm border" href="<?= base_url('/admin') ?>" title="clear">X</a>
           <button type="submit" class="btn btn-neutral btn-sm">Submit</button>
         </form>
       </div>
@@ -49,6 +50,7 @@
 
   <!-- Stats -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4 justify-center mb-4">
+   
     <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-title">Total Page Views</div>
@@ -56,14 +58,16 @@
         <div class="stat-desc">21% more than last month</div>
       </div>
     </div>
+
     <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-figure text-secondary">
           <svg
+            onclick="successLoginModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            class="inline-block h-8 w-8 stroke-current">
+            class="inline-block h-8 w-8 stroke-current cursor-pointer">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -76,15 +80,48 @@
         <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
       </div>
     </div>
-    <div class="stats shadow-md">
 
+    <dialog id="successLoginModal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-md font-bold mb-2">List User Success Login Attempt</h3><hr>
+        <p class="py-2">
+        <div class="overflow-x-auto">
+          <table class="table table-xs">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Email</th>
+                <th>Login At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 1; ?>
+              <?php foreach($totalLoginAttemptSuccess['data'] as $dataLoginAttemptSuccess) : ?>
+              <tr>
+                <th><?= $no++ ?></th>
+                <td><?= $dataLoginAttemptSuccess->email ?></td>
+                <td><?= $dataLoginAttemptSuccess->date ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+        </p>
+      </div>
+    </dialog>
+
+    <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-figure text-secondary">
           <svg
+            onclick="totalAdminModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            class="inline-block h-8 w-8 stroke-current">
+            class="inline-block h-8 w-8 stroke-current cursor-pointer">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -92,20 +129,53 @@
               d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
           </svg>
         </div>
-        <div class="stat-title">Total Admin</div>
-        <div class="stat-value"><?= $totalAdmin ?></div>
+        <div class="stat-title">New Admin</div>
+        <div class="stat-value"><?= $totalAdmin['count'] ?></div>
         <div class="stat-desc">↗︎ 400 (22%)</div>
       </div>
     </div>
-    <div class="stats shadow-md">
 
+    <dialog id="totalAdminModal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-md font-bold mb-2">List New Admin</h3><hr>
+        <p class="py-2">
+        <div class="overflow-x-auto">
+          <table class="table table-xs">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Email</th>
+                <th>Admin At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 1; ?>
+              <?php foreach($totalAdmin['data'] as $newRegisterData) : ?>
+              <tr>
+                <th><?= $no++ ?></th>
+                <td><?= $newRegisterData->email ?></td>
+                <td><?= $newRegisterData->adminUpdatedAt ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+        </p>
+      </div>
+    </dialog>
+
+    <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-figure text-secondary">
           <svg
+            onclick="newRegisterModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            class="inline-block h-8 w-8 stroke-current">
+            class="inline-block h-8 w-8 stroke-current cursor-pointer">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -113,11 +183,43 @@
               d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
           </svg>
         </div>
-        <div class="stat-title">New Registers</div>
-        <div class="stat-value"><?= $newRegister ?></div>
+        <div class="stat-title">New Register</div>
+        <div class="stat-value"><?= $newRegister['count'] ?></div>
         <div class="stat-desc">↘︎ 90 (14%)</div>
       </div>
     </div>
+
+    <dialog id="newRegisterModal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-md font-bold mb-2">List New Register</h3><hr>
+        <p class="py-2">
+        <div class="overflow-x-auto">
+          <table class="table table-xs">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Email</th>
+                <th>Register At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 1; ?>
+              <?php foreach($newRegister['data'] as $datanewRegisterData) : ?>
+              <tr>
+                <th><?= $no++ ?></th>
+                <td><?= $datanewRegisterData->email ?></td>
+                <td><?= $datanewRegisterData->created_at ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+        </p>
+      </div>
+    </dialog>
 
   </section>
 
@@ -125,7 +227,7 @@
   <section class="mx-4 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center mb-4">
 
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">New Register</div>
+      <div class="text-md font-bold">New Registers</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="active-user"></canvas></div>
 
@@ -146,6 +248,7 @@
             }]
           },
           options: {
+            maintainAspectRatio: false,
             scales: {
               y: {
                 ticks: {
@@ -163,7 +266,7 @@
 
     </div>
     <div class="w-full rounded-md shadow-md p-5 bg-base-100">
-      <div class="text-md font-bold">Total Admin</div>
+      <div class="text-md font-bold">New Admin</div>
       <div class="divider"></div>
       <div class="h-72"><canvas id="dashboard-revenue"></canvas></div>
       <script>
@@ -187,7 +290,11 @@
             maintainAspectRatio: false,
             scales: {
               y: {
-                beginAtZero: true
+                ticks: {
+                  callback: function(value) {
+                    return Math.round(value); // Membulatkan nilai pada sumbu Y
+                  }
+                }
               }
             }
           }
