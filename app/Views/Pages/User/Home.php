@@ -54,7 +54,7 @@
           </a>
         </div>
         <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="2">
-          informasi berkala tentang kinerja, laporan keuangan, laporan kepegawaian, akses informasi publik, serta dokumen terkait kegiatan dan program instansi dari tahun 2015 hingga Sekarang.
+          Informasi yang wajib disediakan dan diumumkan secara rutin atau berkala sekurang-kurangnya setiap 6 bulan sekali.
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           </a>
         </div>
         <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="1">
-          informasi setiap saat terkait layanan BBSPJILM, jurnal, standar pelayanan, peraturan tarif, perjanjian kerja sama, serta prosedur penanganan keadaan darurat.
+          Informasi yang wajib disediakan untuk bisa langsung diberikan kepada Pemohon Informasi Publik ketika terdapat permohonan.
         </div>
       </div>
 
@@ -80,7 +80,7 @@
           </a>
         </div>
         <div class="ml-0 md:ml-4 mt-4 text-justify" data-scroll data-scroll-speed="2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur earum deserunt in. Ipsa maiores adipisci provident vel reiciendis! Praesentium perspiciatis nobis, beatae ut neque sunt cupiditate necessitatibus libero illum dolor.
+          Informasi yang wajib disediakan dan diumumkan terkait hajat hidup orang banyak dan ketertiban umum.
         </div>
       </div>
 
@@ -141,7 +141,7 @@
     <div class="absolute inset-0 flex justify-center items-center text-center bg-stone-900 bg-opacity-50 px-10 xl:px-64">
       <div class="flex">
         <div class="text-lg lg:text-2xl text-stone-200">
-          Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) berkomitmen untuk memberikan layanan terbaik dalam bidang pengujian, kalibrasi, dan sertifikasi, serta mendukung pengembangan industri yang mandiri, berdaya saing, dan sesuai dengan prinsip industri hijau melalui standardisasi dan optimalisasi teknologi.
+          Balai Besar Standardisasi dan Pelayanan Jasa Industri Logam dan Mesin (BBSPJILM) berkomitmen untuk memberikan layanan terbaik dalam bidang pengujian, kalibrasi, dan sertifikasi, standardisasi, dan optimalisasi teknologi untuk mendukung pengembangan industri yang mandiri & berdaya saing.
           <a class="relative group  py-1.5 px-2.5 text-stone-50" href="<?= base_url() ?>profil">
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-stone-50 transition-all duration-300 group-hover:w-full"></span>
             Jelajahi

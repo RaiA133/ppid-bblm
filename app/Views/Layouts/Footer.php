@@ -10,9 +10,7 @@
     <nav>
       <h6 class="footer-title">Kontak Kami</h6>
       <a class="link link-hover">Sangkuriang No. 12 – Bandung 40135.</a>
-      <a class="link link-hover">Telp : (022) 2503171 ext. 226</a>
-      <a class="link link-hover">Hotline : (022) 2503172</a>
-      <a class="link link-hover">Fax : (022) 2503978</a>
+      <a class="link link-hover">Telp : (022) 2503171</a>
       <a class="link link-hover">WA : 0812 8288 2917</a>
       <a class="link link-hover">E-mail : bblm(@)kemenperin.go.id</a>
       <a class="link link-hover">Website : www.bblm.go.id</a>
