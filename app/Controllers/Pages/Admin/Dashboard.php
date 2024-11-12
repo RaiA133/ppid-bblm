@@ -12,6 +12,7 @@ use Myth\Auth\Models\PermissionModel;
 
 use App\Models\HubungiKamiModel;
 use App\Models\RegulasiModel;
+use App\Models\PagesViewModel;
 use App\Models\InformasiPublik\InformasiBerkalaModel;
 use App\Models\InformasiPublik\InformasiSetiapSaatModel;
 use App\Models\LayananInformasi\PermohonanInformasiModel;
@@ -23,9 +24,10 @@ class Dashboard extends BaseController
   protected $groupModel;
   protected $loginModel;
   protected $permissionModel;
-
+  
   protected $hubungiKamiModel;
   protected $regulasiModel;
+  protected $pagesViewModel;
   protected $informasiBerkalaModel;
   protected $informasiSetiapSaatModel;
   protected $permohonanInformasiModel;
@@ -37,9 +39,10 @@ class Dashboard extends BaseController
     $this->groupModel = new GroupModel();
     $this->loginModel = new LoginModel();
     $this->permissionModel = new PermissionModel();
-
+    
     $this->hubungiKamiModel = new HubungiKamiModel();
     $this->regulasiModel = new RegulasiModel();
+    $this->pagesViewModel = new PagesViewModel();
     $this->informasiBerkalaModel = new InformasiBerkalaModel();
     $this->informasiSetiapSaatModel = new InformasiSetiapSaatModel();
     $this->permohonanInformasiModel = new PermohonanInformasiModel();
@@ -59,6 +62,8 @@ class Dashboard extends BaseController
     $dataLoginAttemptSuccess = $this->getDataLoginAttemptSuccessCount($dateRangeArray, $string);
     $newRegisterCountChart = $this->getNewRegisterCountChart($dateRangeArray, $string);
     $totalAdminCountChart = $this->getTotalAdminCountChart($dateRangeArray, $string);
+    $totalPagesView = $this->pagesViewModel->getPagesViewCount($dateRangeArray, $string);
+    $totalPagesViewData = $this->pagesViewModel->getPagesViewData($dateRangeArray, $string);
 
     $totalHubungiKami = $this->getTotalHubungiKamiCount($dateRangeArray, $string);
     $totalRegulasi = $this->getTotalRegulasiCount($dateRangeArray, $string);
@@ -71,6 +76,10 @@ class Dashboard extends BaseController
       // STATS
       'title' => 'Dashboard',
       'stringRange' => $string,
+      'totalPagesView' => [
+        'count' => $totalPagesView,
+        'data' => $totalPagesViewData,
+      ],
       'newRegister' => [
         'count' => $newRegister,
         'data' => $newRegisterData,
