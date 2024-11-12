@@ -8,6 +8,7 @@ use App\Models\InformasiPublik\InformasiBerkalaModel;
 use App\Models\InformasiPublik\InformasiSetiapSaatJudulModel;
 use App\Models\InformasiPublik\InformasiSetiapSaatModel;
 use App\Models\InformasiPublik\InformasiSertaMertaModel;
+use App\Models\PagesViewModel;
 
 class InformasiPublik extends BaseController
 {
@@ -16,6 +17,7 @@ class InformasiPublik extends BaseController
   protected $informasiSetiapSaatModel;
   protected $informasiSetiapSaatJudulModel;
   protected $informasiSertaMertaModel;
+  protected $pagesViewModel;
   public function __construct()
   {
     $this->informasiBerkalaModel = new InformasiBerkalaModel();
@@ -23,10 +25,23 @@ class InformasiPublik extends BaseController
     $this->informasiSetiapSaatModel = new InformasiSetiapSaatModel();
     $this->informasiSetiapSaatJudulModel = new InformasiSetiapSaatJudulModel();
     $this->informasiSertaMertaModel = new InformasiSertaMertaModel();
+    $this->pagesViewModel = new PagesViewModel();
   }
 
   public function InformasiBerkala(): string
   {
+    // Update Total View Pages
+    $dataPagesViews['ip_address_create'] = $this->request->getIPAddress();
+    $dataPagesViews['halaman_create'] = current_url();
+    if (logged_in()) {
+      $dataPagesViews['user_id_create'] = user_id();
+      $dataPagesViews['email_create'] = user()->email;
+    } else {
+      $dataPagesViews['user_id_create'] = null;
+      $dataPagesViews['email_create'] = null;
+    }
+    $this->pagesViewModel->create($dataPagesViews);
+
     // $judulInformasiBerkala = $this->informasiBerkalaJudulModel->getInformasiBerkalaJudul(1000);
     $judulInformasiBerkala = $this->informasiBerkalaJudulModel->orderBy('id_informasi_berkala_judul', 'DESC')->findAll();
     $informasiBerkala = $this->informasiBerkalaModel->findAll();
@@ -40,6 +55,18 @@ class InformasiPublik extends BaseController
 
   public function InformasiSetiapSaat(): string
   {
+    // Update Total View Pages
+    $dataPagesViews['ip_address_create'] = $this->request->getIPAddress();
+    $dataPagesViews['halaman_create'] = current_url();
+    if (logged_in()) {
+      $dataPagesViews['user_id_create'] = user_id();
+      $dataPagesViews['email_create'] = user()->email;
+    } else {
+      $dataPagesViews['user_id_create'] = null;
+      $dataPagesViews['email_create'] = null;
+    }
+    $this->pagesViewModel->create($dataPagesViews);
+
     // $judulInformasiSetiapSaat = $this->informasiSetiapSaatJudulModel->getInformasiSetiapSaatJudul(1000);
     $judulInformasiSetiapSaat = $this->informasiSetiapSaatJudulModel->orderBy('id_informasi_setiap_saat_judul', 'DESC')->findAll();
     $informasiSetiapSaat = $this->informasiSetiapSaatModel->findAll();
@@ -53,6 +80,18 @@ class InformasiPublik extends BaseController
 
   public function InformasiSertaMerta(): string
   {
+    // Update Total View Pages
+    $dataPagesViews['ip_address_create'] = $this->request->getIPAddress();
+    $dataPagesViews['halaman_create'] = current_url();
+    if (logged_in()) {
+      $dataPagesViews['user_id_create'] = user_id();
+      $dataPagesViews['email_create'] = user()->email;
+    } else {
+      $dataPagesViews['user_id_create'] = null;
+      $dataPagesViews['email_create'] = null;
+    }
+    $this->pagesViewModel->create($dataPagesViews);
+    
     $results = $this->informasiSertaMertaModel->findAll();
     $data = [
       'title' => 'Informasi Serta Merta',

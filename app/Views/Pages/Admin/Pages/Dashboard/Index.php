@@ -55,7 +55,7 @@
     <div class="stats shadow-md">
       <div class="stat">
         <div class="stat-title">Total Page Views</div>
-        <div class="stat-value">89,400</div>
+        <div class="stat-value"><?= $totalPagesView['count'] ?? '-'?></div>
         <div class="stat-desc">21% more than last month</div>
       </div>
     </div>
