@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\RequestValidationFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -40,6 +41,7 @@ class Filters extends BaseFilters
         'login'         => LoginFilter::class,
         'role'          => RoleFilter::class,
         'permission'    => PermissionFilter::class,
+        'requestValidation' => RequestValidationFilter::class,
     ];
 
     /**
@@ -59,6 +61,7 @@ class Filters extends BaseFilters
         'before' => [
             'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
+            'requestValidation',
         ],
         'after' => [
             'pagecache',   // Web Page Caching
