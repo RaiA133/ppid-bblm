@@ -104,14 +104,14 @@ $routes->get('/admin/admin-management', 'Pages\Admin\SuperAdmin\AdminManagement:
 $routes->post('/api/admin/admin-management/edit/(:num)', 'Pages\Admin\SuperAdmin\AdminManagement::indexUpdate/$1', ['filter' => 'role:superadmin']);
 $routes->delete('/api/admin/admin-management/delete/(:num)', 'Pages\Admin\SuperAdmin\AdminManagement::indexDelete/$1', ['filter' => 'role:superadmin']);
 
-$routes->get('/admin/informasi-setiap-saat', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::index');
-$routes->post('/api/admin/informasi-setiap-saat/create', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexCreate');
-$routes->post('/api/admin/informasi-setiap-saat/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexUpdate/$1');
-$routes->delete('/api/admin/informasi-setiap-saat/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexDelete/$1');
-$routes->get('/admin/informasi-setiap-saat/manage-judul', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudul');
-$routes->post('/api/admin/informasi-setiap-saat/manage-judul/create', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulCreate');
-$routes->post('/api/admin/informasi-setiap-saat/manage-judul/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulUpdate/$1');
-$routes->delete('/api/admin/informasi-setiap-saat/manage-judul/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulDelete/$1');
+$routes->get('/admin/informasi-setiap-saat', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::index', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/informasi-setiap-saat/create', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexCreate', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/informasi-setiap-saat/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/informasi-setiap-saat/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::indexDelete/$1', ['filter' => 'role:admin,superadmin']);
+$routes->get('/admin/informasi-setiap-saat/manage-judul', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudul', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/informasi-setiap-saat/manage-judul/create', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulCreate', ['filter' => 'role:admin,superadmin']);
+$routes->post('/api/admin/informasi-setiap-saat/manage-judul/edit/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulUpdate/$1', ['filter' => 'role:admin,superadmin']);
+$routes->delete('/api/admin/informasi-setiap-saat/manage-judul/delete/(:num)', 'Pages\Admin\InformasiPublik\InformasiSetiapSaat::infomasiSetiapSaatJudulDelete/$1', ['filter' => 'role:admin,superadmin']);
 $routes->get('/admin/regulasi', 'Pages\Admin\Regulasi::index', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/regulasi/create', 'Pages\Admin\Regulasi::indexCreate', ['filter' => 'role:admin,superadmin']);
 $routes->post('/api/admin/regulasi/edit/(:num)', 'Pages\Admin\Regulasi::indexUpdate/$1', ['filter' => 'role:admin,superadmin']);
