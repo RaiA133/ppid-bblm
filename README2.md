@@ -201,7 +201,8 @@ php spark db:seed "App\Database\Seeds\Myth\AuthGroupsUsers"
 <br><br>
 
 ### ADDTIONAL INFO :
-Link belajar Myth/Auth : https://www.youtube.com/watch?v=E5LC4v0_JVE
+<b>Link Belajar Codeigniter 4 </b> : https://youtube.com/playlist?list=PLFIM0718LjIUkkIq1Ub6B5dYNb6IlMvtc&si=dsI53b7EdRzBEOla <br>
+<b>Link Belajar Myth/Auth </b> : https://www.youtube.com/watch?v=E5LC4v0_JVE
 
 catatan sebelum go production :
 
