@@ -16,7 +16,7 @@ class InformasiBerkalaJudulSeeder extends Seeder
         'updated_at'  => Time::now(),
       ],
       [
-        'judul'       => 'Kegiatan dan Kinerja',
+        'judul'       => 'Laporan Kepegawaian',
         'created_at'  => Time::now(),
         'updated_at'  => Time::now(),
       ],
@@ -26,7 +26,7 @@ class InformasiBerkalaJudulSeeder extends Seeder
         'updated_at'  => Time::now(),
       ],
       [
-        'judul'       => 'Laporan Kepegawaian',
+        'judul'       => 'Kegiatan dan Kinerja',
         'created_at'  => Time::now(),
         'updated_at'  => Time::now(),
       ],

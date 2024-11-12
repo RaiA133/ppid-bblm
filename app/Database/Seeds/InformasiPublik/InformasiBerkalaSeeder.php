@@ -11,7 +11,114 @@ class InformasiBerkalaSeeder extends Seeder
   {
     $data = [
 
-// KEGIATAN DAN KINERJA
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Laporan Akses Informasi',
+        'informasi'  => '<a href="https://drive.google.com/file/d/1R8mjaFHRnRNzgJ22iGus_qUA9dt3k2c4/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1B7873K7NGp5-pzdn7ppLEy-4hQYBkR7z/view?usp=drive_link">&nbsp;|2022</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Tata Cara Memperoleh Informasi Publik',
+        'informasi'  => 'Permohonan Informasi | <a href="https://docs.google.com/document/d/1a34OU4aKmQwWwcSoiKwR0bs0FtcV3ZE6/edit?usp=drive_link&amp;ouid=115671785454457387072&amp;rtpof=true&amp;sd=true">Formulir Permohonan Informasi</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Tata Cara Pengajuan Keberatan Informasi Publik',
+        'informasi'  => 'Keberatan Informasi |<a href="https://docs.google.com/document/d/15HqMLxEaVyqU7v5s-D7XLKY6DhZv8zNk/edit?usp=drive_link&amp;ouid=115671785454457387072&amp;rtpof=true&amp;sd=true">Formulir Keberatan Informasi</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Pengaduan Masyarakat',
+        'informasi'  => '<p><a href="http://ppid.bblm.go.id/informasi-berkala/pengaduan-masyarakat/" target="_BLANK" rel="noopener">Tata Cara Pengaduan Masyarakat</a></p>
+<p><a href="http://ppid.bblm.go.id/informasi-berkala/pengaduan-masyarakat/" target="_BLANK" rel="noopener">Form Pengaduan Masyarakat</a><br>
+Tindak Lanjut Keluhan dan Pengaduan Masyarakat:<br>
+<a href="https://drive.google.com/drive/u/1/folders/1bFy8VAd0yKolBxEdyBe0kcYuDmePHl5A">2023</a><a href="https://drive.google.com/drive/folders/1DYOeV0TPzW80YILN8sk_8v-DgP3S--8a?usp=drive_link"> | </a><a href="https://drive.google.com/drive/folders/1DYOeV0TPzW80YILN8sk_8v-DgP3S--8a?usp=drive_link">2022</a></p>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Pengumuman Pengadaan Barang dan Jasa',
+        'informasi'  => '<a href="https://drive.google.com/file/d/1C2XDSI31GG_rEBoM3Hquy0Vn21Go7JAv/view?usp=drive_link">Informasi Pengadaan Barang dan Jasa</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Daftar Perundang-undangan / Keputusan / Kebijakan',
+        'informasi'  => '<a href="https://drive.google.com/drive/folders/1GK6p4yyyFw9cfSmQNmIobZul5Sbr-mIO?usp=drive_link">Daftar Perundang-undangan / Keputusan / Kebijakan</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 1,
+        'jenis_informasi'  => 'Indeks Kepuasan Masyarakat dan Indeks Persepsi Korupsi',
+        'informasi'  => '<p><a href="https://skm.surveiku.com/survei/SKM_BBSPJILM" target="_BLANK" rel="noopener">Kuisioner Survey Kepuasan Masyarakat</a></p>
+<p><a href="https://skm.surveiku.com/survei/surveipersepsikorupsi-bbspjilm" target="_BLANK" rel="noopener">Kuisioner Survey Persepsi Korupsi</a></p>
+<p>Laporan Indeks Kepuasan Masyarakat:<br>
+<a href="https://drive.google.com/file/d/1XOOsdrJnUpuDTFJpcwHQgYSEb2fMxjmq/view?usp=drive_link">2023&nbsp;</a><a href="https://drive.google.com/file/d/1vEVPUKLGCXD0xlxYPlLalYQ_J9PHy2xs/view?usp=drive_link">|2022</a> | <a href="https://drive.google.com/file/d/1CMkjAFbW4b8q9mXPa1NiDr0yrBnAk00d/view?usp=drive_link">2021</a> | <a href="https://drive.google.com/file/d/1URx4GQd8BOY0_FfrYltfLV4DKsHy5lJZ/view?usp=drive_link">2020</a> | <a href="https://drive.google.com/file/d/1m_bSlL68eOsL968dJkibK83-ov0YchTF/view?usp=drive_link">2019</a> | <a href="https://drive.google.com/file/d/19wwKP5IugjZIzMsJ5F1O1AlTmAar1VOh/view?usp=drive_link">2018</a></p>
+<p>Laporan Indeks Persepsi Korupsi:<br>
+<a href="https://drive.google.com/file/d/1hr8wObZI-E23sNJKluzfg5CKMRSxHFDp/view?usp=drive_link">2023</a> | <a href="https://drive.google.com/file/d/11TICTVzaGlTNjsXeM5skii27Oau10KE-/view?usp=drive_link">2022</a> | 2021 | 2020 | 2019 | 2018</p>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+
+      // LAPORAN KEPEGAWAIAN
+      [
+        'id_informasi_berkala_judul'       => 2,
+        'jenis_informasi'  => 'Data pegawai',
+        'informasi'  => '<a href="https://docs.google.com/document/d/1inUh1eZ8SWGs6pFlT13uAJDng72tQj6e/edit?usp=drive_link&amp;ouid=115671785454457387072&amp;rtpof=true&amp;sd=true">Rangkuman Data Pegawai BBSPJILM</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 2,
+        'jenis_informasi'  => 'Rekrutmen Pegawai',
+        'informasi'  => '&nbsp;Terpusat di: <a href="https://rekrutmen.kemenperin.go.id/">rekrutmen.kemenperin.go.id</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+
+
+      // LAPORAN KEUANGAN
+      [
+        'id_informasi_berkala_judul'       => 3,
+        'jenis_informasi'  => 'Laporan Realisasi Anggaran',
+        'informasi'  => '<a href="https://drive.google.com/file/d/1czDep2noXHlf_9LeDRs5BoOlhfRErF79/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1F-48ZUk1vzdwUgIUzz5tqcw_xMbK2-5r/view?usp=drive_link">&nbsp;|2022</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 3,
+        'jenis_informasi'  => 'Laporan Keuangan',
+        'informasi'  => '<a href="https://drive.google.com/file/d/1F-48ZUk1vzdwUgIUzz5tqcw_xMbK2-5r/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1F-48ZUk1vzdwUgIUzz5tqcw_xMbK2-5r/view?usp=drive_link">&nbsp;|2022</a> | <a href="https://drive.google.com/file/d/1GcmDerJzbuE4jfuxWp91P49sffVaKcQS/view?usp=drive_link">2021</a> | <a href="https://drive.google.com/file/d/1FHM6JdzGXIDolxbj2_NdK2CNf0U3OQqS/view?usp=drive_link">2020</a> | <a href="https://drive.google.com/file/d/1hYoL8I_8oDjHSA7glle50ja_oTcwvFyw/view?usp=drive_link">2019</a> | <a href="https://drive.google.com/file/d/1EtR5Uxzxa8HNx1eYcuPFseqzF7B33MRx/view?usp=drive_link">2018</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 3,
+        'jenis_informasi'  => 'Laporan BMN',
+        'informasi'  => '<a href="https://drive.google.com/file/d/1RtKRY6zRpd6nSGInX4rKnkNfkXFO5Woa/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1A-TBFQU7q-_SD_6haBoWBURzVMvqbEyz/view?usp=drive_link"> | 2022</a> | <a href="https://drive.google.com/file/d/1NBzaWXF6qiuu3_Esk67zI5e4wSy3VkSW/view?usp=drive_link">2021</a> | <a href="https://drive.google.com/file/d/1DxqfyNMAJjDZ16qW8Di4lcUSLI1hWfjl/view?usp=drive_link">2020</a> | <a href="https://drive.google.com/file/d/1VzQc9DHlfTopvTmPYUWYNQG24g6PHA4s/view?usp=drive_link">2019</a> | <a href="https://drive.google.com/file/d/1i5-jAlVCWHF9eD6Z5Pp8lGSXQH7ZJ9jS/view?usp=drive_link">2018</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+      [
+        'id_informasi_berkala_judul'       => 3,
+        'jenis_informasi'  => 'LHKPN Kepala BBSPJILM',
+        'informasi'  => '<a href="https://drive.google.com/file/d/1DnhFEIvmt_z7Ten4tfM_2NclbMKimarQ/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/14n790Nu8-zQyzO4NkHABjqKJQ_i0w4mo/view?usp=drive_link">&nbsp;|2021</a>',
+        'created_at'  => Time::now(),
+        'updated_at'  => Time::now(),
+      ],
+
+
+
+      // KEGIATAN DAN KINERJA
       [
         'id_informasi_berkala_judul'       => 4,
         'jenis_informasi'  => 'Rencana Strategis (RENSTRA)',
@@ -77,112 +184,8 @@ Benturan Kepentingan: <a href="https://drive.google.com/drive/u/1/folders/1eNhDN
       ],
 
 
-// LAPORAN KEUANGAN
-      [
-        'id_informasi_berkala_judul'       => 3,
-        'jenis_informasi'  => 'Laporan Realisasi Anggaran',
-        'informasi'  => '<a href="https://drive.google.com/file/d/1czDep2noXHlf_9LeDRs5BoOlhfRErF79/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1F-48ZUk1vzdwUgIUzz5tqcw_xMbK2-5r/view?usp=drive_link">&nbsp;|2022</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 3,
-        'jenis_informasi'  => 'Laporan Keuangan',
-        'informasi'  => '<a href="https://drive.google.com/file/d/1F-48ZUk1vzdwUgIUzz5tqcw_xMbK2-5r/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1F-48ZUk1vzdwUgIUzz5tqcw_xMbK2-5r/view?usp=drive_link">&nbsp;|2022</a> | <a href="https://drive.google.com/file/d/1GcmDerJzbuE4jfuxWp91P49sffVaKcQS/view?usp=drive_link">2021</a> | <a href="https://drive.google.com/file/d/1FHM6JdzGXIDolxbj2_NdK2CNf0U3OQqS/view?usp=drive_link">2020</a> | <a href="https://drive.google.com/file/d/1hYoL8I_8oDjHSA7glle50ja_oTcwvFyw/view?usp=drive_link">2019</a> | <a href="https://drive.google.com/file/d/1EtR5Uxzxa8HNx1eYcuPFseqzF7B33MRx/view?usp=drive_link">2018</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 3,
-        'jenis_informasi'  => 'Laporan BMN',
-        'informasi'  => '<a href="https://drive.google.com/file/d/1RtKRY6zRpd6nSGInX4rKnkNfkXFO5Woa/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1A-TBFQU7q-_SD_6haBoWBURzVMvqbEyz/view?usp=drive_link"> | 2022</a> | <a href="https://drive.google.com/file/d/1NBzaWXF6qiuu3_Esk67zI5e4wSy3VkSW/view?usp=drive_link">2021</a> | <a href="https://drive.google.com/file/d/1DxqfyNMAJjDZ16qW8Di4lcUSLI1hWfjl/view?usp=drive_link">2020</a> | <a href="https://drive.google.com/file/d/1VzQc9DHlfTopvTmPYUWYNQG24g6PHA4s/view?usp=drive_link">2019</a> | <a href="https://drive.google.com/file/d/1i5-jAlVCWHF9eD6Z5Pp8lGSXQH7ZJ9jS/view?usp=drive_link">2018</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 3,
-        'jenis_informasi'  => 'LHKPN Kepala BBSPJILM',
-        'informasi'  => '<a href="https://drive.google.com/file/d/1DnhFEIvmt_z7Ten4tfM_2NclbMKimarQ/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/14n790Nu8-zQyzO4NkHABjqKJQ_i0w4mo/view?usp=drive_link">&nbsp;|2021</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
 
 
-// LAPORAN KEPEGAWAIAN
-      [
-        'id_informasi_berkala_judul'       => 2,
-        'jenis_informasi'  => 'Data pegawai',
-        'informasi'  => '<a href="https://docs.google.com/document/d/1inUh1eZ8SWGs6pFlT13uAJDng72tQj6e/edit?usp=drive_link&amp;ouid=115671785454457387072&amp;rtpof=true&amp;sd=true">Rangkuman Data Pegawai BBSPJILM</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 2,
-        'jenis_informasi'  => 'Rekrutmen Pegawai',
-        'informasi'  => '&nbsp;Terpusat di: <a href="https://rekrutmen.kemenperin.go.id/">rekrutmen.kemenperin.go.id</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-
-
-
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Laporan Akses Informasi',
-        'informasi'  => '<a href="https://drive.google.com/file/d/1R8mjaFHRnRNzgJ22iGus_qUA9dt3k2c4/view?usp=drive_link">2023</a><a href="https://drive.google.com/file/d/1B7873K7NGp5-pzdn7ppLEy-4hQYBkR7z/view?usp=drive_link">&nbsp;|2022</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Tata Cara Memperoleh Informasi Publik',
-        'informasi'  => 'Permohonan Informasi | <a href="https://docs.google.com/document/d/1a34OU4aKmQwWwcSoiKwR0bs0FtcV3ZE6/edit?usp=drive_link&amp;ouid=115671785454457387072&amp;rtpof=true&amp;sd=true">Formulir Permohonan Informasi</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Tata Cara Pengajuan Keberatan Informasi Publik',
-        'informasi'  => 'Keberatan Informasi |<a href="https://docs.google.com/document/d/15HqMLxEaVyqU7v5s-D7XLKY6DhZv8zNk/edit?usp=drive_link&amp;ouid=115671785454457387072&amp;rtpof=true&amp;sd=true">Formulir Keberatan Informasi</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Pengaduan Masyarakat',
-        'informasi'  => '<p><a href="http://ppid.bblm.go.id/informasi-berkala/pengaduan-masyarakat/" target="_BLANK" rel="noopener">Tata Cara Pengaduan Masyarakat</a></p>
-<p><a href="http://ppid.bblm.go.id/informasi-berkala/pengaduan-masyarakat/" target="_BLANK" rel="noopener">Form Pengaduan Masyarakat</a><br>
-Tindak Lanjut Keluhan dan Pengaduan Masyarakat:<br>
-<a href="https://drive.google.com/drive/u/1/folders/1bFy8VAd0yKolBxEdyBe0kcYuDmePHl5A">2023</a><a href="https://drive.google.com/drive/folders/1DYOeV0TPzW80YILN8sk_8v-DgP3S--8a?usp=drive_link"> | </a><a href="https://drive.google.com/drive/folders/1DYOeV0TPzW80YILN8sk_8v-DgP3S--8a?usp=drive_link">2022</a></p>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Pengumuman Pengadaan Barang dan Jasa',
-        'informasi'  => '<a href="https://drive.google.com/file/d/1C2XDSI31GG_rEBoM3Hquy0Vn21Go7JAv/view?usp=drive_link">Informasi Pengadaan Barang dan Jasa</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Daftar Perundang-undangan / Keputusan / Kebijakan',
-        'informasi'  => '<a href="https://drive.google.com/drive/folders/1GK6p4yyyFw9cfSmQNmIobZul5Sbr-mIO?usp=drive_link">Daftar Perundang-undangan / Keputusan / Kebijakan</a>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
-      [
-        'id_informasi_berkala_judul'       => 1,
-        'jenis_informasi'  => 'Indeks Kepuasan Masyarakat dan Indeks Persepsi Korupsi',
-        'informasi'  => '<p><a href="https://skm.surveiku.com/survei/SKM_BBSPJILM" target="_BLANK" rel="noopener">Kuisioner Survey Kepuasan Masyarakat</a></p>
-<p><a href="https://skm.surveiku.com/survei/surveipersepsikorupsi-bbspjilm" target="_BLANK" rel="noopener">Kuisioner Survey Persepsi Korupsi</a></p>
-<p>Laporan Indeks Kepuasan Masyarakat:<br>
-<a href="https://drive.google.com/file/d/1XOOsdrJnUpuDTFJpcwHQgYSEb2fMxjmq/view?usp=drive_link">2023&nbsp;</a><a href="https://drive.google.com/file/d/1vEVPUKLGCXD0xlxYPlLalYQ_J9PHy2xs/view?usp=drive_link">|2022</a> | <a href="https://drive.google.com/file/d/1CMkjAFbW4b8q9mXPa1NiDr0yrBnAk00d/view?usp=drive_link">2021</a> | <a href="https://drive.google.com/file/d/1URx4GQd8BOY0_FfrYltfLV4DKsHy5lJZ/view?usp=drive_link">2020</a> | <a href="https://drive.google.com/file/d/1m_bSlL68eOsL968dJkibK83-ov0YchTF/view?usp=drive_link">2019</a> | <a href="https://drive.google.com/file/d/19wwKP5IugjZIzMsJ5F1O1AlTmAar1VOh/view?usp=drive_link">2018</a></p>
-<p>Laporan Indeks Persepsi Korupsi:<br>
-<a href="https://drive.google.com/file/d/1hr8wObZI-E23sNJKluzfg5CKMRSxHFDp/view?usp=drive_link">2023</a> | <a href="https://drive.google.com/file/d/11TICTVzaGlTNjsXeM5skii27Oau10KE-/view?usp=drive_link">2022</a> | 2021 | 2020 | 2019 | 2018</p>',
-        'created_at'  => Time::now(),
-        'updated_at'  => Time::now(),
-      ],
     ];
 
     $this->db->table('informasi_berkala')->insertBatch($data);
