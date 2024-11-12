@@ -45,7 +45,7 @@
   <?php endif; ?>
 
   <div class="w-full <?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
-    <div data-scroll-container class="<?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
+    <div <?= (strpos($currentRoute, 'admin') === 0) ? "" : "data-scroll-container" ?> class="<?= (strpos($currentRoute, 'admin') === 0) ? "bg-base-200" : "" ?>">
 
       <?php if (strpos($currentRoute, 'admin') === 0) : ?> <!-- Jika admin tampilkan navbar admin -->
         <?= $this->include("Pages/Admin/Layouts/Navbar"); ?>
