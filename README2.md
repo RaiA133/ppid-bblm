@@ -111,6 +111,10 @@ php spark db:seed ProfilSeeder
 php spark db:seed HubungiKamiSeeder
 ```
 
+```bash
+php spark db:seed PagesViewSeeder
+```
+
 ##### INFORMASI PUBLIK
 ```bash
 php spark db:seed "App\Database\Seeds\InformasiPublik\InformasiBerkalaSeeder"
