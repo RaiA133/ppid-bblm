@@ -17,7 +17,7 @@ class Profile extends BaseController
   public function index(): string
   {
     $data = [
-      'title' => 'Profile'
+      'title' => 'Profile Settings'
     ];
     return view('Pages/Admin/Pages/Profile/Index', $data);
   }

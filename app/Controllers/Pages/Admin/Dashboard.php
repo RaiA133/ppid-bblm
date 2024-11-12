@@ -12,6 +12,7 @@ use Myth\Auth\Models\PermissionModel;
 
 use App\Models\HubungiKamiModel;
 use App\Models\RegulasiModel;
+use App\Models\PagesViewModel;
 use App\Models\InformasiPublik\InformasiBerkalaModel;
 use App\Models\InformasiPublik\InformasiSetiapSaatModel;
 use App\Models\LayananInformasi\PermohonanInformasiModel;
@@ -23,9 +24,10 @@ class Dashboard extends BaseController
   protected $groupModel;
   protected $loginModel;
   protected $permissionModel;
-
+  
   protected $hubungiKamiModel;
   protected $regulasiModel;
+  protected $pagesViewModel;
   protected $informasiBerkalaModel;
   protected $informasiSetiapSaatModel;
   protected $permohonanInformasiModel;
@@ -37,9 +39,10 @@ class Dashboard extends BaseController
     $this->groupModel = new GroupModel();
     $this->loginModel = new LoginModel();
     $this->permissionModel = new PermissionModel();
-
+    
     $this->hubungiKamiModel = new HubungiKamiModel();
     $this->regulasiModel = new RegulasiModel();
+    $this->pagesViewModel = new PagesViewModel();
     $this->informasiBerkalaModel = new InformasiBerkalaModel();
     $this->informasiSetiapSaatModel = new InformasiSetiapSaatModel();
     $this->permohonanInformasiModel = new PermohonanInformasiModel();
@@ -52,25 +55,42 @@ class Dashboard extends BaseController
 
     $formattedDateRange = $this->formatDateRange($dateRangeArray, $string);
     $newRegister = $this->getNewRegisterCount($dateRangeArray, $string);
+    $newRegisterData = $this->getNewRegisterData($dateRangeArray, $string);
     $totalAdmin = $this->getTotalAdminCount($dateRangeArray, $string);
+    $totalAdminData = $this->getTotalAdminData($dateRangeArray, $string);
     $totalLoginAttemptSuccess = $this->getTotalLoginAttemptSuccessCount($dateRangeArray, $string);
+    $dataLoginAttemptSuccess = $this->getDataLoginAttemptSuccessCount($dateRangeArray, $string);
     $newRegisterCountChart = $this->getNewRegisterCountChart($dateRangeArray, $string);
     $totalAdminCountChart = $this->getTotalAdminCountChart($dateRangeArray, $string);
+    $totalPagesView = $this->pagesViewModel->getPagesViewCount($dateRangeArray, $string);
+    $totalPagesViewData = $this->pagesViewModel->getPagesViewData($dateRangeArray, $string);
 
-    $totalHubungiKami = $this->getTotalHubungiKami($dateRangeArray, $string);
-    $totalRegulasi = $this->getTotalRegulasi($dateRangeArray, $string);
-    $totalInformasiBerkala = $this->getTotalInformasiBerkala($dateRangeArray, $string);
-    $totalInformasiSetiapSaat = $this->getTotalInformasiSetiapSaat($dateRangeArray, $string);
-    $totalPermohonanInformasi = $this->getTotalPermohonanInformasi($dateRangeArray, $string);
-    $totalAccountCategories = $this->getAccountCategories($dateRangeArray, $string);
+    $totalHubungiKami = $this->getTotalHubungiKamiCount($dateRangeArray, $string);
+    $totalRegulasi = $this->getTotalRegulasiCount($dateRangeArray, $string);
+    $totalInformasiBerkala = $this->getTotalInformasiBerkalaCount($dateRangeArray, $string);
+    $totalInformasiSetiapSaat = $this->getTotalInformasiSetiapSaatCount($dateRangeArray, $string);
+    $totalPermohonanInformasi = $this->getTotalPermohonanInformasiCount($dateRangeArray, $string);
+    $totalAccountCategories = $this->getAccountCategoriesCount($dateRangeArray, $string);
 
     $data = [
+      // STATS
       'title' => 'Dashboard',
       'stringRange' => $string,
-      'newRegister' => $newRegister,
-      'totalAdmin' => $totalAdmin,
+      'totalPagesView' => [
+        'count' => $totalPagesView,
+        'data' => $totalPagesViewData,
+      ],
+      'newRegister' => [
+        'count' => $newRegister,
+        'data' => $newRegisterData,
+      ],
+      'totalAdmin' => [
+        'count' => $totalAdmin,
+        'data' => $totalAdminData,
+      ],
       'totalLoginAttemptSuccess' => [
         'count' => $totalLoginAttemptSuccess,
+        'data' => $dataLoginAttemptSuccess,
         'formattedDateRange' => $formattedDateRange,
       ],
 
@@ -87,7 +107,7 @@ class Dashboard extends BaseController
         'totalAccountCategories' => $totalAccountCategories,
       ],
 
-      // Total Data & Dokumen
+      // TOTAL DATA & DOKUMEN
       'totalDataDanDokumen' => [
         'totalHubungiKami' => $totalHubungiKami,
         'totalRegulasi' => $totalRegulasi,
@@ -147,6 +167,33 @@ class Dashboard extends BaseController
     return $newRegister;
   }
 
+  private function getNewRegisterData($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $newRegisterData = $this->userModel
+          ->where('users.deleted_at', null)
+          ->where('users.created_at >=', $startDate . ' 00:00:00')
+          ->where('users.created_at <=', $startDate . ' 23:59:59')
+          ->orderBy('id', 'DESC');
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $newRegisterData = $this->userModel
+          ->where('users.deleted_at', null)
+          ->where('users.created_at >=', $startDate . ' 00:00:00')
+          ->where('users.created_at <=', $endDate . ' 23:59:59')
+          ->orderBy('id', 'DESC');
+      }
+    } else {
+      $newRegisterData = $this->userModel
+        ->where('users.deleted_at', null)
+        ->orderBy('id', 'DESC');
+    }
+    return $newRegisterData->get()->getResult();
+  }
+
   private function getTotalAdminCount($dateRangeArray, $string)
   {
     if ($string) {
@@ -186,6 +233,45 @@ class Dashboard extends BaseController
     return $totalAdmin;
   }
 
+  private function getTotalAdminData($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $totalAdminData = $this->userModel
+          ->select('*, name as role, auth_groups_users.updated_at as adminUpdatedAt')
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups.name', 'admin')
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $startDate . ' 23:59:59')
+          ->orderBy('adminUpdatedAt', 'DESC');
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $totalAdminData = $this->userModel
+          ->select('*, name as role, auth_groups_users.updated_at as adminUpdatedAt')
+          ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+          ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+          ->where('users.deleted_at', null)
+          ->where('auth_groups.name', 'admin')
+          ->where('auth_groups_users.updated_at >=', $startDate . ' 00:00:00')
+          ->where('auth_groups_users.updated_at <=', $endDate . ' 23:59:59')
+          ->orderBy('adminUpdatedAt', 'DESC');
+      }
+    } else {
+      $totalAdminData = $this->userModel
+        ->select('*, name as role, auth_groups_users.updated_at as adminUpdatedAt')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('users.deleted_at', null)
+        ->where('auth_groups.name', 'admin')
+        ->orderBy('adminUpdatedAt', 'DESC');
+    }
+    return $totalAdminData->get()->getResult();
+  }
+
   private function getTotalLoginAttemptSuccessCount($dateRangeArray, $string)
   {
     if ($string) {
@@ -211,6 +297,33 @@ class Dashboard extends BaseController
         ->countAllResults();
     }
     return $totalLoginAttemptSuccess;
+  }
+
+  private function getDataLoginAttemptSuccessCount($dateRangeArray, $string)
+  {
+    if ($string) {
+      if (count($dateRangeArray) === 1) {
+        $startDate = $dateRangeArray[0];
+        $dataLoginAttemptSuccess = $this->db->table('auth_logins')
+          ->where('success', 1)
+          ->where('date >=', $startDate . ' 00:00:00')
+          ->where('date <=', $startDate . ' 23:59:59')
+          ->orderBy('id', 'DESC');
+      } else {
+        $startDate = $dateRangeArray[0];
+        $endDate = $dateRangeArray[1];
+        $dataLoginAttemptSuccess = $this->db->table('auth_logins')
+          ->where('success', 1)
+          ->where('date >=', $startDate . ' 00:00:00')
+          ->where('date <=', $endDate . ' 23:59:59')
+          ->orderBy('id', 'DESC');
+      }
+    } else {
+      $dataLoginAttemptSuccess = $this->db->table('auth_logins')
+        ->where('success', 1)
+        ->orderBy('id', 'DESC');
+    }
+    return $dataLoginAttemptSuccess->get()->getResult();
   }
 
   private function getNewRegisterCountChart($dateRangeArray, $string)
@@ -310,15 +423,18 @@ class Dashboard extends BaseController
     $endDateObj->modify('this week');    // Menyusun minggu terakhir
 
     while ($startDateObj <= $endDateObj) {
-      $labels[] = $startDateObj->format('M jS');
+      $weekStart = $startDateObj->format('Y-m-d');
+      $weekEnd = $startDateObj->modify('+6 days')->format('Y-m-d');
+
+      $labels[] = (new DateTime($weekStart))->format('M jS') . ' - ' . (new DateTime($weekEnd))->format('M jS');
       $count = $this->userModel
         ->where('users.deleted_at', null)
-        ->where('users.created_at >=', $startDateObj->format('Y-m-d') . ' 00:00:00')
-        ->where('users.created_at <=', $startDateObj->format('Y-m-d') . ' 23:59:59')
+        ->where('users.created_at >=', $weekStart . ' 00:00:00')
+        ->where('users.created_at <=', $weekEnd . ' 23:59:59')
         ->countAllResults();
 
       $data[] = $count;
-      $startDateObj->modify('+1 week');
+      $startDateObj->modify('+1 day'); // Lanjut ke minggu berikutnya
     }
 
     return ['labels' => $labels, 'data' => $data];
@@ -500,7 +616,7 @@ class Dashboard extends BaseController
     return ['labels' => $labels, 'data' => $data];
   }
 
-  private function getTotalHubungiKami($dateRangeArray, $string)
+  private function getTotalHubungiKamiCount($dateRangeArray, $string)
   {
     if ($string) {
       if (count($dateRangeArray) === 1) {
@@ -527,7 +643,7 @@ class Dashboard extends BaseController
     return $totalHubungiKami;
   }
 
-  private function getTotalRegulasi($dateRangeArray, $string)
+  private function getTotalRegulasiCount($dateRangeArray, $string)
   {
     if ($string) {
       if (count($dateRangeArray) === 1) {
@@ -554,7 +670,7 @@ class Dashboard extends BaseController
     return $totalRegulasi;
   }
 
-  private function getTotalInformasiBerkala($dateRangeArray, $string)
+  private function getTotalInformasiBerkalaCount($dateRangeArray, $string)
   {
     if ($string) {
       if (count($dateRangeArray) === 1) {
@@ -581,7 +697,7 @@ class Dashboard extends BaseController
     return $totalInformasiBerkala;
   }
 
-  private function getTotalInformasiSetiapSaat($dateRangeArray, $string)
+  private function getTotalInformasiSetiapSaatCount($dateRangeArray, $string)
   {
     if ($string) {
       if (count($dateRangeArray) === 1) {
@@ -608,7 +724,7 @@ class Dashboard extends BaseController
     return $totalInformasiSetiapSaat;
   }
 
-  private function getTotalPermohonanInformasi($dateRangeArray, $string)
+  private function getTotalPermohonanInformasiCount($dateRangeArray, $string)
   {
     if ($string) {
       if (count($dateRangeArray) === 1) {
@@ -635,7 +751,7 @@ class Dashboard extends BaseController
     return $totalPermohonanInformasi;
   }
 
-  private function getAccountCategories($dateRangeArray, $string)
+  private function getAccountCategoriesCount($dateRangeArray, $string)
   {
     if ($string) {
       if (count($dateRangeArray) === 1) {
@@ -684,4 +800,5 @@ class Dashboard extends BaseController
 
     return $result;
   }
+
 }
