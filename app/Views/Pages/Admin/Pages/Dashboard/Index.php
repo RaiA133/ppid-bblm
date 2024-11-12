@@ -49,14 +49,14 @@
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
 
   <!-- Stats -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-4 justify-center mb-4">
 
     <div class="stats shadow-md">
       <div class="stat">
-        <div class="stat-figure text-secondary">
+        <div class="stat-figure text-secondary hover:text-neutral transition-all">
           <svg
             onclick="totalPagesViewModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@
         </div>
         <div class="stat-title">Total Page Views</div>
         <div class="stat-value"><?= $totalPagesView['count'] ?? '-' ?></div>
-        <div class="stat-desc">21% more than last month</div>
+        <div class="stat-desc">Number of website visits</div>
       </div>
     </div>
 
@@ -112,7 +112,7 @@
 
     <div class="stats shadow-md">
       <div class="stat">
-        <div class="stat-figure text-secondary">
+        <div class="stat-figure text-secondary hover:text-neutral transition-all">
           <svg
             onclick="successLoginModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@
         </div>
         <div class="stat-title">Success Login</div>
         <div class="stat-value"><?= $totalLoginAttemptSuccess['count'] ?></div>
-        <div class="stat-desc"><?= $totalLoginAttemptSuccess['formattedDateRange'] ?? 'All Time' ?></div>
+        <div class="stat-desc">Account successfully logged in</div>
       </div>
     </div>
 
@@ -167,7 +167,7 @@
 
     <div class="stats shadow-md">
       <div class="stat">
-        <div class="stat-figure text-secondary">
+        <div class="stat-figure text-secondary hover:text-neutral transition-all">
           <svg
             onclick="totalAdminModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@
         </div>
         <div class="stat-title">New Admin</div>
         <div class="stat-value"><?= $totalAdmin['count'] ?></div>
-        <div class="stat-desc">↗︎ 400 (22%)</div>
+        <div class="stat-desc">New Admin Account Count</div>
       </div>
     </div>
 
@@ -222,7 +222,7 @@
 
     <div class="stats shadow-md">
       <div class="stat">
-        <div class="stat-figure text-secondary">
+        <div class="stat-figure text-secondary hover:text-neutral transition-all">
           <svg
             onclick="newRegisterModal.showModal()"
             xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@
         </div>
         <div class="stat-title">New Register</div>
         <div class="stat-value"><?= $newRegister['count'] ?></div>
-        <div class="stat-desc">↘︎ 90 (14%)</div>
+        <div class="stat-desc">All account totals</div>
       </div>
     </div>
 
