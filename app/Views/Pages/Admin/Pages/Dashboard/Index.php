@@ -20,9 +20,11 @@
         <a class="btn btn-ghost btn-sm normal-case" href="<?= current_url() . '?' . $_SERVER['QUERY_STRING'] ?>">
           Refresh Data
         </a>
-        <button class="btn btn-ghost btn-sm normal-case">
-          Share
-        </button>
+        <div title="Future Feature">
+          <button class="btn btn-ghost btn-sm normal-case btn-disabled">
+            Share
+          </button>
+        </div>
 
         <div class="dropdown dropdown-bottom dropdown-end">
           <label tabIndex="0" class="btn btn-ghost btn-sm normal-case btn-square">
@@ -31,12 +33,12 @@
             </svg>
           </label>
           <ul tabIndex="0" class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
+            <li class="disabled" title="Future Feature">
               <a>
                 Email Digests
               </a>
             </li>
-            <li>
+            <li class="disabled" title="Future Feature">
               <a>
                 Download
               </a>
@@ -54,11 +56,59 @@
 
     <div class="stats shadow-md">
       <div class="stat">
+        <div class="stat-figure text-secondary">
+          <svg
+            onclick="totalPagesViewModal.showModal()"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-8 w-8 stroke-current cursor-pointer">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
         <div class="stat-title">Total Page Views</div>
-        <div class="stat-value"><?= $totalPagesView['count'] ?? '-'?></div>
+        <div class="stat-value"><?= $totalPagesView['count'] ?? '-' ?></div>
         <div class="stat-desc">21% more than last month</div>
       </div>
     </div>
+
+    <dialog id="totalPagesViewModal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-md font-bold mb-2">Total Individual View Pages</h3>
+        <hr>
+        <p class="py-2">
+        <div class="overflow-x-auto">
+          <table class="table table-xs">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Pages</th>
+                <th>Total View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 1; ?>
+              <?php foreach ($totalPagesView['data'] as $pageUrl => $totalView) : ?>
+                <tr>
+                  <th><?= $no++ ?></th>
+                  <td><?= $pageUrl ?? '-' ?></td>
+                  <td><?= $totalView ?? '-' ?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+
+        </div>
+        </p>
+      </div>
+    </dialog>
 
     <div class="stats shadow-md">
       <div class="stat">

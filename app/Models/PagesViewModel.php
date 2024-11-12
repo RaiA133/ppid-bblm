@@ -74,28 +74,40 @@ class PagesViewModel extends Model
       if (count($dateRangeArray) === 1) {
         $startDate = $dateRangeArray[0];
         $dataPagesView = $this->table('pages_view')
-          ->select('*')
+          ->select('halaman, COUNT(*) as total')
           ->where('deleted_at', null)
-          ->where('updated_at >=', $startDate . ' 00:00:00')
-          ->where('updated_at <=', $startDate . ' 23:59:59')
-          ->orderBy('updated_at', 'DESC');
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
+          ->groupBy('halaman')
+          ->orderBy('total', 'DESC');
       } else {
         $startDate = $dateRangeArray[0];
         $endDate = $dateRangeArray[1];
         $dataPagesView = $this->table('pages_view')
-          ->select('*')
+          ->select('halaman, COUNT(*) as total')
           ->where('deleted_at', null)
-          ->where('updated_at >=', $startDate . ' 00:00:00')
-          ->where('updated_at <=', $endDate . ' 23:59:59')
-          ->orderBy('updated_at', 'DESC');
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
+          ->groupBy('halaman')
+          ->orderBy('total', 'DESC');
       }
     } else {
       $dataPagesView = $this->table('pages_view')
-        ->select('*')
+        ->select('halaman, COUNT(*) as total')
         ->where('deleted_at', null)
-        ->orderBy('updated_at', 'DESC');
+        ->groupBy('halaman')
+        ->orderBy('total', 'DESC');
     }
-    return $dataPagesView->get()->getResult();
+
+    $result = $dataPagesView->get()->getResult();
+
+    // Mengonversi hasil ke format yang diinginkan
+    $formattedData = [];
+    foreach ($result as $row) {
+      $formattedData[$row->halaman] = (int) $row->total;
+    }
+
+    return $formattedData;
   }
 
   public function getPagesViewCount($dateRangeArray, $string)
@@ -106,8 +118,8 @@ class PagesViewModel extends Model
         $totalPagesView = $this->table('pages_view')
           ->where('deleted_at', null)
           ->orderBy('id_pages_view', 'DESC')
-          ->where('updated_at >=', $startDate . ' 00:00:00')
-          ->where('updated_at <=', $startDate . ' 23:59:59')
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $startDate . ' 23:59:59')
           ->countAllResults();
       } else {
         $startDate = $dateRangeArray[0];
@@ -115,8 +127,8 @@ class PagesViewModel extends Model
         $totalPagesView = $this->table('pages_view')
           ->where('deleted_at', null)
           ->orderBy('id_pages_view', 'DESC')
-          ->where('updated_at >=', $startDate . ' 00:00:00')
-          ->where('updated_at <=', $endDate . ' 23:59:59')
+          ->where('created_at >=', $startDate . ' 00:00:00')
+          ->where('created_at <=', $endDate . ' 23:59:59')
           ->countAllResults();
       }
     } else {
