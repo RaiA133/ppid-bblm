@@ -176,7 +176,7 @@
           data: {
             labels: totalAdminLabels,
             datasets: [{
-              label: '# of Admins',
+              label: 'Total Admins',
               data: totalAdminData,
               borderWidth: 1,
               backgroundColor: 'rgba(54, 162, 235, 0.5)',
