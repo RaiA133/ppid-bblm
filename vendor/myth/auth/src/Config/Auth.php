@@ -199,7 +199,9 @@ class Auth extends BaseConfig
      *
      * @var string|null Name of the ResetterInterface class
      */
-    public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+
+    // public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter'; // gunakan ini untuk gunakan fitur forgot password
+    public $activeResetter = null;
 
     /**
      * --------------------------------------------------------------------
@@ -214,7 +216,7 @@ class Auth extends BaseConfig
      *
      * @var bool
      */
-    public $allowRemembering = true;
+    public $allowRemembering = false;
 
     /**
      * --------------------------------------------------------------------
