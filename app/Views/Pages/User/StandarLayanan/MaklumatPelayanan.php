@@ -3,7 +3,7 @@
 <?php $this->section('content') ?>
 
 <!-- Image & Content Section -->
-<section class="flex flex-col md:flex-row items-center justify-center mx-10 mb-40" id="fixed-elements" data-scroll>
+<section class="flex flex-col md:flex-row items-center justify-center mx-3 sm:mx-10 mb-40" id="fixed-elements" data-scroll>
   <?php if (!empty($results['link_gambar']) && !empty($results['content'])) : ?>
     <!-- Jika Gambar dan Konten Tersedia, Tampilkan Kanan-Kiri -->
 
