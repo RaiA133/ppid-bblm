@@ -9,7 +9,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.css">
 </head>
 
-<body data-theme="<?= getenv('ui_theme') ?>" class="flex">
+<body id="body-auth-admin" data-theme="<?= getenv('ui_theme') ?>" class="flex">
+
+<script>
+  const theme = localStorage.getItem('theme');
+  const bodyElement = document.getElementById('body-auth-admin');
+  if (theme) bodyElement.setAttribute('data-theme', theme);
+  else bodyElement.setAttribute('data-theme', 'default-theme');
+</script>
 
   <div class="min-h-screen w-full bg-base-200 flex items-center">
     <div class="card mx-auto w-full max-w-5xl shadow-xl">
