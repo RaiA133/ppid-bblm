@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
     $this->call('App\Database\Seeds\StandarLayanan\WaktuPelayananSeeder');
 
     // Seed Layanan Informasi
-    $this->call('App\Database\Seeds\LayananInformasi\PermohonanInformasiSeeder');
+    // $this->call('App\Database\Seeds\LayananInformasi\PermohonanInformasiSeeder');
     $this->call('App\Database\Seeds\LayananInformasi\UnitPelayananPublikSeeder');
     $this->call('App\Database\Seeds\LayananInformasi\LaporanLayananInformasiSeeder');
 
