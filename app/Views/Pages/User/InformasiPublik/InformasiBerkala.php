@@ -9,12 +9,12 @@
   }
 </style>
 
-<section class="flex flex-col mx-10" id="header-profil">
-  <div class="text-2xl" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-profil">Informasi Berkala</div>
+<section class="flex flex-col mx-3 sm:mx-10" id="header-profil">
+  <div class="text-2xl text-center sm:text-start" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#header-profil">Informasi Berkala</div>
   <div class="divider"></div>
 </section>
 
-<section class="mx-10 h-screen" data-scroll data-scroll-speed="5">
+<section class="mx-3 sm:mx-10 h-screen" data-scroll data-scroll-speed="5">
 
   <link rel="stylesheet" href="<?= base_url() ?>src/carousel/style.css">
 
@@ -43,7 +43,12 @@
 
             <dialog id="informasiBerkalaModal<?= esc($judul['id_informasi_berkala_judul']) ?>" class="modal modal-bottom sm:modal-middle">
               <div class="modal-box sm:w-11/12 sm:max-w-5xl">
-                <h3 class="text-lg font-bold"><?= esc($judul['judul']) ?></h3>
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-bold"><?= esc($judul['judul']) ?></h3>
+                  <form method="dialog">
+                    <button class="btn btn-ghost rounded-full btn-sm">X</button>
+                  </form>
+                </div>
                 <ul class="py-4">
                   <?php
                   $filteredInformasi = array_filter($informasiBerkala, function ($info) use ($judul) {
