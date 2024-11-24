@@ -1,6 +1,6 @@
 <!-- Navbar -->
-<div class="navbar bg-base-100">
-  <div class="navbar-start gap-4">
+<div class="navbar bg-base-100 gap-3">
+  <div class="navbar-start gap-0 sm:gap-4">
 
     <?php if (logged_in()) : ?>
       <div class="z-10">
